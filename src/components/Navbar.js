@@ -287,7 +287,7 @@ const Navbar = () => {
 
   const navLinks = [
     { text: "Home", href: "/" },
-    { text: "Services", href: "/services" },
+    { text: "Services Area", href: "/services" },
     { text: "About Us", href: "/about" },
     { text: "Contact Us", href: "/contact" },
   ];
