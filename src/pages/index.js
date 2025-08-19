@@ -4,6 +4,7 @@ import { Box, Container, Typography, Button } from "@mui/material";
 import { styled } from "@mui/system";
 import { businessSchema } from "../utils/seoData"; // Import global data
 import backHoe from "../image/backHoe.webp";
+import ConsultationButton from "../components/ConsultationButton"; // Import the button component
 
 const HeroSection = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -86,24 +87,24 @@ export default function Home() {
 
         {/* Text Content */}
         <Box sx={{ position: "relative", zIndex: 2, px: 2 }}>
-          <Typography variant="h5" sx={{ mt: 2 }}>
-            Hydraulic cylinder repair in Montgomery, Texas.
-          </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            href="sms:+8329017158"
+          <Typography
+            component="h1" // ensures an actual <h1> for SEO
+            variant="h1" // uses your theme’s h1 styling baseline
             sx={{
-              mt: 4,
-              fontWeight: "bold",
-              fontSize: "1rem",
-              padding: "12px 24px",
-              borderRadius: "8px",
-              textTransform: "none",
+              mt: 2,
+              fontSize: {
+                xs: "clamp(24px, 8vw, 34px)", // phones
+                sm: "clamp(28px, 6vw, 44px)", // small tablets
+                md: "clamp(36px, 5vw, 56px)", // tablets/desktop
+                lg: "64px", // large desktop cap
+              },
+              lineHeight: { xs: 1.2, md: 1.1 },
+              fontWeight: 800,
             }}
           >
-            Text Image for a Fast Quote
-          </Button>
+            Hydraulic Cylinder Repair in Montgomery, Texas.
+          </Typography>
+          <ConsultationButton />
         </Box>
       </HeroSection>
     </>
