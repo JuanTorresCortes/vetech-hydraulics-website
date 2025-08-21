@@ -16,16 +16,18 @@ const ConsultationButton = () => {
       <Button
         variant="contained"
         startIcon={<ContactPhoneIcon />}
-        href="sms:+8329017158"
+        href="sms:+18329017158?&body=Hi%20Vetech%20Hydraulics%2C%20I%E2%80%99d%20like%20a%20fast%20quote.%20I%E2%80%99ll%20send%20a%20picture%20now."
         sx={{
           marginTop: theme.spacing(3),
           background: "linear-gradient(90deg, #821515ff 0%, #ff0000ff 100%)",
           color: "#ffffffff",
           padding: theme.spacing(1.5, 4),
-          fontWeight: 700,
+          fontWeight: 800,
+          px: 4,
+          py: 1.5,
           fontFamily: "Roboto, sans-serif",
           boxShadow: "0px 9px 11px rgba(0, 0, 0, 8)",
-          borderRadius: "4px",
+          borderRadius: "8px",
           transition: "all 0.3s ease",
           "&:hover": {
             background: "linear-gradient(90deg, #ff0000ff 0%, #821515ff 100%)",

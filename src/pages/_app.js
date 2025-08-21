@@ -3,13 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Navbar from "../components/Navbar"; // Import Navbar
 import Footer from "../components/Footer"; // Import Footer
 import "../styles/globals.css";
-
-const theme = createTheme({
-  palette: {
-    primary: { main: "#1976d2" },
-    secondary: { main: "#dc004e" },
-  },
-});
+import theme from "../theme.js"; // Import your theme
 
 export default function MyApp({ Component, pageProps }) {
   return (
