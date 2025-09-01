@@ -9,7 +9,6 @@ import {
   Card,
   CardContent,
   Button,
-  Chip,
   Accordion,
   AccordionSummary,
   AccordionDetails,
@@ -20,17 +19,9 @@ import { styled } from "@mui/system";
 import { businessSchema } from "../utils/seoData";
 import backHoe from "../image/backHoe.webp";
 import ConsultationButton from "../components/ConsultationButton";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
-// Framer Motion
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "framer-motion";
-
-/* ---------------------------------- Hero ---------------------------------- */
+/* ------------------------------ Styled UI ------------------------------ */
 
 const HeroSection = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -41,20 +32,18 @@ const HeroSection = styled(Box)(({ theme }) => ({
   color: "#fff",
   position: "relative",
   textAlign: "center",
-  padding: theme.spacing(2),
-
+  padding: 0, // ❌ remove padding so the image hits the edges
   [theme.breakpoints.down("xl")]: { minHeight: "99vh" },
   [theme.breakpoints.down("lg")]: { minHeight: "92vh" },
   [theme.breakpoints.down("md")]: { minHeight: "78svh" },
   [theme.breakpoints.down("sm")]: { minHeight: "65svh" },
-
   "@media (max-width: 321px)": { minHeight: "100svh" },
 }));
 
 const Section = styled("section")(({ theme }) => ({
   paddingBlock: theme.spacing(8),
   [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
-  backgroundColor: "#0F2331", // deep slate blue to match hero vibe
+  backgroundColor: "#0F2331",
 }));
 
 const AltSection = styled("section")(({ theme }) => ({
@@ -80,6 +69,7 @@ const SectionTitle = ({ children, subtitle }) => (
     >
       {children}
     </Typography>
+
     {subtitle && (
       <Typography sx={{ color: "rgba(255,255,255,0.72)", mt: 1 }}>
         {subtitle}
@@ -88,13 +78,13 @@ const SectionTitle = ({ children, subtitle }) => (
   </Box>
 );
 
-// A simple wrapper to use Next/Image inside cards at a fixed ratio
+// Reusable image card using your backHoe placeholder
 const CardImage = ({ alt = "Placeholder", src = backHoe }) => (
   <Box
     sx={{
       position: "relative",
       width: "100%",
-      pb: "56.25%",
+      pb: "56.25%", // 16:9
       borderRadius: 2,
       overflow: "hidden",
     }}
@@ -109,37 +99,13 @@ const CardImage = ({ alt = "Placeholder", src = backHoe }) => (
   </Box>
 );
 
-// Motion wrappers
-const MotionDiv = motion.div;
-const MotionTypography = motion(Typography);
-const MotionBox = motion(Box);
+/* --------------------------------- Page --------------------------------- */
 
 export default function Home() {
-  const shouldReduce = useReducedMotion();
-
-  // Watch the hero section specifically (more reliable parallax)
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-    // 0 when hero top hits viewport top; 1 when hero bottom hits viewport top
-  });
-
-  // Parallax + scale transforms (tune values to taste)
-  const imageY = shouldReduce
-    ? 0
-    : useTransform(scrollYProgress, [0, 1], [0, 140]);
-  const imageScale = shouldReduce
-    ? 1
-    : useTransform(scrollYProgress, [0, 1], [1.06, 1.14]);
-  const gradientY = shouldReduce
-    ? 0
-    : useTransform(scrollYProgress, [0, 1], [0, 50]);
-
-  // Fade-in variants
+  // Simple mount-only fade-up (no scroll listeners)
   const fadeUp = {
-    hidden: { opacity: 0, y: shouldReduce ? 0 : 10 },
-    visible: {
+    initial: { opacity: 0, y: 10 },
+    animate: {
       opacity: 1,
       y: 0,
       transition: { duration: 0.6, ease: "easeOut" },
@@ -160,104 +126,83 @@ export default function Home() {
       </Head>
 
       {/* ============================== HERO ============================== */}
-      <HeroSection id="home" ref={heroRef} component="main">
-        {/* Parallax + scale wrapper for image */}
-        <MotionDiv
-          style={{
-            position: "absolute",
-            inset: 0,
-            y: imageY,
-            scale: imageScale,
-            willChange: "transform",
-            transformOrigin: "center center",
-            backfaceVisibility: "hidden",
-            transformStyle: "preserve-3d",
-          }}
-          aria-hidden
-        >
-          <Image
-            src={backHoe}
-            alt="Backhoe working"
-            fill
-            priority
-            sizes="100vw"
-            style={{ objectFit: "cover", objectPosition: "top" }}
-          />
-        </MotionDiv>
+      <HeroSection id="home">
+        {/* Full-bleed background image */}
+        <Image
+          src={backHoe}
+          alt="Backhoe working"
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: "cover", objectPosition: "top" }}
+        />
 
-        {/* Gradient overlay with subtle parallax (click-through enabled) */}
-        <MotionDiv
-          style={{
+        {/* Full-bleed overlay */}
+        <Box
+          sx={{
             position: "absolute",
             inset: 0,
-            y: gradientY,
-            willChange: "transform",
             pointerEvents: "none",
             background:
               "linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.45) 35%, rgba(0,0,0,0.25) 70%, rgba(0,0,0,0.15) 100%)",
           }}
         />
 
-        {/* Hero content */}
+        {/* Edge-to-edge container (no maxWidth, no gutters) */}
         <Container
-          maxWidth="lg"
+          maxWidth={false}
+          disableGutters
           sx={{
             position: "relative",
             zIndex: 2,
-            px: { xs: 2, sm: 3 },
+            px: { xs: 2, sm: 3 }, // add a bit of side padding for content comfort
             pb: { xs: 3, sm: 4, md: 6 },
             textAlign: "center",
           }}
         >
-          <MotionTypography
-            component="h1"
-            variant="h1"
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            sx={{
-              mt: 2,
-              fontSize: {
-                xs: "clamp(22px, 7.5vw, 32px)",
-                sm: "clamp(28px, 6vw, 42px)",
-                md: "clamp(36px, 5vw, 56px)",
-                lg: "64px",
-              },
-              lineHeight: { xs: 1.2, md: 1.1 },
-              fontWeight: 800,
-              textWrap: "balance",
-              wordBreak: "break-word",
-              overflowWrap: "anywhere",
-              color: "#fff",
-            }}
-          >
-            Hydraulic Cylinder Repair in Montgomery, Texas.
-          </MotionTypography>
+          <motion.div {...fadeUp}>
+            <Typography
+              component="h1"
+              variant="h1"
+              sx={{
+                mt: 2,
+                fontSize: {
+                  xs: "clamp(22px, 7.5vw, 32px)",
+                  sm: "clamp(28px, 6vw, 42px)",
+                  md: "clamp(36px, 5vw, 56px)",
+                  lg: "64px",
+                },
+                lineHeight: { xs: 1.2, md: 1.1 },
+                fontWeight: 800,
+                textWrap: "balance",
+                wordBreak: "break-word",
+                overflowWrap: "anywhere",
+                color: "#fff",
+                mb: 2,
+              }}
+            >
+              Hydraulic Cylinder Repair in Montgomery, Texas.
+            </Typography>
+          </motion.div>
 
-          <MotionBox
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            transition={{ delay: 0.15, duration: 0.6, ease: "easeOut" }}
-            sx={{ mt: { xs: 2, md: 3 }, display: "inline-block" }}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+            style={{ display: "inline-block" }}
           >
             <ConsultationButton />
-          </MotionBox>
-
-          <Box sx={{ mt: 2 }}>
-            <Chip
-              variant="filled"
-              color="primary"
-              label="Emergency Repairs Available"
-              sx={{ fontWeight: 700 }}
-            />
-          </Box>
+          </motion.div>
         </Container>
       </HeroSection>
 
       {/* ============================ SERVICES ============================ */}
       <Section id="services">
-        <Container maxWidth="lg">
+        <Container
+          maxWidth={false}
+          disableGutters
+          sx={{ px: { xs: 2, sm: 3 } }} // edge-to-edge bg, comfy content padding
+        >
           <SectionTitle subtitle="Fast turnarounds. Tested. Warrantied.">
             Cylinder Repair Services
           </SectionTitle>
@@ -293,10 +238,7 @@ export default function Home() {
                 >
                   <CardImage />
                   <CardContent sx={{ color: "#fff" }}>
-                    <Typography
-                      variant="h6"
-                      sx={{ fontWeight: 800, mb: 1, color: "#fff" }}
-                    >
+                    <Typography variant="h6" sx={{ fontWeight: 800, mb: 1 }}>
                       {c.title}
                     </Typography>
                     <Typography sx={{ color: "rgba(255,255,255,0.8)" }}>
@@ -312,7 +254,11 @@ export default function Home() {
 
       {/* ========================== WHY CHOOSE US ========================= */}
       <AltSection id="why-us">
-        <Container maxWidth="lg">
+        <Container
+          maxWidth={false}
+          disableGutters
+          sx={{ px: { xs: 2, sm: 3 } }}
+        >
           <SectionTitle subtitle="Built for contractors, fleet managers, and operators.">
             Why Choose Vetech Hydraulics
           </SectionTitle>
@@ -352,7 +298,11 @@ export default function Home() {
 
       {/* ============================= PROCESS ============================ */}
       <Section id="process">
-        <Container maxWidth="lg">
+        <Container
+          maxWidth={false}
+          disableGutters
+          sx={{ px: { xs: 2, sm: 3 } }}
+        >
           <SectionTitle subtitle="Simple, transparent, and efficient.">
             Our Repair Process
           </SectionTitle>
@@ -409,7 +359,11 @@ export default function Home() {
 
       {/* =========================== SERVICE AREAS ======================== */}
       <AltSection id="areas">
-        <Container maxWidth="lg">
+        <Container
+          maxWidth={false}
+          disableGutters
+          sx={{ px: { xs: 2, sm: 3 } }}
+        >
           <SectionTitle subtitle="Local pickup and delivery available.">
             Service Areas
           </SectionTitle>
@@ -444,7 +398,6 @@ export default function Home() {
               </Box>
             </Grid>
             <Grid item xs={12} md={6}>
-              {/* Map placeholder or image */}
               <Card
                 sx={{
                   height: "100%",
@@ -470,29 +423,32 @@ export default function Home() {
 
       {/* =============================== CTA ============================== */}
       <Section id="quote">
-        <Container maxWidth="lg" sx={{ textAlign: "center" }}>
+        <Container
+          maxWidth={false}
+          disableGutters
+          sx={{ px: { xs: 2, sm: 3 }, textAlign: "center" }}
+        >
           <SectionTitle subtitle="Send a picture for a fast quote.">
             Ready to Get Your Cylinder Fixed?
           </SectionTitle>
           <Button
-            href="#"
+            href="sms:+18329017158?&body=Hi%20Vetech%20Hydraulics%2C%20I%E2%80%99d%20like%20a%20fast%20quote.%20I%E2%80%99ll%20send%20a%20picture%20now."
             variant="contained"
             size="large"
             sx={{ fontWeight: 800, px: 4, py: 1.5 }}
           >
-            Request a Quote
+            Text a Photo for Fast Quote
           </Button>
-          <Box sx={{ mt: 2 }}>
-            <Typography sx={{ color: "rgba(255,255,255,0.72)" }}>
-              Or text us a photo: <strong>832-901-7158</strong>
-            </Typography>
-          </Box>
         </Container>
       </Section>
 
       {/* =============================== FAQ ============================== */}
       <AltSection id="faq">
-        <Container maxWidth="lg">
+        <Container
+          maxWidth={false}
+          disableGutters
+          sx={{ px: { xs: 2, sm: 3 } }}
+        >
           <SectionTitle>FAQ</SectionTitle>
 
           {[
