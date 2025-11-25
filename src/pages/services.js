@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import backHoe from "../image/backHoe.webp";
+import ConsultationButton from "../components/ConsultationButton";
 
 const Hero = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -266,14 +267,7 @@ export default function ServicesPage() {
           >
             Need a fast quote?
           </Typography>
-          <Button
-            variant="contained"
-            size="large"
-            href="sms:+18329017158?&body=Hi%20Vetech%20Hydraulics%2C%20I%27d%20like%20a%20quote.%20I%27ll%20text%20a%20photo."
-            sx={{ fontWeight: 800, px: 4, py: 1.5 }}
-          >
-            Text a Photo for a Quote
-          </Button>
+          <ConsultationButton />
         </Container>
       </Section>
     </>

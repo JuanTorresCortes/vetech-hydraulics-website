@@ -18,6 +18,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/system";
 import { businessSchema } from "../utils/seoData";
 import backHoe from "../image/backHoe.webp";
+import map from "../image/map.webp";
 import ConsultationButton from "../components/ConsultationButton";
 import { motion } from "framer-motion";
 
@@ -80,6 +81,26 @@ const SectionTitle = ({ children, subtitle }) => (
 
 // Reusable image card using your backHoe placeholder
 const CardImage = ({ alt = "Placeholder", src = backHoe }) => (
+  <Box
+    sx={{
+      position: "relative",
+      width: "100%",
+      pb: "56.25%", // 16:9
+      borderRadius: 2,
+      overflow: "hidden",
+    }}
+  >
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      sizes="(max-width: 600px) 100vw, 33vw"
+      style={{ objectFit: "cover" }}
+    />
+  </Box>
+);
+
+const CardImageMap = ({ alt = "service area map", src = map }) => (
   <Box
     sx={{
       position: "relative",
@@ -408,11 +429,10 @@ export default function Home() {
                 }}
                 elevation={0}
               >
-                <CardImage alt="Service area placeholder" />
+                <CardImageMap alt="Service area placeholder" />
                 <CardContent sx={{ color: "#fff" }}>
                   <Typography sx={{ color: "rgba(255,255,255,0.8)" }}>
-                    Add a service-area map here later (Google Maps embed or
-                    static image).
+                    Service-area map.
                   </Typography>
                 </CardContent>
               </Card>
@@ -431,14 +451,7 @@ export default function Home() {
           <SectionTitle subtitle="Send a picture for a fast quote.">
             Ready to Get Your Cylinder Fixed?
           </SectionTitle>
-          <Button
-            href="sms:+18329017158?&body=Hi%20Vetech%20Hydraulics%2C%20I%E2%80%99d%20like%20a%20fast%20quote.%20I%E2%80%99ll%20send%20a%20picture%20now."
-            variant="contained"
-            size="large"
-            sx={{ fontWeight: 800, px: 4, py: 1.5 }}
-          >
-            Text a Photo for Fast Quote
-          </Button>
+          <ConsultationButton />
         </Container>
       </Section>
 
