@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Box,
   Container,
@@ -129,11 +130,11 @@ export default function ServicesPage() {
       </Hero>
 
       {/* WHAT WE DO */}
-      <Section>
-        <Container
-          maxWidth={false}
-          disableGutters
-          sx={{ px: { xs: 2, sm: 3 } }}
+        <Section>
+          <Container
+            maxWidth={false}
+            disableGutters
+            sx={{ px: { xs: 2, sm: 3 } }}
         >
           <SectionTitle subtitle="Fast turnarounds. Tested. Warrantied.">
             What We Do
@@ -250,13 +251,38 @@ export default function ServicesPage() {
               </Grid>
             ))}
           </Grid>
-        </Container>
-      </AltSection>
+          </Container>
+        </AltSection>
 
-      {/* CTA */}
-      <Section>
-        <Container
-          maxWidth={false}
+        {/* COVERAGE CTA */}
+        <Section>
+          <Container
+            maxWidth={false}
+            disableGutters
+            sx={{ px: { xs: 2, sm: 3 }, textAlign: "center" }}
+          >
+            <SectionTitle subtitle="Montgomery, Magnolia, Conroe, Willis, The Woodlands, and greater Houston">
+              See our service areas
+            </SectionTitle>
+            <Typography sx={{ color: "rgba(255,255,255,0.88)", maxWidth: 720, mx: "auto", mb: 3 }}>
+              Check coverage details, pickup options, and city-specific expectations so your trash trucks and heavy equipment get back to work faster.
+            </Typography>
+            <Button
+              component={Link}
+              href="/service-areas"
+              variant="contained"
+              color="secondary"
+              sx={{ px: 4, py: 1.25, fontWeight: 800, textTransform: "none" }}
+            >
+              View service areas
+            </Button>
+          </Container>
+        </Section>
+
+        {/* CTA */}
+        <Section>
+          <Container
+            maxWidth={false}
           disableGutters
           sx={{ px: { xs: 2, sm: 3 }, textAlign: "center" }}
         >
