@@ -1,0 +1,124 @@
+import Head from "next/head";
+import { Box, Container, Typography } from "@mui/material";
+import { styled } from "@mui/system";
+import ConsultationButton from "../../components/ConsultationButton";
+
+const Section = styled("section")(({ theme }) => ({
+  paddingBlock: theme.spacing(8),
+  [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
+  backgroundColor: "#0F2331",
+}));
+
+const AltSection = styled("section")(({ theme }) => ({
+  paddingBlock: theme.spacing(8),
+  [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
+  backgroundColor: "#0B1B27",
+}));
+
+const SectionTitle = ({ children, subtitle }) => (
+  <Box sx={{ textAlign: "center", mb: 6 }}>
+    <Typography
+      component="h2"
+      variant="h3"
+      sx={{
+        color: "#fff",
+        fontWeight: 800,
+        fontSize: {
+          xs: "clamp(22px, 5.5vw, 32px)",
+          md: "clamp(28px, 3vw, 40px)",
+        },
+        textWrap: "balance",
+      }}
+    >
+      {children}
+    </Typography>
+    {subtitle && (
+      <Typography sx={{ color: "rgba(255,255,255,0.72)", mt: 1 }}>
+        {subtitle}
+      </Typography>
+    )}
+  </Box>
+);
+
+export default function TheWoodlandsServicePage() {
+  return (
+    <>
+      <Head>
+        <title>Hydraulic Cylinder Repair in The Woodlands, TX | Vetech Hydraulics</title>
+        <meta
+          name="description"
+          content="Vetech Hydraulics provides hydraulic cylinder repair, repacking, and testing in The Woodlands, TX. Text a picture of your cylinder for a fast quote."
+        />
+        <link
+          rel="canonical"
+          href="https://your-domain.com/service-areas/woodlands-tx-hydraulic-cylinder-repair"
+        />
+      </Head>
+
+      <AltSection>
+        <Container
+          maxWidth={false}
+          disableGutters
+          sx={{ px: { xs: 2, sm: 3 }, maxWidth: "1100px", mx: "auto" }}
+        >
+          <Typography
+            component="h1"
+            variant="h2"
+            sx={{
+              fontWeight: 800,
+              fontSize: {
+                xs: "clamp(26px, 7vw, 36px)",
+                md: "clamp(32px, 4vw, 46px)",
+              },
+              textWrap: "balance",
+              mb: 2,
+              color: "#fff",
+            }}
+          >
+            Hydraulic Cylinder Repair in The Woodlands, Texas
+          </Typography>
+
+          <Typography
+            sx={{ color: "rgba(255,255,255,0.8)", maxWidth: 720, mb: 3 }}
+          >
+            The Woodlands area is packed with commercial properties, distribution centers and contractors that rely on hydraulics every day. Vetech Hydraulics provides nearby cylinder repair for forklifts, skid steers, compact loaders, and industrial equipment so your crew stays productive.
+          </Typography>
+
+          <ConsultationButton />
+        </Container>
+      </AltSection>
+
+      <Section>
+        <Container
+          maxWidth={false}
+          disableGutters
+          sx={{
+            px: { xs: 2, sm: 3 },
+            maxWidth: "900px",
+            mx: "auto",
+            textAlign: "center",
+          }}
+        >
+          <SectionTitle subtitle="Text a picture for a fast response.">
+            Need Hydraulic Cylinder Repair in The Woodlands, TX?
+          </SectionTitle>
+
+          <Typography
+            sx={{
+              color: "rgba(255,255,255,0.8)",
+              mb: 3,
+              maxWidth: 640,
+              mx: "auto",
+            }}
+          >
+            If you&apos;re near The Woodlands and dealing with a leaking or weak cylinder,
+            reach out. We&apos;ll review your photos, give you a ballpark estimate,
+            and help you get back to work with less downtime.
+          </Typography>
+
+          <ConsultationButton />
+        </Container>
+      </Section>
+    </>
+  );
+}

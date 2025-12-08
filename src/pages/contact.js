@@ -278,10 +278,10 @@ export default function ContactPage() {
                 </Typography>
                 <Typography sx={{ mb: 2 }}>
                   <a
-                    href="tel:+18329017158"
+                    href="tel:+19362496042"
                     style={{ color: "#6EC1FF", fontWeight: 700 }}
                   >
-                    (832) 901-7158
+                    (936) 249-6042
                   </a>
                 </Typography>
 

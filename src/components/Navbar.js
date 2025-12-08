@@ -29,13 +29,14 @@ const Navbar = () => {
   const isMobile = useMediaQuery("(max-width: 1100px)");
   const router = useRouter();
 
-  const phoneNumber = "8329017158";
+  const phoneNumber = "9362496042";
 
   const navLinks = [
     { text: "Home", href: "/" },
     { text: "Services", href: "/services" },
-    { text: "Service Areas", href: "/service-areas" },
+
     { text: "About Us", href: "/about" },
+    { text: "Service Areas", href: "/service-areas" },
     { text: "Contact Us", href: "/contact" },
   ];
 
@@ -91,7 +92,7 @@ const Navbar = () => {
             href={`tel:${phoneNumber}`}
             sx={{ color: red[500], textDecoration: "none" }}
           >
-            (832) - 901 - 7158
+            (936) - 249 - 6042
           </MuiLink>
         </Typography>
       </Box>
@@ -142,7 +143,7 @@ const Navbar = () => {
         }}
       >
         <PhoneIcon />
-        (832) - 901 - 7158
+        (936) - 249 - 6042
       </MuiLink>
     </Box>
   );
