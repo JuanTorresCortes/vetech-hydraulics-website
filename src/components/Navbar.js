@@ -172,8 +172,8 @@ const Navbar = () => {
               <Image
                 src="/logo.png"
                 alt="Vetech Hydraulics Logo"
-                width={isMobile ? 200 : 400}
-                height={isMobile ? 55 : 110}
+                width={isMobile ? 200 : 250}
+                height={isMobile ? 100 : 125}
                 style={{ cursor: "pointer" }}
                 priority
               />
