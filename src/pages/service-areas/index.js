@@ -18,47 +18,76 @@ import ConsultationButton from "../../components/ConsultationButton";
 import backHoe from "../../image/backHoe.webp";
 
 /* --------------------------------- Layout -------------------------------- */
+const FullBleed = {
+  width: "100vw",
+  marginLeft: "calc(50% - 50vw)",
+  marginRight: "calc(50% - 50vw)",
+};
 
 // Full-width hero with background image (borrowed from services.js)
 const Hero = styled(Box)(({ theme }) => ({
-  position: "relative",
-  minHeight: "48vh",
+  ...FullBleed,
   display: "flex",
+  justifyContent: "center",
   alignItems: "flex-end",
+  minHeight: "70vh",
+  backgroundColor: "#142B3E",
   color: "#fff",
+  position: "relative",
+  textAlign: "center",
+  padding: 0,
+  overflow: "hidden", // prevent tiny horizontal scroll from 100vw
+  [theme.breakpoints.down("lg")]: { minHeight: "62vh" },
+  [theme.breakpoints.down("md")]: { minHeight: "58svh" },
+  [theme.breakpoints.down("sm")]: { minHeight: "52svh" },
 }));
 
 const Section = styled("section")(({ theme }) => ({
+  ...FullBleed,
   paddingBlock: theme.spacing(8),
   [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
   backgroundColor: "#0F2331",
+  overflow: "hidden",
 }));
 
 const AltSection = styled("section")(({ theme }) => ({
+  ...FullBleed,
   paddingBlock: theme.spacing(8),
   [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
   backgroundColor: "#0B1B27",
+  overflow: "hidden",
 }));
 
 const SectionTitle = ({ children, subtitle }) => (
-  <Box sx={{ textAlign: "center", mb: 6 }}>
+  <Box sx={{ textAlign: "center", mb: 5 }}>
     <Typography
       component="h2"
       variant="h3"
       sx={{
         color: "#fff",
-        fontWeight: 800,
+        fontWeight: 900,
         fontSize: {
-          xs: "clamp(22px, 6vw, 32px)",
-          md: "clamp(28px, 3vw, 40px)",
+          xs: "clamp(22px, 6.2vw, 34px)",
+          md: "clamp(28px, 3vw, 42px)",
         },
         textWrap: "balance",
+        lineHeight: 1.1,
       }}
     >
       {children}
     </Typography>
+
     {subtitle && (
-      <Typography sx={{ color: "rgba(255,255,255,0.72)", mt: 1 }}>
+      <Typography
+        sx={{
+          color: "rgba(255,255,255,0.78)",
+          mt: 1,
+          maxWidth: 880,
+          mx: "auto",
+          textWrap: "balance",
+          lineHeight: 1.7,
+        }}
+      >
         {subtitle}
       </Typography>
     )}

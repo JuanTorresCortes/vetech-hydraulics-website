@@ -34,7 +34,6 @@ const Navbar = () => {
   const navLinks = [
     { text: "Home", href: "/" },
     { text: "Services", href: "/services" },
-
     { text: "About Us", href: "/about" },
     { text: "Service Areas", href: "/service-areas" },
     { text: "Contact Us", href: "/contact" },
@@ -198,6 +197,7 @@ const Navbar = () => {
                   "& .MuiDrawer-paper": {
                     backgroundColor: "#000000",
                     width: 250,
+                    paddingTop: theme.spacing(14),
                   },
                 }}
               >
