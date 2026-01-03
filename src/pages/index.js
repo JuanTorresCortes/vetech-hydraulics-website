@@ -24,6 +24,8 @@ import repackImg from "../image/repackImg.webp";
 import repairImg from "../image/repairImg.webp";
 import mobileImg from "../image/mobileImg.webp";
 import hero1 from "../image/hero1.webp";
+import SdvobBadge from "@/components/SdvobBadge";
+import VeteranOwnershipSection from "@/components/VeteranOwnershipSection";
 
 /* ------------------------------ Styled UI ------------------------------ */
 
@@ -254,40 +256,6 @@ export default function Home() {
             </Typography>
 
             {/* SDVOSB badge (mobile-safe: wraps instead of overflowing) */}
-            <Box
-              sx={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 1.25,
-                px: 2,
-                py: 1,
-                mb: 2,
-                maxWidth: "100%",
-                flexWrap: { xs: "wrap", sm: "nowrap" },
-              }}
-            >
-              <Image
-                src="/sdvoc.png"
-                alt="Service-Disabled Veteran-Owned Small Business (SDVOSB) Certified"
-                width={44}
-                height={44}
-                style={{ borderRadius: 6 }}
-              />
-              <Typography
-                sx={{
-                  fontWeight: 800,
-                  fontSize: { xs: 12.5, sm: 14 },
-                  letterSpacing: 0.2,
-                  color: "rgba(255,255,255,0.95)",
-                  whiteSpace: { xs: "normal", sm: "nowrap" },
-                  textAlign: "center",
-                  lineHeight: 1.2,
-                }}
-              >
-                SDVOSB • Service-Disabled Veteran-Owned & Operated
-              </Typography>
-            </Box>
           </motion.div>
 
           <motion.div
@@ -300,6 +268,9 @@ export default function Home() {
           </motion.div>
         </Container>
       </HeroSection>
+
+      {/* ====================== VETERAN OWNERSHIP ======================= */}
+      <VeteranOwnershipSection />
 
       {/* ============================ SERVICES ============================ */}
       <Section id="services">
