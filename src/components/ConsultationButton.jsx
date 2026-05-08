@@ -17,6 +17,7 @@ const ConsultationButton = () => {
       <Button
         variant="contained"
         startIcon={<ContactPhoneIcon />}
+        aria-label="Text Vetech Hydraulics a photo for a fast hydraulic cylinder repair quote"
         href="sms:+19362496042?&body=Hi%20Vetech%20Hydraulics%2C%20I%E2%80%99d%20like%20a%20fast%20quote.%20I%E2%80%99ll%20send%20a%20picture%20now."
         sx={{
           ...primaryCtaSx,

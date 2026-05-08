@@ -1,5 +1,5 @@
 // src/pages/contact.js
-import Head from "next/head";
+import SeoHead from "../components/SeoHead";
 import Image from "next/image";
 import {
   Alert,
@@ -63,9 +63,7 @@ const Hero = styled(Box)(({ theme }) => ({
 }));
 
 const Section = styled("section")(({ theme }) => ({
-  ...FullBleed,
-  paddingBlock: theme.spacing(8),
-  [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
+  ...sectionBase(theme),
   background:
     "radial-gradient(circle at 86% 0%, rgba(215,25,32,0.13), transparent 32%), linear-gradient(180deg, #07131D 0%, #0A1823 52%, #050D14 100%)",
 }));
@@ -87,14 +85,9 @@ const fieldSx = {
 };
 
 const infoCardSx = {
+  ...industrialCardSx,
   height: "100%",
   p: { xs: 2.5, md: 3 },
-  borderRadius: 3,
-  bgcolor: "rgba(9,23,35,0.86)",
-  backgroundImage:
-    "linear-gradient(145deg, rgba(255,255,255,0.075), rgba(255,255,255,0.012))",
-  border: "1px solid rgba(190,202,212,0.16)",
-  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.07)",
 };
 
 /* --------------------------------- Page ---------------------------------- */
@@ -187,14 +180,11 @@ export default function ContactPage() {
 
   return (
     <>
-      <Head>
-        <title>Contact Us | Vetech Hydraulics</title>
-        <meta
-          name="description"
-          content="Contact Vetech Hydraulics for cylinder repair quotes and scheduling."
-        />
-        <link rel="canonical" href="https://www.vetechhydraulics.com/contact" />
-      </Head>
+      <SeoHead
+        title="Contact Us | Vetech Hydraulics"
+        description="Contact Vetech Hydraulics for cylinder repair quotes and scheduling."
+        path="/contact"
+      />
 
       {/* ------------------------------- HERO -------------------------------- */}
       <Hero>
@@ -224,7 +214,6 @@ export default function ContactPage() {
           maxWidth="lg"
           sx={{
             ...containerSx,
-            px: { xs: 2, sm: 3, md: 4 },
             pb: { xs: 5, md: 7 },
             pt: { xs: 16, md: 20 },
             position: "relative",
@@ -232,18 +221,6 @@ export default function ContactPage() {
           }}
         >
           <Typography sx={{ ...eyebrowSx, mb: 1.5 }}>
-            REQUEST HYDRAULIC SERVICE
-          </Typography>
-          <Typography
-            sx={{
-              color: "#D71920",
-              fontWeight: 950,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              fontSize: { xs: 12, md: 13 },
-              mb: 1.5,
-            }}
-          >
             REQUEST HYDRAULIC SERVICE
           </Typography>
           <Typography
@@ -273,18 +250,6 @@ export default function ContactPage() {
               fontSize: { xs: 15.5, md: 18 },
             }}
           >
-          >
-            Get a Fast Quote for Hydraulic Cylinder Repair
-          </Typography>
-          <Typography
-            sx={{
-              mt: 2,
-              color: "rgba(231,238,244,0.82)",
-              maxWidth: 760,
-              fontSize: { xs: 16, md: 19 },
-              lineHeight: 1.7,
-            }}
-          >
             Request hydraulic cylinder repair for heavy equipment, fleets, trash
             trucks, construction equipment, and commercial operations across the
             North Houston service area.
@@ -295,7 +260,6 @@ export default function ContactPage() {
       {/* ---------------------------- FORM + INFO ---------------------------- */}
       <Section>
         <Container maxWidth="lg" sx={containerSx}>
-        <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <Grid container spacing={{ xs: 3, md: 4 }} alignItems="stretch">
             {/* FORM */}
             <Grid item xs={12} md={7}>
@@ -306,16 +270,6 @@ export default function ContactPage() {
                   position: "relative",
                   height: "100%",
                   overflow: "hidden",
-                  position: "relative",
-                  height: "100%",
-                  bgcolor: "rgba(9,23,35,0.9)",
-                  backgroundImage:
-                    "linear-gradient(145deg, rgba(255,255,255,0.085), rgba(255,255,255,0.015))",
-                  borderRadius: 3,
-                  overflow: "hidden",
-                  border: "1px solid rgba(190,202,212,0.18)",
-                  boxShadow:
-                    "0 24px 70px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,255,255,0.08)",
                   "&::before": {
                     content: '""',
                     position: "absolute",
@@ -342,9 +296,6 @@ export default function ContactPage() {
                     Request Service
                   </Typography>
                   <Typography sx={{ color: "rgba(231,238,244,0.72)", mb: 2.5 }}>
-                  <Typography
-                    sx={{ color: "rgba(231,238,244,0.72)", mb: 2.5 }}
-                  >
                     Tell us what is leaking, weak, bent, or down. We will review
                     your request and follow up with the next step.
                   </Typography>
@@ -417,17 +368,6 @@ export default function ContactPage() {
                           sx={{
                             ...primaryCtaSx,
                             py: 1.5,
-                            py: 1.5,
-                            borderRadius: "10px",
-                            bgcolor: "#D71920",
-                            color: "#fff",
-                            fontWeight: 950,
-                            letterSpacing: "0.08em",
-                            textTransform: "uppercase",
-                            border: "1px solid rgba(255,255,255,0.16)",
-                            boxShadow:
-                              "0 18px 38px rgba(215,25,32,0.24), inset 0 1px 0 rgba(255,255,255,0.24)",
-                            "&:hover": { bgcolor: "#B9151B" },
                             "&.Mui-disabled": {
                               color: "rgba(255,255,255,0.55)",
                               bgcolor: "rgba(215,25,32,0.42)",

@@ -10,6 +10,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { containerSx, primaryCtaSx } from "../utils/visualStyles";
 
 const services = [
   "Hydraulic Cylinder Repair",
@@ -102,7 +103,10 @@ export default function Footer() {
         boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
       }}
     >
-      <Container maxWidth="lg" sx={{ py: { xs: 5, md: 7 } }}>
+      <Container
+        maxWidth="lg"
+        sx={{ ...containerSx, py: { xs: 6, md: 8, lg: 9 } }}
+      >
         <Grid container spacing={{ xs: 4, md: 4.5 }}>
           <Grid item xs={12} md={4}>
             <Box
@@ -263,19 +267,7 @@ export default function Footer() {
               href="/contact"
               variant="contained"
               fullWidth
-              sx={{
-                py: 1.35,
-                borderRadius: "10px",
-                bgcolor: "#D71920",
-                color: "#fff",
-                fontWeight: 950,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                border: "1px solid rgba(255,255,255,0.16)",
-                boxShadow:
-                  "0 18px 38px rgba(215,25,32,0.24), inset 0 1px 0 rgba(255,255,255,0.24)",
-                "&:hover": { bgcolor: "#B9151B" },
-              }}
+              sx={{ ...primaryCtaSx, py: 1.35 }}
             >
               Request Service
             </Button>
@@ -287,7 +279,7 @@ export default function Footer() {
 
       <Box
         sx={{
-          px: { xs: 2, sm: 3 },
+          ...containerSx,
           py: 2,
           background:
             "linear-gradient(90deg, rgba(255,255,255,0.025), rgba(215,25,32,0.045), rgba(255,255,255,0.025))",
@@ -317,10 +309,14 @@ export default function Footer() {
                 />
               }
             >
-              <Typography sx={{ color: "rgba(231,238,244,0.68)", fontSize: 13 }}>
+              <Typography
+                sx={{ color: "rgba(231,238,244,0.68)", fontSize: 13 }}
+              >
                 Veteran-Owned Hydraulic Repair
               </Typography>
-              <Typography sx={{ color: "rgba(231,238,244,0.68)", fontSize: 13 }}>
+              <Typography
+                sx={{ color: "rgba(231,238,244,0.68)", fontSize: 13 }}
+              >
                 Built for Heavy Equipment & Fleet Reliability
               </Typography>
             </Stack>

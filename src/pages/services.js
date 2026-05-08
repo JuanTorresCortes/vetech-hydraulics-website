@@ -1,5 +1,5 @@
 // src/pages/services.js
-import Head from "next/head";
+import SeoHead from "../components/SeoHead";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -20,7 +20,6 @@ import {
   primaryCtaSx,
   sectionBase,
 } from "../utils/visualStyles";
-import backHoe from "../image/backHoe.webp";
 import cylinder4 from "../image/cylinder-4.webp";
 import ConsultationButton from "../components/ConsultationButton";
 
@@ -85,14 +84,11 @@ const SectionTitle = ({ children, subtitle }) => (
 export default function ServicesPage() {
   return (
     <>
-      <Head>
-        <title>Services | Vetech Hydraulics</title>
-        <meta
-          name="description"
-          content="Hydraulic cylinder repair services focused on precision rebuilding, fair pricing, pressure testing, and minimizing downtime."
-        />
-        <link rel="canonical" href="https://www.vetechhydraulics.com/services" />
-      </Head>
+      <SeoHead
+        title="Services | Vetech Hydraulics"
+        description="Hydraulic cylinder repair services focused on precision rebuilding, fair pricing, pressure testing, and minimizing downtime."
+        path="/services"
+      />
 
       <Box component="main">
         {/* ============================== HERO ============================== */}

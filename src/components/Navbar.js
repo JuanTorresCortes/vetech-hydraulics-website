@@ -32,14 +32,6 @@ const NAV_LINKS = [
   { text: "Contact", href: "/contact" },
 ];
 
-const NAV_LINKS = [
-  { text: "Home", href: "/" },
-  { text: "Services", href: "/services" },
-  { text: "Service Areas", href: "/service-areas" },
-  { text: "About", href: "/about" },
-  { text: "Contact", href: "/contact" },
-];
-
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
@@ -93,7 +85,7 @@ const Navbar = () => {
           src="/VTH-logo.png"
           alt="Vetech Hydraulics logo"
           fill
-          priority
+          priority={!mobile}
           sizes={mobile ? "48px" : "58px"}
           style={{ objectFit: "contain", padding: mobile ? "6px" : "7px" }}
         />
@@ -131,26 +123,10 @@ const Navbar = () => {
   );
 
   const requestServiceButtonSx = {
+    ...primaryCtaSx,
     px: 2.4,
     py: 1.15,
-    borderRadius: "10px",
-    bgcolor: "#D71920",
-    color: "#fff",
-    fontWeight: 950,
-    letterSpacing: "0.07em",
-    textTransform: "uppercase",
     fontSize: 12.5,
-    border: "1px solid rgba(255,255,255,0.16)",
-    boxShadow:
-      "0 16px 34px rgba(215,25,32,0.26), inset 0 1px 0 rgba(255,255,255,0.26)",
-    transition:
-      "transform 160ms ease, box-shadow 160ms ease, background 160ms ease",
-    "&:hover": {
-      bgcolor: "#B9151B",
-      transform: "translateY(-1px)",
-      boxShadow:
-        "0 20px 42px rgba(215,25,32,0.32), inset 0 1px 0 rgba(255,255,255,0.22)",
-    },
   };
 
   const DesktopLinks = (
@@ -225,7 +201,7 @@ const Navbar = () => {
       sx={{
         width: "100vw",
         minHeight: "100svh",
-        px: { xs: 2, sm: 3 },
+        ...containerSx,
         pt: 2,
         pb: 4,
         background:
@@ -330,7 +306,10 @@ const Navbar = () => {
       }}
       elevation={0}
     >
-      <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, lg: 5 } }}>
+      <Container
+        maxWidth="xl"
+        sx={{ ...containerSx, px: { ...containerSx.px, lg: 5 } }}
+      >
         <Toolbar
           disableGutters
           sx={{

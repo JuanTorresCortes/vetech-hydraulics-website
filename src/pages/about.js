@@ -1,5 +1,5 @@
 // src/pages/about.js
-import Head from "next/head";
+import SeoHead from "../components/SeoHead";
 import Image from "next/image";
 import {
   Box,
@@ -17,7 +17,6 @@ import {
   industrialCardSx,
   sectionBase,
 } from "../utils/visualStyles";
-import backHoe from "../image/backHoe.webp";
 import cylinder1 from "../image/cylinder-1.webp";
 import cylinder2 from "../image/cylinder-2.webp";
 
@@ -82,14 +81,11 @@ const SectionTitle = ({ children, subtitle }) => (
 export default function AboutPage() {
   return (
     <>
-      <Head>
-        <title>About Us | Vetech Hydraulics</title>
-        <meta
-          name="description"
-          content="Learn about Vetech Hydraulics—our mission, founder story, and commitment to fast, reliable hydraulic cylinder repairs with fair pricing and tested results."
-        />
-        <link rel="canonical" href="https://www.vetechhydraulics.com/about" />
-      </Head>
+      <SeoHead
+        title="About Us | Vetech Hydraulics"
+        description="Learn about Vetech Hydraulics—our mission, founder story, and commitment to fast, reliable hydraulic cylinder repairs with fair pricing and tested results."
+        path="/about"
+      />
 
       <Box component="main">
         {/* ============================== HERO ============================== */}
@@ -227,6 +223,8 @@ export default function AboutPage() {
                       alt="Hydraulic equipment and service work"
                       fill
                       sizes="(max-width: 900px) 100vw, 40vw"
+                      loading="lazy"
+                      quality={82}
                       style={{ objectFit: "cover" }}
                     />
                   </Box>
@@ -310,6 +308,8 @@ export default function AboutPage() {
                             alt="U.S. Army veteran — M1 Abrams Systems Maintainer"
                             fill
                             sizes="(max-width: 900px) 50vw, 25vw"
+                            loading="lazy"
+                            quality={82}
                             style={{
                               objectFit: "cover",
                               objectPosition: "center top",
@@ -334,6 +334,8 @@ export default function AboutPage() {
                             alt="Hydraulic cylinder repair technician at work"
                             fill
                             sizes="(max-width: 900px) 50vw, 25vw"
+                            loading="lazy"
+                            quality={82}
                             style={{
                               objectFit: "cover",
                               objectPosition: "center top",

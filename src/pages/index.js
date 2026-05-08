@@ -2,6 +2,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import NextLink from "next/link";
+import SeoHead from "../components/SeoHead";
 import {
   Box,
   Container,
@@ -32,7 +33,6 @@ import {
   industrialCardSx,
   primaryCtaSx,
   secondaryCtaSx,
-  headlineSx,
   sectionBase,
 } from "../utils/visualStyles";
 import { businessSchema } from "../utils/seoData";
@@ -170,6 +170,8 @@ const CardImage = ({ alt = "Placeholder", src = backHoe }) => (
       alt={alt}
       fill
       sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      loading="lazy"
+      quality={82}
       style={{ objectFit: "cover" }}
     />
   </Box>
@@ -190,6 +192,8 @@ const CardImageMap = ({ alt = "service area map", src = map }) => (
       alt={alt}
       fill
       sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 40vw"
+      loading="lazy"
+      quality={82}
       style={{ objectFit: "cover" }}
     />
   </Box>
@@ -284,14 +288,12 @@ export default function Home() {
 
   return (
     <>
+      <SeoHead
+        title="Vetech Hydraulics | Hydraulic Cylinder Repair Experts"
+        description="Vetech Hydraulics specializes in hydraulic cylinder repair and maintenance in Montgomery, Magnolia, Conroe and the greater North Houston area."
+        path="/"
+      />
       <Head>
-        <title>Vetech Hydraulics | Hydraulic Cylinder Repair Experts</title>
-        <meta
-          name="description"
-          content="Vetech Hydraulics specializes in hydraulic cylinder repair and maintenance in Montgomery, Magnolia, Conroe and the greater North Houston area."
-        />
-        <link rel="canonical" href="https://www.vetechhydraulics.com/" />
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
@@ -584,8 +586,6 @@ export default function Home() {
                   >
                     Cylinder repacking, component repair, and service support
                     for equipment that cannot sit idle.
-                    Cylinder repacking, component repair, and service support for
-                    equipment that cannot sit idle.
                   </Typography>
                 </Box>
               </motion.div>
@@ -953,6 +953,8 @@ export default function Home() {
                         alt={repair.alt}
                         fill
                         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                        loading="lazy"
+                        quality={82}
                         className="repair-image"
                         style={{
                           objectFit: "cover",
@@ -1478,7 +1480,7 @@ export default function Home() {
                         "inset 0 1px 0 rgba(255,255,255,0.12), 0 18px 36px rgba(0,0,0,0.26), 0 0 22px rgba(215,25,32,0.16)",
                     }}
                   >
-                    <Icon sx={{ fontSize: 27 }} />
+                    <Icon aria-hidden="true" sx={{ fontSize: 27 }} />
                   </Box>
 
                   <Typography
