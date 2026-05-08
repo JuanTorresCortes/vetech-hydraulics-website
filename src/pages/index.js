@@ -743,6 +743,269 @@ export default function Home() {
         </Container>
       </Section>
 
+      {/* ===================== FLEET & EQUIPMENT SUPPORT ===================== */}
+      <AltSection
+        id="fleet-equipment-support"
+        sx={{
+          position: "relative",
+          background:
+            "radial-gradient(circle at 86% 8%, rgba(215,25,32,0.16), transparent 30%), linear-gradient(180deg, #050D14 0%, #0A1823 48%, #06111A 100%)",
+        }}
+      >
+        <Container maxWidth="lg" sx={innerContainerSx}>
+          <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center">
+            <Grid item xs={12} md={6.7}>
+              <Typography
+                sx={{
+                  color: "#D71920",
+                  fontWeight: 950,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  fontSize: { xs: 12, md: 13 },
+                  mb: 1.25,
+                }}
+              >
+                COMMERCIAL HYDRAULIC SUPPORT
+              </Typography>
+              <Typography
+                component="h2"
+                variant="h3"
+                sx={{
+                  color: "#F7FAFC",
+                  fontWeight: 950,
+                  fontSize: {
+                    xs: "clamp(26px, 7vw, 38px)",
+                    md: "clamp(36px, 4vw, 52px)",
+                  },
+                  lineHeight: 1.04,
+                  letterSpacing: "-0.045em",
+                  textWrap: "balance",
+                  maxWidth: 860,
+                }}
+              >
+                Supporting Fleets, Heavy Equipment, and Industrial Operations
+                Across North Houston
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} md={5.3}>
+              <Box
+                sx={{
+                  p: { xs: 2.5, md: 3 },
+                  borderRadius: 3,
+                  bgcolor: "rgba(9,23,35,0.82)",
+                  border: "1px solid rgba(190,202,212,0.18)",
+                  boxShadow:
+                    "0 22px 58px rgba(0,0,0,0.26), inset 4px 0 0 rgba(215,25,32,0.82), inset 0 1px 0 rgba(255,255,255,0.08)",
+                }}
+              >
+                <Typography
+                  sx={{
+                    color: "rgba(231,238,244,0.82)",
+                    lineHeight: 1.75,
+                    fontSize: { xs: 15, md: 16 },
+                  }}
+                >
+                  Vetech Hydraulics supports commercial hydraulic cylinder repair
+                  needs with fleet uptime, fast turnaround, and reliable service
+                  for contractors, municipalities, equipment owners, and industrial
+                  operators — backed by veteran-owned professionalism and clear
+                  communication.
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
+
+          <Grid
+            container
+            spacing={{ xs: 2.25, md: 3 }}
+            sx={{ mt: { xs: 4, md: 5 } }}
+          >
+            {[
+              {
+                icon: "TT",
+                title: "Trash Trucks",
+                text: "Cylinder repair support for waste and recycling fleets where route uptime matters every day.",
+              },
+              {
+                icon: "CE",
+                title: "Construction Equipment",
+                text: "Repair support for loaders, excavators, skid steers, lifts, and job-site hydraulic equipment.",
+              },
+              {
+                icon: "AG",
+                title: "Agriculture Equipment",
+                text: "Practical cylinder service for tractors, implements, loaders, and ranch or farm machinery.",
+              },
+              {
+                icon: "UM",
+                title: "Utility / Municipal Fleets",
+                text: "Reliable repair coordination for public works, utility crews, and municipal equipment programs.",
+              },
+              {
+                icon: "IE",
+                title: "Industrial Equipment",
+                text: "Hydraulic cylinder repair for shop, plant, logistics, manufacturing, and material-handling operations.",
+              },
+              {
+                icon: "FS",
+                title: "Field Service Support",
+                text: "Pickup, delivery, and mobile pull/install options to help reduce downtime when equipment cannot sit idle.",
+              },
+            ].map((industry) => (
+              <Grid item xs={12} sm={6} md={4} key={industry.title}>
+                <Box
+                  sx={{
+                    height: "100%",
+                    p: { xs: 2.25, md: 2.5 },
+                    borderRadius: 3,
+                    bgcolor: "rgba(12,29,42,0.86)",
+                    backgroundImage:
+                      "linear-gradient(145deg, rgba(255,255,255,0.075), rgba(255,255,255,0.012))",
+                    border: "1px solid rgba(190,202,212,0.16)",
+                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.07)",
+                    transition:
+                      "transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease",
+                    "&:hover": {
+                      transform: { md: "translateY(-5px)" },
+                      borderColor: "rgba(215,25,32,0.4)",
+                      boxShadow:
+                        "0 22px 54px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.09)",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 1.5,
+                      mb: 1.5,
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: 46,
+                        height: 46,
+                        borderRadius: 2,
+                        display: "grid",
+                        placeItems: "center",
+                        color: "#fff",
+                        bgcolor: "rgba(215,25,32,0.16)",
+                        border: "1px solid rgba(215,25,32,0.38)",
+                        boxShadow:
+                          "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 20px rgba(215,25,32,0.13)",
+                        fontWeight: 950,
+                        letterSpacing: "0.06em",
+                      }}
+                    >
+                      {industry.icon}
+                    </Box>
+                    <Typography
+                      sx={{
+                        color: "#F7FAFC",
+                        fontWeight: 950,
+                        fontSize: { xs: 18, md: 19 },
+                        lineHeight: 1.18,
+                      }}
+                    >
+                      {industry.title}
+                    </Typography>
+                  </Box>
+
+                  <Typography
+                    sx={{
+                      color: "rgba(231,238,244,0.76)",
+                      lineHeight: 1.7,
+                      fontSize: 14.5,
+                    }}
+                  >
+                    {industry.text}
+                  </Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+
+          <Box
+            sx={{
+              mt: { xs: 4, md: 6 },
+              p: { xs: 2.75, md: 4 },
+              borderRadius: 4,
+              textAlign: "center",
+              bgcolor: "rgba(3,7,11,0.52)",
+              border: "1px solid rgba(190,202,212,0.18)",
+              boxShadow:
+                "0 24px 70px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08)",
+            }}
+          >
+            <Typography
+              component="h3"
+              sx={{
+                color: "#F7FAFC",
+                fontWeight: 950,
+                fontSize: { xs: 24, md: 34 },
+                lineHeight: 1.08,
+                letterSpacing: "-0.035em",
+                textWrap: "balance",
+                mb: 2.5,
+              }}
+            >
+              Need Fast Hydraulic Cylinder Support?
+            </Typography>
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={1.5}
+              justifyContent="center"
+              alignItems={{ xs: "stretch", sm: "center" }}
+            >
+              <Button
+                component={NextLink}
+                href="/contact"
+                variant="contained"
+                sx={{
+                  px: { xs: 3.5, md: 4.5 },
+                  py: 1.45,
+                  borderRadius: "10px",
+                  bgcolor: "#D71920",
+                  color: "#fff",
+                  fontWeight: 950,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  boxShadow:
+                    "0 18px 38px rgba(215,25,32,0.26), inset 0 1px 0 rgba(255,255,255,0.24)",
+                  border: "1px solid rgba(255,255,255,0.16)",
+                  "&:hover": { bgcolor: "#B9151B" },
+                }}
+              >
+                Request Service
+              </Button>
+              <Button
+                component={NextLink}
+                href="/contact"
+                variant="outlined"
+                sx={{
+                  px: { xs: 3.5, md: 4.5 },
+                  py: 1.45,
+                  borderRadius: "10px",
+                  color: "#E7EEF4",
+                  borderColor: "rgba(190,202,212,0.44)",
+                  fontWeight: 950,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  bgcolor: "rgba(255,255,255,0.035)",
+                  "&:hover": {
+                    borderColor: "rgba(255,255,255,0.72)",
+                    bgcolor: "rgba(255,255,255,0.08)",
+                  },
+                }}
+              >
+                Contact Us
+              </Button>
+            </Stack>
+          </Box>
+        </Container>
+      </AltSection>
+
       {/* ========================== WHY CHOOSE US ========================= */}
       <AltSection id="why-us">
         <Container maxWidth="lg" sx={innerContainerSx}>
