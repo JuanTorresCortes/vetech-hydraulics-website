@@ -51,7 +51,7 @@ export default function PattonVillageServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/patton-village-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/patton-village-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

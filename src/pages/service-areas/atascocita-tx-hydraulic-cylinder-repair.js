@@ -135,7 +135,7 @@ export default function AtascocitaServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/atascocita-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/atascocita-tx-hydraulic-cylinder-repair"
         />
         <script type="application/ld+json">
           {JSON.stringify(serviceSchemaAtascocita)}

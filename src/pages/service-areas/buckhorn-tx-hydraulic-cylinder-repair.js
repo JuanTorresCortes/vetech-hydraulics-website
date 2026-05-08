@@ -51,7 +51,7 @@ export default function BuckhornServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/buckhorn-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/buckhorn-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

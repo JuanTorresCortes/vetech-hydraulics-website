@@ -51,7 +51,7 @@ export default function WashingtonServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/washington-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/washington-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

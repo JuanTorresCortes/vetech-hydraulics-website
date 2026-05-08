@@ -51,7 +51,7 @@ export default function WallerServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/waller-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/waller-tx-hydraulic-cylinder-repair"
         />
       </Head>
 
