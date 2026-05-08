@@ -129,7 +129,7 @@ export default function AdaServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/ada-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/ada-tx-hydraulic-cylinder-repair"
         />
         <script type="application/ld+json">
           {JSON.stringify(serviceSchemaAda)}

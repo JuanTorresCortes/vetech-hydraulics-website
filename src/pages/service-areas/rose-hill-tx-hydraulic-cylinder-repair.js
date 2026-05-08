@@ -51,7 +51,7 @@ export default function RoseHillServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/rose-hill-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/rose-hill-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

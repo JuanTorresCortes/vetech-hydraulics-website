@@ -51,7 +51,7 @@ export default function FieldsStoreServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/fields-store-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/fields-store-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

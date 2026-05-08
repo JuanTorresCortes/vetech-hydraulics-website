@@ -51,7 +51,7 @@ export default function PrairieViewServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/prairie-view-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/prairie-view-tx-hydraulic-cylinder-repair"
         />
       </Head>
 
