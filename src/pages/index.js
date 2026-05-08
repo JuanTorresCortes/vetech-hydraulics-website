@@ -549,8 +549,8 @@ export default function Home() {
                       lineHeight: 1.65,
                     }}
                   >
-                    Cylinder repacking, component repair, and service support
-                    for equipment that cannot sit idle.
+                    Cylinder repacking, component repair, and service support for
+                    equipment that cannot sit idle.
                   </Typography>
                 </Box>
               </motion.div>
