@@ -222,7 +222,7 @@ const FOCUS_PARTS = [
 const combinedFocus = FOCUS_PARTS.join(" • ");
 
 /* --------------------------- JSON-LD Schema ------------------------------ */
-const canonicalUrl = "https://vetech-hydraulics.com/service-areas";
+const canonicalUrl = "https://www.vetechhydraulics.com/service-areas";
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -233,9 +233,9 @@ const serviceSchema = {
     "Hydraulic cylinder repair, repacking, rod polishing, welding, pressure testing",
   provider: {
     "@type": "LocalBusiness",
-    "@id": "https://vetech-hydraulics.com/#business",
+    "@id": "https://www.vetechhydraulics.com/#business",
     name: "Vetech Hydraulics",
-    url: "https://vetech-hydraulics.com",
+    url: "https://www.vetechhydraulics.com",
     telephone: "+1-936-249-6042",
     areaServed: CORE_CITIES.map((c) => ({
       "@type": "City",
@@ -253,7 +253,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://vetech-hydraulics.com/",
+      item: "https://www.vetechhydraulics.com/",
     },
     {
       "@type": "ListItem",

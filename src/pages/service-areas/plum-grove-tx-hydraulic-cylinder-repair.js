@@ -51,7 +51,7 @@ export default function PlumGroveServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/plum-grove-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/plum-grove-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

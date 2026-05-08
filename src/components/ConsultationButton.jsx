@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
+import { primaryCtaSx } from "../utils/visualStyles";
 
 const ConsultationButton = () => {
   const theme = useTheme();
@@ -18,20 +19,13 @@ const ConsultationButton = () => {
         startIcon={<ContactPhoneIcon />}
         href="sms:+19362496042?&body=Hi%20Vetech%20Hydraulics%2C%20I%E2%80%99d%20like%20a%20fast%20quote.%20I%E2%80%99ll%20send%20a%20picture%20now."
         sx={{
-          marginTop: theme.spacing(3),
-          background: "linear-gradient(90deg, #821515ff 0%, #ff0000ff 100%)",
-          color: "#ffffffff",
-          padding: theme.spacing(1.5, 4),
-          fontWeight: 800,
-          px: 4,
-          py: 1.5,
-          fontFamily: "Roboto, sans-serif",
-          boxShadow: "0px 9px 11px rgba(0, 0, 0, 8)",
-          borderRadius: "8px",
-          transition: "all 0.3s ease",
-          "&:hover": {
-            background: "linear-gradient(90deg, #ff0000ff 0%, #821515ff 100%)",
-          },
+          ...primaryCtaSx,
+          mt: theme.spacing(3),
+          px: { xs: 3, sm: 4 },
+          py: 1.45,
+          fontSize: { xs: 12, sm: 13 },
+          boxShadow:
+            "0 18px 38px rgba(215,25,32,0.3), inset 0 1px 0 rgba(255,255,255,0.24)",
         }}
       >
         Text Image for a Fast Quote

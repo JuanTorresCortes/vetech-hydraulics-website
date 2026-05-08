@@ -12,6 +12,14 @@ import {
   Stack,
 } from "@mui/material";
 import { styled } from "@mui/system";
+import {
+  bodyCopySx,
+  containerSx,
+  headlineSx,
+  industrialCardSx,
+  primaryCtaSx,
+  sectionBase,
+} from "../utils/visualStyles";
 import backHoe from "../image/backHoe.webp";
 import cylinder4 from "../image/cylinder-4.webp";
 import ConsultationButton from "../components/ConsultationButton";
@@ -28,64 +36,42 @@ const Hero = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "flex-end",
-  minHeight: "70vh",
+  minHeight: "68vh",
   backgroundColor: "#142B3E",
   color: "#fff",
   position: "relative",
   textAlign: "center",
   padding: 0,
   overflow: "hidden", // prevents tiny horizontal scroll from 100vw
-  [theme.breakpoints.down("xl")]: { minHeight: "99vh" },
-  [theme.breakpoints.down("lg")]: { minHeight: "92vh" },
-  [theme.breakpoints.down("md")]: { minHeight: "78svh" },
-  [theme.breakpoints.down("sm")]: { minHeight: "65svh" },
-  "@media (max-width: 321px)": { minHeight: "100svh" },
+  [theme.breakpoints.down("lg")]: { minHeight: "64vh" },
+  [theme.breakpoints.down("md")]: { minHeight: "60svh" },
+  [theme.breakpoints.down("sm")]: { minHeight: "56svh" },
 }));
 
 const Section = styled("section")(({ theme }) => ({
-  ...FullBleed,
-  paddingBlock: theme.spacing(8),
-  [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
+  ...sectionBase(theme),
   backgroundColor: "#0F2331",
-  overflow: "hidden",
 }));
 
 const AltSection = styled("section")(({ theme }) => ({
-  ...FullBleed,
-  paddingBlock: theme.spacing(8),
-  [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
+  ...sectionBase(theme),
   backgroundColor: "#0B1B27",
-  overflow: "hidden",
 }));
 
 const SectionTitle = ({ children, subtitle }) => (
-  <Box sx={{ textAlign: "center", mb: 5 }}>
-    <Typography
-      component="h2"
-      variant="h3"
-      sx={{
-        color: "#fff",
-        fontWeight: 900,
-        fontSize: {
-          xs: "clamp(22px, 6.2vw, 34px)",
-          md: "clamp(28px, 3vw, 42px)",
-        },
-        textWrap: "balance",
-        lineHeight: 1.1,
-      }}
-    >
+  <Box sx={{ textAlign: "center", mb: { xs: 4, md: 6 } }}>
+    <Typography component="h2" variant="h3" sx={headlineSx}>
       {children}
     </Typography>
 
     {subtitle && (
       <Typography
         sx={{
-          color: "rgba(255,255,255,0.78)",
-          mt: 1,
+          ...bodyCopySx,
+          mt: 1.25,
           maxWidth: 820,
           mx: "auto",
           textWrap: "balance",
-          lineHeight: 1.7,
         }}
       >
         {subtitle}
@@ -104,6 +90,10 @@ export default function ServicesPage() {
         <meta
           name="description"
           content="Hydraulic cylinder repair services focused on precision rebuilding, fair pricing, pressure testing, and minimizing downtime."
+        />
+        <link
+          rel="canonical"
+          href="https://www.vetechhydraulics.com/services"
         />
       </Head>
 
@@ -132,13 +122,13 @@ export default function ServicesPage() {
             maxWidth={false}
             disableGutters
             sx={{
-              px: { xs: 2, sm: 3 },
-              pb: { xs: 3, md: 6 },
+              ...containerSx,
+              pb: { xs: 4, md: 6 },
               position: "relative",
               zIndex: 1,
             }}
           >
-            <Box sx={{ maxWidth: 1100, mx: "auto" }}>
+            <Box sx={{ maxWidth: 1120, mx: "auto" }}>
               <Typography
                 variant="h1"
                 component="h1"
@@ -155,10 +145,8 @@ export default function ServicesPage() {
               <Typography
                 sx={{
                   mt: 1.5,
-                  color: "rgba(255,255,255,0.82)",
+                  ...bodyCopySx,
                   maxWidth: 760,
-                  fontSize: { xs: 14.5, sm: 16 },
-                  lineHeight: 1.75,
                   mx: "auto",
                 }}
               >
@@ -176,20 +164,14 @@ export default function ServicesPage() {
 
         {/* ============================= WHAT WE DO ============================= */}
         <Section>
-          <Container
-            maxWidth={false}
-            disableGutters
-            sx={{ px: { xs: 2, sm: 3 } }}
-          >
-            <Box sx={{ maxWidth: 980, mx: "auto" }}>
+          <Container maxWidth={false} disableGutters sx={containerSx}>
+            <Box sx={{ maxWidth: 1120, mx: "auto" }}>
               <SectionTitle subtitle="A cylinder rebuild isn’t just “swap seals.” We rebuild with measurements, cleanliness, and real-world reliability in mind.">
                 Cylinder Repair, Done the Right Way
               </SectionTitle>
 
               <Stack spacing={2.25} sx={{ color: "rgba(255,255,255,0.86)" }}>
-                <Typography
-                  sx={{ fontSize: { xs: 15, sm: 16.25 }, lineHeight: 1.75 }}
-                >
+                <Typography sx={bodyCopySx}>
                   At Vetech Hydraulics, our focus is simple: repair hydraulic
                   cylinders correctly, test them, and help you avoid repeat
                   downtime. We work with contractors, fleets, and equipment
@@ -197,9 +179,7 @@ export default function ServicesPage() {
                   guesswork.
                 </Typography>
 
-                <Typography
-                  sx={{ fontSize: { xs: 15, sm: 16.25 }, lineHeight: 1.75 }}
-                >
+                <Typography sx={bodyCopySx}>
                   Our rebuild approach is precision-driven and detail-oriented.
                   We fully disassemble, clean, inspect, and measure critical
                   components. If we find the true cause of failure —
@@ -207,9 +187,7 @@ export default function ServicesPage() {
                   misalignment — we address it so your repair lasts longer.
                 </Typography>
 
-                <Typography
-                  sx={{ fontSize: { xs: 15, sm: 16.25 }, lineHeight: 1.75 }}
-                >
+                <Typography sx={bodyCopySx}>
                   We don’t believe in overcharging, “upselling,” or marking up
                   materials just because we can. We look for the most affordable
                   solution that still protects quality. When an outside service
@@ -217,9 +195,7 @@ export default function ServicesPage() {
                   keep it transparent.
                 </Typography>
 
-                <Typography
-                  sx={{ fontSize: { xs: 15, sm: 16.25 }, lineHeight: 1.75 }}
-                >
+                <Typography sx={bodyCopySx}>
                   Long-term, we’re building more than a shop — we’re building a
                   community network that helps local businesses save money and
                   improve uptime. Our priority is excellent service first.
@@ -238,10 +214,8 @@ export default function ServicesPage() {
               {/* Fair Pricing Promise */}
               <Box
                 sx={{
+                  ...industrialCardSx,
                   p: { xs: 2.5, sm: 3.5 },
-                  borderRadius: 3,
-                  bgcolor: "#102A3A",
-                  border: "1px solid rgba(255,255,255,0.07)",
                 }}
               >
                 <Typography
@@ -295,12 +269,8 @@ export default function ServicesPage() {
 
         {/* ============================= PROCESS ============================= */}
         <AltSection>
-          <Container
-            maxWidth={false}
-            disableGutters
-            sx={{ px: { xs: 2, sm: 3 } }}
-          >
-            <Box sx={{ maxWidth: 1100, mx: "auto" }}>
+          <Container maxWidth={false} disableGutters sx={containerSx}>
+            <Box sx={{ maxWidth: 1120, mx: "auto" }}>
               <SectionTitle subtitle="Simple, transparent, efficient.">
                 Our Repair Process
               </SectionTitle>
@@ -331,11 +301,9 @@ export default function ServicesPage() {
                   <Grid item xs={12} sm={6} md={3} key={i}>
                     <Box
                       sx={{
+                        ...industrialCardSx,
                         p: 3,
                         height: "100%",
-                        bgcolor: "#102A3A",
-                        borderRadius: 3,
-                        border: "1px solid rgba(255,255,255,0.06)",
                         color: "#fff",
                       }}
                     >
@@ -380,20 +348,19 @@ export default function ServicesPage() {
           <Container
             maxWidth={false}
             disableGutters
-            sx={{ px: { xs: 2, sm: 3 }, textAlign: "center" }}
+            sx={{ ...containerSx, textAlign: "center" }}
           >
-            <Box sx={{ maxWidth: 980, mx: "auto" }}>
+            <Box sx={{ maxWidth: 1120, mx: "auto" }}>
               <SectionTitle subtitle="Montgomery, Magnolia, Conroe, Willis, The Woodlands, and greater Houston">
                 See our service areas
               </SectionTitle>
 
               <Typography
                 sx={{
-                  color: "rgba(255,255,255,0.88)",
+                  ...bodyCopySx,
                   maxWidth: 760,
                   mx: "auto",
                   mb: 3,
-                  lineHeight: 1.7,
                 }}
               >
                 Check coverage details, pickup options, and what to expect for
@@ -406,13 +373,7 @@ export default function ServicesPage() {
                 href="/service-areas"
                 variant="contained"
                 color="secondary"
-                sx={{
-                  px: 4,
-                  py: 1.25,
-                  fontWeight: 900,
-                  textTransform: "none",
-                  borderRadius: 2,
-                }}
+                sx={{ ...primaryCtaSx, textTransform: "uppercase" }}
               >
                 View service areas
               </Button>
@@ -425,9 +386,9 @@ export default function ServicesPage() {
           <Container
             maxWidth={false}
             disableGutters
-            sx={{ px: { xs: 2, sm: 3 }, textAlign: "center" }}
+            sx={{ ...containerSx, textAlign: "center" }}
           >
-            <Box sx={{ maxWidth: 980, mx: "auto" }}>
+            <Box sx={{ maxWidth: 1120, mx: "auto" }}>
               <Typography
                 variant="h3"
                 component="h2"
