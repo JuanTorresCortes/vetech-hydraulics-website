@@ -523,60 +523,218 @@ export default function Home() {
       <VeteranOwnershipSection />
 
       {/* ============================ SERVICES ============================ */}
-      <Section id="services">
+      <Section
+        id="services"
+        sx={{
+          position: "relative",
+          background:
+            "radial-gradient(circle at 12% 0%, rgba(215,25,32,0.15), transparent 34%), linear-gradient(180deg, #071522 0%, #0B1B27 52%, #07131D 100%)",
+        }}
+      >
         <Container maxWidth="lg" sx={innerContainerSx}>
-          <SectionTitle subtitle="Fast turnarounds. Tested. Warrantied.">
-            Cylinder Repair Services
-          </SectionTitle>
+          <Box sx={{ textAlign: "center", mb: { xs: 4, md: 6 } }}>
+            <Typography
+              sx={{
+                color: "#D71920",
+                fontWeight: 950,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                fontSize: { xs: 12, md: 13 },
+                mb: 1.25,
+              }}
+            >
+              CORE HYDRAULIC SERVICES
+            </Typography>
+            <Typography
+              component="h2"
+              variant="h3"
+              sx={{
+                color: "#F7FAFC",
+                fontWeight: 950,
+                fontSize: {
+                  xs: "clamp(26px, 7vw, 38px)",
+                  md: "clamp(36px, 4vw, 54px)",
+                },
+                lineHeight: 1.02,
+                letterSpacing: "-0.045em",
+                textWrap: "balance",
+                maxWidth: 900,
+                mx: "auto",
+              }}
+            >
+              Cylinder Repair Built for Heavy Equipment, Fleets, and Job Sites
+            </Typography>
+            <Typography
+              sx={{
+                color: "rgba(231,238,244,0.74)",
+                mt: 1.5,
+                mx: "auto",
+                maxWidth: 720,
+                fontSize: { xs: 14.5, md: 16 },
+                lineHeight: 1.7,
+              }}
+            >
+              Fast turnarounds, tested repairs, and practical service options for
+              commercial operators who need hydraulic equipment back in the field.
+            </Typography>
+          </Box>
 
-          <Grid container spacing={{ xs: 2, md: 3 }}>
+          <Grid container spacing={{ xs: 2.5, md: 3 }}>
             {[
               {
-                title: "Cylinder Repacking",
+                title: "Hydraulic Cylinder Repacking",
                 blurb:
                   "Seal replacement to stop leaks and improve performance.",
                 img: repackImg,
                 alt: "Hydraulic cylinder repacking with new seals",
+                tag: "Seal replacement",
               },
               {
-                title: "Cylinder and component repair",
+                title: "Cylinder & Component Repair",
                 blurb:
                   "Minor rod refinishing and polish for better seal life and we also weld and polish any damaged components to extend service life.",
                 img: repairImg,
                 alt: "Hydraulic cylinder component repair and rod polishing",
+                tag: "Rod & component work",
               },
               {
-                title: "On-Site / Mobile Service",
+                title: "Mobile / On-Site Service",
                 blurb:
                   "Pickup, delivery, or mobile pull/install options to minimize your equipment downtime.",
                 img: mobileImg,
                 alt: "Mobile hydraulic service truck providing on-site cylinder support",
+                tag: "Job-site support",
               },
-            ].map((c, i) => (
-              <Grid item xs={12} sm={6} md={4} key={i}>
+            ].map((c) => (
+              <Grid item xs={12} md={4} key={c.title}>
                 <Card
                   sx={{
+                    position: "relative",
                     height: "100%",
-                    bgcolor: "#102A3A",
+                    display: "flex",
+                    flexDirection: "column",
+                    bgcolor: "rgba(9,23,35,0.9)",
+                    backgroundImage:
+                      "linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015))",
                     borderRadius: 3,
                     overflow: "hidden",
-                    border: "1px solid rgba(255,255,255,0.06)",
-                    transition: "transform 140ms ease, border-color 140ms ease",
+                    border: "1px solid rgba(190,202,212,0.18)",
+                    boxShadow:
+                      "0 22px 58px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08)",
+                    transition:
+                      "transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease",
+                    "&::before": {
+                      content: '""',
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: 4,
+                      background:
+                        "linear-gradient(90deg, #D71920 0%, rgba(215,25,32,0.35) 45%, rgba(190,202,212,0.35) 100%)",
+                      zIndex: 2,
+                    },
                     "&:hover": {
-                      transform: { md: "translateY(-3px)" },
-                      borderColor: "rgba(255,255,255,0.12)",
+                      transform: { md: "translateY(-6px)" },
+                      borderColor: "rgba(215,25,32,0.42)",
+                      boxShadow:
+                        "0 28px 70px rgba(0,0,0,0.38), 0 0 0 1px rgba(215,25,32,0.12), inset 0 1px 0 rgba(255,255,255,0.1)",
                     },
                   }}
                   elevation={0}
                 >
-                  <CardImage src={c.img} alt={c.alt} />
-                  <CardContent sx={{ color: "#fff" }}>
-                    <Typography variant="h6" sx={{ fontWeight: 800, mb: 1 }}>
+                  <Box sx={{ position: "relative" }}>
+                    <CardImage src={c.img} alt={c.alt} />
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        inset: 0,
+                        background:
+                          "linear-gradient(to top, rgba(3,7,11,0.82), rgba(3,7,11,0.12) 58%, rgba(3,7,11,0.0))",
+                      }}
+                    />
+                    <Typography
+                      sx={{
+                        position: "absolute",
+                        left: 18,
+                        bottom: 16,
+                        px: 1.25,
+                        py: 0.65,
+                        borderRadius: "999px",
+                        color: "#F7FAFC",
+                        bgcolor: "rgba(3,7,11,0.74)",
+                        border: "1px solid rgba(190,202,212,0.22)",
+                        fontWeight: 900,
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                        fontSize: 11,
+                      }}
+                    >
+                      {c.tag}
+                    </Typography>
+                  </Box>
+
+                  <CardContent
+                    sx={{
+                      color: "#fff",
+                      p: { xs: 2.5, md: 3 },
+                      display: "flex",
+                      flexDirection: "column",
+                      flex: 1,
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 950,
+                        mb: 1.15,
+                        color: "#F7FAFC",
+                        lineHeight: 1.14,
+                        letterSpacing: "-0.02em",
+                        fontSize: { xs: 21, md: 22 },
+                      }}
+                    >
                       {c.title}
                     </Typography>
-                    <Typography sx={{ color: "rgba(255,255,255,0.8)" }}>
+                    <Typography
+                      sx={{
+                        color: "rgba(231,238,244,0.78)",
+                        lineHeight: 1.7,
+                        mb: 2.5,
+                      }}
+                    >
                       {c.blurb}
                     </Typography>
+
+                    <Box sx={{ mt: "auto", pt: 1 }}>
+                      <Button
+                        component={NextLink}
+                        href="/services"
+                        variant="text"
+                        sx={{
+                          px: 0,
+                          color: "#F7FAFC",
+                          fontWeight: 950,
+                          letterSpacing: "0.08em",
+                          textTransform: "uppercase",
+                          fontSize: 12,
+                          "&::before": {
+                            content: '""',
+                            width: 28,
+                            height: 2,
+                            mr: 1.25,
+                            bgcolor: "#D71920",
+                            boxShadow: "0 0 14px rgba(215,25,32,0.75)",
+                          },
+                          "&:hover": {
+                            color: "#D71920",
+                            bgcolor: "transparent",
+                          },
+                        }}
+                      >
+                        View Services
+                      </Button>
+                    </Box>
                   </CardContent>
                 </Card>
               </Grid>
