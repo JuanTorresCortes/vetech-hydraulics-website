@@ -131,7 +131,7 @@ export default function ApoloniaServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/apolonia-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/apolonia-tx-hydraulic-cylinder-repair"
         />
         <script type="application/ld+json">
           {JSON.stringify(serviceSchemaApolonia)}

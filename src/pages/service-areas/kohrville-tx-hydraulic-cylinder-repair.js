@@ -51,7 +51,7 @@ export default function KohrvilleServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/kohrville-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/kohrville-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

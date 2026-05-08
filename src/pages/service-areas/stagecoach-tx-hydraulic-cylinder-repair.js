@@ -51,7 +51,7 @@ export default function StagecoachServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/stagecoach-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/stagecoach-tx-hydraulic-cylinder-repair"
         />
       </Head>
 
