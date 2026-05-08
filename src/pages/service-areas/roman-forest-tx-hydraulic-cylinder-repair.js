@@ -51,7 +51,7 @@ export default function RomanForestServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/roman-forest-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/roman-forest-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

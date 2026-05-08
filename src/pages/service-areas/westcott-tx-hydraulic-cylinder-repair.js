@@ -51,7 +51,7 @@ export default function WestcottServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/westcott-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/westcott-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

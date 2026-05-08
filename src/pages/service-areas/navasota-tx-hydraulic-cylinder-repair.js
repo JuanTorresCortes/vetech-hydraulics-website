@@ -51,7 +51,7 @@ export default function NavasotaServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/navasota-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/navasota-tx-hydraulic-cylinder-repair"
         />
       </Head>
 
