@@ -51,7 +51,7 @@ export default function WillisServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/willis-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/willis-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

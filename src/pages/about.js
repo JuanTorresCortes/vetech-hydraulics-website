@@ -10,6 +10,13 @@ import {
   Stack,
 } from "@mui/material";
 import { styled } from "@mui/system";
+import {
+  bodyCopySx,
+  containerSx,
+  headlineSx,
+  industrialCardSx,
+  sectionBase,
+} from "../utils/visualStyles";
 import backHoe from "../image/backHoe.webp";
 import cylinder1 from "../image/cylinder-1.webp";
 import cylinder2 from "../image/cylinder-2.webp";
@@ -39,49 +46,29 @@ const Hero = styled(Box)(({ theme }) => ({
 }));
 
 const Section = styled("section")(({ theme }) => ({
-  ...FullBleed,
-  paddingBlock: theme.spacing(8),
-  [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
+  ...sectionBase(theme),
   backgroundColor: "#0F2331",
-  overflow: "hidden",
 }));
 
 const AltSection = styled("section")(({ theme }) => ({
-  ...FullBleed,
-  paddingBlock: theme.spacing(8),
-  [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
+  ...sectionBase(theme),
   backgroundColor: "#0B1B27",
-  overflow: "hidden",
 }));
 
 const SectionTitle = ({ children, subtitle }) => (
-  <Box sx={{ textAlign: "center", mb: 5 }}>
-    <Typography
-      component="h2"
-      variant="h3"
-      sx={{
-        color: "#fff",
-        fontWeight: 900,
-        fontSize: {
-          xs: "clamp(22px, 6.2vw, 34px)",
-          md: "clamp(28px, 3vw, 42px)",
-        },
-        textWrap: "balance",
-        lineHeight: 1.1,
-      }}
-    >
+  <Box sx={{ textAlign: "center", mb: { xs: 4, md: 6 } }}>
+    <Typography component="h2" variant="h3" sx={headlineSx}>
       {children}
     </Typography>
 
     {subtitle && (
       <Typography
         sx={{
-          color: "rgba(255,255,255,0.78)",
-          mt: 1,
-          maxWidth: 880,
+          ...bodyCopySx,
+          mt: 1.25,
+          maxWidth: 820,
           mx: "auto",
           textWrap: "balance",
-          lineHeight: 1.7,
         }}
       >
         {subtitle}
@@ -101,6 +88,7 @@ export default function AboutPage() {
           name="description"
           content="Learn about Vetech Hydraulics—our mission, founder story, and commitment to fast, reliable hydraulic cylinder repairs with fair pricing and tested results."
         />
+        <link rel="canonical" href="https://www.vetechhydraulics.com/about" />
       </Head>
 
       <Box component="main">
@@ -128,13 +116,13 @@ export default function AboutPage() {
             maxWidth={false}
             disableGutters
             sx={{
-              px: { xs: 2, sm: 3 },
-              pb: { xs: 3, md: 6 },
+              ...containerSx,
+              pb: { xs: 4, md: 6 },
               position: "relative",
               zIndex: 1,
             }}
           >
-            <Box sx={{ maxWidth: 1100, mx: "auto" }}>
+            <Box sx={{ maxWidth: 1120, mx: "auto" }}>
               <Typography
                 variant="h1"
                 component="h1"
@@ -150,12 +138,10 @@ export default function AboutPage() {
 
               <Typography
                 sx={{
+                  ...bodyCopySx,
                   mt: 1.5,
-                  color: "rgba(255,255,255,0.82)",
                   maxWidth: 820,
                   mx: "auto",
-                  fontSize: { xs: 14.5, sm: 16 },
-                  lineHeight: 1.75,
                 }}
               >
                 A local hydraulic cylinder repair shop built on service,
@@ -168,12 +154,8 @@ export default function AboutPage() {
 
         {/* ============================== MISSION ============================== */}
         <Section>
-          <Container
-            maxWidth={false}
-            disableGutters
-            sx={{ px: { xs: 2, sm: 3 } }}
-          >
-            <Box sx={{ maxWidth: 1100, mx: "auto" }}>
+          <Container maxWidth={false} disableGutters sx={containerSx}>
+            <Box sx={{ maxWidth: 1120, mx: "auto" }}>
               <SectionTitle subtitle="Fast turnarounds. Clear communication. Fair pricing. Tested results.">
                 Our Mission
               </SectionTitle>
@@ -181,9 +163,7 @@ export default function AboutPage() {
               <Grid container spacing={4} alignItems="center">
                 <Grid item xs={12} md={7}>
                   <Stack spacing={2.25}>
-                    <Typography
-                      sx={{ color: "rgba(255,255,255,0.86)", lineHeight: 1.75 }}
-                    >
+                    <Typography sx={bodyCopySx}>
                       Our mission is simple: keep your machines working. We
                       specialize in hydraulic cylinder repairs that are done
                       correctly, measured carefully, and pressure-tested before
@@ -191,9 +171,7 @@ export default function AboutPage() {
                       confidence.
                     </Typography>
 
-                    <Typography
-                      sx={{ color: "rgba(255,255,255,0.86)", lineHeight: 1.75 }}
-                    >
+                    <Typography sx={bodyCopySx}>
                       We believe in honest work and fair deals. That means no
                       surprise charges, no inflated material markups, and no
                       upselling what your cylinder doesn’t need. We help you
@@ -213,10 +191,8 @@ export default function AboutPage() {
                         <Grid item xs={12} sm={4} key={i}>
                           <Box
                             sx={{
+                              ...industrialCardSx,
                               p: 2,
-                              bgcolor: "#102A3A",
-                              borderRadius: 2,
-                              border: "1px solid rgba(255,255,255,0.06)",
                               height: "100%",
                             }}
                           >
@@ -262,12 +238,8 @@ export default function AboutPage() {
 
         {/* ============================== STORY + FOUNDER ============================== */}
         <AltSection>
-          <Container
-            maxWidth={false}
-            disableGutters
-            sx={{ px: { xs: 2, sm: 3 } }}
-          >
-            <Box sx={{ maxWidth: 1100, mx: "auto" }}>
+          <Container maxWidth={false} disableGutters sx={containerSx}>
+            <Box sx={{ maxWidth: 1120, mx: "auto" }}>
               <SectionTitle subtitle="Small business values. Big accountability. Built for the people who keep Texas working.">
                 Our Story
               </SectionTitle>
@@ -313,7 +285,7 @@ export default function AboutPage() {
               />
 
               {/* ============================== FOUNDER BIO ============================== */}
-              <Box sx={{ maxWidth: 1100, mx: "auto" }}>
+              <Box sx={{ maxWidth: 1120, mx: "auto" }}>
                 <SectionTitle subtitle="Veteran-owned. Community-driven. Precision-focused.">
                   Meet the Owner
                 </SectionTitle>
@@ -375,12 +347,7 @@ export default function AboutPage() {
                   {/* Text */}
                   <Grid item xs={12} md={7}>
                     <Stack spacing={2.25}>
-                      <Typography
-                        sx={{
-                          color: "rgba(255,255,255,0.86)",
-                          lineHeight: 1.8,
-                        }}
-                      >
+                      <Typography sx={bodyCopySx}>
                         Vetech Hydraulics is proudly veteran-owned and operated
                         by Juan Torres, a U.S. Army veteran who served six years
                         as an M1 Abrams Systems Maintainer. That’s where his
@@ -389,12 +356,7 @@ export default function AboutPage() {
                         deadlines, real standards, and real consequences.
                       </Typography>
 
-                      <Typography
-                        sx={{
-                          color: "rgba(255,255,255,0.86)",
-                          lineHeight: 1.8,
-                        }}
-                      >
+                      <Typography sx={bodyCopySx}>
                         After military service, Juan earned an Associate Degree
                         in Computer Science and continued building his technical
                         problem-solving skills. He later worked professionally
@@ -404,12 +366,7 @@ export default function AboutPage() {
                         mentoring other technicians.
                       </Typography>
 
-                      <Typography
-                        sx={{
-                          color: "rgba(255,255,255,0.86)",
-                          lineHeight: 1.8,
-                        }}
-                      >
+                      <Typography sx={bodyCopySx}>
                         Today, Juan is launching Vetech Hydraulics to support
                         his family and serve the same local contractors, fleets,
                         and operators he has worked alongside for years. This
@@ -421,11 +378,9 @@ export default function AboutPage() {
 
                       <Box
                         sx={{
+                          ...industrialCardSx,
                           mt: 0.5,
                           p: 2,
-                          borderRadius: 2,
-                          bgcolor: "rgba(16,42,58,0.75)",
-                          border: "1px solid rgba(255,255,255,0.07)",
                         }}
                       >
                         <Typography
@@ -464,10 +419,8 @@ export default function AboutPage() {
               {/* ============================== EXPECTATIONS ============================== */}
               <Box
                 sx={{
+                  ...industrialCardSx,
                   p: { xs: 2.5, sm: 3.5 },
-                  borderRadius: 3,
-                  bgcolor: "#102A3A",
-                  border: "1px solid rgba(255,255,255,0.07)",
                 }}
               >
                 <Typography

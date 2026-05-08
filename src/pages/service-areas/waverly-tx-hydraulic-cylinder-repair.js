@@ -51,7 +51,7 @@ export default function WaverlyServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/waverly-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/waverly-tx-hydraulic-cylinder-repair"
         />
       </Head>
 
