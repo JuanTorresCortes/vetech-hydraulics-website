@@ -195,6 +195,45 @@ const CardImageMap = ({ alt = "service area map", src = map }) => (
   </Box>
 );
 
+const recentRepairs = [
+  {
+    title: "Excavator Boom Cylinder Rebuild",
+    summary:
+      "Full teardown, seal replacement, rod cleanup, and bench pressure testing before return to the fleet.",
+    equipment: "Excavator",
+    status: "Pressure Tested",
+    image: repairImg,
+    alt: "Hydraulic cylinder repair placeholder for an excavator boom cylinder rebuild",
+  },
+  {
+    title: "Fleet Dump Cylinder Repack",
+    summary:
+      "Commercial cylinder repack focused on leak control, fast turnaround, and dependable daily route uptime.",
+    equipment: "Fleet Truck",
+    status: "Repacked",
+    image: repackImg,
+    alt: "Hydraulic cylinder repacking placeholder for a fleet dump cylinder",
+  },
+  {
+    title: "Loader Rod & Gland Repair",
+    summary:
+      "Rod finish inspection, component repair, and seal-fit checks to improve service life under heavy load.",
+    equipment: "Wheel Loader",
+    status: "Rod Polished",
+    image: backHoe,
+    alt: "Hydraulic rod repair placeholder for heavy equipment loader cylinder service",
+  },
+  {
+    title: "Job-Site Pull, Repair & Return",
+    summary:
+      "Pickup coordination, shop rebuild, and return support for operators who need equipment moving again quickly.",
+    equipment: "Construction Equipment",
+    status: "Weld Repaired",
+    image: mobileImg,
+    alt: "Mobile hydraulic repair placeholder for job-site cylinder turnaround",
+  },
+];
+
 /* --------------------------------- Page --------------------------------- */
 
 export default function Home() {
@@ -575,8 +614,9 @@ export default function Home() {
                 lineHeight: 1.7,
               }}
             >
-              Fast turnarounds, tested repairs, and practical service options for
-              commercial operators who need hydraulic equipment back in the field.
+              Fast turnarounds, tested repairs, and practical service options
+              for commercial operators who need hydraulic equipment back in the
+              field.
             </Typography>
           </Box>
 
@@ -744,6 +784,317 @@ export default function Home() {
         </Container>
       </Section>
 
+      {/* ======================= RECENT HYDRAULIC REPAIRS ======================= */}
+      <AltSection
+        id="recent-hydraulic-repairs"
+        sx={{
+          position: "relative",
+          background:
+            "radial-gradient(circle at 10% 12%, rgba(215,25,32,0.18), transparent 30%), radial-gradient(circle at 92% 18%, rgba(110,193,255,0.1), transparent 26%), linear-gradient(180deg, #050A0F 0%, #0A1721 46%, #06111A 100%)",
+          "&::before": {
+            content: '\"\"',
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            opacity: 0.34,
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+            backgroundSize: "54px 54px",
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.9) 18%, rgba(0,0,0,0.55) 78%, transparent 100%)",
+          },
+        }}
+      >
+        <Container
+          maxWidth="lg"
+          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+        >
+          <Grid
+            container
+            spacing={{ xs: 3, md: 5 }}
+            alignItems="end"
+            sx={{ mb: { xs: 4, md: 5 } }}
+          >
+            <Grid item xs={12} md={7.6}>
+              <Typography
+                sx={{
+                  color: "#D71920",
+                  fontWeight: 950,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  fontSize: { xs: 12, md: 13 },
+                  mb: 1.25,
+                }}
+              >
+                RECENT REPAIR WORK
+              </Typography>
+              <Typography
+                component="h2"
+                variant="h3"
+                sx={{
+                  color: "#F7FAFC",
+                  fontWeight: 950,
+                  fontSize: {
+                    xs: "clamp(27px, 7vw, 40px)",
+                    md: "clamp(38px, 4vw, 56px)",
+                  },
+                  lineHeight: 1.02,
+                  letterSpacing: "-0.045em",
+                  textWrap: "balance",
+                  maxWidth: 880,
+                }}
+              >
+                Built for Heavy Equipment. Restored for Reliability.
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={4.4}>
+              <Typography
+                sx={{
+                  color: "rgba(231,238,244,0.78)",
+                  lineHeight: 1.75,
+                  fontSize: { xs: 14.5, md: 16 },
+                }}
+              >
+                From cylinder rebuilds and repacking to rod repair, pressure
+                testing, and fleet turnaround, Vetech Hydraulics brings
+                veteran-owned workmanship to commercial equipment that needs to
+                get back in service with confidence.
+              </Typography>
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={{ xs: 2.5, md: 3 }}>
+            {recentRepairs.map((repair) => (
+              <Grid item xs={12} sm={6} lg={3} key={repair.title}>
+                <Card
+                  sx={{
+                    position: "relative",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    overflow: "hidden",
+                    borderRadius: 3,
+                    bgcolor: "rgba(8,19,28,0.92)",
+                    backgroundImage:
+                      "linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.018))",
+                    border: "1px solid rgba(185,197,205,0.2)",
+                    boxShadow:
+                      "0 24px 66px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,255,255,0.08)",
+                    transition:
+                      "transform 190ms ease, border-color 190ms ease, box-shadow 190ms ease",
+                    "&::after": {
+                      content: '\"\"',
+                      position: "absolute",
+                      inset: 0,
+                      pointerEvents: "none",
+                      background:
+                        "linear-gradient(135deg, rgba(215,25,32,0.16), transparent 26%, rgba(255,255,255,0.04) 100%)",
+                      opacity: 0.7,
+                    },
+                    "&:hover": {
+                      transform: { md: "translateY(-7px)" },
+                      borderColor: "rgba(215,25,32,0.48)",
+                      boxShadow:
+                        "0 34px 82px rgba(0,0,0,0.44), 0 0 0 1px rgba(215,25,32,0.14), inset 0 1px 0 rgba(255,255,255,0.1)",
+                    },
+                    "&:hover .repair-image": {
+                      transform: "scale(1.045)",
+                    },
+                  }}
+                  elevation={0}
+                >
+                  <Box
+                    sx={{
+                      position: "relative",
+                      overflow: "hidden",
+                      borderBottom: "1px solid rgba(185,197,205,0.16)",
+                    }}
+                  >
+                    <Box
+                      sx={{ position: "relative", width: "100%", pb: "68%" }}
+                    >
+                      <Image
+                        src={repair.image}
+                        alt={repair.alt}
+                        fill
+                        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                        className="repair-image"
+                        style={{
+                          objectFit: "cover",
+                          transition: "transform 260ms ease",
+                          filter: "saturate(0.74) contrast(1.12)",
+                        }}
+                      />
+                      <Box
+                        sx={{
+                          position: "absolute",
+                          inset: 0,
+                          background:
+                            "linear-gradient(to top, rgba(2,6,10,0.88), rgba(2,6,10,0.14) 58%, rgba(2,6,10,0.2))",
+                        }}
+                      />
+                    </Box>
+
+                    {repair.status && (
+                      <Typography
+                        sx={{
+                          position: "absolute",
+                          top: 16,
+                          left: 16,
+                          px: 1.35,
+                          py: 0.65,
+                          borderRadius: "999px",
+                          bgcolor: "rgba(215,25,32,0.92)",
+                          color: "#fff",
+                          border: "1px solid rgba(255,255,255,0.22)",
+                          boxShadow: "0 12px 26px rgba(0,0,0,0.32)",
+                          fontWeight: 950,
+                          letterSpacing: "0.08em",
+                          textTransform: "uppercase",
+                          fontSize: 10.5,
+                        }}
+                      >
+                        {repair.status}
+                      </Typography>
+                    )}
+
+                    <Typography
+                      sx={{
+                        position: "absolute",
+                        right: 16,
+                        bottom: 14,
+                        color: "#D6DEE6",
+                        fontWeight: 900,
+                        letterSpacing: "0.12em",
+                        textTransform: "uppercase",
+                        fontSize: 11,
+                      }}
+                    >
+                      {repair.equipment}
+                    </Typography>
+                  </Box>
+
+                  <CardContent
+                    sx={{
+                      position: "relative",
+                      zIndex: 1,
+                      p: { xs: 2.5, md: 2.75 },
+                      flex: 1,
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        color: "#F7FAFC",
+                        fontWeight: 950,
+                        lineHeight: 1.14,
+                        letterSpacing: "-0.02em",
+                        fontSize: { xs: 20, md: 21 },
+                        mb: 1.15,
+                      }}
+                    >
+                      {repair.title}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        color: "rgba(231,238,244,0.76)",
+                        lineHeight: 1.68,
+                        fontSize: 14.5,
+                      }}
+                    >
+                      {repair.summary}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+
+          <Box
+            sx={{
+              mt: { xs: 4, md: 5 },
+              p: { xs: 2.5, md: 4 },
+              borderRadius: 3,
+              bgcolor: "rgba(9,23,35,0.86)",
+              border: "1px solid rgba(185,197,205,0.2)",
+              boxShadow:
+                "0 24px 66px rgba(0,0,0,0.32), inset 4px 0 0 #D71920, inset 0 1px 0 rgba(255,255,255,0.08)",
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              alignItems: { xs: "stretch", md: "center" },
+              justifyContent: "space-between",
+              gap: 2.5,
+            }}
+          >
+            <Box>
+              <Typography
+                component="h3"
+                sx={{
+                  color: "#F7FAFC",
+                  fontWeight: 950,
+                  letterSpacing: "-0.035em",
+                  lineHeight: 1.08,
+                  fontSize: { xs: 25, md: 34 },
+                  mb: 0.9,
+                }}
+              >
+                Need a Hydraulic Cylinder Rebuilt?
+              </Typography>
+              <Typography
+                sx={{ color: "rgba(231,238,244,0.72)", lineHeight: 1.65 }}
+              >
+                Send details, photos, or fleet requirements and we will help map
+                the fastest path to a dependable repair.
+              </Typography>
+            </Box>
+            <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
+              <Button
+                component={NextLink}
+                href="/contact"
+                variant="contained"
+                sx={{
+                  px: 3.5,
+                  py: 1.35,
+                  borderRadius: "10px",
+                  bgcolor: "#D71920",
+                  fontWeight: 950,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  boxShadow: "0 16px 34px rgba(215,25,32,0.28)",
+                  "&:hover": { bgcolor: "#B9151B" },
+                }}
+              >
+                Request Service
+              </Button>
+              <Button
+                component={NextLink}
+                href="/services"
+                variant="outlined"
+                sx={{
+                  px: 3.5,
+                  py: 1.35,
+                  borderRadius: "10px",
+                  color: "#F7FAFC",
+                  borderColor: "rgba(185,197,205,0.42)",
+                  bgcolor: "rgba(255,255,255,0.035)",
+                  fontWeight: 950,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  "&:hover": {
+                    borderColor: "rgba(255,255,255,0.74)",
+                    bgcolor: "rgba(255,255,255,0.08)",
+                  },
+                }}
+              >
+                View Services
+              </Button>
+            </Stack>
+          </Box>
+        </Container>
+      </AltSection>
+
       {/* ===================== FLEET & EQUIPMENT SUPPORT ===================== */}
       <AltSection
         id="fleet-equipment-support"
@@ -807,11 +1158,11 @@ export default function Home() {
                     fontSize: { xs: 15, md: 16 },
                   }}
                 >
-                  Vetech Hydraulics supports commercial hydraulic cylinder repair
-                  needs with fleet uptime, fast turnaround, and reliable service
-                  for contractors, municipalities, equipment owners, and industrial
-                  operators — backed by veteran-owned professionalism and clear
-                  communication.
+                  Vetech Hydraulics supports commercial hydraulic cylinder
+                  repair needs with fleet uptime, fast turnaround, and reliable
+                  service for contractors, municipalities, equipment owners, and
+                  industrial operators — backed by veteran-owned professionalism
+                  and clear communication.
                 </Typography>
               </Box>
             </Grid>
