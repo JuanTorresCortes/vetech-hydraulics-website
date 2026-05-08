@@ -17,10 +17,21 @@ import {
   Stack,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import VerifiedIcon from "@mui/icons-material/Verified";
+import SpeedIcon from "@mui/icons-material/Speed";
+import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
+import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import EngineeringIcon from "@mui/icons-material/Engineering";
 import { styled } from "@mui/system";
 import {
   bodyCopySx,
   containerSx,
+  eyebrowSx,
+  headlineSx,
+  industrialCardSx,
+  primaryCtaSx,
+  secondaryCtaSx,
   headlineSx,
   sectionBase,
 } from "../utils/visualStyles";
@@ -220,6 +231,39 @@ const recentRepairs = [
     status: "Weld Repaired",
     image: mobileImg,
     alt: "Mobile hydraulic repair placeholder for job-site cylinder turnaround",
+  },
+];
+
+const commercialTrustFeatures = [
+  {
+    title: "Pressure Tested Repairs",
+    text: "Cylinder repairs are checked for leak-free performance before return so operators can reinstall with confidence.",
+    Icon: VerifiedIcon,
+  },
+  {
+    title: "Fast Turnaround",
+    text: "Repair coordination is built around reducing downtime and getting critical equipment back in service faster.",
+    Icon: SpeedIcon,
+  },
+  {
+    title: "Veteran-Owned Service",
+    text: "Professional communication, accountability, and disciplined workmanship guide every customer interaction.",
+    Icon: MilitaryTechIcon,
+  },
+  {
+    title: "Fleet & Heavy Equipment Experience",
+    text: "Support for construction equipment, waste fleets, municipal units, loaders, excavators, and industrial machinery.",
+    Icon: PrecisionManufacturingIcon,
+  },
+  {
+    title: "Pickup & Delivery Options",
+    text: "Practical logistics support helps contractors and fleet managers keep repair work moving without unnecessary delays.",
+    Icon: LocalShippingIcon,
+  },
+  {
+    title: "Commercial-Grade Workmanship",
+    text: "Every rebuild is approached with the reliability standards expected by crews, operators, and commercial accounts.",
+    Icon: EngineeringIcon,
   },
 ];
 
@@ -538,6 +582,8 @@ export default function Home() {
                       lineHeight: 1.65,
                     }}
                   >
+                    Cylinder repacking, component repair, and service support
+                    for equipment that cannot sit idle.
                     Cylinder repacking, component repair, and service support for
                     equipment that cannot sit idle.
                   </Typography>
@@ -1346,6 +1392,189 @@ export default function Home() {
           </Box>
         </Container>
       </AltSection>
+
+      {/* ========== WHY CONTRACTORS & FLEETS CHOOSE VETECH ========== */}
+      <Section
+        id="why-contractors-fleets-choose-vetech"
+        sx={{
+          position: "relative",
+          background:
+            "radial-gradient(circle at 8% 12%, rgba(215,25,32,0.16), transparent 30%), radial-gradient(circle at 92% 18%, rgba(110,193,255,0.1), transparent 26%), linear-gradient(180deg, #050D14 0%, #0A1721 48%, #07131D 100%)",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            opacity: 0.3,
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.5) 78%, transparent 100%)",
+          },
+        }}
+      >
+        <Container
+          maxWidth="lg"
+          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+        >
+          <Grid
+            container
+            spacing={{ xs: 3, md: 5 }}
+            alignItems="end"
+            sx={{ mb: { xs: 4, md: 6 } }}
+          >
+            <Grid item xs={12} md={7.4}>
+              <Typography sx={{ ...eyebrowSx, mb: 1.25 }}>
+                COMMERCIAL RELIABILITY
+              </Typography>
+              <Typography component="h2" variant="h3" sx={headlineSx}>
+                Built Around Uptime, Reliability, and Professional Service
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={4.6}>
+              <Typography sx={bodyCopySx}>
+                Vetech Hydraulics helps minimize downtime with pressure-tested
+                repairs, clear communication, fast turnaround, and veteran-owned
+                professionalism backed by commercial accountability.
+              </Typography>
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={{ xs: 2.25, md: 3 }}>
+            {commercialTrustFeatures.map(({ title, text, Icon }) => (
+              <Grid item xs={12} sm={6} md={4} key={title}>
+                <Box
+                  sx={{
+                    ...industrialCardSx,
+                    position: "relative",
+                    height: "100%",
+                    p: { xs: 2.5, md: 3 },
+                    overflow: "hidden",
+                    "&::before": {
+                      content: '""',
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: 3,
+                      background:
+                        "linear-gradient(90deg, #D71920, rgba(215,25,32,0.24), rgba(190,202,212,0.28))",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: 52,
+                      height: 52,
+                      borderRadius: 2,
+                      mb: 2,
+                      display: "grid",
+                      placeItems: "center",
+                      color: "#fff",
+                      bgcolor: "rgba(215,25,32,0.14)",
+                      border: "1px solid rgba(215,25,32,0.34)",
+                      boxShadow:
+                        "inset 0 1px 0 rgba(255,255,255,0.12), 0 18px 36px rgba(0,0,0,0.26), 0 0 22px rgba(215,25,32,0.16)",
+                    }}
+                  >
+                    <Icon sx={{ fontSize: 27 }} />
+                  </Box>
+
+                  <Typography
+                    component="h3"
+                    sx={{
+                      color: "#F7FAFC",
+                      fontWeight: 950,
+                      fontSize: { xs: 20, md: 21 },
+                      lineHeight: 1.14,
+                      letterSpacing: "-0.025em",
+                      mb: 1.15,
+                    }}
+                  >
+                    {title}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: "rgba(231,238,244,0.76)",
+                      fontSize: 14.5,
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {text}
+                  </Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+
+          <Box
+            sx={{
+              mt: { xs: 4, md: 5 },
+              p: { xs: 2.75, md: 4 },
+              borderRadius: 4,
+              bgcolor: "rgba(3,7,11,0.56)",
+              backgroundImage:
+                "linear-gradient(135deg, rgba(215,25,32,0.13), transparent 34%, rgba(255,255,255,0.045))",
+              border: "1px solid rgba(190,202,212,0.2)",
+              boxShadow:
+                "0 26px 72px rgba(0,0,0,0.32), inset 4px 0 0 rgba(215,25,32,0.9), inset 0 1px 0 rgba(255,255,255,0.08)",
+            }}
+          >
+            <Grid container spacing={{ xs: 2.5, md: 4 }} alignItems="center">
+              <Grid item xs={12} md={7.2}>
+                <Typography
+                  sx={{
+                    color: "#F7FAFC",
+                    fontWeight: 950,
+                    fontSize: { xs: 24, md: 34 },
+                    lineHeight: 1.12,
+                    letterSpacing: "-0.035em",
+                    textWrap: "balance",
+                  }}
+                >
+                  “Reliable hydraulic repair support built for heavy equipment
+                  operations and fleet uptime.”
+                </Typography>
+                <Typography
+                  sx={{
+                    ...bodyCopySx,
+                    mt: 1.25,
+                    color: "rgba(231,238,244,0.72)",
+                  }}
+                >
+                  A practical repair partner for contractors, operators, and
+                  fleet managers who need straight answers and dependable work.
+                </Typography>
+              </Grid>
+              <Grid item xs={12} md={4.8}>
+                <Stack
+                  direction={{ xs: "column", sm: "row", md: "column" }}
+                  spacing={1.5}
+                  sx={{ alignItems: "stretch" }}
+                >
+                  <Button
+                    component={NextLink}
+                    href="/contact"
+                    variant="contained"
+                    sx={primaryCtaSx}
+                  >
+                    Request Service
+                  </Button>
+                  <Button
+                    component={NextLink}
+                    href="/contact"
+                    variant="outlined"
+                    sx={secondaryCtaSx}
+                  >
+                    Contact Us
+                  </Button>
+                </Stack>
+              </Grid>
+            </Grid>
+          </Box>
+        </Container>
+      </Section>
 
       {/* ========================== WHY CHOOSE US ========================= */}
       <AltSection id="why-us">

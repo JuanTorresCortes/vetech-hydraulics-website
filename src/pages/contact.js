@@ -223,6 +223,7 @@ export default function ContactPage() {
         <Container
           maxWidth="lg"
           sx={{
+            ...containerSx,
             px: { xs: 2, sm: 3, md: 4 },
             pb: { xs: 5, md: 7 },
             pt: { xs: 16, md: 20 },
@@ -266,6 +267,17 @@ export default function ContactPage() {
           </Typography>
           <Typography
             sx={{
+              ...bodyCopySx,
+              mt: 2,
+              maxWidth: 760,
+              fontSize: { xs: 15.5, md: 18 },
+            }}
+          >
+          >
+            Get a Fast Quote for Hydraulic Cylinder Repair
+          </Typography>
+          <Typography
+            sx={{
               mt: 2,
               color: "rgba(231,238,244,0.82)",
               maxWidth: 760,
@@ -282,6 +294,7 @@ export default function ContactPage() {
 
       {/* ---------------------------- FORM + INFO ---------------------------- */}
       <Section>
+        <Container maxWidth="lg" sx={containerSx}>
         <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <Grid container spacing={{ xs: 3, md: 4 }} alignItems="stretch">
             {/* FORM */}
@@ -289,6 +302,10 @@ export default function ContactPage() {
               <Card
                 elevation={0}
                 sx={{
+                  ...industrialCardSx,
+                  position: "relative",
+                  height: "100%",
+                  overflow: "hidden",
                   position: "relative",
                   height: "100%",
                   bgcolor: "rgba(9,23,35,0.9)",
@@ -324,6 +341,7 @@ export default function ContactPage() {
                   >
                     Request Service
                   </Typography>
+                  <Typography sx={{ color: "rgba(231,238,244,0.72)", mb: 2.5 }}>
                   <Typography
                     sx={{ color: "rgba(231,238,244,0.72)", mb: 2.5 }}
                   >
@@ -397,6 +415,8 @@ export default function ContactPage() {
                           disabled={sending}
                           fullWidth
                           sx={{
+                            ...primaryCtaSx,
+                            py: 1.5,
                             py: 1.5,
                             borderRadius: "10px",
                             bgcolor: "#D71920",
