@@ -218,6 +218,7 @@ export default function Home() {
           name="description"
           content="Vetech Hydraulics specializes in hydraulic cylinder repair and maintenance in Montgomery, Magnolia, Conroe and the greater North Houston area."
         />
+        <link rel="canonical" href="https://www.vetechhydraulics.com/" />
 
         <script
           type="application/ld+json"

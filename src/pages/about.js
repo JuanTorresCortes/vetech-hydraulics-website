@@ -101,6 +101,7 @@ export default function AboutPage() {
           name="description"
           content="Learn about Vetech Hydraulics—our mission, founder story, and commitment to fast, reliable hydraulic cylinder repairs with fair pricing and tested results."
         />
+        <link rel="canonical" href="https://www.vetechhydraulics.com/about" />
       </Head>
 
       <Box component="main">

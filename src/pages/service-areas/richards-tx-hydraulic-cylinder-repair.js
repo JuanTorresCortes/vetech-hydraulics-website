@@ -51,7 +51,7 @@ export default function RichardsServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/richards-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/richards-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

@@ -185,6 +185,7 @@ export default function ContactPage() {
           name="description"
           content="Contact Vetech Hydraulics for cylinder repair quotes and scheduling."
         />
+        <link rel="canonical" href="https://www.vetechhydraulics.com/contact" />
       </Head>
 
       {/* ------------------------------- HERO -------------------------------- */}
