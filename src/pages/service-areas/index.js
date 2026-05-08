@@ -1,5 +1,4 @@
 // src/pages/service-areas/index.js
-
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
