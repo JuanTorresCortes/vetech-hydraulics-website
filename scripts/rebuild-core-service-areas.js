@@ -120,7 +120,7 @@ export default function ${componentName}() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com${urlPath}"
+          href="https://www.vetechhydraulics.com${urlPath}"
         />
       </Head>
 
