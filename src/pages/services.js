@@ -91,10 +91,7 @@ export default function ServicesPage() {
           name="description"
           content="Hydraulic cylinder repair services focused on precision rebuilding, fair pricing, pressure testing, and minimizing downtime."
         />
-        <link
-          rel="canonical"
-          href="https://www.vetechhydraulics.com/services"
-        />
+        <link rel="canonical" href="https://www.vetechhydraulics.com/services" />
       </Head>
 
       <Box component="main">
