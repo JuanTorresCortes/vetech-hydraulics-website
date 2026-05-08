@@ -15,6 +15,7 @@ import { containerSx, primaryCtaSx } from "../utils/visualStyles";
 const services = [
   { label: "Hydraulic Cylinder Repair", href: "/services" },
   { label: "Fleet Support", href: "/fleet-support" },
+  { label: "Case Studies", href: "/case-studies" },
   { label: "Cylinder Repacking", href: "/services" },
   { label: "Rod Polishing", href: "/services" },
   { label: "Weld Repair", href: "/services" },

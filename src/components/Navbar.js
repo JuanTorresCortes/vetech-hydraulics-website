@@ -28,6 +28,7 @@ const NAV_LINKS = [
   { text: "Home", href: "/" },
   { text: "Services", href: "/services" },
   { text: "Fleet Support", href: "/fleet-support" },
+  { text: "Case Studies", href: "/case-studies" },
   { text: "Service Areas", href: "/service-areas" },
   { text: "About", href: "/about" },
   { text: "Contact", href: "/contact" },
