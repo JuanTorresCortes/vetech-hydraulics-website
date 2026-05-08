@@ -51,7 +51,7 @@ export default function ToddMissionServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/todd-mission-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/todd-mission-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

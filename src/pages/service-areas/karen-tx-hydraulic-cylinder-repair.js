@@ -51,7 +51,7 @@ export default function KarenServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/karen-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/karen-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

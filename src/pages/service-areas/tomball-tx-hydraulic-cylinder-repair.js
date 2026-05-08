@@ -51,7 +51,7 @@ export default function TomballServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/tomball-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/tomball-tx-hydraulic-cylinder-repair"
         />
       </Head>
 
