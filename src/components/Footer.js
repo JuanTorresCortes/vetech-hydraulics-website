@@ -13,12 +13,13 @@ import {
 import { containerSx, primaryCtaSx } from "../utils/visualStyles";
 
 const services = [
-  "Hydraulic Cylinder Repair",
-  "Cylinder Repacking",
-  "Rod Polishing",
-  "Weld Repair",
-  "Pressure Testing",
-  "Pickup & Delivery",
+  { label: "Hydraulic Cylinder Repair", href: "/services" },
+  { label: "Fleet Support", href: "/fleet-support" },
+  { label: "Cylinder Repacking", href: "/services" },
+  { label: "Rod Polishing", href: "/services" },
+  { label: "Weld Repair", href: "/services" },
+  { label: "Pressure Testing", href: "/services" },
+  { label: "Pickup & Delivery", href: "/services" },
 ];
 
 const serviceAreas = [
@@ -195,12 +196,12 @@ export default function Footer() {
             <Stack spacing={1.15}>
               {services.map((service) => (
                 <MuiLink
-                  key={service}
+                  key={service.label}
                   component={NextLink}
-                  href="/services"
+                  href={service.href}
                   sx={footerLinkSx}
                 >
-                  {service}
+                  {service.label}
                 </MuiLink>
               ))}
             </Stack>
