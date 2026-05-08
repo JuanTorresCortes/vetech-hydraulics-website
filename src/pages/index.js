@@ -1,6 +1,7 @@
 // src/pages/index.js
 import Head from "next/head";
 import Image from "next/image";
+import NextLink from "next/link";
 import {
   Box,
   Container,
@@ -12,6 +13,8 @@ import {
   AccordionSummary,
   AccordionDetails,
   Divider,
+  Button,
+  Stack,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/system";
@@ -39,11 +42,12 @@ const HeroSection = styled(Box)(({ theme }) => ({
   ...FullBleed,
   display: "flex",
   justifyContent: "center",
-  alignItems: "flex-end",
-  backgroundColor: "#142B3E",
+  alignItems: "center",
+  background:
+    "radial-gradient(circle at 18% 22%, rgba(183,28,28,0.28) 0%, rgba(183,28,28,0) 32%), linear-gradient(135deg, #02060A 0%, #071522 38%, #0D2334 70%, #02060A 100%)",
   color: "#fff",
   position: "relative",
-  textAlign: "center",
+  textAlign: "left",
   padding: 0,
   overflow: "hidden",
 
@@ -57,22 +61,47 @@ const HeroSection = styled(Box)(({ theme }) => ({
 
   // Laptops / landscape tablets
   [theme.breakpoints.down("lg")]: {
-    minHeight: "85vh",
+    minHeight: "88vh",
   },
 
   // Tablets
   [theme.breakpoints.down("md")]: {
-    minHeight: "75svh",
+    minHeight: "82svh",
   },
 
   // Phones
   [theme.breakpoints.down("sm")]: {
-    minHeight: "65svh",
+    minHeight: "78svh",
   },
 
   // Very small phones (old iPhones / SE)
   "@media (max-width: 321px)": {
     minHeight: "100svh",
+  },
+
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    pointerEvents: "none",
+    backgroundImage:
+      "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
+    backgroundSize: "46px 46px",
+    maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 74%)",
+    zIndex: 1,
+  },
+
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: "6%",
+    right: "6%",
+    bottom: 0,
+    height: "1px",
+    pointerEvents: "none",
+    background:
+      "linear-gradient(90deg, transparent, rgba(185,197,205,0.75), rgba(183,28,28,0.9), rgba(185,197,205,0.75), transparent)",
+    zIndex: 3,
   },
 }));
 
@@ -204,7 +233,12 @@ export default function Home() {
           fill
           priority
           sizes="100vw"
-          style={{ objectFit: "cover", objectPosition: "center center" }}
+          style={{
+            objectFit: "cover",
+            objectPosition: "center center",
+            opacity: 0.24,
+            filter: "contrast(1.12) saturate(0.72)",
+          }}
         />
 
         <Box
@@ -213,59 +247,275 @@ export default function Home() {
             inset: 0,
             pointerEvents: "none",
             background:
-              "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.15) 80%)",
+              "linear-gradient(90deg, rgba(2,6,10,0.98) 0%, rgba(2,6,10,0.9) 42%, rgba(7,21,34,0.62) 100%), linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.22) 70%)",
             zIndex: 1,
           }}
         />
 
-        {/* Use a centered maxWidth container so desktop lines don't get too wide */}
         <Container
           maxWidth="lg"
           sx={{
             position: "relative",
             zIndex: 2,
             ...innerContainerSx,
-            pb: { xs: 3, sm: 4, md: 6 },
-            textAlign: "center",
+            pt: { xs: 18, sm: 20, md: 24 },
+            pb: { xs: 6, sm: 8, md: 10 },
           }}
         >
-          <motion.div {...fadeUp}>
-            <Typography
-              component="h1"
-              variant="h1"
-              sx={{
-                mt: { xs: 2, md: 3 },
-                fontSize: {
-                  xs: "clamp(22px, 7.5vw, 32px)",
-                  sm: "clamp(28px, 6vw, 42px)",
-                  md: "clamp(36px, 5vw, 56px)",
-                  lg: "64px",
-                },
-                lineHeight: { xs: 1.2, md: 1.1 },
-                fontWeight: 800,
-                textWrap: "balance",
-                wordBreak: "break-word",
-                overflowWrap: "anywhere",
-                color: "#fff",
-                mb: 2,
-                mx: "auto",
-                maxWidth: 980,
-              }}
+          <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center">
+            <Grid item xs={12} md={7}>
+              <motion.div {...fadeUp}>
+                <Box
+                  sx={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 1.25,
+                    px: 1.75,
+                    py: 0.9,
+                    mb: 2.5,
+                    borderRadius: "999px",
+                    color: "#D6DEE6",
+                    bgcolor: "rgba(255,255,255,0.045)",
+                    border: "1px solid rgba(185,197,205,0.24)",
+                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08)",
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    fontSize: { xs: 11, sm: 12 },
+                    fontWeight: 900,
+                  }}
+                >
+                  <Box
+                    component="span"
+                    sx={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: "50%",
+                      bgcolor: "#D71920",
+                      boxShadow: "0 0 18px rgba(215,25,32,0.9)",
+                    }}
+                  />
+                  Montgomery • North Houston
+                </Box>
+
+                <Typography
+                  component="h1"
+                  variant="h1"
+                  sx={{
+                    fontSize: {
+                      xs: "clamp(34px, 10vw, 52px)",
+                      sm: "clamp(44px, 8vw, 68px)",
+                      md: "clamp(54px, 6vw, 82px)",
+                    },
+                    lineHeight: { xs: 0.98, md: 0.94 },
+                    fontWeight: 950,
+                    letterSpacing: { xs: "-0.045em", md: "-0.06em" },
+                    textTransform: "uppercase",
+                    textWrap: "balance",
+                    color: "#F7FAFC",
+                    mb: 2.5,
+                    maxWidth: 940,
+                    textShadow: "0 18px 42px rgba(0,0,0,0.55)",
+                  }}
+                >
+                  PRECISION HYDRAULIC CYLINDER REPAIR
+                </Typography>
+
+                <Typography
+                  sx={{
+                    color: "rgba(231,238,244,0.84)",
+                    fontSize: { xs: 16, sm: 18, md: 20 },
+                    lineHeight: 1.65,
+                    maxWidth: 760,
+                    mb: 3.5,
+                  }}
+                >
+                  Veteran-owned hydraulic cylinder repair for heavy equipment,
+                  fleets, and commercial operations across Montgomery, Conroe,
+                  Magnolia, The Woodlands, and North Houston.
+                </Typography>
+
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={1.5}
+                  sx={{ mb: 4, alignItems: { xs: "stretch", sm: "center" } }}
+                >
+                  <Button
+                    component={NextLink}
+                    href="/contact"
+                    variant="contained"
+                    sx={{
+                      px: { xs: 3.5, md: 4.5 },
+                      py: 1.55,
+                      borderRadius: "10px",
+                      bgcolor: "#D71920",
+                      color: "#fff",
+                      fontWeight: 900,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      boxShadow:
+                        "0 18px 38px rgba(215,25,32,0.28), inset 0 1px 0 rgba(255,255,255,0.24)",
+                      border: "1px solid rgba(255,255,255,0.16)",
+                      "&:hover": {
+                        bgcolor: "#B9151B",
+                        boxShadow:
+                          "0 22px 44px rgba(215,25,32,0.34), inset 0 1px 0 rgba(255,255,255,0.22)",
+                      },
+                    }}
+                  >
+                    Request Service
+                  </Button>
+
+                  <Button
+                    component={NextLink}
+                    href="/services"
+                    variant="outlined"
+                    sx={{
+                      px: { xs: 3.5, md: 4.5 },
+                      py: 1.55,
+                      borderRadius: "10px",
+                      color: "#E7EEF4",
+                      borderColor: "rgba(185,197,205,0.42)",
+                      fontWeight: 900,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      bgcolor: "rgba(255,255,255,0.035)",
+                      "&:hover": {
+                        borderColor: "rgba(255,255,255,0.72)",
+                        bgcolor: "rgba(255,255,255,0.08)",
+                      },
+                    }}
+                  >
+                    View Services
+                  </Button>
+                </Stack>
+
+                <Grid container spacing={1.25} sx={{ maxWidth: 820 }}>
+                  {[
+                    "Veteran-Owned",
+                    "Fleet Service Capable",
+                    "Pressure Tested Repairs",
+                    "Pickup & Delivery Options",
+                  ].map((badge) => (
+                    <Grid item xs={12} sm={6} md={3} key={badge}>
+                      <Box
+                        sx={{
+                          height: "100%",
+                          px: 1.5,
+                          py: 1.25,
+                          borderRadius: 2,
+                          bgcolor: "rgba(9,23,35,0.78)",
+                          border: "1px solid rgba(185,197,205,0.18)",
+                          boxShadow:
+                            "inset 3px 0 0 #D71920, inset 0 1px 0 rgba(255,255,255,0.06)",
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            color: "#F7FAFC",
+                            fontWeight: 900,
+                            fontSize: { xs: 13.5, md: 12.5, lg: 13.5 },
+                            lineHeight: 1.25,
+                          }}
+                        >
+                          {badge}
+                        </Typography>
+                      </Box>
+                    </Grid>
+                  ))}
+                </Grid>
+              </motion.div>
+            </Grid>
+
+            <Grid
+              item
+              xs={12}
+              md={5}
+              sx={{ display: { xs: "none", md: "block" } }}
             >
-              Hydraulic Cylinder Repair in Montgomery, Texas.
-            </Typography>
+              <motion.div
+                initial={{ opacity: 0, x: 18 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+              >
+                <Box
+                  sx={{
+                    position: "relative",
+                    ml: "auto",
+                    maxWidth: 390,
+                    borderRadius: 4,
+                    p: 3,
+                    background:
+                      "linear-gradient(145deg, rgba(255,255,255,0.13), rgba(255,255,255,0.035))",
+                    border: "1px solid rgba(185,197,205,0.22)",
+                    boxShadow:
+                      "0 28px 80px rgba(0,0,0,0.46), inset 0 1px 0 rgba(255,255,255,0.12)",
+                    overflow: "hidden",
+                    "&::before": {
+                      content: '""',
+                      position: "absolute",
+                      inset: 12,
+                      borderRadius: 3,
+                      border: "1px solid rgba(215,25,32,0.24)",
+                      pointerEvents: "none",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      position: "relative",
+                      height: 180,
+                      mb: 3,
+                      borderRadius: 3,
+                      bgcolor: "rgba(0,0,0,0.32)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <Image
+                      src="/VTH-logo.png"
+                      alt="Vetech Hydraulics logo"
+                      fill
+                      sizes="390px"
+                      style={{ objectFit: "contain", padding: "24px" }}
+                    />
+                  </Box>
 
-            {/* SDVOSB badge (mobile-safe: wraps instead of overflowing) */}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-            style={{ display: "inline-block" }}
-          >
-            <ConsultationButton />
-          </motion.div>
+                  <Typography
+                    sx={{
+                      color: "#6EC1FF",
+                      fontWeight: 900,
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      fontSize: 12,
+                      mb: 1,
+                    }}
+                  >
+                    Industrial Repair Standard
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: "#fff",
+                      fontWeight: 900,
+                      fontSize: 24,
+                      lineHeight: 1.12,
+                    }}
+                  >
+                    Built for uptime, tested before return.
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: "rgba(255,255,255,0.72)",
+                      mt: 1.5,
+                      lineHeight: 1.65,
+                    }}
+                  >
+                    Cylinder repacking, component repair, and service support for
+                    equipment that cannot sit idle.
+                  </Typography>
+                </Box>
+              </motion.div>
+            </Grid>
+          </Grid>
         </Container>
       </HeroSection>
 
