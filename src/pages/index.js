@@ -18,6 +18,12 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/system";
+import {
+  bodyCopySx,
+  containerSx,
+  headlineSx,
+  sectionBase,
+} from "../utils/visualStyles";
 import { businessSchema } from "../utils/seoData";
 import backHoe from "../image/backHoe.webp";
 import map from "../image/map.webp";
@@ -106,46 +112,29 @@ const HeroSection = styled(Box)(({ theme }) => ({
 }));
 
 const Section = styled("section")(({ theme }) => ({
-  ...FullBleed,
-  paddingBlock: theme.spacing(8),
-  [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
+  ...sectionBase(theme),
   backgroundColor: "#0F2331",
-  overflow: "hidden",
 }));
 
 const AltSection = styled("section")(({ theme }) => ({
-  ...FullBleed,
-  paddingBlock: theme.spacing(8),
-  [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
+  ...sectionBase(theme),
   backgroundColor: "#0B1B27",
-  overflow: "hidden",
 }));
 
 const SectionTitle = ({ children, subtitle }) => (
   <Box sx={{ textAlign: "center", mb: { xs: 4, md: 6 } }}>
-    <Typography
-      component="h2"
-      variant="h3"
-      sx={{
-        color: "#fff",
-        fontWeight: 800,
-        fontSize: {
-          xs: "clamp(22px, 5.5vw, 32px)",
-          md: "clamp(28px, 3vw, 40px)",
-        },
-        textWrap: "balance",
-      }}
-    >
+    <Typography component="h2" variant="h3" sx={headlineSx}>
       {children}
     </Typography>
 
     {subtitle && (
       <Typography
         sx={{
-          color: "rgba(255,255,255,0.72)",
-          mt: 1,
-          fontSize: { xs: 14, md: 16 },
-          lineHeight: 1.5,
+          ...bodyCopySx,
+          mt: 1.25,
+          maxWidth: 820,
+          mx: "auto",
+          textWrap: "balance",
         }}
       >
         {subtitle}
@@ -247,7 +236,7 @@ export default function Home() {
   };
 
   // Consistent inner container spacing across sections
-  const innerContainerSx = { px: { xs: 2, sm: 3, md: 4 } };
+  const innerContainerSx = containerSx;
 
   return (
     <>

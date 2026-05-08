@@ -22,6 +22,15 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/router";
+import { containerSx, primaryCtaSx } from "../utils/visualStyles";
+
+const NAV_LINKS = [
+  { text: "Home", href: "/" },
+  { text: "Services", href: "/services" },
+  { text: "Service Areas", href: "/service-areas" },
+  { text: "About", href: "/about" },
+  { text: "Contact", href: "/contact" },
+];
 
 const NAV_LINKS = [
   { text: "Home", href: "/" },

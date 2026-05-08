@@ -17,6 +17,14 @@ import {
   Typography,
 } from "@mui/material";
 import { styled } from "@mui/system";
+import {
+  bodyCopySx,
+  containerSx,
+  eyebrowSx,
+  industrialCardSx,
+  primaryCtaSx,
+  sectionBase,
+} from "../utils/visualStyles";
 import { useRef, useState } from "react";
 import confetti from "canvas-confetti"; // 🎉
 import backHoe from "../image/backHoe.webp";
@@ -222,6 +230,9 @@ export default function ContactPage() {
             zIndex: 2,
           }}
         >
+          <Typography sx={{ ...eyebrowSx, mb: 1.5 }}>
+            REQUEST HYDRAULIC SERVICE
+          </Typography>
           <Typography
             sx={{
               color: "#D71920",
