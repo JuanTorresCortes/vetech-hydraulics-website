@@ -32,6 +32,7 @@ import {
   industrialCardSx,
   primaryCtaSx,
   secondaryCtaSx,
+  headlineSx,
   sectionBase,
 } from "../utils/visualStyles";
 import { businessSchema } from "../utils/seoData";
@@ -583,6 +584,8 @@ export default function Home() {
                   >
                     Cylinder repacking, component repair, and service support
                     for equipment that cannot sit idle.
+                    Cylinder repacking, component repair, and service support for
+                    equipment that cannot sit idle.
                   </Typography>
                 </Box>
               </motion.div>
