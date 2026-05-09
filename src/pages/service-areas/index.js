@@ -28,7 +28,6 @@ import VerifiedIcon from "@mui/icons-material/Verified";
 import ConsultationButton from "../../components/ConsultationButton";
 import backHoe from "../../image/backHoe.webp";
 import { red } from "@mui/material/colors";
-import SdvobBadge from "@/components/SdvobBadge";
 
 /* --------------------------------- Layout -------------------------------- */
 const FullBleed = {

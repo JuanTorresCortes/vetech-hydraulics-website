@@ -164,7 +164,7 @@ export default function ContactPage() {
           msg: data?.message || "Something went wrong. Please try again.",
         });
       }
-    } catch (_err) {
+    } catch {
       setStatus({ ok: false, msg: "Network error. Please try again." });
     } finally {
       setSending(false);

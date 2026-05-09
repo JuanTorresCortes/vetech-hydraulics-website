@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import ConsultationButton from "../../components/ConsultationButton";
-import backHoe from "../../image/backHoe.webp";
 
 /* ------------------------------ Full-bleed Layout ------------------------------ */
 const FullBleed = {

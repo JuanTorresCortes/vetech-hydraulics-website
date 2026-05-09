@@ -44,7 +44,6 @@ import repackImg from "../image/repackImg.webp";
 import repairImg from "../image/repairImg.webp";
 import mobileImg from "../image/mobileImg.webp";
 import hero1 from "../image/hero1.webp";
-import SdvobBadge from "@/components/SdvobBadge";
 import VeteranOwnershipSection from "@/components/VeteranOwnershipSection";
 
 /* ------------------------------ Styled UI ------------------------------ */
