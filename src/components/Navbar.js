@@ -16,7 +16,6 @@ import {
   Box,
   Link as MuiLink,
   Divider,
-  Typography,
   Button,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -37,7 +36,7 @@ const NAV_LINKS = [
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
-  const isMobile = useMediaQuery("(max-width: 1050px)");
+  const isMobile = useMediaQuery("(max-width: 1300px)");
   const router = useRouter();
 
   const toggleDrawer = (open) => (event) => {
@@ -62,64 +61,45 @@ const Navbar = () => {
       href="/"
       aria-label="Vetech Hydraulics home"
       sx={{
-        display: "flex",
+        display: "inline-flex",
         alignItems: "center",
-        gap: { xs: 1.25, md: 1.5 },
         minWidth: 0,
+        flexShrink: 0,
         textDecoration: "none",
       }}
     >
       <Box
         sx={{
           position: "relative",
-          width: mobile ? 48 : 58,
-          height: mobile ? 48 : 58,
+          width: mobile
+            ? { xs: "min(56vw, 208px)", sm: 226, md: 238 }
+            : { md: 246, lg: 274, xl: 306 },
+          height: mobile
+            ? { xs: 78, sm: 86, md: 90 }
+            : { md: 94, lg: 102, xl: 108 },
           flex: "0 0 auto",
-          borderRadius: 2,
-          bgcolor: "rgba(255,255,255,0.04)",
-          border: "1px solid rgba(190,202,212,0.18)",
-          boxShadow:
-            "inset 0 1px 0 rgba(255,255,255,0.12), 0 12px 26px rgba(0,0,0,0.35)",
-          overflow: "hidden",
+          filter:
+            "drop-shadow(0 14px 24px rgba(0,0,0,0.42)) drop-shadow(0 0 14px rgba(215,25,32,0.18))",
+          transition: "filter 180ms ease, transform 180ms ease",
+          "&:hover": {
+            filter:
+              "drop-shadow(0 16px 28px rgba(0,0,0,0.46)) drop-shadow(0 0 18px rgba(215,25,32,0.26))",
+            transform: "translateY(-1px)",
+          },
         }}
       >
         <Image
           src="/VTH-logo.png"
-          alt="Vetech Hydraulics logo"
+          alt="Vetech Hydraulics"
           fill
           priority={!mobile}
-          sizes={mobile ? "48px" : "58px"}
-          style={{ objectFit: "contain", padding: mobile ? "6px" : "7px" }}
+          sizes={
+            mobile
+              ? "(max-width: 600px) 56vw, 238px"
+              : "(max-width: 1536px) 274px, 306px"
+          }
+          style={{ objectFit: "contain" }}
         />
-      </Box>
-
-      <Box sx={{ minWidth: 0 }}>
-        <Typography
-          sx={{
-            color: "#F7FAFC",
-            fontWeight: 950,
-            letterSpacing: { xs: "0.08em", md: "0.1em" },
-            lineHeight: 1,
-            fontSize: { xs: 15, sm: 17, md: 18 },
-            textTransform: "uppercase",
-            whiteSpace: "nowrap",
-          }}
-        >
-          Vetech Hydraulics
-        </Typography>
-        <Typography
-          sx={{
-            mt: 0.55,
-            color: "rgba(214,222,230,0.72)",
-            fontWeight: 800,
-            letterSpacing: "0.04em",
-            fontSize: { xs: 11, sm: 12 },
-            lineHeight: 1.15,
-            whiteSpace: "nowrap",
-          }}
-        >
-          Veteran-Owned Hydraulic Repair
-        </Typography>
       </Box>
     </Box>
   );
@@ -315,9 +295,9 @@ const Navbar = () => {
         <Toolbar
           disableGutters
           sx={{
-            minHeight: { xs: 74, md: 86 },
+            minHeight: { xs: 88, sm: 96, md: 104, lg: 112 },
             justifyContent: "space-between",
-            gap: { xs: 2, md: 3 },
+            gap: { xs: 2, md: 3.5 },
           }}
         >
           <Brand mobile={isMobile} />
