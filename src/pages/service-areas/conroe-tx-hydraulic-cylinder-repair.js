@@ -51,7 +51,7 @@ export default function ConroeServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/conroe-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/conroe-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

@@ -3,10 +3,10 @@
 export const businessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://vetech-hydraulics.com/#business",
+  "@id": "https://www.vetechhydraulics.com/#business",
 
   name: "Vetech Hydraulics",
-  url: "https://vetech-hydraulics.com",
+  url: "https://www.vetechhydraulics.com",
   description:
     "Vetech Hydraulics specializes in hydraulic cylinder repair and maintenance in Montgomery, Magnolia, Conroe and the greater North Houston area.",
 
@@ -15,31 +15,13 @@ export const businessSchema = {
   priceRange: "$$",
 
   // Strong entity signals
-  logo: "https://vetech-hydraulics.com/LOGO.png", // <-- replace with real file URL
+  logo: "https://www.vetechhydraulics.com/VTH-logo.png",
   image: [
-    "https://vetech-hydraulics.com/HERO.webp", // <-- replace
-    "https://vetech-hydraulics.com/SHOP.webp", // <-- replace (optional)
+    "https://www.vetechhydraulics.com/VTH-logo.png",
+    "https://www.vetechhydraulics.com/juanTech.webp",
+    "https://www.vetechhydraulics.com/juanVet.webp",
   ],
 
-  // If you have a public location, add address. If you do NOT publish your address, delete this block.
-  // address: {
-  //   "@type": "PostalAddress",
-  //   streetAddress: "YOUR STREET ADDRESS",
-  //   addressLocality: "Montgomery",
-  //   addressRegion: "TX",
-  //   postalCode: "77316",
-  //   addressCountry: "US",
-  // },
-
-  // Add your approximate service-area center (use your shop city center if you prefer)
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 30.389, // <-- replace with your real lat
-    longitude: -95.697, // <-- replace with your real lng
-  },
-
-  // If you have a Google Business Profile map URL, add it here
-  hasMap: "YOUR_GOOGLE_MAPS_URL", // <-- replace or remove
 
   // Hours (adjust to your real hours)
   openingHoursSpecification: [
@@ -82,21 +64,6 @@ export const businessSchema = {
     { "@type": "City", name: "Humble, TX" },
     { "@type": "City", name: "Atascocita, TX" },
   ],
-
-  // Optional: show a radius (pickup/delivery area)
-  serviceArea: {
-    "@type": "GeoCircle",
-    geoMidpoint: {
-      "@type": "GeoCoordinates",
-      latitude: 30.389, // <-- same as above
-      longitude: -95.697, // <-- same as above
-    },
-    radius: {
-      "@type": "QuantitativeValue",
-      value: 50, // <-- miles (set realistic)
-      unitCode: "SMI",
-    },
-  },
 
   // SDVOSB / Veteran-owned signals (safe)
   keywords: [
@@ -147,10 +114,5 @@ export const businessSchema = {
     ],
   },
 
-  // Add ONLY real profile URLs
-  sameAs: [
-    // "YOUR_GOOGLE_BUSINESS_PROFILE_URL",
-    // "YOUR_FACEBOOK_URL",
-    // "YOUR_LINKEDIN_URL",
-  ],
+  sameAs: [],
 };

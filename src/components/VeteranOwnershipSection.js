@@ -8,6 +8,7 @@ import {
   Stack,
   Link as MuiLink,
 } from "@mui/material";
+import { bodyCopySx, containerSx } from "../utils/visualStyles";
 
 export default function VeteranOwnershipSection({ iconSrc = "/sdvoc.png" }) {
   return (
@@ -17,14 +18,15 @@ export default function VeteranOwnershipSection({ iconSrc = "/sdvoc.png" }) {
         width: "100vw",
         marginLeft: "calc(50% - 50vw)",
         marginRight: "calc(50% - 50vw)",
-        py: { xs: 4, md: 6 },
+        position: "relative",
+        py: { xs: 4.5, md: 6.5 },
         bgcolor: "#0B1B27",
         borderTop: "1px solid rgba(255,255,255,0.08)",
         borderBottom: "1px solid rgba(255,255,255,0.08)",
       }}
     >
-      <Container maxWidth={false} disableGutters sx={{ px: { xs: 2, sm: 3 } }}>
-        <Box sx={{ maxWidth: 1100, mx: "auto" }}>
+      <Container maxWidth={false} disableGutters sx={containerSx}>
+        <Box sx={{ maxWidth: 1120, mx: "auto" }}>
           <Stack
             direction={{ xs: "column", md: "row" }}
             spacing={{ xs: 2.5, md: 3 }}
@@ -77,9 +79,7 @@ export default function VeteranOwnershipSection({ iconSrc = "/sdvoc.png" }) {
               <Typography
                 sx={{
                   mt: 1,
-                  color: "rgba(255,255,255,0.82)",
-                  fontSize: { xs: 14.5, sm: 15.5 },
-                  lineHeight: 1.7,
+                  ...bodyCopySx,
                 }}
               >
                 As a disabled veteran-owned and operated business, we bring the
