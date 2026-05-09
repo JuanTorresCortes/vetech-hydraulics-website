@@ -12,7 +12,7 @@ export const caseStudies = [
       "A fleet-focused telescopic cylinder rebuild scenario for a trash truck route vehicle that needed dependable hydraulic performance and fast return-to-service planning.",
     heroImage: mobileImg,
     imageAlt:
-      "Trash truck hydraulic cylinder rebuild placeholder for fleet case study",
+      "Trash truck hydraulic cylinder rebuild example for fleet service planning",
     metaTitle: "Trash Truck Telescopic Cylinder Rebuild | Vetech Hydraulics",
     metaDescription:
       "Case study: commercial trash truck telescopic cylinder rebuild with inspection, repair, pressure testing, and fleet uptime-focused return-to-service support.",
@@ -39,7 +39,7 @@ export const caseStudies = [
       "A heavy equipment rod repair scenario focused on surface condition, seal life, and job-site reliability for an excavator hydraulic cylinder.",
     heroImage: repairImg,
     imageAlt:
-      "Excavator hydraulic cylinder rod repair placeholder for case study",
+      "Excavator hydraulic cylinder rod repair example showing damaged cylinder components",
     metaTitle: "Excavator Hydraulic Cylinder Rod Repair | Vetech Hydraulics",
     metaDescription:
       "Case study: excavator hydraulic cylinder rod repair with inspection, rod polishing, sealing support, verification, and job-site reliability focus.",
@@ -66,7 +66,7 @@ export const caseStudies = [
       "A multi-stage cylinder repacking and pressure testing scenario built around leak control, verification, and commercial-grade workmanship.",
     heroImage: repackImg,
     imageAlt:
-      "Multi-stage hydraulic cylinder repacking and pressure testing placeholder for case study",
+      "Multi-stage hydraulic cylinder repacking and pressure testing example",
     metaTitle:
       "Multi-Stage Cylinder Repacking & Pressure Testing | Vetech Hydraulics",
     metaDescription:

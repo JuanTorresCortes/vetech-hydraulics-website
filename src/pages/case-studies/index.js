@@ -59,7 +59,7 @@ export default function CaseStudiesIndexPage() {
           >
             <Box sx={{ maxWidth: 900, mx: "auto", textAlign: "center" }}>
               <Typography sx={{ ...eyebrowSx, mb: 1.5 }}>
-                HYDRAULIC REPAIR CASE STUDIES
+                EXAMPLE REPAIR PROFILES
               </Typography>
               <Typography component="h1" variant="h1" sx={{ color: "#F7FAFC" }}>
                 Real-World Repair Scenarios Built Around Reliability
@@ -73,10 +73,10 @@ export default function CaseStudiesIndexPage() {
                   fontSize: { xs: 15.5, md: 18 },
                 }}
               >
-                Explore representative hydraulic cylinder repair jobs for fleet,
+                Explore typical hydraulic repair scenarios for fleet,
                 construction, waste management, and heavy-equipment operations —
-                structured so real repair images and documentation can be added
-                over time.
+                each outlining a common repair workflow, verification focus, and
+                return-to-service priorities.
               </Typography>
             </Box>
           </Container>

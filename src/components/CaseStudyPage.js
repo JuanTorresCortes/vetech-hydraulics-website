@@ -110,7 +110,7 @@ export default function CaseStudyPage({ caseStudy }) {
           >
             <Box sx={{ maxWidth: 940, py: { xs: 14, md: 18 } }}>
               <Typography sx={{ ...eyebrowSx, mb: 1.5 }}>
-                HYDRAULIC REPAIR CASE STUDY
+                EXAMPLE REPAIR PROFILE
               </Typography>
               <Typography component="h1" variant="h1" sx={{ color: "#F7FAFC" }}>
                 {caseStudy.title}
@@ -165,9 +165,9 @@ export default function CaseStudyPage({ caseStudy }) {
                   title={caseStudy.equipmentType}
                 >
                   <Typography sx={bodyCopySx}>
-                    A representative repair scenario built for future real job
-                    photos, measurements, customer details, and verified repair
-                    documentation.
+                    A typical repair scenario showing the kind of equipment,
+                    symptoms, inspection steps, and verification workflow used
+                    for similar hydraulic cylinder service needs.
                   </Typography>
                 </DetailBlock>
               </Grid>

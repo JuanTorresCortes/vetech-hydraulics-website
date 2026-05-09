@@ -155,7 +155,10 @@ const SectionTitle = ({ children, subtitle }) => (
 );
 
 // Image cards (16:9). Card already clips via overflow:hidden, so radius here should be 0.
-const CardImage = ({ alt = "Placeholder", src = backHoe }) => (
+const CardImage = ({
+  alt = "Hydraulic cylinder repair service image",
+  src = backHoe,
+}) => (
   <Box
     sx={{
       position: "relative",
@@ -207,7 +210,7 @@ const recentRepairs = [
     equipment: "Excavator",
     status: "Pressure Tested",
     image: repairImg,
-    alt: "Hydraulic cylinder repair placeholder for an excavator boom cylinder rebuild",
+    alt: "Hydraulic cylinder repair example for an excavator boom cylinder rebuild",
   },
   {
     title: "Fleet Dump Cylinder Repack",
@@ -216,7 +219,7 @@ const recentRepairs = [
     equipment: "Fleet Truck",
     status: "Repacked",
     image: repackImg,
-    alt: "Hydraulic cylinder repacking placeholder for a fleet dump cylinder",
+    alt: "Hydraulic cylinder repacking example for a fleet dump cylinder",
   },
   {
     title: "Loader Rod & Gland Repair",
@@ -225,7 +228,7 @@ const recentRepairs = [
     equipment: "Wheel Loader",
     status: "Rod Polished",
     image: backHoe,
-    alt: "Hydraulic rod repair placeholder for heavy equipment loader cylinder service",
+    alt: "Hydraulic rod repair example for heavy equipment loader cylinder service",
   },
   {
     title: "Job-Site Pull, Repair & Return",
@@ -234,7 +237,7 @@ const recentRepairs = [
     equipment: "Construction Equipment",
     status: "Weld Repaired",
     image: mobileImg,
-    alt: "Mobile hydraulic repair placeholder for job-site cylinder turnaround",
+    alt: "Mobile hydraulic repair example for job-site cylinder turnaround",
   },
 ];
 
