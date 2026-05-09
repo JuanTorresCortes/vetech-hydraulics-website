@@ -17,99 +17,134 @@ import {
   Link as MuiLink,
   Divider,
   Typography,
+  Button,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import PhoneIcon from "@mui/icons-material/Phone";
-import { red } from "@mui/material/colors";
+import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/router";
+import { containerSx, primaryCtaSx } from "../utils/visualStyles";
+
+const NAV_LINKS = [
+  { text: "Home", href: "/" },
+  { text: "Services", href: "/services" },
+  { text: "Fleet Support", href: "/fleet-support" },
+  { text: "Case Studies", href: "/case-studies" },
+  { text: "Service Areas", href: "/service-areas" },
+  { text: "About", href: "/about" },
+  { text: "Contact", href: "/contact" },
+];
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
-  const isMobile = useMediaQuery("(max-width: 1100px)");
+  const isMobile = useMediaQuery("(max-width: 1050px)");
   const router = useRouter();
-
-  const phoneNumber = "9362496042";
-
-  const navLinks = [
-    { text: "Home", href: "/" },
-    { text: "Services", href: "/services" },
-    { text: "About Us", href: "/about" },
-    { text: "Service Areas", href: "/service-areas" },
-    { text: "Contact Us", href: "/contact" },
-  ];
 
   const toggleDrawer = (open) => (event) => {
     if (
       event?.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
-    )
+    ) {
       return;
+    }
+
     setDrawerOpen(open);
   };
 
-  const isActive = (href) => router.pathname === href;
+  const isActive = (href) => {
+    if (href === "/") return router.pathname === "/";
+    return router.pathname === href || router.pathname.startsWith(`${href}/`);
+  };
 
-  const DrawerList = (
+  const Brand = ({ mobile = false }) => (
     <Box
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-      sx={{ width: 250, backgroundColor: "#000", height: "100%" }}
+      component={NextLink}
+      href="/"
+      aria-label="Vetech Hydraulics home"
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: { xs: 1.25, md: 1.5 },
+        minWidth: 0,
+        textDecoration: "none",
+      }}
     >
-      <List>
-        {navLinks.map(({ text, href }) => {
-          const active = isActive(href);
-          return (
-            <ListItemButton
-              key={text}
-              component={NextLink}
-              href={href}
-              aria-current={active ? "page" : undefined}
-              sx={{
-                color: active ? red[500] : theme.palette.secondary.main,
-                "&:hover": { color: red[700] },
-              }}
-            >
-              <ListItemText primary={text.toUpperCase()} />
-            </ListItemButton>
-          );
-        })}
-      </List>
-      <Divider />
-      <Box sx={{ p: 2 }}>
+      <Box
+        sx={{
+          position: "relative",
+          width: mobile ? 48 : 58,
+          height: mobile ? 48 : 58,
+          flex: "0 0 auto",
+          borderRadius: 2,
+          bgcolor: "rgba(255,255,255,0.04)",
+          border: "1px solid rgba(190,202,212,0.18)",
+          boxShadow:
+            "inset 0 1px 0 rgba(255,255,255,0.12), 0 12px 26px rgba(0,0,0,0.35)",
+          overflow: "hidden",
+        }}
+      >
+        <Image
+          src="/VTH-logo.png"
+          alt="Vetech Hydraulics logo"
+          fill
+          priority={!mobile}
+          sizes={mobile ? "48px" : "58px"}
+          style={{ objectFit: "contain", padding: mobile ? "6px" : "7px" }}
+        />
+      </Box>
+
+      <Box sx={{ minWidth: 0 }}>
         <Typography
-          variant="h6"
           sx={{
-            display: "flex",
-            alignItems: "center",
-            color: theme.palette.secondary.main,
+            color: "#F7FAFC",
+            fontWeight: 950,
+            letterSpacing: { xs: "0.08em", md: "0.1em" },
+            lineHeight: 1,
+            fontSize: { xs: 15, sm: 17, md: 18 },
+            textTransform: "uppercase",
+            whiteSpace: "nowrap",
           }}
         >
-          <PhoneIcon sx={{ mr: 1 }} />
-          <MuiLink
-            href={`tel:${phoneNumber}`}
-            sx={{ color: red[500], textDecoration: "none" }}
-          >
-            (936) - 249 - 6042
-          </MuiLink>
+          Vetech Hydraulics
+        </Typography>
+        <Typography
+          sx={{
+            mt: 0.55,
+            color: "rgba(214,222,230,0.72)",
+            fontWeight: 800,
+            letterSpacing: "0.04em",
+            fontSize: { xs: 11, sm: 12 },
+            lineHeight: 1.15,
+            whiteSpace: "nowrap",
+          }}
+        >
+          Veteran-Owned Hydraulic Repair
         </Typography>
       </Box>
     </Box>
   );
 
+  const requestServiceButtonSx = {
+    ...primaryCtaSx,
+    px: 2.4,
+    py: 1.15,
+    fontSize: 12.5,
+  };
+
   const DesktopLinks = (
     <Box
+      component="nav"
+      aria-label="Main navigation"
       sx={{
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
         ml: "auto",
-        gap: theme.spacing(3),
+        gap: 0.45,
         whiteSpace: "nowrap",
       }}
     >
-      {navLinks.map(({ text, href }) => {
+      {NAV_LINKS.map(({ text, href }) => {
         const active = isActive(href);
         return (
           <MuiLink
@@ -118,86 +153,202 @@ const Navbar = () => {
             href={href}
             aria-current={active ? "page" : undefined}
             sx={{
-              color: active ? red[500] : "white",
+              position: "relative",
+              px: 1.45,
+              py: 1.15,
+              borderRadius: "10px",
+              color: active ? "#fff" : "rgba(231,238,244,0.78)",
               textDecoration: "none",
-              fontWeight: 600,
-              "&:hover": { color: red[700] },
-              transition: "color .15s ease",
+              fontWeight: 850,
+              fontSize: 14,
+              letterSpacing: "0.015em",
+              transition:
+                "color 160ms ease, background 160ms ease, transform 160ms ease",
+              bgcolor: active ? "rgba(215,25,32,0.13)" : "transparent",
+              "&::after": {
+                content: '""',
+                position: "absolute",
+                left: 14,
+                right: 14,
+                bottom: 6,
+                height: 2,
+                borderRadius: 2,
+                bgcolor: active ? "#D71920" : "transparent",
+                boxShadow: active ? "0 0 14px rgba(215,25,32,0.8)" : "none",
+                transition: "background 160ms ease, box-shadow 160ms ease",
+              },
+              "&:hover": {
+                color: "#fff",
+                bgcolor: "rgba(255,255,255,0.055)",
+                transform: "translateY(-1px)",
+                "&::after": {
+                  bgcolor: "#D71920",
+                  boxShadow: "0 0 14px rgba(215,25,32,0.75)",
+                },
+              },
             }}
           >
             {text}
           </MuiLink>
         );
       })}
+    </Box>
+  );
 
-      <MuiLink
-        href={`tel:${phoneNumber}`}
+  const DrawerList = (
+    <Box
+      role="presentation"
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
+      sx={{
+        width: "100vw",
+        minHeight: "100svh",
+        ...containerSx,
+        pt: 2,
+        pb: 4,
+        background:
+          "radial-gradient(circle at 20% 0%, rgba(215,25,32,0.18), transparent 32%), linear-gradient(145deg, #03070B 0%, #091722 54%, #020508 100%)",
+        color: "#fff",
+      }}
+    >
+      <Box
         sx={{
           display: "flex",
           alignItems: "center",
-          gap: 1,
-          color: red[500],
-          textDecoration: "none",
-          fontWeight: 600,
+          justifyContent: "space-between",
+          gap: 2,
+          mb: 2.5,
         }}
       >
-        <PhoneIcon />
-        (936) - 249 - 6042
-      </MuiLink>
+        <Brand mobile />
+        <IconButton
+          aria-label="Close menu"
+          onClick={toggleDrawer(false)}
+          sx={{
+            color: "#fff",
+            border: "1px solid rgba(190,202,212,0.2)",
+            bgcolor: "rgba(255,255,255,0.045)",
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </Box>
+
+      <Divider sx={{ borderColor: "rgba(190,202,212,0.18)", mb: 2 }} />
+
+      <List disablePadding sx={{ display: "grid", gap: 1 }}>
+        {NAV_LINKS.map(({ text, href }) => {
+          const active = isActive(href);
+          return (
+            <ListItemButton
+              key={text}
+              component={NextLink}
+              href={href}
+              aria-current={active ? "page" : undefined}
+              sx={{
+                minHeight: 58,
+                borderRadius: 2,
+                color: active ? "#fff" : "rgba(231,238,244,0.84)",
+                bgcolor: active
+                  ? "rgba(215,25,32,0.16)"
+                  : "rgba(255,255,255,0.035)",
+                border: active
+                  ? "1px solid rgba(215,25,32,0.48)"
+                  : "1px solid rgba(190,202,212,0.12)",
+                boxShadow: active
+                  ? "inset 4px 0 0 #D71920"
+                  : "inset 4px 0 0 transparent",
+                transition: "background 160ms ease, border-color 160ms ease",
+                "&:hover": {
+                  bgcolor: "rgba(255,255,255,0.07)",
+                  borderColor: "rgba(215,25,32,0.36)",
+                },
+              }}
+            >
+              <ListItemText
+                primary={text}
+                primaryTypographyProps={{
+                  fontWeight: 950,
+                  fontSize: 18,
+                  letterSpacing: "0.05em",
+                  textTransform: "uppercase",
+                }}
+              />
+            </ListItemButton>
+          );
+        })}
+      </List>
+
+      <Box sx={{ mt: 3 }}>
+        <Button
+          component={NextLink}
+          href="/contact"
+          fullWidth
+          variant="contained"
+          sx={{ ...requestServiceButtonSx, minHeight: 58, fontSize: 14 }}
+        >
+          Request Service
+        </Button>
+      </Box>
     </Box>
   );
 
   return (
     <AppBar
-      position="fixed"
+      position="sticky"
       sx={{
-        backgroundColor: "#000000",
-        py: 1,
+        top: 0,
+        background:
+          "linear-gradient(180deg, rgba(3,7,11,0.94) 0%, rgba(5,12,18,0.88) 100%)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        borderBottom: "1px solid rgba(190,202,212,0.2)",
+        boxShadow: "0 18px 42px rgba(0,0,0,0.38)",
         zIndex: theme.zIndex.drawer + 1,
       }}
-      elevation={4}
+      elevation={0}
     >
-      <Container maxWidth="lg">
-        <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
-          {/* Logo */}
-          <NextLink href="/" passHref legacyBehavior>
-            <MuiLink
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                textDecoration: "none",
-              }}
-            >
-              <Image
-                src="/VTH-logo.png"
-                alt="Vetech Hydraulics Logo"
-                width={isMobile ? 210 : 400}
-                height={isMobile ? 110 : 175}
-                style={{ cursor: "pointer" }}
-                priority
-              />
-            </MuiLink>
-          </NextLink>
+      <Container
+        maxWidth="xl"
+        sx={{ ...containerSx, px: { ...containerSx.px, lg: 5 } }}
+      >
+        <Toolbar
+          disableGutters
+          sx={{
+            minHeight: { xs: 74, md: 86 },
+            justifyContent: "space-between",
+            gap: { xs: 2, md: 3 },
+          }}
+        >
+          <Brand mobile={isMobile} />
 
-          {/* Navigation Links */}
           {isMobile ? (
             <>
               <IconButton
                 onClick={toggleDrawer(true)}
-                sx={{ ml: "auto" }}
-                aria-label="menu"
+                sx={{
+                  ml: "auto",
+                  color: "#fff",
+                  border: "1px solid rgba(190,202,212,0.22)",
+                  bgcolor: "rgba(255,255,255,0.045)",
+                  borderRadius: 2,
+                  "&:hover": { bgcolor: "rgba(215,25,32,0.14)" },
+                }}
+                aria-label="Open menu"
               >
-                <MenuIcon sx={{ color: theme.palette.secondary.main }} />
+                <MenuIcon />
               </IconButton>
               <Drawer
-                anchor="right"
+                anchor="top"
                 open={drawerOpen}
                 onClose={toggleDrawer(false)}
                 sx={{
+                  zIndex: theme.zIndex.drawer + 2,
                   "& .MuiDrawer-paper": {
-                    backgroundColor: "#000000",
-                    width: 250,
-                    paddingTop: theme.spacing(14),
+                    width: "100%",
+                    maxWidth: "100%",
+                    border: 0,
+                    backgroundColor: "transparent",
                   },
                 }}
               >
@@ -205,7 +356,17 @@ const Navbar = () => {
               </Drawer>
             </>
           ) : (
-            DesktopLinks
+            <>
+              {DesktopLinks}
+              <Button
+                component={NextLink}
+                href="/contact"
+                variant="contained"
+                sx={{ ...requestServiceButtonSx, ml: 1.5 }}
+              >
+                Request Service
+              </Button>
+            </>
           )}
         </Toolbar>
       </Container>
