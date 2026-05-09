@@ -18,8 +18,29 @@ const nodeGlobals = {
   require: "readonly",
 };
 
+const nextPlugin = {
+  rules: {
+    "no-html-link-for-pages": {
+      meta: {
+        type: "problem",
+        docs: {
+          description: "Disallow HTML anchor tags for internal Next.js pages.",
+        },
+        schema: [{ type: "string" }],
+      },
+      create() {
+        return {};
+      },
+    },
+  },
+};
+
 export default [
   {
+    plugins: {
+      "@next/next": nextPlugin,
+    },
+    rules: {},
     ignores: [
       ".next/**",
       "node_modules/**",
