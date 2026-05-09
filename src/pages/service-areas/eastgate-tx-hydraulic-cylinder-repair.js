@@ -51,7 +51,7 @@ export default function EastgateServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/eastgate-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/eastgate-tx-hydraulic-cylinder-repair"
         />
       </Head>
 

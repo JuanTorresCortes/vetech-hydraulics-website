@@ -51,7 +51,7 @@ export default function WestfieldServicePage() {
         />
         <link
           rel="canonical"
-          href="https://your-domain.com/service-areas/westfield-tx-hydraulic-cylinder-repair"
+          href="https://www.vetechhydraulics.com/service-areas/westfield-tx-hydraulic-cylinder-repair"
         />
       </Head>
 
