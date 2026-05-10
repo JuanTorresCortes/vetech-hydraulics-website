@@ -1,20 +1,18 @@
 // src/pages/about.js
 import SeoHead from "../components/SeoHead";
 import Image from "next/image";
-import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Divider,
-  Stack,
-} from "@mui/material";
+import Link from "next/link";
+import { Box, Container, Typography, Grid, Button, Stack } from "@mui/material";
 import { styled } from "@mui/system";
 import {
   bodyCopySx,
   containerSx,
+  eyebrowSx,
   headlineSx,
   industrialCardSx,
+  industrialColors,
+  primaryCtaSx,
+  secondaryCtaSx,
   sectionBase,
 } from "../utils/visualStyles";
 import cylinder1 from "../image/cylinder-1.webp";
@@ -31,17 +29,42 @@ const Hero = styled(Box)(({ theme }) => ({
   ...FullBleed,
   display: "flex",
   justifyContent: "center",
-  alignItems: "flex-end",
-  minHeight: "70vh",
-  backgroundColor: "#142B3E",
+  alignItems: "center",
+  minHeight: "74vh",
   color: "#fff",
   position: "relative",
-  textAlign: "center",
+  textAlign: "left",
   padding: 0,
-  overflow: "hidden", // prevent tiny horizontal scroll from 100vw
-  [theme.breakpoints.down("lg")]: { minHeight: "62vh" },
-  [theme.breakpoints.down("md")]: { minHeight: "58svh" },
-  [theme.breakpoints.down("sm")]: { minHeight: "52svh" },
+  overflow: "hidden",
+  backgroundColor: "#050A0F",
+  [theme.breakpoints.down("lg")]: { minHeight: "70vh" },
+  [theme.breakpoints.down("md")]: { minHeight: "66svh" },
+  [theme.breakpoints.down("sm")]: { minHeight: "62svh" },
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    pointerEvents: "none",
+    opacity: 0.32,
+    backgroundImage:
+      "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+    backgroundSize: "54px 54px",
+    maskImage:
+      "linear-gradient(to bottom, rgba(0,0,0,0.72), rgba(0,0,0,0.42), transparent 86%)",
+    zIndex: 1,
+  },
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: "6%",
+    right: "6%",
+    bottom: 0,
+    height: 1,
+    pointerEvents: "none",
+    background:
+      "linear-gradient(90deg, transparent, rgba(190,202,212,0.55), rgba(215,25,32,0.72), rgba(190,202,212,0.55), transparent)",
+    zIndex: 3,
+  },
 }));
 
 const Section = styled("section")(({ theme }) => ({
@@ -54,8 +77,96 @@ const AltSection = styled("section")(({ theme }) => ({
   backgroundColor: "#0B1B27",
 }));
 
-const SectionTitle = ({ children, subtitle }) => (
+const industrialSectionSx = {
+  position: "relative",
+  background:
+    "radial-gradient(circle at 10% 12%, rgba(215,25,32,0.105), transparent 28%), radial-gradient(circle at 92% 18%, rgba(110,193,255,0.07), transparent 26%), linear-gradient(180deg, #050A0F 0%, #0A1721 48%, #06111A 100%)",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    pointerEvents: "none",
+    opacity: 0.28,
+    backgroundImage:
+      "linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px)",
+    backgroundSize: "56px 56px",
+    maskImage:
+      "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.86) 18%, rgba(0,0,0,0.48) 78%, transparent 100%)",
+  },
+};
+
+const industrialAltSectionSx = {
+  ...industrialSectionSx,
+  background:
+    "radial-gradient(circle at 86% 16%, rgba(110,193,255,0.065), transparent 28%), radial-gradient(circle at 12% 84%, rgba(215,25,32,0.075), transparent 26%), linear-gradient(180deg, #07131D 0%, #091925 50%, #050D14 100%)",
+};
+
+const innerContainerSx = {
+  ...containerSx,
+  position: "relative",
+  zIndex: 1,
+};
+
+const contentWidthSx = { maxWidth: 1120, mx: "auto" };
+
+const premiumCardSx = {
+  ...industrialCardSx,
+  position: "relative",
+  height: "100%",
+  overflow: "hidden",
+  p: { xs: 2.5, md: 3 },
+  bgcolor: "rgba(8,19,28,0.92)",
+  backgroundImage:
+    "linear-gradient(145deg, rgba(255,255,255,0.085), rgba(255,255,255,0.018) 52%, rgba(215,25,32,0.022))",
+  border: `1px solid ${industrialColors.steel}`,
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 3,
+    background:
+      "linear-gradient(90deg, rgba(215,25,32,0.92), rgba(190,202,212,0.22), transparent)",
+    pointerEvents: "none",
+  },
+};
+
+const markerSx = {
+  width: 44,
+  height: 44,
+  borderRadius: 2,
+  display: "grid",
+  placeItems: "center",
+  color: "#fff",
+  bgcolor: "rgba(215,25,32,0.16)",
+  border: "1px solid rgba(215,25,32,0.38)",
+  boxShadow:
+    "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 22px rgba(215,25,32,0.16)",
+  fontWeight: 950,
+  letterSpacing: "0.06em",
+  fontSize: 13,
+};
+
+const cardTitleSx = {
+  color: industrialColors.text,
+  fontWeight: 950,
+  fontSize: { xs: 18, md: 20 },
+  lineHeight: 1.16,
+  letterSpacing: "-0.02em",
+};
+
+const cardBodySx = {
+  color: industrialColors.mutedText,
+  lineHeight: 1.72,
+  fontSize: { xs: 14.5, md: 15.5 },
+};
+
+const SectionTitle = ({ children, eyebrow, subtitle }) => (
   <Box sx={{ textAlign: "center", mb: { xs: 4, md: 6 } }}>
+    {eyebrow && (
+      <Typography sx={{ ...eyebrowSx, mb: 1.25 }}>{eyebrow}</Typography>
+    )}
     <Typography component="h2" variant="h3" sx={headlineSx}>
       {children}
     </Typography>
@@ -65,7 +176,7 @@ const SectionTitle = ({ children, subtitle }) => (
         sx={{
           ...bodyCopySx,
           mt: 1.25,
-          maxWidth: 820,
+          maxWidth: 850,
           mx: "auto",
           textWrap: "balance",
         }}
@@ -75,6 +186,33 @@ const SectionTitle = ({ children, subtitle }) => (
     )}
   </Box>
 );
+
+const values = [
+  ["01", "Precision", "Measured repairs, careful inspection, and attention to the small details that protect seal life."],
+  ["02", "Reliability", "Hydraulic work focused on dependable performance for heavy equipment, fleets, and commercial operations."],
+  ["03", "Accountability", "Veteran-owned follow-through, honest recommendations, and responsibility for the work we deliver."],
+  ["04", "Clear Communication", "Straightforward repair paths, practical expectations, and no surprise charges or unnecessary upsells."],
+  ["05", "Commercial-Grade Workmanship", "Repair standards built for contractors, work trucks, shop equipment, and machinery under pressure."],
+  ["06", "Uptime-Focused Service", "Pickup, delivery, fast estimates, and repair planning designed to help reduce equipment downtime."],
+];
+
+const expectations = [
+  ["INS", "Thorough Inspection", "We clean, inspect, and measure critical components to understand why the cylinder failed."],
+  ["QTE", "Clear Quote Before Work", "You get a repair path and estimate before parts, seals, or labor move forward."],
+  ["SEL", "Quality Seal Replacement", "Seals and wear items are selected and installed with fit, cleanliness, and operating conditions in mind."],
+  ["TST", "Pressure-Tested Repairs", "Repairs are tested for leak control and proper operation before delivery whenever practical."],
+  ["PD", "Pickup/Delivery Options", "Local pickup and delivery planning helps contractors and fleet operators reduce downtime."],
+  ["COM", "Professional Communication", "We keep the process straightforward, practical, and focused on getting your equipment back to work."],
+];
+
+const industries = [
+  "Trash trucks",
+  "Construction equipment",
+  "Agriculture equipment",
+  "Industrial machinery",
+  "Contractors",
+  "Fleet operators",
+];
 
 /* --------------------------------- Page -------------------------------- */
 
@@ -104,7 +242,7 @@ export default function AboutPage() {
               position: "absolute",
               inset: 0,
               background:
-                "linear-gradient(to top, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.25) 85%)",
+                "radial-gradient(circle at 16% 30%, rgba(215,25,32,0.24), transparent 30%), radial-gradient(circle at 88% 18%, rgba(110,193,255,0.1), transparent 28%), linear-gradient(90deg, rgba(2,6,10,0.94) 0%, rgba(5,14,22,0.82) 48%, rgba(2,6,10,0.66) 100%), linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0.28))",
             }}
           />
 
@@ -113,109 +251,133 @@ export default function AboutPage() {
             disableGutters
             sx={{
               ...containerSx,
-              pb: { xs: 4, md: 6 },
+              py: { xs: 7, md: 10 },
               position: "relative",
-              zIndex: 1,
+              zIndex: 2,
             }}
           >
-            <Box sx={{ maxWidth: 1120, mx: "auto" }}>
-              <Typography
-                variant="h1"
-                component="h1"
-                sx={{
-                  fontWeight: 900,
-                  fontSize: { xs: "clamp(26px, 7vw, 34px)", md: 48 },
-                  lineHeight: 1.05,
-                  textWrap: "balance",
-                }}
-              >
-                About Vetech Hydraulics
-              </Typography>
+            <Box sx={contentWidthSx}>
+              <Box sx={{ maxWidth: 960 }}>
+                <Typography sx={{ ...eyebrowSx, mb: 1.5 }}>
+                  ABOUT VETECH HYDRAULICS
+                </Typography>
 
-              <Typography
-                sx={{
-                  ...bodyCopySx,
-                  mt: 1.5,
-                  maxWidth: 820,
-                  mx: "auto",
-                }}
-              >
-                A local hydraulic cylinder repair shop built on service,
-                integrity, and American work ethic — focused on keeping your
-                equipment running and your downtime low.
-              </Typography>
+                <Typography
+                  variant="h1"
+                  component="h1"
+                  sx={{
+                    color: industrialColors.text,
+                    fontWeight: 950,
+                    fontSize: {
+                      xs: "clamp(34px, 10vw, 54px)",
+                      md: "clamp(50px, 5.2vw, 74px)",
+                    },
+                    lineHeight: 0.98,
+                    letterSpacing: "-0.06em",
+                    textWrap: "balance",
+                  }}
+                >
+                  Veteran-Owned Hydraulic Repair Built on Precision,
+                  Reliability, and Accountability
+                </Typography>
+
+                <Typography
+                  sx={{
+                    mt: 2,
+                    ...bodyCopySx,
+                    maxWidth: 820,
+                    fontSize: { xs: 15.5, md: 18 },
+                    color: "rgba(231,238,244,0.84)",
+                  }}
+                >
+                  Veteran-owned hydraulic cylinder repair for heavy equipment,
+                  fleets, contractors, and commercial operations across North
+                  Houston — built around disciplined workmanship, clear
+                  communication, and tested results.
+                </Typography>
+
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={1.5}
+                  sx={{ mt: { xs: 3, md: 4 } }}
+                >
+                  <Button
+                    component={Link}
+                    href="/contact"
+                    variant="contained"
+                    sx={primaryCtaSx}
+                  >
+                    Request Service
+                  </Button>
+                  <Button
+                    component={Link}
+                    href="/services"
+                    variant="outlined"
+                    sx={secondaryCtaSx}
+                  >
+                    View Services
+                  </Button>
+                </Stack>
+              </Box>
             </Box>
           </Container>
         </Hero>
 
-        {/* ============================== MISSION ============================== */}
-        <Section>
-          <Container maxWidth={false} disableGutters sx={containerSx}>
-            <Box sx={{ maxWidth: 1120, mx: "auto" }}>
-              <SectionTitle subtitle="Fast turnarounds. Clear communication. Fair pricing. Tested results.">
-                Our Mission
+        {/* ============================== MISSION / STORY ============================== */}
+        <Section sx={industrialSectionSx}>
+          <Container maxWidth={false} disableGutters sx={innerContainerSx}>
+            <Box sx={contentWidthSx}>
+              <SectionTitle
+                eyebrow="MISSION & COMPANY STORY"
+                subtitle="Fast turnarounds. Clear communication. Fair pricing. Tested results."
+              >
+                Hydraulic Repair Built the Right Way
               </SectionTitle>
 
-              <Grid container spacing={4} alignItems="center">
+              <Grid container spacing={{ xs: 3, md: 5 }} alignItems="center">
                 <Grid item xs={12} md={7}>
-                  <Stack spacing={2.25}>
-                    <Typography sx={bodyCopySx}>
-                      Our mission is simple: keep your machines working. We
-                      specialize in hydraulic cylinder repairs that are done
-                      correctly, measured carefully, and pressure-tested before
-                      delivery — so you can put equipment back in service with
-                      confidence.
-                    </Typography>
+                  <Box sx={{ ...premiumCardSx, p: { xs: 2.5, md: 3.5 } }}>
+                    <Stack spacing={2.25}>
+                      <Typography sx={cardBodySx}>
+                        Our mission is simple: keep your machines working. We
+                        specialize in hydraulic cylinder repairs that are done
+                        correctly, measured carefully, and pressure-tested before
+                        delivery — so you can put equipment back in service with
+                        confidence.
+                      </Typography>
 
-                    <Typography sx={bodyCopySx}>
-                      We believe in honest work and fair deals. That means no
-                      surprise charges, no inflated material markups, and no
-                      upselling what your cylinder doesn’t need. We help you
-                      find the best-value solution without sacrificing quality.
-                    </Typography>
+                      <Typography sx={cardBodySx}>
+                        We believe in honest work and fair deals. That means no
+                        surprise charges, no inflated material markups, and no
+                        upselling what your cylinder doesn’t need. We help you
+                        find the best-value solution without sacrificing quality.
+                      </Typography>
 
-                    <Divider
-                      sx={{ my: 1, borderColor: "rgba(255,255,255,0.12)" }}
-                    />
+                      <Typography sx={cardBodySx}>
+                        Vetech Hydraulics is a small, new business — but we’re
+                        not new to the work. We’ve been serving our community
+                        since 2010 by helping contractors, fleets, and equipment
+                        owners solve real problems quickly and affordably.
+                      </Typography>
 
-                    <Grid container spacing={2}>
-                      {[
-                        { k: "24–72 hr", v: "Typical Turnaround" },
-                        { k: "Leak-Tested", v: "Before Delivery" },
-                        { k: "Local", v: "Pickup/Delivery" },
-                      ].map((s, i) => (
-                        <Grid item xs={12} sm={4} key={i}>
-                          <Box
-                            sx={{
-                              ...industrialCardSx,
-                              p: 2,
-                              height: "100%",
-                            }}
-                          >
-                            <Typography
-                              sx={{ color: "#6EC1FF", fontWeight: 900 }}
-                            >
-                              {s.k}
-                            </Typography>
-                            <Typography sx={{ color: "#fff", fontWeight: 700 }}>
-                              {s.v}
-                            </Typography>
-                          </Box>
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </Stack>
+                      <Typography sx={cardBodySx}>
+                        We’re built on the belief that a shop should earn trust
+                        the old-fashioned way: show up, communicate clearly, do
+                        what you said you’d do, and stand behind the repair.
+                        That mindset supports hands-on hydraulic repair,
+                        disciplined workmanship, honest communication,
+                        commercial reliability, and veteran-owned accountability.
+                      </Typography>
+                    </Stack>
+                  </Box>
                 </Grid>
 
                 <Grid item xs={12} md={5}>
                   <Box
                     sx={{
-                      position: "relative",
-                      width: "100%",
-                      pb: { xs: "66%", md: "78%" },
-                      borderRadius: 3,
-                      overflow: "hidden",
-                      border: "1px solid rgba(255,255,255,0.06)",
+                      ...premiumCardSx,
+                      p: 0,
+                      minHeight: { xs: 280, md: 430 },
                     }}
                   >
                     <Image
@@ -227,6 +389,14 @@ export default function AboutPage() {
                       quality={82}
                       style={{ objectFit: "cover" }}
                     />
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        inset: 0,
+                        background:
+                          "linear-gradient(to top, rgba(2,6,10,0.72), transparent 55%)",
+                      }}
+                    />
                   </Box>
                 </Grid>
               </Grid>
@@ -234,78 +404,41 @@ export default function AboutPage() {
           </Container>
         </Section>
 
-        {/* ============================== STORY + FOUNDER ============================== */}
-        <AltSection>
-          <Container maxWidth={false} disableGutters sx={containerSx}>
-            <Box sx={{ maxWidth: 1120, mx: "auto" }}>
-              <SectionTitle subtitle="Small business values. Big accountability. Built for the people who keep Texas working.">
-                Our Story
+        {/* ============================== VETERAN CREDIBILITY ============================== */}
+        <AltSection sx={industrialAltSectionSx}>
+          <Container maxWidth={false} disableGutters sx={innerContainerSx}>
+            <Box sx={contentWidthSx}>
+              <SectionTitle
+                eyebrow="VETERAN-OWNED CREDIBILITY"
+                subtitle="Community-driven. Precision-focused. Built for the people who keep Texas working."
+              >
+                Veteran-Owned Professionalism
               </SectionTitle>
 
-              <Stack spacing={2.25} sx={{ color: "rgba(255,255,255,0.86)" }}>
-                <Typography sx={{ lineHeight: 1.8 }}>
-                  Vetech Hydraulics is a small, new business — but we’re not new
-                  to the work. We’ve been serving our community since 2010 by
-                  helping contractors, fleets, and equipment owners solve real
-                  problems quickly and affordably.
-                </Typography>
-
-                <Typography sx={{ lineHeight: 1.8 }}>
-                  We’re built on the belief that a shop should earn trust the
-                  old-fashioned way: show up, communicate clearly, do what you
-                  said you’d do, and stand behind the repair. That mindset comes
-                  from a patriotic, service-first mentality — the idea that your
-                  word matters and your work should speak for itself.
-                </Typography>
-
-                <Typography sx={{ lineHeight: 1.8 }}>
-                  Over the years, we saw too many people get hit with inflated
-                  quotes, unnecessary add-ons, and downtime that dragged on for
-                  weeks. So we set out to build something different: a cylinder
-                  repair shop focused on precision, testing, and fairness —
-                  where the customer gets the value, not the runaround.
-                </Typography>
-
-                <Typography sx={{ lineHeight: 1.8 }}>
-                  Today, our goal is bigger than just repairs. We’re building a
-                  local network that helps businesses save money, reduce
-                  breakdowns, and improve uptime across the region. We believe
-                  strong communities are built when local businesses look out
-                  for each other — and we’re proud to be part of that.
-                </Typography>
-              </Stack>
-
-              <Divider
-                sx={{
-                  my: { xs: 4, md: 5 },
-                  borderColor: "rgba(255,255,255,0.12)",
-                }}
-              />
-
-              {/* ============================== FOUNDER BIO ============================== */}
-              <Box sx={{ maxWidth: 1120, mx: "auto" }}>
-                <SectionTitle subtitle="Veteran-owned. Community-driven. Precision-focused.">
-                  Meet the Owner
-                </SectionTitle>
-
-                <Grid container spacing={4} alignItems="center">
-                  {/* Images */}
-                  <Grid item xs={12} md={5}>
-                    <Grid container spacing={2}>
-                      <Grid item xs={6}>
+              <Grid container spacing={{ xs: 3, md: 5 }} alignItems="center">
+                <Grid item xs={12} md={5}>
+                  <Grid container spacing={2}>
+                    {[
+                      [
+                        "/juanVet.webp",
+                        "U.S. Army veteran — M1 Abrams Systems Maintainer",
+                      ],
+                      [
+                        "/juanTech.webp",
+                        "Hydraulic cylinder repair technician at work",
+                      ],
+                    ].map(([src, alt]) => (
+                      <Grid item xs={6} key={src}>
                         <Box
                           sx={{
-                            position: "relative",
-                            pb: "125%",
-                            borderRadius: 3,
-                            overflow: "hidden",
-                            border: "1px solid rgba(255,255,255,0.08)",
-                            bgcolor: "rgba(255,255,255,0.03)",
+                            ...premiumCardSx,
+                            p: 0,
+                            minHeight: { xs: 240, sm: 320, md: 380 },
                           }}
                         >
                           <Image
-                            src="/juanVet.webp"
-                            alt="U.S. Army veteran — M1 Abrams Systems Maintainer"
+                            src={src}
+                            alt={alt}
                             fill
                             sizes="(max-width: 900px) 50vw, 25vw"
                             loading="lazy"
@@ -317,39 +450,14 @@ export default function AboutPage() {
                           />
                         </Box>
                       </Grid>
-
-                      <Grid item xs={6}>
-                        <Box
-                          sx={{
-                            position: "relative",
-                            pb: "125%",
-                            borderRadius: 3,
-                            overflow: "hidden",
-                            border: "1px solid rgba(255,255,255,0.08)",
-                            bgcolor: "rgba(255,255,255,0.03)",
-                          }}
-                        >
-                          <Image
-                            src="/juanTech.webp"
-                            alt="Hydraulic cylinder repair technician at work"
-                            fill
-                            sizes="(max-width: 900px) 50vw, 25vw"
-                            loading="lazy"
-                            quality={82}
-                            style={{
-                              objectFit: "cover",
-                              objectPosition: "center top",
-                            }}
-                          />
-                        </Box>
-                      </Grid>
-                    </Grid>
+                    ))}
                   </Grid>
+                </Grid>
 
-                  {/* Text */}
-                  <Grid item xs={12} md={7}>
+                <Grid item xs={12} md={7}>
+                  <Box sx={{ ...premiumCardSx, p: { xs: 2.5, md: 3.5 } }}>
                     <Stack spacing={2.25}>
-                      <Typography sx={bodyCopySx}>
+                      <Typography sx={cardBodySx}>
                         Vetech Hydraulics is proudly veteran-owned and operated
                         by Juan Torres, a U.S. Army veteran who served six years
                         as an M1 Abrams Systems Maintainer. That’s where his
@@ -358,7 +466,7 @@ export default function AboutPage() {
                         deadlines, real standards, and real consequences.
                       </Typography>
 
-                      <Typography sx={bodyCopySx}>
+                      <Typography sx={cardBodySx}>
                         After military service, Juan earned an Associate Degree
                         in Computer Science and continued building his technical
                         problem-solving skills. He later worked professionally
@@ -368,7 +476,7 @@ export default function AboutPage() {
                         mentoring other technicians.
                       </Typography>
 
-                      <Typography sx={bodyCopySx}>
+                      <Typography sx={cardBodySx}>
                         Today, Juan is launching Vetech Hydraulics to support
                         his family and serve the same local contractors, fleets,
                         and operators he has worked alongside for years. This
@@ -380,93 +488,199 @@ export default function AboutPage() {
 
                       <Box
                         sx={{
-                          ...industrialCardSx,
-                          mt: 0.5,
-                          p: 2,
+                          borderRadius: 2.5,
+                          p: { xs: 2, md: 2.25 },
+                          bgcolor: "rgba(3,7,11,0.38)",
+                          border: "1px solid rgba(190,202,212,0.18)",
+                          borderLeft: `3px solid ${industrialColors.hydraulicRed}`,
                         }}
                       >
-                        <Typography
-                          sx={{
-                            color: "#6EC1FF",
-                            fontWeight: 900,
-                            fontSize: { xs: 14, sm: 15 },
-                          }}
-                        >
-                          Veteran-Owned & Operated
+                        <Typography sx={{ ...eyebrowSx, mb: 0.75 }}>
+                          VETERAN-OWNED & OPERATED
                         </Typography>
-                        <Typography
-                          sx={{
-                            color: "rgba(255,255,255,0.82)",
-                            mt: 0.5,
-                            lineHeight: 1.7,
-                          }}
-                        >
+                        <Typography sx={cardBodySx}>
                           Built on discipline, integrity, and pride in
                           workmanship — the same standards we bring to every
                           repair.
                         </Typography>
                       </Box>
                     </Stack>
+                  </Box>
+                </Grid>
+              </Grid>
+            </Box>
+          </Container>
+        </AltSection>
+
+        {/* ============================== VALUES ============================== */}
+        <Section sx={industrialSectionSx}>
+          <Container maxWidth={false} disableGutters sx={innerContainerSx}>
+            <Box sx={contentWidthSx}>
+              <SectionTitle
+                eyebrow="OPERATING VALUES"
+                subtitle="The standards behind every repair conversation, inspection, quote, rebuild, and delivery."
+              >
+                Values That Keep Equipment Moving
+              </SectionTitle>
+
+              <Grid container spacing={{ xs: 2, md: 3 }}>
+                {values.map(([code, title, text]) => (
+                  <Grid item xs={12} sm={6} md={4} key={title}>
+                    <Box sx={premiumCardSx}>
+                      <Box sx={markerSx}>{code}</Box>
+                      <Typography sx={{ ...cardTitleSx, mt: 2 }}>
+                        {title}
+                      </Typography>
+                      <Typography sx={{ ...cardBodySx, mt: 1 }}>
+                        {text}
+                      </Typography>
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          </Container>
+        </Section>
+
+        {/* ============================== EXPECTATIONS ============================== */}
+        <AltSection sx={industrialAltSectionSx}>
+          <Container maxWidth={false} disableGutters sx={innerContainerSx}>
+            <Box sx={contentWidthSx}>
+              <SectionTitle
+                eyebrow="WHAT CUSTOMERS CAN EXPECT"
+                subtitle="A practical repair process designed to reduce surprises, protect uptime, and support commercial hydraulic equipment."
+              >
+                Clear Steps. Tested Repairs. Professional Support.
+              </SectionTitle>
+
+              <Grid container spacing={{ xs: 2, md: 3 }}>
+                {expectations.map(([code, title, text]) => (
+                  <Grid item xs={12} sm={6} md={4} key={title}>
+                    <Box sx={premiumCardSx}>
+                      <Box sx={markerSx}>{code}</Box>
+                      <Typography sx={{ ...cardTitleSx, mt: 2 }}>
+                        {title}
+                      </Typography>
+                      <Typography sx={{ ...cardBodySx, mt: 1 }}>
+                        {text}
+                      </Typography>
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          </Container>
+        </AltSection>
+
+        {/* ============================== INDUSTRIES ============================== */}
+        <Section sx={industrialSectionSx}>
+          <Container maxWidth={false} disableGutters sx={innerContainerSx}>
+            <Box sx={contentWidthSx}>
+              <Grid container spacing={{ xs: 3, md: 5 }} alignItems="center">
+                <Grid item xs={12} md={5.2}>
+                  <Typography sx={{ ...eyebrowSx, mb: 1.25 }}>
+                    COMMERCIAL & FLEET SERVICE
+                  </Typography>
+                  <Typography component="h2" variant="h3" sx={headlineSx}>
+                    Industries We Serve
+                  </Typography>
+                  <Typography sx={{ ...bodyCopySx, mt: 1.5 }}>
+                    Vetech Hydraulics supports contractors, fleets, and
+                    commercial operations that rely on hydraulic cylinders to
+                    keep equipment working under pressure across North Houston.
+                  </Typography>
+                </Grid>
+
+                <Grid item xs={12} md={6.8}>
+                  <Grid container spacing={{ xs: 1.5, sm: 2 }}>
+                    {industries.map((item) => (
+                      <Grid item xs={12} sm={6} key={item}>
+                        <Box
+                          sx={{
+                            ...premiumCardSx,
+                            p: { xs: 2, md: 2.25 },
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 1.5,
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              width: 10,
+                              height: 10,
+                              borderRadius: "50%",
+                              bgcolor: industrialColors.hydraulicRed,
+                              boxShadow: "0 0 18px rgba(215,25,32,0.46)",
+                              flexShrink: 0,
+                            }}
+                          />
+                          <Typography sx={{ color: "#fff", fontWeight: 900 }}>
+                            {item}
+                          </Typography>
+                        </Box>
+                      </Grid>
+                    ))}
                   </Grid>
                 </Grid>
-              </Box>
+              </Grid>
+            </Box>
+          </Container>
+        </Section>
 
-              <Divider
-                sx={{
-                  my: { xs: 4, md: 5 },
-                  borderColor: "rgba(255,255,255,0.12)",
-                }}
-              />
-
-              {/* ============================== EXPECTATIONS ============================== */}
+        {/* ================================ CTA ================================ */}
+        <AltSection sx={industrialAltSectionSx}>
+          <Container maxWidth={false} disableGutters sx={innerContainerSx}>
+            <Box sx={contentWidthSx}>
               <Box
                 sx={{
-                  ...industrialCardSx,
-                  p: { xs: 2.5, sm: 3.5 },
+                  ...premiumCardSx,
+                  p: { xs: 3, md: 5 },
+                  textAlign: "center",
+                  backgroundImage:
+                    "radial-gradient(circle at 50% 0%, rgba(215,25,32,0.16), transparent 34%), linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.018))",
                 }}
               >
+                <Typography sx={{ ...eyebrowSx, mb: 1.25 }}>
+                  HYDRAULIC REPAIR SUPPORT
+                </Typography>
+                <Typography component="h2" variant="h3" sx={headlineSx}>
+                  Need a Hydraulic Repair Partner You Can Count On?
+                </Typography>
                 <Typography
                   sx={{
-                    color: "#6EC1FF",
-                    fontWeight: 900,
-                    fontSize: { xs: 16, sm: 18 },
-                    mb: 1,
+                    ...bodyCopySx,
+                    mt: 1.5,
+                    mx: "auto",
+                    maxWidth: 760,
                   }}
                 >
-                  What You Can Expect From Us
+                  Send photos, dimensions, or job-site details and we’ll help
+                  you understand the next step for hydraulic cylinder repair,
+                  repacking, pressure testing, or pickup and delivery.
                 </Typography>
-
-                <Grid container spacing={2}>
-                  {[
-                    {
-                      k: "Honest recommendations",
-                      v: "We only suggest what improves reliability and seal life.",
-                    },
-                    {
-                      k: "Respect for your budget",
-                      v: "We aim for the best-value fix without sacrificing quality.",
-                    },
-                    {
-                      k: "Accountability",
-                      v: "We test repairs and stand behind the work we deliver.",
-                    },
-                    {
-                      k: "Community mindset",
-                      v: "We’re here to help local businesses run stronger, longer.",
-                    },
-                  ].map((item, idx) => (
-                    <Grid item xs={12} sm={6} key={idx}>
-                      <Typography sx={{ color: "#fff", fontWeight: 900 }}>
-                        {item.k}
-                      </Typography>
-                      <Typography
-                        sx={{ color: "rgba(255,255,255,0.82)", mt: 0.5 }}
-                      >
-                        {item.v}
-                      </Typography>
-                    </Grid>
-                  ))}
-                </Grid>
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={1.5}
+                  justifyContent="center"
+                  sx={{ mt: 3 }}
+                >
+                  <Button
+                    component={Link}
+                    href="/contact"
+                    variant="contained"
+                    sx={primaryCtaSx}
+                  >
+                    Request Service
+                  </Button>
+                  <Button
+                    component={Link}
+                    href="/contact"
+                    variant="outlined"
+                    sx={secondaryCtaSx}
+                  >
+                    Contact Us
+                  </Button>
+                </Stack>
               </Box>
             </Box>
           </Container>
