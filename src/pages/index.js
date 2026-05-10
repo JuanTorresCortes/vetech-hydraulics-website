@@ -31,6 +31,7 @@ import {
   eyebrowSx,
   headlineSx,
   industrialCardSx,
+  industrialColors,
   primaryCtaSx,
   secondaryCtaSx,
   sectionBase,
@@ -200,6 +201,80 @@ const CardImageMap = ({ alt = "service area map", src = map }) => (
     />
   </Box>
 );
+
+const lowerSectionBgSx = {
+  position: "relative",
+  background:
+    "radial-gradient(circle at 10% 12%, rgba(215,25,32,0.11), transparent 28%), radial-gradient(circle at 92% 18%, rgba(110,193,255,0.075), transparent 26%), linear-gradient(180deg, #050A0F 0%, #0A1721 48%, #06111A 100%)",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    pointerEvents: "none",
+    opacity: 0.28,
+    backgroundImage:
+      "linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px)",
+    backgroundSize: "56px 56px",
+    maskImage:
+      "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.86) 18%, rgba(0,0,0,0.48) 78%, transparent 100%)",
+  },
+};
+
+const lowerAltSectionBgSx = {
+  ...lowerSectionBgSx,
+  background:
+    "radial-gradient(circle at 86% 16%, rgba(110,193,255,0.07), transparent 28%), radial-gradient(circle at 12% 84%, rgba(215,25,32,0.075), transparent 26%), linear-gradient(180deg, #07131D 0%, #091925 50%, #050D14 100%)",
+};
+
+const lowerPanelSx = {
+  ...industrialCardSx,
+  position: "relative",
+  height: "100%",
+  overflow: "hidden",
+  p: { xs: 2.5, md: 3 },
+  bgcolor: "rgba(8,19,28,0.92)",
+  backgroundImage:
+    "linear-gradient(145deg, rgba(255,255,255,0.085), rgba(255,255,255,0.018) 52%, rgba(215,25,32,0.022))",
+  border: `1px solid ${industrialColors.steel}`,
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 3,
+    background:
+      "linear-gradient(90deg, rgba(215,25,32,0.92), rgba(190,202,212,0.22), transparent)",
+    pointerEvents: "none",
+  },
+};
+
+const lowerTitleSx = {
+  color: industrialColors.text,
+  fontWeight: 950,
+  fontSize: { xs: 18, md: 20 },
+  lineHeight: 1.16,
+  letterSpacing: "-0.02em",
+};
+
+const lowerBodySx = {
+  color: industrialColors.mutedText,
+  lineHeight: 1.72,
+  fontSize: { xs: 14.5, md: 15.5 },
+};
+
+const redBadgeSx = {
+  display: "inline-grid",
+  placeItems: "center",
+  width: 44,
+  height: 44,
+  borderRadius: 2,
+  color: "#fff",
+  bgcolor: "rgba(215,25,32,0.16)",
+  border: "1px solid rgba(215,25,32,0.38)",
+  boxShadow:
+    "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 22px rgba(215,25,32,0.16)",
+};
 
 const recentRepairs = [
   {
@@ -1581,8 +1656,11 @@ export default function Home() {
       </Section>
 
       {/* ========================== WHY CHOOSE US ========================= */}
-      <AltSection id="why-us">
-        <Container maxWidth="lg" sx={innerContainerSx}>
+      <AltSection id="why-us" sx={lowerAltSectionBgSx}>
+        <Container
+          maxWidth="lg"
+          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+        >
           <SectionTitle subtitle="Built for contractors, fleet managers, and operators.">
             Why Choose Vetech Hydraulics
           </SectionTitle>
@@ -1590,37 +1668,46 @@ export default function Home() {
           <Grid container spacing={{ xs: 2, md: 3 }}>
             {[
               {
+                Icon: MilitaryTechIcon,
                 k: "Veteran-Owned & Operated SDVOSB Certified",
                 v: "Hands-On Cylinder Expertise",
               },
-              { k: "Leak-Tested", v: "Before Delivery" },
-              { k: "Pickup", v: "and Delivery Options" },
-              { k: "Warranty", v: "On All Repairs" },
-            ].map((item, i) => (
-              <Grid item xs={12} sm={6} md={3} key={i}>
+              { Icon: VerifiedIcon, k: "Leak-Tested", v: "Before Delivery" },
+              {
+                Icon: LocalShippingIcon,
+                k: "Pickup",
+                v: "and Delivery Options",
+              },
+              {
+                Icon: PrecisionManufacturingIcon,
+                k: "Warranty",
+                v: "On All Repairs",
+              },
+            ].map(({ Icon, ...item }, i) => (
+              <Grid item xs={12} sm={6} md={3} key={item.k}>
                 <Box
                   sx={{
-                    borderRadius: 3,
-                    p: 3,
-                    textAlign: "center",
-                    bgcolor: "#0E2635",
-                    border: "1px solid rgba(255,255,255,0.06)",
-                    height: "100%",
+                    ...lowerPanelSx,
+                    textAlign: "left",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 1.5,
                   }}
                 >
-                  <Typography
-                    sx={{
-                      color: "#6EC1FF",
-                      fontWeight: 800,
-                      fontSize: { xs: 16, md: 18 },
-                      lineHeight: 1.25,
-                    }}
-                  >
-                    {item.k}
-                  </Typography>
-                  <Typography sx={{ color: "#fff", fontWeight: 700, mt: 0.75 }}>
-                    {item.v}
-                  </Typography>
+                  <Box sx={redBadgeSx}>
+                    <Icon fontSize="small" />
+                  </Box>
+                  <Box>
+                    <Typography sx={{ ...eyebrowSx, mb: 0.75 }}>
+                      0{i + 1}
+                    </Typography>
+                    <Typography sx={lowerTitleSx}>{item.k}</Typography>
+                    <Typography
+                      sx={{ color: "#fff", fontWeight: 800, mt: 0.85 }}
+                    >
+                      {item.v}
+                    </Typography>
+                  </Box>
                 </Box>
               </Grid>
             ))}
@@ -1629,376 +1716,251 @@ export default function Home() {
       </AltSection>
 
       {/* ============= COMMON FAILURES ====================== */}
-      <Section id="failures">
-        <Container maxWidth="lg" sx={innerContainerSx}>
+      <Section id="failures" sx={lowerSectionBgSx}>
+        <Container
+          maxWidth="lg"
+          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+        >
           <SectionTitle subtitle="What typically goes wrong — and how we fix it.">
             Common Hydraulic Cylinder Failures We See Every Day
           </SectionTitle>
 
-          <Grid container spacing={{ xs: 3, md: 4 }}>
-            <Grid item xs={12} md={6}>
-              <Typography
-                sx={{
-                  color: "rgba(255,255,255,0.85)",
-                  mb: 2,
-                  lineHeight: 1.7,
-                  fontSize: { xs: 14.5, md: 16 },
-                }}
-              >
-                Hydraulic cylinders work hard on trash trucks, excavators, skid
-                steers, farm equipment, and industrial machines. Over time,
-                heat, contamination, misalignment, and heavy use start to show
-                up as the same repeat failures:
-              </Typography>
+          <Box sx={{ ...lowerPanelSx, p: { xs: 2.5, md: 3.5 } }}>
+            <Typography sx={{ ...lowerBodySx, mb: { xs: 2.5, md: 3 } }}>
+              Hydraulic cylinders work hard on trash trucks, excavators, skid
+              steers, farm equipment, and industrial machines. Over time, heat,
+              contamination, misalignment, and heavy use start to show up as the
+              same repeat failures:
+            </Typography>
 
-              <Typography
-                variant="h6"
-                sx={{ color: "#fff", fontWeight: 800, mt: 2 }}
-              >
-                Seal Failures & Leaks
-              </Typography>
-              <Typography
-                sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}
-              >
-                Worn or damaged seals cause internal bypassing, external leaks,
-                loss of power, and contamination. Age, wrong seal material, high
-                temps, and scored rods/barrels all speed up seal failure.
-              </Typography>
-
-              <Typography
-                variant="h6"
-                sx={{ color: "#fff", fontWeight: 800, mt: 2 }}
-              >
-                Bent Rods & Scored Barrels
-              </Typography>
-              <Typography
-                sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}
-              >
-                Side loading or poor alignment can bend rods and scratch the
-                inside of the barrel. Once sealing surfaces are damaged, seals
-                wear out quickly and leaks follow.
-              </Typography>
-
-              <Typography
-                variant="h6"
-                sx={{ color: "#fff", fontWeight: 800, mt: 2 }}
-              >
-                Rod Pitting & Corrosion
-              </Typography>
-              <Typography
-                sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}
-              >
-                Outdoor and corrosive environments eat away at chrome. Pitting
-                and rust tear seals, weaken the rod, and often require
-                reconditioning or replacement.
-              </Typography>
+            <Grid container spacing={{ xs: 2, md: 2.5 }}>
+              {[
+                {
+                  title: "Seal Failures & Leaks",
+                  text: "Worn or damaged seals cause internal bypassing, external leaks, loss of power, and contamination. Age, wrong seal material, high temps, and scored rods/barrels all speed up seal failure.",
+                },
+                {
+                  title: "Bent Rods & Scored Barrels",
+                  text: "Side loading or poor alignment can bend rods and scratch the inside of the barrel. Once sealing surfaces are damaged, seals wear out quickly and leaks follow.",
+                },
+                {
+                  title: "Rod Pitting & Corrosion",
+                  text: "Outdoor and corrosive environments eat away at chrome. Pitting and rust tear seals, weaken the rod, and often require reconditioning or replacement.",
+                },
+                {
+                  title: "Piston Wear & Misalignment",
+                  text: "When a cylinder is misaligned or running dry, the piston can wear unevenly and score the barrel. That leads to loss of efficiency, weak stroke, and shortened service life.",
+                },
+                {
+                  title: "Slow or Erratic Operation",
+                  text: "Cylinders that feel slow, jerky, or inconsistent are often dealing with low system pressure, fluid contamination, or internal bypassing from worn internal parts.",
+                },
+              ].map((failure, i) => (
+                <Grid item xs={12} md={i === 4 ? 12 : 6} key={failure.title}>
+                  <Box
+                    sx={{
+                      height: "100%",
+                      p: { xs: 2, md: 2.25 },
+                      borderRadius: 3,
+                      bgcolor: "rgba(3,7,11,0.32)",
+                      border: "1px solid rgba(190,202,212,0.16)",
+                      boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06)",
+                    }}
+                  >
+                    <Typography
+                      sx={{ ...lowerTitleSx, fontSize: { xs: 17, md: 18 } }}
+                    >
+                      {failure.title}
+                    </Typography>
+                    <Typography sx={{ ...lowerBodySx, mt: 0.9 }}>
+                      {failure.text}
+                    </Typography>
+                  </Box>
+                </Grid>
+              ))}
             </Grid>
 
-            <Grid item xs={12} md={6}>
-              <Typography
-                variant="h6"
-                sx={{ color: "#fff", fontWeight: 800, mt: { xs: 0, md: 0 } }}
-              >
-                Piston Wear & Misalignment
-              </Typography>
-              <Typography
-                sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}
-              >
-                When a cylinder is misaligned or running dry, the piston can
-                wear unevenly and score the barrel. That leads to loss of
-                efficiency, weak stroke, and shortened service life.
-              </Typography>
+            <Divider
+              sx={{
+                my: { xs: 2.5, md: 3 },
+                borderColor: "rgba(190,202,212,0.18)",
+              }}
+            />
 
-              <Typography
-                variant="h6"
-                sx={{ color: "#fff", fontWeight: 800, mt: 2 }}
-              >
-                Slow or Erratic Operation
-              </Typography>
-              <Typography
-                sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}
-              >
-                Cylinders that feel slow, jerky, or inconsistent are often
-                dealing with low system pressure, fluid contamination, or
-                internal bypassing from worn internal parts.
-              </Typography>
-
-              <Divider sx={{ my: 3, borderColor: "rgba(255,255,255,0.15)" }} />
-
+            <Stack
+              direction={{ xs: "column", md: "row" }}
+              spacing={{ xs: 2, md: 3 }}
+              alignItems={{ xs: "stretch", md: "center" }}
+              justifyContent="space-between"
+            >
               <Typography
                 sx={{
-                  color: "rgba(255,255,255,0.85)",
-                  mb: 2,
-                  lineHeight: 1.7,
-                  fontSize: { xs: 14.5, md: 16 },
+                  ...lowerBodySx,
+                  color: "rgba(247,250,252,0.88)",
+                  maxWidth: 760,
                 }}
               >
                 At Vetech Hydraulics, we don’t just throw seals at the problem.
                 We look at why the cylinder failed so we can rebuild it to last
                 longer and help you avoid repeat downtime.
               </Typography>
-
               <ConsultationButton />
-            </Grid>
-          </Grid>
+            </Stack>
+          </Box>
         </Container>
       </Section>
 
       {/* ========== CYLINDER REPAIR CAPABILITIES ============ */}
-      <AltSection id="capabilities">
-        <Container maxWidth="lg" sx={innerContainerSx}>
+      <AltSection id="capabilities" sx={lowerAltSectionBgSx}>
+        <Container
+          maxWidth="lg"
+          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+        >
           <SectionTitle subtitle="From small-bore to large telescopic cylinders.">
             Our Cylinder Repair Capabilities
           </SectionTitle>
 
           <Grid container spacing={{ xs: 2, md: 3 }}>
-            <Grid item xs={12} md={6}>
-              <Box
-                sx={{
-                  p: 3,
-                  borderRadius: 3,
-                  bgcolor: "#0E2635",
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  color: "#fff",
-                  height: "100%",
-                }}
-              >
-                <Typography sx={{ fontWeight: 800, mb: 1 }}>
-                  Disassembly & Inspection
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "rgba(255,255,255,0.8)",
-                    mb: 2,
-                    lineHeight: 1.7,
-                  }}
-                >
-                  Every cylinder is fully torn down, cleaned, and inspected. We
-                  measure rods, pistons, barrels, and glands to find the true
-                  root cause of failure — not just the symptoms.
-                </Typography>
-
-                <Typography sx={{ fontWeight: 800, mb: 1 }}>
-                  Machining & Restoration
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "rgba(255,255,255,0.8)",
-                    mb: 2,
-                    lineHeight: 1.7,
-                  }}
-                >
-                  We handle rod polishing, rod straightening, barrel honing,
-                  thread repair, custom component fabrication, and more. Older
-                  or discontinued cylinders can often be saved with in-house
-                  machining.
-                </Typography>
-
-                <Typography sx={{ fontWeight: 800, mb: 1 }}>
-                  Seal Selection & Replacement
-                </Typography>
-                <Typography
-                  sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}
-                >
-                  We install high-quality seals matched to your pressure,
-                  temperature, and fluid type — so your repair holds up in
-                  real-world conditions.
-                </Typography>
-              </Box>
-            </Grid>
-
-            <Grid item xs={12} md={6}>
-              <Box
-                sx={{
-                  p: 3,
-                  borderRadius: 3,
-                  bgcolor: "#102A3A",
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  color: "#fff",
-                  height: "100%",
-                }}
-              >
-                <Typography sx={{ fontWeight: 800, mb: 1 }}>
-                  Reassembly & Pressure Testing
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "rgba(255,255,255,0.8)",
-                    mb: 2,
-                    lineHeight: 1.7,
-                  }}
-                >
-                  Once rebuilt, each cylinder is reassembled to spec and
-                  pressure-tested under load. We verify smooth operation,
-                  correct stroke, and leak-free performance before it goes back
-                  in service.
-                </Typography>
-
-                <Typography sx={{ fontWeight: 800, mb: 1 }}>
-                  Fast Turnaround Times
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "rgba(255,255,255,0.8)",
-                    mb: 2,
-                    lineHeight: 1.7,
-                  }}
-                >
-                  Downtime is expensive. We move quickly — especially for local
-                  contractors, trash fleets, and equipment owners who need
-                  cylinders turned around in days, not weeks.
-                </Typography>
-
-                <Typography sx={{ fontWeight: 800, mb: 1 }}>
-                  Photo & Measurement Quotes
-                </Typography>
-                <Typography
-                  sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}
-                >
-                  Text or email a photo and some basic dimensions, and we can
-                  usually give you a ballpark estimate before you even bring the
-                  cylinder in.
-                </Typography>
-              </Box>
-            </Grid>
+            {[
+              [
+                [
+                  "Disassembly & Inspection",
+                  "Every cylinder is fully torn down, cleaned, and inspected. We measure rods, pistons, barrels, and glands to find the true root cause of failure — not just the symptoms.",
+                ],
+                [
+                  "Machining & Restoration",
+                  "We handle rod polishing, rod straightening, barrel honing, thread repair, custom component fabrication, and more. Older or discontinued cylinders can often be saved with in-house machining.",
+                ],
+                [
+                  "Seal Selection & Replacement",
+                  "We install high-quality seals matched to your pressure, temperature, and fluid type — so your repair holds up in real-world conditions.",
+                ],
+              ],
+              [
+                [
+                  "Reassembly & Pressure Testing",
+                  "Once rebuilt, each cylinder is reassembled to spec and pressure-tested under load. We verify smooth operation, correct stroke, and leak-free performance before it goes back in service.",
+                ],
+                [
+                  "Fast Turnaround Times",
+                  "Downtime is expensive. We move quickly — especially for local contractors, trash fleets, and equipment owners who need cylinders turned around in days, not weeks.",
+                ],
+                [
+                  "Photo & Measurement Quotes",
+                  "Text or email a photo and some basic dimensions, and we can usually give you a ballpark estimate before you even bring the cylinder in.",
+                ],
+              ],
+            ].map((panel, panelIndex) => (
+              <Grid item xs={12} md={6} key={panelIndex}>
+                <Box sx={{ ...lowerPanelSx, p: { xs: 2.5, md: 3.25 } }}>
+                  <Typography sx={{ ...eyebrowSx, mb: 2 }}>
+                    Capability Panel 0{panelIndex + 1}
+                  </Typography>
+                  <Stack spacing={2.25}>
+                    {panel.map(([title, text]) => (
+                      <Box key={title}>
+                        <Typography sx={lowerTitleSx}>{title}</Typography>
+                        <Typography sx={{ ...lowerBodySx, mt: 0.75 }}>
+                          {text}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Stack>
+                </Box>
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </AltSection>
 
       {/* ============== REPAIR VS REPLACEMENT =============== */}
-      <Section id="repair-vs-replace">
-        <Container maxWidth="lg" sx={innerContainerSx}>
+      <Section id="repair-vs-replace" sx={lowerSectionBgSx}>
+        <Container
+          maxWidth="lg"
+          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+        >
           <SectionTitle subtitle="Helping you make the right call for your equipment and budget.">
             Repair vs. Replacement
           </SectionTitle>
 
           <Grid container spacing={{ xs: 2, md: 3 }}>
-            <Grid item xs={12} md={6}>
-              <Card
-                sx={{
-                  height: "100%",
-                  bgcolor: "#102A3A",
-                  borderRadius: 3,
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  color: "#fff",
-                }}
-                elevation={0}
-              >
-                <CardContent>
-                  <Typography
-                    variant="h6"
-                    sx={{ fontWeight: 800, mb: 1, color: "#6EC1FF" }}
-                  >
-                    When Repair Makes Sense
-                  </Typography>
-                  <Typography
-                    sx={{
-                      color: "rgba(255,255,255,0.8)",
-                      mb: 1.5,
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    In many cases, repairing your hydraulic cylinder is faster
-                    and more cost-effective than replacing it:
-                  </Typography>
-                  <Box component="ul" sx={{ pl: "1.2rem", mt: 0, mb: 0 }}>
-                    {[
-                      "Seal leaks, minor rod pitting, and surface wear that can be corrected.",
-                      "When OEM replacements are back-ordered or discontinued.",
-                      "When you need a quick turnaround to get equipment back in service.",
-                    ].map((txt, idx) => (
-                      <Box component="li" key={idx} sx={{ mb: 0.75 }}>
-                        <Typography
+            {[
+              {
+                label: "Preferred when practical",
+                title: "When Repair Makes Sense",
+                intro:
+                  "In many cases, repairing your hydraulic cylinder is faster and more cost-effective than replacing it:",
+                items: [
+                  "Seal leaks, minor rod pitting, and surface wear that can be corrected.",
+                  "When OEM replacements are back-ordered or discontinued.",
+                  "When you need a quick turnaround to get equipment back in service.",
+                ],
+                close:
+                  "For most cylinders we see, a proper rebuild gives you years of additional service at a fraction of the cost of new.",
+              },
+              {
+                label: "Honest replacement guidance",
+                title: "When Replacement is the Better Option",
+                intro:
+                  "Sometimes, a cylinder is too far gone, or the numbers simply don’t add up:",
+                items: [
+                  "Severe barrel cracking or structural damage.",
+                  "Rods that are heavily bent or beyond safe repair.",
+                  "When repair cost approaches or exceeds the cost of a quality replacement.",
+                ],
+                close:
+                  "We’ll walk you through both options with honest pricing, so you can decide what’s best for your operation — not ours.",
+              },
+            ].map((option) => (
+              <Grid item xs={12} md={6} key={option.title}>
+                <Card sx={lowerPanelSx} elevation={0}>
+                  <CardContent sx={{ p: 0, position: "relative", zIndex: 1 }}>
+                    <Typography sx={{ ...eyebrowSx, mb: 1 }}>
+                      {option.label}
+                    </Typography>
+                    <Typography variant="h6" sx={lowerTitleSx}>
+                      {option.title}
+                    </Typography>
+                    <Typography sx={{ ...lowerBodySx, mt: 1.25, mb: 1.5 }}>
+                      {option.intro}
+                    </Typography>
+                    <Box component="ul" sx={{ pl: "1.15rem", mt: 0, mb: 0 }}>
+                      {option.items.map((txt) => (
+                        <Box
+                          component="li"
+                          key={txt}
                           sx={{
-                            color: "rgba(255,255,255,0.8)",
-                            lineHeight: 1.7,
+                            mb: 0.75,
+                            color: industrialColors.hydraulicRed,
                           }}
                         >
-                          {txt}
-                        </Typography>
-                      </Box>
-                    ))}
-                  </Box>
-                  <Typography
-                    sx={{
-                      color: "rgba(255,255,255,0.85)",
-                      mt: 1,
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    For most cylinders we see, a proper rebuild gives you years
-                    of additional service at a fraction of the cost of new.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-
-            <Grid item xs={12} md={6}>
-              <Card
-                sx={{
-                  height: "100%",
-                  bgcolor: "#0E2635",
-                  borderRadius: 3,
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  color: "#fff",
-                }}
-                elevation={0}
-              >
-                <CardContent>
-                  <Typography
-                    variant="h6"
-                    sx={{ fontWeight: 800, mb: 1, color: "#6EC1FF" }}
-                  >
-                    When Replacement is the Better Option
-                  </Typography>
-                  <Typography
-                    sx={{
-                      color: "rgba(255,255,255,0.8)",
-                      mb: 1.5,
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    Sometimes, a cylinder is too far gone, or the numbers simply
-                    don’t add up:
-                  </Typography>
-                  <Box component="ul" sx={{ pl: "1.2rem", mt: 0, mb: 0 }}>
-                    {[
-                      "Severe barrel cracking or structural damage.",
-                      "Rods that are heavily bent or beyond safe repair.",
-                      "When repair cost approaches or exceeds the cost of a quality replacement.",
-                    ].map((txt, idx) => (
-                      <Box component="li" key={idx} sx={{ mb: 0.75 }}>
-                        <Typography
-                          sx={{
-                            color: "rgba(255,255,255,0.8)",
-                            lineHeight: 1.7,
-                          }}
-                        >
-                          {txt}
-                        </Typography>
-                      </Box>
-                    ))}
-                  </Box>
-                  <Typography
-                    sx={{
-                      color: "rgba(255,255,255,0.85)",
-                      mt: 1,
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    We’ll walk you through both options with honest pricing, so
-                    you can decide what’s best for your operation — not ours.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+                          <Typography sx={lowerBodySx}>{txt}</Typography>
+                        </Box>
+                      ))}
+                    </Box>
+                    <Typography
+                      sx={{
+                        ...lowerBodySx,
+                        color: "rgba(247,250,252,0.88)",
+                        mt: 1.5,
+                      }}
+                    >
+                      {option.close}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </Section>
 
       {/* ============================= PROCESS ============================ */}
-      <Section id="process">
-        <Container maxWidth="lg" sx={innerContainerSx}>
+      <Section id="process" sx={lowerAltSectionBgSx}>
+        <Container
+          maxWidth="lg"
+          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+        >
           <SectionTitle subtitle="Simple, transparent, and efficient.">
             Our Repair Process
           </SectionTitle>
@@ -2025,31 +1987,16 @@ export default function Home() {
                 title: "Test & Deliver",
                 txt: "Pressure test, verify smooth operation, and return your cylinder ready to reinstall.",
               },
-            ].map((s, i) => (
-              <Grid key={i} item xs={12} sm={6} md={3}>
-                <Box
-                  sx={{
-                    p: 3,
-                    height: "100%",
-                    borderRadius: 3,
-                    bgcolor: "#102A3A",
-                    border: "1px solid rgba(255,255,255,0.06)",
-                    color: "#fff",
-                  }}
-                >
-                  <Typography sx={{ fontWeight: 800, color: "#6EC1FF" }}>
-                    Step {s.step}
-                  </Typography>
-                  <Typography sx={{ fontWeight: 800, mt: 0.5 }}>
-                    {s.title}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      color: "rgba(255,255,255,0.8)",
-                      mt: 0.5,
-                      lineHeight: 1.7,
-                    }}
+            ].map((s) => (
+              <Grid key={s.step} item xs={12} sm={6} md={3}>
+                <Box sx={lowerPanelSx}>
+                  <Box
+                    sx={{ ...redBadgeSx, mb: 2, fontWeight: 950, fontSize: 18 }}
                   >
+                    {s.step}
+                  </Box>
+                  <Typography sx={lowerTitleSx}>{s.title}</Typography>
+                  <Typography sx={{ ...lowerBodySx, mt: 0.9 }}>
                     {s.txt}
                   </Typography>
                 </Box>
@@ -2060,133 +2007,82 @@ export default function Home() {
       </Section>
 
       {/* ========== QUALITY & TESTING ======================= */}
-      <AltSection id="quality">
-        <Container maxWidth="lg" sx={innerContainerSx}>
+      <AltSection id="quality" sx={lowerSectionBgSx}>
+        <Container
+          maxWidth="lg"
+          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+        >
           <SectionTitle subtitle="Your cylinders run under extreme pressure — we treat them that way.">
             Quality, Testing & Reliability
           </SectionTitle>
 
           <Grid container spacing={{ xs: 2, md: 3 }}>
-            <Grid item xs={12} md={6}>
-              <Box
-                sx={{
-                  p: 3,
-                  borderRadius: 3,
-                  bgcolor: "#0E2635",
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  color: "#fff",
-                  height: "100%",
-                }}
-              >
-                <Typography sx={{ fontWeight: 800, mb: 1 }}>
-                  Pressure Testing
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "rgba(255,255,255,0.8)",
-                    mb: 2,
-                    lineHeight: 1.7,
-                  }}
-                >
-                  Every repaired cylinder is pressure-tested to verify it holds
-                  and performs at proper operating pressures, with no leaks or
-                  bypassing.
-                </Typography>
-
-                <Typography sx={{ fontWeight: 800, mb: 1 }}>
-                  Micron-Level Measurements
-                </Typography>
-                <Typography
-                  sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}
-                >
-                  We check rod, barrel, and gland tolerances with micrometers
-                  and bore gauges to ensure components are in spec and will
-                  support long-term seal life.
-                </Typography>
-              </Box>
-            </Grid>
-
-            <Grid item xs={12} md={6}>
-              <Box
-                sx={{
-                  p: 3,
-                  borderRadius: 3,
-                  bgcolor: "#102A3A",
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  color: "#fff",
-                  height: "100%",
-                }}
-              >
-                <Typography sx={{ fontWeight: 800, mb: 1 }}>
-                  Clean Seal Installation
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "rgba(255,255,255,0.8)",
-                    mb: 2,
-                    lineHeight: 1.7,
-                  }}
-                >
-                  Seals are installed in a clean, controlled area to reduce
-                  contamination — a leading cause of early failure.
-                </Typography>
-
-                <Typography sx={{ fontWeight: 800, mb: 1 }}>
-                  Documentation on Request
-                </Typography>
-                <Typography
-                  sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}
-                >
-                  Need proof for your QA system or customer? We can provide test
-                  notes and repair details so you have a record of what was
-                  done.
-                </Typography>
-              </Box>
-            </Grid>
+            {[
+              [
+                "Pressure Testing",
+                "Every repaired cylinder is pressure-tested to verify it holds and performs at proper operating pressures, with no leaks or bypassing.",
+              ],
+              [
+                "Micron-Level Measurements",
+                "We check rod, barrel, and gland tolerances with micrometers and bore gauges to ensure components are in spec and will support long-term seal life.",
+              ],
+              [
+                "Clean Seal Installation",
+                "Seals are installed in a clean, controlled area to reduce contamination — a leading cause of early failure.",
+              ],
+              [
+                "Documentation on Request",
+                "Need proof for your QA system or customer? We can provide test notes and repair details so you have a record of what was done.",
+              ],
+            ].map(([title, text], i) => (
+              <Grid item xs={12} sm={6} md={3} key={title}>
+                <Box sx={lowerPanelSx}>
+                  <Typography sx={{ ...eyebrowSx, mb: 1 }}>
+                    QA 0{i + 1}
+                  </Typography>
+                  <Typography sx={lowerTitleSx}>{title}</Typography>
+                  <Typography sx={{ ...lowerBodySx, mt: 0.9 }}>
+                    {text}
+                  </Typography>
+                </Box>
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </AltSection>
 
       {/* =========================== SERVICE AREAS ======================== */}
-      <AltSection id="areas">
-        <Container maxWidth="lg" sx={innerContainerSx}>
+      <AltSection id="areas" sx={lowerAltSectionBgSx}>
+        <Container
+          maxWidth="lg"
+          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+        >
           <SectionTitle subtitle="Local pickup and delivery available.">
             Service Areas
           </SectionTitle>
 
           <Grid container spacing={{ xs: 2, md: 3 }}>
             <Grid item xs={12} md={6}>
-              <Box
-                sx={{
-                  p: 3,
-                  borderRadius: 3,
-                  bgcolor: "#0E2635",
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  color: "#fff",
-                  height: "100%",
-                }}
-              >
-                <Typography sx={{ fontWeight: 800, mb: 1 }}>
+              <Box sx={{ ...lowerPanelSx, p: { xs: 2.5, md: 3.25 } }}>
+                <Typography sx={lowerTitleSx}>
                   Primary Service Corridor
                 </Typography>
-                <Typography
-                  sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}
-                >
+                <Typography sx={{ ...lowerBodySx, mt: 0.9 }}>
                   Montgomery • Conroe • The Woodlands • Magnolia • Tomball •
                   Spring • Willis • New Caney • Splendora • Humble • Atascocita
                 </Typography>
 
                 <Divider
-                  sx={{ my: 2, borderColor: "rgba(255,255,255,0.12)" }}
+                  sx={{ my: 2.5, borderColor: "rgba(190,202,212,0.18)" }}
                 />
 
-                <Typography sx={{ fontWeight: 800, mb: 1 }}>
+                <Typography sx={lowerTitleSx}>
                   Additional Coverage Areas
                 </Typography>
                 <Typography
                   sx={{
-                    color: "rgba(255,255,255,0.8)",
-                    lineHeight: 1.7,
+                    ...lowerBodySx,
+                    mt: 0.9,
                     fontSize: { xs: 14.5, md: 15 },
                     columnCount: { xs: 1, md: 2 },
                     columnGap: 4,
@@ -2204,15 +2100,13 @@ export default function Home() {
                 </Typography>
 
                 <Divider
-                  sx={{ my: 2, borderColor: "rgba(255,255,255,0.12)" }}
+                  sx={{ my: 2.5, borderColor: "rgba(190,202,212,0.18)" }}
                 />
 
-                <Typography sx={{ fontWeight: 800, mb: 1 }}>
+                <Typography sx={lowerTitleSx}>
                   Key Industries We Support
                 </Typography>
-                <Typography
-                  sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}
-                >
+                <Typography sx={{ ...lowerBodySx, mt: 0.9 }}>
                   Waste & Recycling, Construction, Agriculture, Logistics,
                   Manufacturing and other hydraulic equipment operators across
                   the Lake Conroe / North Houston region.
@@ -2221,21 +2115,17 @@ export default function Home() {
             </Grid>
 
             <Grid item xs={12} md={6}>
-              <Card
-                sx={{
-                  height: "100%",
-                  bgcolor: "#102A3A",
-                  borderRadius: 3,
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  overflow: "hidden",
-                }}
-                elevation={0}
-              >
-                <CardImageMap alt="Vetech Hydraulics service area map" />
-                <CardContent sx={{ color: "#fff" }}>
-                  <Typography
-                    sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}
-                  >
+              <Card sx={{ ...lowerPanelSx, p: 0 }} elevation={0}>
+                <Box
+                  sx={{
+                    borderBottom: "1px solid rgba(190,202,212,0.18)",
+                    position: "relative",
+                  }}
+                >
+                  <CardImageMap alt="Vetech Hydraulics service area map" />
+                </Box>
+                <CardContent sx={{ color: "#fff", p: { xs: 2.5, md: 3 } }}>
+                  <Typography sx={lowerBodySx}>
                     Typical service radius for pickup, delivery, and on-site
                     support. If you&apos;re near this map, there&apos;s a good
                     chance we can help.
@@ -2248,21 +2138,34 @@ export default function Home() {
       </AltSection>
 
       {/* =============================== CTA ============================== */}
-      <Section id="quote">
+      <Section id="quote" sx={lowerSectionBgSx}>
         <Container
           maxWidth="lg"
-          sx={{ ...innerContainerSx, textAlign: "center" }}
+          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
         >
-          <SectionTitle subtitle="Send a picture for a fast quote.">
-            Ready to Get Your Cylinder Fixed?
-          </SectionTitle>
-          <ConsultationButton />
+          <Box
+            sx={{
+              ...lowerPanelSx,
+              p: { xs: 3, md: 5 },
+              textAlign: "center",
+              backgroundImage:
+                "radial-gradient(circle at 50% 0%, rgba(215,25,32,0.16), transparent 34%), linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.018))",
+            }}
+          >
+            <SectionTitle subtitle="Send a picture for a fast quote.">
+              Ready to Get Your Cylinder Fixed?
+            </SectionTitle>
+            <ConsultationButton />
+          </Box>
         </Container>
       </Section>
 
       {/* =============================== FAQ ============================== */}
-      <AltSection id="faq">
-        <Container maxWidth="lg" sx={innerContainerSx}>
+      <AltSection id="faq" sx={lowerAltSectionBgSx}>
+        <Container
+          maxWidth="lg"
+          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+        >
           <SectionTitle>FAQ</SectionTitle>
 
           {[
@@ -2282,37 +2185,58 @@ export default function Home() {
               q: "Can you pick up my cylinder from a job site?",
               a: "We offer pickup and delivery in Montgomery County and surrounding areas. Mobile pull/install options available.",
             },
-          ].map((item, i) => (
+          ].map((item) => (
             <Accordion
-              key={i}
+              key={item.q}
               disableGutters
               sx={{
-                bgcolor: "#0E2635",
+                bgcolor: "rgba(8,19,28,0.92)",
+                backgroundImage:
+                  "linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.014))",
                 color: "#fff",
-                borderRadius: 2,
+                borderRadius: "14px !important",
                 mb: 2,
-                border: "1px solid rgba(255,255,255,0.06)",
+                border: "1px solid rgba(190,202,212,0.2)",
+                boxShadow:
+                  "0 18px 44px rgba(0,0,0,0.24), inset 0 1px 0 rgba(255,255,255,0.07)",
+                overflow: "hidden",
                 "&:before": { display: "none" },
+                "&.Mui-expanded": {
+                  borderColor: "rgba(215,25,32,0.42)",
+                  boxShadow:
+                    "0 24px 58px rgba(0,0,0,0.34), 0 0 0 1px rgba(215,25,32,0.08), inset 0 1px 0 rgba(255,255,255,0.08)",
+                },
               }}
             >
               <AccordionSummary
-                expandIcon={<ExpandMoreIcon sx={{ color: "#fff" }} />}
+                expandIcon={
+                  <ExpandMoreIcon
+                    sx={{ color: industrialColors.hydraulicRed }}
+                  />
+                }
                 sx={{
+                  px: { xs: 2.25, md: 3 },
+                  py: 0.75,
+                  borderLeft: `3px solid ${industrialColors.hydraulicRed}`,
                   "& .MuiAccordionSummary-content": {
                     my: 1,
                   },
                 }}
               >
-                <Typography sx={{ fontWeight: 800, lineHeight: 1.25 }}>
+                <Typography
+                  sx={{
+                    fontWeight: 900,
+                    lineHeight: 1.25,
+                    color: industrialColors.text,
+                  }}
+                >
                   {item.q}
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails>
-                <Typography
-                  sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}
-                >
-                  {item.a}
-                </Typography>
+              <AccordionDetails
+                sx={{ px: { xs: 2.25, md: 3 }, pt: 0, pb: 2.5 }}
+              >
+                <Typography sx={lowerBodySx}>{item.a}</Typography>
               </AccordionDetails>
             </Accordion>
           ))}
