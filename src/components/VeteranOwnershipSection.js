@@ -27,7 +27,7 @@ export default function VeteranOwnershipSection({ iconSrc = "/sdvoc.png" }) {
         py: { xs: 5, md: 7.5 },
         overflow: "hidden",
         background:
-          "radial-gradient(circle at 14% 0%, rgba(215,25,32,0.16), transparent 34%), radial-gradient(circle at 86% 100%, rgba(110,193,255,0.08), transparent 30%), linear-gradient(180deg, #07131D 0%, #0A1721 46%, #08111A 100%)",
+          "radial-gradient(ellipse 34% 28% at 8% 18%, rgba(215,25,32,0.055), transparent 62%), radial-gradient(ellipse 42% 34% at 90% 12%, rgba(110,193,255,0.075), transparent 64%), radial-gradient(ellipse 58% 48% at 74% 88%, rgba(16,42,58,0.42), transparent 70%), linear-gradient(180deg, #050A0F 0%, #081522 46%, #050E16 100%)",
         borderTop: "1px solid rgba(190,202,212,0.24)",
         borderBottom: "1px solid rgba(190,202,212,0.18)",
         "&::before": {
@@ -35,9 +35,12 @@ export default function VeteranOwnershipSection({ iconSrc = "/sdvoc.png" }) {
           position: "absolute",
           inset: 0,
           pointerEvents: "none",
-          background:
-            "linear-gradient(90deg, transparent, rgba(190,202,212,0.16), rgba(215,25,32,0.32), rgba(190,202,212,0.16), transparent)",
-          height: 1,
+          opacity: 0.26,
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.88) 18%, rgba(0,0,0,0.48) 74%, transparent 100%)",
         },
         "&::after": {
           content: '""',
@@ -48,7 +51,7 @@ export default function VeteranOwnershipSection({ iconSrc = "/sdvoc.png" }) {
           height: 1,
           pointerEvents: "none",
           background:
-            "linear-gradient(90deg, transparent, rgba(190,202,212,0.22), rgba(215,25,32,0.44), rgba(190,202,212,0.22), transparent)",
+            "linear-gradient(90deg, transparent, rgba(190,202,212,0.2), rgba(215,25,32,0.22), rgba(190,202,212,0.2), transparent)",
         },
       }}
     >
@@ -61,7 +64,7 @@ export default function VeteranOwnershipSection({ iconSrc = "/sdvoc.png" }) {
               p: { xs: 2.25, sm: 3, md: 4 },
               overflow: "hidden",
               background:
-                "linear-gradient(145deg, rgba(255,255,255,0.085), rgba(255,255,255,0.018) 46%, rgba(215,25,32,0.035))",
+                "radial-gradient(ellipse at 86% 0%, rgba(110,193,255,0.065), transparent 42%), linear-gradient(145deg, rgba(255,255,255,0.082), rgba(255,255,255,0.018) 48%, rgba(215,25,32,0.018))",
               border: "1px solid rgba(190,202,212,0.26)",
               boxShadow:
                 "0 28px 80px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.1)",
@@ -81,8 +84,8 @@ export default function VeteranOwnershipSection({ iconSrc = "/sdvoc.png" }) {
                 left: 0,
                 width: { xs: 4, md: 5 },
                 background:
-                  "linear-gradient(180deg, rgba(215,25,32,0.95), rgba(215,25,32,0.35), transparent)",
-                boxShadow: "0 0 28px rgba(215,25,32,0.32)",
+                  "linear-gradient(180deg, rgba(215,25,32,0.82), rgba(215,25,32,0.26), transparent)",
+                boxShadow: "0 0 22px rgba(215,25,32,0.22)",
                 pointerEvents: "none",
               },
             }}
