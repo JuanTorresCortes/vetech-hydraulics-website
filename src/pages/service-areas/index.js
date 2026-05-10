@@ -8,13 +8,9 @@ import {
   Container,
   Typography,
   Grid,
-  Card,
-  CardContent,
   Button,
-  Divider,
   TextField,
   InputAdornment,
-  Chip,
   Stack,
   useMediaQuery,
   Link as MuiLink,
@@ -25,9 +21,20 @@ import SearchIcon from "@mui/icons-material/Search";
 import PlaceIcon from "@mui/icons-material/Place";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import VerifiedIcon from "@mui/icons-material/Verified";
-import ConsultationButton from "../../components/ConsultationButton";
+import EngineeringIcon from "@mui/icons-material/Engineering";
+import {
+  bodyCopySx,
+  containerSx,
+  eyebrowSx,
+  headlineSx,
+  industrialCardSx,
+  industrialColors,
+  primaryCtaSx,
+  secondaryCtaSx,
+  sectionBase,
+} from "../../utils/visualStyles";
 import backHoe from "../../image/backHoe.webp";
-import { red } from "@mui/material/colors";
+import map from "../../image/map.webp";
 
 /* --------------------------------- Layout -------------------------------- */
 const FullBleed = {
@@ -40,87 +47,153 @@ const Hero = styled(Box)(({ theme }) => ({
   ...FullBleed,
   display: "flex",
   justifyContent: "center",
-  alignItems: "flex-end",
-  backgroundColor: "#142B3E",
+  alignItems: "center",
+  minHeight: "74vh",
   color: "#fff",
   position: "relative",
-  textAlign: "center",
+  textAlign: "left",
   padding: 0,
   overflow: "hidden",
-
-  // Desktop / large screens
-  minHeight: "92vh",
-
-  // Large laptops
-  [theme.breakpoints.down("xl")]: {
-    minHeight: "90vh",
+  backgroundColor: "#050A0F",
+  [theme.breakpoints.down("lg")]: { minHeight: "70vh" },
+  [theme.breakpoints.down("md")]: { minHeight: "66svh" },
+  [theme.breakpoints.down("sm")]: { minHeight: "62svh" },
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    pointerEvents: "none",
+    opacity: 0.32,
+    backgroundImage:
+      "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+    backgroundSize: "54px 54px",
+    maskImage:
+      "linear-gradient(to bottom, rgba(0,0,0,0.72), rgba(0,0,0,0.42), transparent 86%)",
+    zIndex: 1,
   },
-
-  // Laptops / landscape tablets
-  [theme.breakpoints.down("lg")]: {
-    minHeight: "85vh",
-  },
-
-  // Tablets
-  [theme.breakpoints.down("md")]: {
-    minHeight: "75svh",
-  },
-
-  // Phones
-  [theme.breakpoints.down("sm")]: {
-    minHeight: "65svh",
-  },
-
-  // Very small phones (old iPhones / SE)
-  "@media (max-width: 321px)": {
-    minHeight: "120svh",
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: "6%",
+    right: "6%",
+    bottom: 0,
+    height: 1,
+    pointerEvents: "none",
+    background:
+      "linear-gradient(90deg, transparent, rgba(190,202,212,0.55), rgba(215,25,32,0.72), rgba(190,202,212,0.55), transparent)",
+    zIndex: 3,
   },
 }));
 
 const Section = styled("section")(({ theme }) => ({
-  ...FullBleed,
-  paddingBlock: theme.spacing(8),
-  [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
+  ...sectionBase(theme),
   backgroundColor: "#0F2331",
-  overflow: "hidden",
 }));
 
 const AltSection = styled("section")(({ theme }) => ({
-  ...FullBleed,
-  paddingBlock: theme.spacing(8),
-  [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
+  ...sectionBase(theme),
   backgroundColor: "#0B1B27",
-  overflow: "hidden",
 }));
 
-const SectionTitle = ({ children, subtitle }) => (
-  <Box sx={{ textAlign: "center", mb: 5 }}>
-    <Typography
-      component="h2"
-      variant="h3"
-      sx={{
-        color: "#fff",
-        fontWeight: 900,
-        fontSize: {
-          xs: "clamp(22px, 6.2vw, 34px)",
-          md: "clamp(28px, 3vw, 42px)",
-        },
-        textWrap: "balance",
-        lineHeight: 1.1,
-      }}
-    >
+const industrialSectionSx = {
+  position: "relative",
+  background:
+    "radial-gradient(circle at 10% 12%, rgba(215,25,32,0.105), transparent 28%), radial-gradient(circle at 92% 18%, rgba(110,193,255,0.07), transparent 26%), linear-gradient(180deg, #050A0F 0%, #0A1721 48%, #06111A 100%)",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    pointerEvents: "none",
+    opacity: 0.28,
+    backgroundImage:
+      "linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px)",
+    backgroundSize: "56px 56px",
+    maskImage:
+      "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.86) 18%, rgba(0,0,0,0.48) 78%, transparent 100%)",
+  },
+};
+
+const industrialAltSectionSx = {
+  ...industrialSectionSx,
+  background:
+    "radial-gradient(circle at 86% 16%, rgba(110,193,255,0.065), transparent 28%), radial-gradient(circle at 12% 84%, rgba(215,25,32,0.075), transparent 26%), linear-gradient(180deg, #07131D 0%, #091925 50%, #050D14 100%)",
+};
+
+const innerContainerSx = {
+  ...containerSx,
+  position: "relative",
+  zIndex: 1,
+};
+
+const contentWidthSx = { maxWidth: 1120, mx: "auto" };
+
+const premiumCardSx = {
+  ...industrialCardSx,
+  position: "relative",
+  height: "100%",
+  overflow: "hidden",
+  p: { xs: 2.5, md: 3 },
+  bgcolor: "rgba(8,19,28,0.92)",
+  backgroundImage:
+    "linear-gradient(145deg, rgba(255,255,255,0.085), rgba(255,255,255,0.018) 52%, rgba(215,25,32,0.022))",
+  border: `1px solid ${industrialColors.steel}`,
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 3,
+    background:
+      "linear-gradient(90deg, rgba(215,25,32,0.92), rgba(190,202,212,0.22), transparent)",
+    pointerEvents: "none",
+  },
+};
+
+const markerSx = {
+  width: 44,
+  height: 44,
+  borderRadius: 2,
+  display: "grid",
+  placeItems: "center",
+  color: "#fff",
+  bgcolor: "rgba(215,25,32,0.16)",
+  border: "1px solid rgba(215,25,32,0.38)",
+  boxShadow:
+    "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 22px rgba(215,25,32,0.16)",
+};
+
+const cardTitleSx = {
+  color: industrialColors.text,
+  fontWeight: 950,
+  fontSize: { xs: 18, md: 20 },
+  lineHeight: 1.16,
+  letterSpacing: "-0.02em",
+};
+
+const cardBodySx = {
+  color: industrialColors.mutedText,
+  lineHeight: 1.72,
+  fontSize: { xs: 14.5, md: 15.5 },
+};
+
+const SectionTitle = ({ children, eyebrow, subtitle }) => (
+  <Box sx={{ textAlign: "center", mb: { xs: 4, md: 6 } }}>
+    {eyebrow && (
+      <Typography sx={{ ...eyebrowSx, mb: 1.25 }}>{eyebrow}</Typography>
+    )}
+    <Typography component="h2" variant="h3" sx={headlineSx}>
       {children}
     </Typography>
 
     {subtitle && (
       <Typography
         sx={{
-          color: "rgba(255,255,255,0.78)",
-          mt: 1,
+          ...bodyCopySx,
+          mt: 1.25,
           maxWidth: 880,
           mx: "auto",
           textWrap: "balance",
-          lineHeight: 1.7,
         }}
       >
         {subtitle}
@@ -165,6 +238,33 @@ const CORE_CITIES = [
   "Splendora",
   "Humble",
   "Atascocita",
+];
+
+const PRIMARY_CITY_CARDS = [
+  {
+    city: "Magnolia",
+    text: "Hydraulic cylinder repair, cylinder repacking, pickup, and delivery support for Magnolia contractors, fleets, and job sites.",
+  },
+  {
+    city: "Montgomery",
+    text: "Local hydraulic repair coordination for Montgomery equipment owners needing dependable cylinder turnaround and pressure-tested repairs.",
+  },
+  {
+    city: "Conroe",
+    text: "Cylinder repair and repacking for Conroe heavy equipment, trash trucks, dump trailers, and commercial fleet operations.",
+  },
+  {
+    city: "The Woodlands",
+    text: "Fleet and job-site hydraulic support near The Woodlands with service options for commercial equipment and cylinder leaks.",
+  },
+  {
+    city: "Tomball",
+    text: "Hydraulic cylinder repair support for Tomball contractors, construction equipment, agriculture equipment, and work trucks.",
+  },
+  {
+    city: "North Houston",
+    text: "North Houston service-area support for heavy equipment cylinders, pickup/delivery planning, and fast repair communication.",
+  },
 ];
 
 const EXTENDED_CITIES = [
@@ -219,6 +319,33 @@ const FOCUS_PARTS = [
 ];
 
 const combinedFocus = FOCUS_PARTS.join(" • ");
+
+const supportCards = [
+  {
+    Icon: LocalShippingIcon,
+    title: "Pickup & Delivery Planning",
+    text: "Coordinate cylinder pickup and delivery across Montgomery County and North Houston when downtime matters.",
+  },
+  {
+    Icon: VerifiedIcon,
+    title: "Pressure-Tested Repairs",
+    text: "Repaired cylinders are checked for leak control and dependable operation before return to service.",
+  },
+  {
+    Icon: EngineeringIcon,
+    title: "Built for Fleets",
+    text: "Support for trash trucks, heavy equipment, construction machinery, agriculture equipment, and commercial fleets.",
+  },
+];
+
+const commercialSupport = [
+  "Fleets",
+  "Contractors",
+  "Trash trucks",
+  "Construction equipment",
+  "Agricultural equipment",
+  "Industrial machinery",
+];
 
 /* --------------------------- JSON-LD Schema ------------------------------ */
 const canonicalUrl = "https://www.vetechhydraulics.com/service-areas";
@@ -323,7 +450,7 @@ export default function ServiceAreasOverview() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to top, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.25) 85%)",
+              "radial-gradient(circle at 16% 30%, rgba(215,25,32,0.24), transparent 30%), radial-gradient(circle at 88% 18%, rgba(110,193,255,0.1), transparent 28%), linear-gradient(90deg, rgba(2,6,10,0.94) 0%, rgba(5,14,22,0.82) 48%, rgba(2,6,10,0.66) 100%), linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0.28))",
           }}
         />
 
@@ -331,247 +458,251 @@ export default function ServiceAreasOverview() {
           maxWidth={false}
           disableGutters
           sx={{
-            px: { xs: 2, sm: 3 },
-            pb: { xs: 3, md: 6 },
+            ...containerSx,
+            py: { xs: 7, md: 10 },
             position: "relative",
-            zIndex: 1,
+            zIndex: 2,
           }}
         >
-          <Box
-            sx={{
-              maxWidth: 1100,
-              mx: "auto",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center", // 🔑 centers EVERYTHING
-              textAlign: "center", // 🔑 fixes perceived offset
-            }}
-          >
-            <Typography
-              variant="h1"
-              component="h1"
-              sx={{
-                fontWeight: 900,
-                fontSize: { xs: "clamp(26px, 7vw, 34px)", md: 48 },
-                lineHeight: 1.05,
-                textWrap: "balance",
-              }}
-            >
-              Hydraulic Cylinder Repair Service Areas
-            </Typography>
+          <Box sx={contentWidthSx}>
+            <Box sx={{ maxWidth: 940 }}>
+              <Typography sx={{ ...eyebrowSx, mb: 1.5 }}>
+                NORTH HOUSTON SERVICE AREAS
+              </Typography>
 
-            <Typography
-              sx={{
-                mt: 1.5,
-                color: "rgba(255,255,255,0.82)",
-                maxWidth: 820,
-                fontSize: { xs: 14.5, sm: 16 },
-                lineHeight: 1.75,
-                textAlign: "center",
-              }}
-            >
-              Coverage across Montgomery County and the North Houston corridor —
-              with pickup, delivery, and fast turnarounds for trash trucks and
-              heavy equipment.
-            </Typography>
+              <Typography
+                variant="h1"
+                component="h1"
+                sx={{
+                  color: industrialColors.text,
+                  fontWeight: 950,
+                  fontSize: {
+                    xs: "clamp(34px, 10vw, 54px)",
+                    md: "clamp(50px, 5.4vw, 76px)",
+                  },
+                  lineHeight: 0.98,
+                  letterSpacing: "-0.06em",
+                  textWrap: "balance",
+                }}
+              >
+                Hydraulic Cylinder Repair Across Montgomery County and North
+                Houston
+              </Typography>
 
-            <Stack
-              direction={{ xs: "column", sm: "row" }}
-              spacing={1}
-              alignItems="center"
-              justifyContent="center" // 🔑
-              sx={{ mt: 2.25 }}
-            >
-              <Chip
-                icon={<LocalShippingIcon />}
-                label="Pickup & delivery options"
+              <Typography
                 sx={{
-                  bgcolor: "rgba(0,0,0,0.35)",
-                  color: "#fff",
-                  border: "1px solid rgba(255,255,255,0.12)",
+                  mt: 2,
+                  ...bodyCopySx,
+                  maxWidth: 820,
+                  fontSize: { xs: 15.5, md: 18 },
+                  color: "rgba(231,238,244,0.84)",
                 }}
-              />
-              <Chip
-                icon={<VerifiedIcon />}
-                label="Leak-tested before delivery"
-                sx={{
-                  bgcolor: "rgba(0,0,0,0.35)",
-                  color: "#fff",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                }}
-              />
-              <Chip
-                icon={<PlaceIcon />}
-                label="North Houston + Montgomery County"
-                sx={{
-                  bgcolor: "rgba(0,0,0,0.35)",
-                  color: "#fff",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                }}
-              />
-            </Stack>
+              >
+                Hydraulic cylinder repair, cylinder repacking, pickup and
+                delivery, and job-site support for heavy equipment, fleets, and
+                work sites across Montgomery, Conroe, Magnolia, The Woodlands,
+                Tomball, and North Houston.
+              </Typography>
 
-            <Box sx={{ mt: 2.5 }}>
-              <ConsultationButton />
+              <Stack
+                direction={{ xs: "column", sm: "row" }}
+                spacing={1.5}
+                sx={{ mt: { xs: 3, md: 4 } }}
+              >
+                <Button
+                  component={Link}
+                  href="/contact"
+                  variant="contained"
+                  sx={primaryCtaSx}
+                >
+                  Request Service
+                </Button>
+                <Button
+                  component={Link}
+                  href="/services"
+                  variant="outlined"
+                  sx={secondaryCtaSx}
+                >
+                  View Services
+                </Button>
+              </Stack>
             </Box>
           </Box>
         </Container>
       </Hero>
 
-      {/* =============================== QUICK VALUE =============================== */}
-      <Section>
-        <Container
-          maxWidth={false}
-          disableGutters
-          sx={{ px: { xs: 2, sm: 3 } }}
-        >
-          <Box sx={{ maxWidth: 1100, mx: "auto" }}>
-            <SectionTitle subtitle="Get a fast answer on coverage, pickup options, and what to expect for your cylinder type.">
-              Find your city, get a quicker turnaround
+      {/* ========================= PRIMARY SERVICE AREAS ======================= */}
+      <Section sx={industrialSectionSx}>
+        <Container maxWidth={false} disableGutters sx={innerContainerSx}>
+          <Box sx={contentWidthSx}>
+            <SectionTitle
+              eyebrow="PRIMARY SERVICE CORRIDOR"
+              subtitle="Premium hydraulic cylinder repair support for the cities where we most commonly coordinate pickup, delivery, and fleet-service logistics."
+            >
+              Core Service Areas
             </SectionTitle>
 
-            <Grid container spacing={3}>
-              {[
-                {
-                  title: "Accurate quotes",
-                  text: "City-specific expectations help us quote quicker and tighter — seal kits, rod polish, repairs, and logistics.",
-                },
-                {
-                  title: "Less downtime",
-                  text: "Pickup/drop-off coordination and clear testing steps means fewer delays and fewer repeat installs.",
-                },
-                {
-                  title: "Built for fleets",
-                  text: "We routinely support trash trucks, heavy equipment, and work trucks operating under real deadlines.",
-                },
-              ].map((item, i) => (
-                <Grid item xs={12} md={4} key={i}>
-                  <Card
-                    elevation={0}
-                    sx={{
-                      height: "100%",
-                      bgcolor: "#102A3A",
-                      borderRadius: 3,
-                      border: "1px solid rgba(255,255,255,0.06)",
-                    }}
-                  >
-                    <CardContent sx={{ color: "#fff" }}>
-                      <Typography variant="h6" sx={{ fontWeight: 900, mb: 1 }}>
-                        {item.title}
-                      </Typography>
-                      <Typography sx={{ color: "rgba(255,255,255,0.85)" }}>
-                        {item.text}
-                      </Typography>
-                    </CardContent>
-                  </Card>
+            <Grid container spacing={{ xs: 2, md: 3 }}>
+              {PRIMARY_CITY_CARDS.map((item) => (
+                <Grid item xs={12} sm={6} md={4} key={item.city}>
+                  <Box sx={premiumCardSx}>
+                    <Stack direction="row" spacing={1.5} alignItems="center">
+                      <Box sx={markerSx}>
+                        <PlaceIcon fontSize="small" />
+                      </Box>
+                      <Typography sx={cardTitleSx}>{item.city}, TX</Typography>
+                    </Stack>
+                    <Typography sx={{ ...cardBodySx, mt: 1.5 }}>
+                      {item.text}
+                    </Typography>
+                    <Button
+                      component={Link}
+                      href={buildAreaPath(item.city)}
+                      variant="outlined"
+                      sx={{ ...secondaryCtaSx, mt: 2.25, width: "100%" }}
+                    >
+                      View {item.city} Page
+                    </Button>
+                  </Box>
                 </Grid>
               ))}
             </Grid>
-
-            <Divider
-              sx={{
-                my: { xs: 4, md: 5 },
-                borderColor: "rgba(255,255,255,0.12)",
-              }}
-            />
-
-            <Box
-              sx={{
-                p: { xs: 2.5, sm: 3.5 },
-                borderRadius: 3,
-                bgcolor: "#0E2635",
-                border: "1px solid rgba(255,255,255,0.07)",
-              }}
-            >
-              <Typography sx={{ color: "#6EC1FF", fontWeight: 900, mb: 1 }}>
-                Work we commonly support
-              </Typography>
-              <Typography
-                sx={{ color: "rgba(255,255,255,0.86)", lineHeight: 1.75 }}
-              >
-                {combinedFocus}
-              </Typography>
-            </Box>
           </Box>
         </Container>
       </Section>
 
-      {/* ========================= CORE CORRIDOR ======================= */}
-      <AltSection>
-        <Container
-          maxWidth={false}
-          disableGutters
-          sx={{ px: { xs: 2, sm: 3 } }}
-        >
-          <Box sx={{ maxWidth: 1100, mx: "auto" }}>
-            <SectionTitle subtitle="Most-requested cities with the fastest logistics.">
-              Core service corridor
-            </SectionTitle>
+      {/* ========================= MAP / SERVICE RADIUS ======================= */}
+      <AltSection sx={industrialAltSectionSx}>
+        <Container maxWidth={false} disableGutters sx={innerContainerSx}>
+          <Box sx={contentWidthSx}>
+            <Grid container spacing={{ xs: 3, md: 5 }} alignItems="center">
+              <Grid item xs={12} md={5.2}>
+                <Typography sx={{ ...eyebrowSx, mb: 1.25 }}>
+                  PICKUP, DELIVERY & JOB-SITE SUPPORT
+                </Typography>
+                <Typography component="h2" variant="h3" sx={headlineSx}>
+                  Service Radius Built Around Uptime
+                </Typography>
+                <Typography sx={{ ...bodyCopySx, mt: 1.5 }}>
+                  We support hydraulic cylinder repair and repacking needs
+                  across the Lake Conroe, Montgomery County, and North Houston
+                  region with pickup/delivery planning and job-site coordination
+                  when equipment cannot sit idle.
+                </Typography>
+                <Box sx={{ ...premiumCardSx, mt: 3 }}>
+                  <Typography sx={{ ...eyebrowSx, mb: 1 }}>
+                    COMMON SERVICE SUPPORT
+                  </Typography>
+                  <Typography sx={cardBodySx}>{combinedFocus}</Typography>
+                </Box>
+              </Grid>
 
-            <Grid container spacing={3}>
-              {CORE_CITIES.map((city) => (
-                <Grid item xs={12} sm={6} md={4} key={city}>
-                  <Card
-                    elevation={0}
+              <Grid item xs={12} md={6.8}>
+                <Box sx={{ ...premiumCardSx, p: 0 }}>
+                  <Box
                     sx={{
-                      height: "100%",
-                      bgcolor: "#102A3A",
-                      borderRadius: 3,
-                      border: "1px solid rgba(255,255,255,0.06)",
-                      display: "flex",
-                      flexDirection: "column",
+                      position: "relative",
+                      width: "100%",
+                      pb: "62%",
+                      overflow: "hidden",
+                      borderBottom: "1px solid rgba(190,202,212,0.18)",
                     }}
                   >
-                    <CardContent sx={{ color: "#fff", flex: 1 }}>
-                      <Typography variant="h6" sx={{ fontWeight: 900 }}>
-                        {city}, TX
-                      </Typography>
-                      <Typography
-                        sx={{ color: "rgba(255,255,255,0.82)", mt: 1 }}
-                      >
-                        Pickup/delivery options, expected turnaround, and
-                        cylinder types we commonly handle in {city}.
-                      </Typography>
-
-                      <Divider
-                        sx={{ my: 2, borderColor: "rgba(255,255,255,0.12)" }}
-                      />
-
-                      <Button
-                        component={Link}
-                        href={buildAreaPath(city)}
-                        variant="outlined"
-                        sx={{
-                          color: "#6EC1FF",
-                          borderColor: "rgba(110,193,255,0.4)",
-                          textTransform: "none",
-                          fontWeight: 800,
-                        }}
-                      >
-                        View {city} page
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              ))}
+                    <Image
+                      src={map}
+                      alt="Vetech Hydraulics North Houston and Montgomery County service area map"
+                      fill
+                      sizes="(max-width: 900px) 100vw, 620px"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </Box>
+                  <Box sx={{ p: { xs: 2.5, md: 3 } }}>
+                    <Typography sx={cardTitleSx}>North Houston Coverage</Typography>
+                    <Typography sx={{ ...cardBodySx, mt: 1 }}>
+                      Typical service radius for pickup, delivery, and on-site
+                      support. If you are near this corridor, there is a good
+                      chance we can help plan the fastest path back to service.
+                    </Typography>
+                  </Box>
+                </Box>
+              </Grid>
             </Grid>
           </Box>
         </Container>
       </AltSection>
 
-      {/* ========================= ALL CITIES (SEARCH + GROUPED) ======================= */}
-      <Section>
-        <Container
-          maxWidth={false}
-          disableGutters
-          sx={{ px: { xs: 2, sm: 3 } }}
-        >
-          <Box sx={{ maxWidth: 1100, mx: "auto" }}>
-            <SectionTitle subtitle="Search your city and jump to the local page.">
-              All service areas
+      {/* ========================= COMMERCIAL SUPPORT ======================= */}
+      <Section sx={industrialSectionSx}>
+        <Container maxWidth={false} disableGutters sx={innerContainerSx}>
+          <Box sx={contentWidthSx}>
+            <SectionTitle
+              eyebrow="COMMERCIAL HYDRAULIC SUPPORT"
+              subtitle="Service-area coverage is built around the equipment operators, fleets, and businesses that cannot afford repeat downtime."
+            >
+              Built for Fleets, Contractors, and Heavy Equipment
             </SectionTitle>
 
-            <Box sx={{ maxWidth: 520, mx: "auto", mb: 4 }}>
+            <Grid container spacing={{ xs: 2, md: 3 }} sx={{ mb: { xs: 3, md: 4 } }}>
+              {supportCards.map(({ Icon, title, text }) => (
+                <Grid item xs={12} md={4} key={title}>
+                  <Box sx={premiumCardSx}>
+                    <Box sx={markerSx}>
+                      <Icon fontSize="small" />
+                    </Box>
+                    <Typography sx={{ ...cardTitleSx, mt: 2 }}>
+                      {title}
+                    </Typography>
+                    <Typography sx={{ ...cardBodySx, mt: 1 }}>{text}</Typography>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+
+            <Grid container spacing={{ xs: 1.5, sm: 2 }}>
+              {commercialSupport.map((item) => (
+                <Grid item xs={12} sm={6} md={4} key={item}>
+                  <Box
+                    sx={{
+                      ...premiumCardSx,
+                      p: { xs: 2, md: 2.25 },
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 1.5,
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: 10,
+                        height: 10,
+                        borderRadius: "50%",
+                        bgcolor: industrialColors.hydraulicRed,
+                        boxShadow: "0 0 18px rgba(215,25,32,0.46)",
+                        flexShrink: 0,
+                      }}
+                    />
+                    <Typography sx={{ color: "#fff", fontWeight: 900 }}>
+                      {item}
+                    </Typography>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        </Container>
+      </Section>
+
+      {/* ========================= ALL CITIES (SEARCH + GROUPED) ======================= */}
+      <AltSection sx={industrialAltSectionSx}>
+        <Container maxWidth={false} disableGutters sx={innerContainerSx}>
+          <Box sx={contentWidthSx}>
+            <SectionTitle
+              eyebrow="EXTENDED SERVICE AREAS"
+              subtitle="Search your city and jump to the local hydraulic cylinder repair page."
+            >
+              All Service Areas
+            </SectionTitle>
+
+            <Box sx={{ maxWidth: 620, mx: "auto", mb: { xs: 3, md: 4 } }}>
               <TextField
                 fullWidth
                 value={query}
@@ -581,21 +712,30 @@ export default function ServiceAreasOverview() {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <SearchIcon sx={{ color: "rgba(255,255,255,0.7)" }} />
+                      <SearchIcon sx={{ color: "rgba(247,250,252,0.72)" }} />
                     </InputAdornment>
                   ),
                 }}
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     color: "#fff",
-                    bgcolor: "rgba(0,0,0,0.18)",
-                    borderRadius: 2,
+                    bgcolor: "rgba(3,7,11,0.44)",
+                    borderRadius: 2.5,
+                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06)",
                   },
                   "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgba(255,255,255,0.18)",
+                    borderColor: "rgba(190,202,212,0.24)",
                   },
                   "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgba(110,193,255,0.45)",
+                    borderColor: "rgba(190,202,212,0.44)",
+                  },
+                  "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: `${industrialColors.hydraulicRed} !important`,
+                    borderWidth: "1px !important",
+                  },
+                  "& input::placeholder": {
+                    color: "rgba(231,238,244,0.62)",
+                    opacity: 1,
                   },
                 }}
               />
@@ -603,7 +743,7 @@ export default function ServiceAreasOverview() {
               <Typography
                 sx={{
                   mt: 1,
-                  color: "rgba(255,255,255,0.75)",
+                  color: "rgba(231,238,244,0.72)",
                   fontSize: 13.5,
                   textAlign: "center",
                 }}
@@ -614,48 +754,30 @@ export default function ServiceAreasOverview() {
             </Box>
 
             {filtered.length === 0 ? (
-              <Box
-                sx={{
-                  p: 3,
-                  borderRadius: 3,
-                  bgcolor: "#102A3A",
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  textAlign: "center",
-                }}
-              >
-                <Typography sx={{ color: "#fff", fontWeight: 900 }}>
-                  No matches found.
+              <Box sx={{ ...premiumCardSx, textAlign: "center" }}>
+                <Typography sx={cardTitleSx}>No matches found.</Typography>
+                <Typography sx={{ ...cardBodySx, mt: 1 }}>
+                  Send us your location and a photo of the cylinder — we’ll
+                  confirm coverage, pickup/delivery options, and the fastest
+                  path forward.
                 </Typography>
-                <Typography sx={{ color: "rgba(255,255,255,0.82)", mt: 1 }}>
-                  Text us your location and a photo of the cylinder — we’ll
-                  confirm coverage and options.
-                </Typography>
-                <Box sx={{ mt: 2 }}>
-                  <ConsultationButton />
-                </Box>
+                <Button
+                  component={Link}
+                  href="/contact"
+                  variant="contained"
+                  sx={{ ...primaryCtaSx, mt: 2.5 }}
+                >
+                  Request Service
+                </Button>
               </Box>
             ) : (
-              <Grid container spacing={3}>
+              <Grid container spacing={{ xs: 2, md: 2.5 }}>
                 {Object.keys(grouped)
                   .sort()
                   .map((letter) => (
                     <Grid item xs={12} key={letter}>
-                      <Box
-                        sx={{
-                          p: { xs: 2, sm: 2.5 },
-                          borderRadius: 3,
-                          bgcolor: "#102A3A",
-                          border: "1px solid rgba(255,255,255,0.06)",
-                        }}
-                      >
-                        <Typography
-                          sx={{
-                            color: "#6EC1FF",
-                            fontWeight: 900,
-                            mb: 1,
-                            fontSize: 16,
-                          }}
-                        >
+                      <Box sx={{ ...premiumCardSx, p: { xs: 2, sm: 2.5 } }}>
+                        <Typography sx={{ ...eyebrowSx, mb: 1.25 }}>
                           {letter}
                         </Typography>
 
@@ -670,16 +792,18 @@ export default function ServiceAreasOverview() {
                                   width: "100%",
                                   justifyContent: "space-between",
                                   textTransform: "none",
-                                  fontWeight: 800,
-                                  color: "#fff",
-                                  bgcolor: "rgba(0,0,0,0.18)",
-                                  border: "1px solid rgba(255,255,255,0.10)",
+                                  fontWeight: 850,
+                                  color: industrialColors.text,
+                                  bgcolor: "rgba(3,7,11,0.34)",
+                                  border: "1px solid rgba(190,202,212,0.16)",
                                   borderRadius: 2,
                                   px: 1.5,
                                   py: 1.1,
+                                  minWidth: 0,
                                   "&:hover": {
-                                    bgcolor: "rgba(110,193,255,0.08)",
-                                    borderColor: "rgba(110,193,255,0.30)",
+                                    color: "#fff",
+                                    bgcolor: "rgba(215,25,32,0.11)",
+                                    borderColor: "rgba(215,25,32,0.36)",
                                   },
                                 }}
                               >
@@ -696,42 +820,69 @@ export default function ServiceAreasOverview() {
             )}
           </Box>
         </Container>
-      </Section>
-
-      {/* ============================= FINAL CTA ============================ */}
-      <AltSection>
-        <Container
-          maxWidth={false}
-          disableGutters
-          sx={{ px: { xs: 2, sm: 3 }, textAlign: "center" }}
-        >
-          <Box sx={{ maxWidth: 980, mx: "auto" }}>
-            <Typography
-              component="h2"
-              variant="h4"
-              sx={{
-                color: "#fff",
-                fontWeight: 900,
-                mb: 1,
-                fontSize: { xs: 24, sm: 28, md: 34 },
-                textWrap: "balance",
-              }}
-            >
-              Not sure if we cover your location?
-            </Typography>
-            <Typography sx={{ color: "rgba(255,255,255,0.85)", mb: 3 }}>
-              Send your city and a quick cylinder photo — we’ll confirm
-              coverage, pickup/delivery options, and the fastest path to get you
-              back in service.
-            </Typography>
-            <ConsultationButton />
-          </Box>
-        </Container>
       </AltSection>
 
-      {/* ============================= MOBILE STICKY CTA (optional) ============================ */}
+      {/* ============================= FINAL CTA ============================ */}
+      <Section sx={industrialSectionSx}>
+        <Container maxWidth={false} disableGutters sx={innerContainerSx}>
+          <Box sx={contentWidthSx}>
+            <Box
+              sx={{
+                ...premiumCardSx,
+                p: { xs: 3, md: 5 },
+                textAlign: "center",
+                backgroundImage:
+                  "radial-gradient(circle at 50% 0%, rgba(215,25,32,0.16), transparent 34%), linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.018))",
+              }}
+            >
+              <Typography sx={{ ...eyebrowSx, mb: 1.25 }}>
+                LOCAL HYDRAULIC SUPPORT
+              </Typography>
+              <Typography component="h2" variant="h3" sx={headlineSx}>
+                Need Hydraulic Cylinder Repair Near You?
+              </Typography>
+              <Typography
+                sx={{
+                  ...bodyCopySx,
+                  mt: 1.5,
+                  mx: "auto",
+                  maxWidth: 760,
+                }}
+              >
+                Send your city, job-site location, and a quick cylinder photo —
+                we’ll confirm coverage, pickup/delivery options, and the fastest
+                path to get your equipment back in service.
+              </Typography>
+              <Stack
+                direction={{ xs: "column", sm: "row" }}
+                spacing={1.5}
+                justifyContent="center"
+                sx={{ mt: 3 }}
+              >
+                <Button
+                  component={Link}
+                  href="/contact"
+                  variant="contained"
+                  sx={primaryCtaSx}
+                >
+                  Request Service
+                </Button>
+                <Button
+                  component={Link}
+                  href="/contact"
+                  variant="outlined"
+                  sx={secondaryCtaSx}
+                >
+                  Contact Us
+                </Button>
+              </Stack>
+            </Box>
+          </Box>
+        </Container>
+      </Section>
+
+      {/* ============================= MOBILE STICKY CTA ============================ */}
       {isMobile && (
-        // Mobile Sticky Call CTA
         <Box
           sx={{
             position: "fixed",
@@ -739,13 +890,14 @@ export default function ServiceAreasOverview() {
             left: 0,
             right: 0,
             zIndex: 1300,
-            display: { xs: "flex", md: "none" }, // ✅ mobile only
+            display: { xs: "flex", md: "none" },
             justifyContent: "center",
             alignItems: "center",
             py: 1.25,
             px: 2,
-            bgcolor: "#0F2331",
-            borderTop: "1px solid rgba(255,255,255,0.12)",
+            bgcolor: "rgba(5,10,15,0.96)",
+            borderTop: "1px solid rgba(190,202,212,0.2)",
+            boxShadow: "0 -14px 34px rgba(0,0,0,0.38)",
           }}
         >
           <Typography
@@ -758,12 +910,12 @@ export default function ServiceAreasOverview() {
               letterSpacing: 0.2,
             }}
           >
-            <PhoneIcon sx={{ color: red[500] }} />
+            <PhoneIcon sx={{ color: industrialColors.hydraulicRed }} />
 
             <MuiLink
               href="tel:+19362496042"
               sx={{
-                color: red[500],
+                color: industrialColors.hydraulicRed,
                 textDecoration: "none",
                 fontWeight: 900,
               }}
