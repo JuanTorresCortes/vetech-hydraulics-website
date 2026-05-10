@@ -164,7 +164,7 @@ export default function VeteranOwnershipSection({ iconSrc = "/sdvoc.png" }) {
                 </Typography>
 
                 <Typography
-                  component="h2"_
+                  component="h2"
                   sx={{
                     ...headlineSx,
                     fontSize: {
