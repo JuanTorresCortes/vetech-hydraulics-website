@@ -13,6 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import { containerSx, primaryCtaSx } from "../utils/visualStyles";
+import PhoneIcon from "@mui/icons-material/Phone";
 
 // Footer service links intentionally point to broad pages rather than every individual subsection.
 const services = [
@@ -271,13 +272,14 @@ export default function Footer() {
             </Stack>
 
             <Button
-              component={NextLink}
-              href="/contact"
+              component="a"
+              href="tel:+19362496042"
               variant="contained"
               fullWidth
+              startIcon={<PhoneIcon />}
               sx={{ ...primaryCtaSx, py: 1.35 }}
             >
-              Request Service
+              Call Now
             </Button>
           </Grid>
         </Grid>

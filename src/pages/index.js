@@ -26,6 +26,8 @@ import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
 import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import EngineeringIcon from "@mui/icons-material/Engineering";
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
 import { styled } from "@mui/system";
 import {
   bodyCopySx,
@@ -500,9 +502,10 @@ export default function Home() {
                   sx={{ mb: 1.5, alignItems: { xs: "stretch", sm: "center" } }}
                 >
                   <Button
-                    component={NextLink}
-                    href="/contact"
+                    component="a"
+                    href="tel:+19362496042"
                     variant="contained"
+                    startIcon={<PhoneIcon />}
                     sx={{
                       px: { xs: 3.5, md: 4.5 },
                       py: 1.55,
@@ -522,7 +525,7 @@ export default function Home() {
                       },
                     }}
                   >
-                    Request Service
+                    Call Now
                   </Button>
 
                   <Button
@@ -1211,9 +1214,10 @@ export default function Home() {
             </Box>
             <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
               <Button
-                component={NextLink}
-                href="/contact"
+                component="a"
+                href="tel:+19362496042"
                 variant="contained"
+                startIcon={<PhoneIcon />}
                 sx={{
                   px: 3.5,
                   py: 1.35,
@@ -1226,7 +1230,7 @@ export default function Home() {
                   "&:hover": { bgcolor: "#B9151B" },
                 }}
               >
-                Request Service
+                Call Now
               </Button>
               <Button
                 component={NextLink}
@@ -1471,9 +1475,10 @@ export default function Home() {
               alignItems={{ xs: "stretch", sm: "center" }}
             >
               <Button
-                component={NextLink}
-                href="/contact"
+                component="a"
+                href="tel:+19362496042"
                 variant="contained"
+                startIcon={<PhoneIcon />}
                 sx={{
                   px: { xs: 3.5, md: 4.5 },
                   py: 1.45,
@@ -1489,12 +1494,13 @@ export default function Home() {
                   "&:hover": { bgcolor: "#B9151B" },
                 }}
               >
-                Request Service
+                Call Now
               </Button>
               <Button
-                component={NextLink}
-                href="/contact"
+                component="a"
+                href="mailto:juan@vetech-hydraulics.com"
                 variant="outlined"
+                startIcon={<EmailIcon />}
                 sx={{
                   px: { xs: 3.5, md: 4.5 },
                   py: 1.45,
@@ -1511,7 +1517,7 @@ export default function Home() {
                   },
                 }}
               >
-                Contact Us
+                Email Us
               </Button>
             </Stack>
           </Box>
@@ -1682,20 +1688,22 @@ export default function Home() {
                   sx={{ alignItems: "stretch" }}
                 >
                   <Button
-                    component={NextLink}
-                    href="/contact"
+                    component="a"
+                    href="tel:+19362496042"
                     variant="contained"
+                    startIcon={<PhoneIcon />}
                     sx={primaryCtaSx}
                   >
-                    Request Service
+                    Call Now
                   </Button>
                   <Button
-                    component={NextLink}
-                    href="/contact"
+                    component="a"
+                    href="mailto:juan@vetech-hydraulics.com"
                     variant="outlined"
+                    startIcon={<EmailIcon />}
                     sx={secondaryCtaSx}
                   >
-                    Contact Us
+                    Email Us
                   </Button>
                 </Stack>
               </Grid>
