@@ -1,10 +1,12 @@
 // scripts/rebuild-core-service-areas.js
-// Run with: node scripts/rebuild-core-service-areas.js
+// Rebuilds the core city service-area pages from a shared template, overwriting existing files.
+// Run with: node scripts/rebuild-core-service-areas.js when core-city copy or template structure changes.
+// Assumes sitemap and /service-areas index entries are maintained separately after generated output changes.
 
 const fs = require("fs");
 const path = require("path");
 
-// City -> slug (must match your existing filenames)
+// Core city list; slugs must match filenames and public URLs exactly.
 const AREAS = [
   { city: "Montgomery", slug: "montgomery" },
   { city: "Conroe", slug: "conroe" },
@@ -21,6 +23,7 @@ const AREAS = [
   { city: "Navasota", slug: "navasota" },
 ];
 
+// Output directory for file-system routes generated from the city list above.
 const baseDir = path.join(__dirname, "..", "src", "pages", "service-areas");
 
 if (!fs.existsSync(baseDir)) {
@@ -39,7 +42,7 @@ function componentNameFromCity(city) {
   );
 }
 
-// custom intros for the main cities (optional)
+// Optional custom intros let high-priority cities carry stronger local copy while the rest use the fallback template.
 const customIntros = {
   Montgomery:
     "Vetech Hydraulics is a veteran-owned hydraulic shop serving Montgomery, TX and the Lake Conroe area with expert cylinder repair, repacking, and testing. Whether you run trash trucks, compact construction equipment, ranch machinery, or custom hydraulics, we help you cut downtime with fast, no-nonsense service.",
@@ -67,7 +70,10 @@ AREAS.forEach(({ city, slug }) => {
     customIntros[city] ||
     `Vetech Hydraulics services equipment owners in ${displayCity}, TX and the surrounding area with hydraulic cylinder repacking, rod work, and pressure-tested rebuilds. Text or email a photo of your cylinder and we&apos;ll help you choose the best repair plan.`;
 
-  const content = `import Head from "next/head";
+  // Template overwrites each core page, so preserve any needed comments or markup here before running.
+  const content = `// Service-area landing page: targets one local city while reusing the same repair promise, CTA pattern, and SEO structure as the rest of the area pages.
+// If city coverage changes, keep this file, the service-area index, scripts, and sitemap in sync.
+import Head from "next/head";
 import { Box, Container, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import ConsultationButton from "../../components/ConsultationButton";

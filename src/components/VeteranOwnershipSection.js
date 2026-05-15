@@ -1,4 +1,6 @@
 // src/components/VeteranOwnershipSection.js
+// Full-width veteran-owned credibility section shared across marketing pages.
+// The layout stacks on mobile and becomes a badge-plus-copy row on larger screens.
 import React from "react";
 import Image from "next/image";
 import {

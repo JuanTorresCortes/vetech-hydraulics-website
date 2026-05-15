@@ -1,3 +1,5 @@
+// Fleet support page: positions the shop for commercial accounts that need repeatable repair workflows and uptime-focused communication.
+// Card arrays below drive the service, industry, process, and trust sections so business owners can edit content without changing layout markup.
 import Image from "next/image";
 import NextLink from "next/link";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
@@ -85,6 +87,7 @@ const SectionHeader = ({ eyebrow, title, children }) => (
   </Box>
 );
 
+// Fleet service cards describe repeatable support offerings for commercial account conversations.
 const fleetServices = [
   {
     title: "Hydraulic Cylinder Repacking",
@@ -118,6 +121,7 @@ const fleetServices = [
   },
 ];
 
+// Industry cards show the fleet and equipment categories this page is written to serve.
 const industries = [
   {
     title: "Waste Management Fleets",
@@ -151,6 +155,7 @@ const industries = [
   },
 ];
 
+// Process cards make the repair workflow predictable for managers coordinating downtime.
 const processSteps = [
   {
     step: "01",
@@ -241,6 +246,7 @@ const FeatureCard = ({ title, text, Icon }) => (
 export default function FleetSupportPage() {
   return (
     <>
+      {/* Fleet-support SEO metadata targets commercial repair and uptime-focused search intent. */}
       <SeoHead
         title="Fleet Hydraulic Cylinder Repair | Vetech Hydraulics"
         description="Commercial hydraulic cylinder repair support for fleets, contractors, municipalities, trash trucks, construction equipment, and industrial operators across North Houston."
@@ -248,6 +254,7 @@ export default function FleetSupportPage() {
       />
 
       <Box component="main">
+        {/* Hero positions the shop for fleet uptime needs before visitors reach the workflow details. */}
         <HeroSection>
           <Image
             src={mobileImg}

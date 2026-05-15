@@ -1,3 +1,6 @@
+// Shared visual tokens for the industrial theme used across page-specific MUI sx objects.
+// Prefer extending these helpers before introducing one-off colors, spacing, or CTA styles.
+// Industrial color system: hydraulic red for action/trust accents, gunmetal backgrounds, and steel borders.
 export const industrialColors = {
   hydraulicRed: "#D71920",
   hydraulicRedDark: "#B9151B",
@@ -24,6 +27,7 @@ export const containedWidthSx = {
   mx: "auto",
 };
 
+// Base section spacing keeps full-bleed backgrounds consistent while preserving responsive content gutters.
 export const sectionBase = (theme) => ({
   ...fullBleed,
   position: "relative",
@@ -71,6 +75,7 @@ export const bodyCopySx = {
   lineHeight: 1.75,
 };
 
+// Shared card treatment for dark industrial panels; hover lift is desktop-only where pointer precision exists.
 export const industrialCardSx = {
   borderRadius: 3,
   bgcolor: "rgba(9,23,35,0.88)",
@@ -89,6 +94,7 @@ export const industrialCardSx = {
   },
 };
 
+// Primary CTA style should be used for quote/contact actions so conversion points stay visually consistent.
 export const primaryCtaSx = {
   px: { xs: 3, md: 4 },
   py: 1.35,
@@ -109,6 +115,7 @@ export const primaryCtaSx = {
   },
 };
 
+// Secondary CTA style is for lower-priority navigation that should remain visible without competing with quote actions.
 export const secondaryCtaSx = {
   px: { xs: 3, md: 4 },
   py: 1.35,

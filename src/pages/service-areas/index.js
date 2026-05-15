@@ -1,4 +1,6 @@
 // src/pages/service-areas/index.js
+// Service areas index: organizes city landing pages for nearby hydraulic cylinder repair searches.
+// City arrays below determine cards, alphabetized lists, and links; update generated pages and sitemap entries when service-area coverage changes.
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -226,6 +228,7 @@ const groupByFirstLetter = (items) => {
 };
 
 /* ---------------------------- Data --------------------------------------- */
+// Core cities receive priority placement because they represent the primary nearby service market.
 const CORE_CITIES = [
   "Montgomery",
   "Magnolia",
@@ -240,6 +243,7 @@ const CORE_CITIES = [
   "Atascocita",
 ];
 
+// Primary city cards are short local summaries used for the top service-area grid.
 const PRIMARY_CITY_CARDS = [
   {
     city: "Magnolia",
@@ -267,6 +271,7 @@ const PRIMARY_CITY_CARDS = [
   },
 ];
 
+// Extended city list feeds the alphabetical directory and should match generated local pages where possible.
 const EXTENDED_CITIES = [
   "Millican",
   "Navasota",
@@ -309,6 +314,7 @@ const EXTENDED_CITIES = [
   "Huffman",
 ];
 
+// Focus parts describe the repair needs common across local service-area pages.
 const FOCUS_PARTS = [
   "Hydraulic cylinder repair & repacking",
   "Telescopic cylinder repair",
@@ -320,6 +326,7 @@ const FOCUS_PARTS = [
 
 const combinedFocus = FOCUS_PARTS.join(" • ");
 
+// Support cards explain how the shop serves nearby customers beyond a static location list.
 const supportCards = [
   {
     Icon: LocalShippingIcon,
@@ -338,6 +345,7 @@ const supportCards = [
   },
 ];
 
+// Commercial support cards speak to fleet and business-owner concerns about downtime.
 const commercialSupport = [
   "Fleets",
   "Contractors",
@@ -435,7 +443,8 @@ export default function ServiceAreasOverview() {
       </Head>
 
       {/* =============================== HERO =============================== */}
-      <Hero>
+      {/* Hero introduces regional coverage and sends visitors to either the city list or quote CTA. */}
+        <Hero>
         <Image
           src={backHoe}
           alt="Hydraulic equipment operating in North Houston"
