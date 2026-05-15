@@ -1,10 +1,12 @@
 // scripts/generate-service-area-pages.js
-// Run with: node scripts/generate-service-area-pages.js
+// Generates missing secondary city service-area pages under src/pages/service-areas.
+// Run with: node scripts/generate-service-area-pages.js after adding cities to AREAS.
+// Assumes routing, SEO titles, and canonical URLs follow /service-areas/{city}-tx-hydraulic-cylinder-repair.
 
 const fs = require("fs");
 const path = require("path");
 
-// All the areas you gave me
+// Secondary coverage list; the script skips any page file that already exists to avoid overwriting hand edits.
 const AREAS = [
   "Washington",
   "Anderson",
@@ -45,10 +47,10 @@ const AREAS = [
   "Huffman",
 ];
 
-// Directory where Next.js pages live
+// Output directory for Next.js file-system routes; generated files may also need sitemap updates.
 const baseDir = path.join(__dirname, "..", "src", "pages", "service-areas");
 
-// Make sure the folder exists
+// Fail fast if the expected app structure changes before writing files.
 if (!fs.existsSync(baseDir)) {
   console.error("service-areas folder not found at:", baseDir);
   process.exit(1);
@@ -88,7 +90,10 @@ AREAS.forEach((city) => {
   const pageTitle = `Hydraulic Cylinder Repair in ${titleCity} | Vetech Hydraulics`;
   const metaDescription = `Vetech Hydraulics provides hydraulic cylinder repair, repacking, and testing in ${titleCity}. Text a picture of your cylinder for a fast quote.`;
 
-  const content = `import Head from "next/head";
+  // Template intentionally uses the simple local-page layout; update the template when changing generated page documentation or CTA structure.
+  const content = `// Service-area landing page: targets one local city while reusing the same repair promise, CTA pattern, and SEO structure as the rest of the area pages.
+// If city coverage changes, keep this file, the service-area index, scripts, and sitemap in sync.
+import Head from "next/head";
 import { Box, Container, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import ConsultationButton from "../../components/ConsultationButton";

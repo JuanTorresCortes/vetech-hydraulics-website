@@ -1,3 +1,5 @@
+// Reusable high-intent SMS CTA used across pages where customers are encouraged to text a cylinder photo.
+// Keep the phone number and prefilled body aligned with business contact details if those change.
 import React from "react";
 import { Button } from "@mui/material";
 import { useTheme } from "@mui/material/styles";

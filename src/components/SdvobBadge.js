@@ -1,4 +1,6 @@
 // src/components/SdvobBadge.js
+// Compact SDVOSB credibility badge for pages or sections that need a small veteran-owned trust signal.
+// Use VeteranOwnershipSection when the page needs the larger explanatory version.
 import React from "react";
 import Image from "next/image";
 import { Box, Container, Typography, Stack } from "@mui/material";

@@ -1,4 +1,6 @@
 // src/pages/services.js
+// Services page: explains the main hydraulic repair offerings and the workflow customers can expect before contacting the shop.
+// Edit the service cards and process arrays below when offerings change; keep SEO metadata values in the SeoHead block stable unless intentionally updating search copy.
 import SeoHead from "../components/SeoHead";
 import Image from "next/image";
 import Link from "next/link";
@@ -186,6 +188,7 @@ const SectionTitle = ({ children, eyebrow, subtitle }) => (
   </Box>
 );
 
+// Service cards are data-driven so offering names and descriptions can be updated without touching the grid markup.
 const services = [
   {
     code: "RP",
@@ -229,6 +232,7 @@ const services = [
   },
 ];
 
+// Workflow steps set customer expectations from inspection through return-to-service.
 const workflow = [
   ["01", "Inspect", "Clean, disassemble, and measure rods, barrels, glands, pistons, and seals to identify the root cause of failure."],
   ["02", "Quote", "Provide a clear repair path for seals, parts, labor, and any outside services before work begins."],
@@ -237,6 +241,7 @@ const workflow = [
   ["05", "Return to Service", "Coordinate pickup, delivery, or job-site support so your heavy equipment or fleet can get back to work."],
 ];
 
+// Equipment list keeps industry coverage visible for both customers and future content edits.
 const equipment = [
   "Trash trucks",
   "Excavators",
@@ -247,6 +252,7 @@ const equipment = [
   "Industrial machinery",
 ];
 
+// Quality points reinforce workmanship standards used throughout the services page.
 const qualityPoints = [
   ["Pressure-Tested Repairs", "Every completed repair is tested to confirm leak control and reliable operation before delivery."],
   ["Clean Seal Installation", "Seals are installed with cleanliness and proper fit in mind to reduce early contamination failures."],
@@ -260,6 +266,7 @@ const qualityPoints = [
 export default function ServicesPage() {
   return (
     <>
+      {/* Services SEO metadata is page-specific; do not change copy here unless intentionally updating search positioning. */}
       <SeoHead
         title="Services | Vetech Hydraulics"
         description="Hydraulic cylinder repair services focused on precision rebuilding, fair pricing, pressure testing, and minimizing downtime."
@@ -268,6 +275,7 @@ export default function ServicesPage() {
 
       <Box component="main">
         {/* ============================== HERO ============================== */}
+        {/* Hero introduces the full service offering before visitors reach individual service cards. */}
         <Hero>
           <Image
             src={cylinder4}

@@ -1,4 +1,6 @@
 // src/pages/about.js
+// About page: presents the veteran-owned company story, operating values, and credibility cues for customers evaluating the business.
+// Image selections and trust-oriented sections are kept near this file because they are page-specific content rather than shared configuration.
 import SeoHead from "../components/SeoHead";
 import Image from "next/image";
 import Link from "next/link";
@@ -187,6 +189,7 @@ const SectionTitle = ({ children, eyebrow, subtitle }) => (
   </Box>
 );
 
+// Values cards translate the company story into traits customers can expect during a repair.
 const values = [
   ["01", "Precision", "Measured repairs, careful inspection, and attention to the small details that protect seal life."],
   ["02", "Reliability", "Hydraulic work focused on dependable performance for heavy equipment, fleets, and commercial operations."],
@@ -196,6 +199,7 @@ const values = [
   ["06", "Uptime-Focused Service", "Pickup, delivery, fast estimates, and repair planning designed to help reduce equipment downtime."],
 ];
 
+// Expectations cards clarify the customer experience without changing the business copy.
 const expectations = [
   ["INS", "Thorough Inspection", "We clean, inspect, and measure critical components to understand why the cylinder failed."],
   ["QTE", "Clear Quote Before Work", "You get a repair path and estimate before parts, seals, or labor move forward."],
@@ -205,6 +209,7 @@ const expectations = [
   ["COM", "Professional Communication", "We keep the process straightforward, practical, and focused on getting your equipment back to work."],
 ];
 
+// Industry cards identify the types of equipment owners this page is meant to reassure.
 const industries = [
   "Trash trucks",
   "Construction equipment",
@@ -219,6 +224,7 @@ const industries = [
 export default function AboutPage() {
   return (
     <>
+      {/* About-page metadata supports brand trust searches; keep values coordinated with public business positioning. */}
       <SeoHead
         title="About Us | Vetech Hydraulics"
         description="Learn about Vetech Hydraulics—our mission, founder story, and commitment to fast, reliable hydraulic cylinder repairs with fair pricing and tested results."
@@ -227,6 +233,7 @@ export default function AboutPage() {
 
       <Box component="main">
         {/* ============================== HERO ============================== */}
+        {/* Hero frames the shop story and veteran-owned credibility before deeper company details. */}
         <Hero>
           <Image
             src={cylinder1}
