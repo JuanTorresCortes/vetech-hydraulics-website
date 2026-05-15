@@ -22,6 +22,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import PhoneIcon from "@mui/icons-material/Phone";
 import { useRouter } from "next/router";
 import { containerSx, primaryCtaSx } from "../utils/visualStyles";
 
@@ -263,13 +264,14 @@ const Navbar = () => {
 
       <Box sx={{ mt: 3 }}>
         <Button
-          component={NextLink}
-          href="/contact"
+          component="a"
+          href="tel:+19362496042"
           fullWidth
           variant="contained"
+          startIcon={<PhoneIcon />}
           sx={{ ...requestServiceButtonSx, minHeight: 58, fontSize: 14 }}
         >
-          Request Service
+          Call Now
         </Button>
       </Box>
     </Box>
@@ -341,12 +343,13 @@ const Navbar = () => {
             <>
               {DesktopLinks}
               <Button
-                component={NextLink}
-                href="/contact"
+                component="a"
+                href="tel:+19362496042"
                 variant="contained"
+                startIcon={<PhoneIcon />}
                 sx={{ ...requestServiceButtonSx, ml: 1.5 }}
               >
-                Request Service
+                Call Now
               </Button>
             </>
           )}
