@@ -415,8 +415,8 @@ export default function Home() {
             position: "relative",
             zIndex: 2,
             ...innerContainerSx,
-            pt: { xs: 18, sm: 20, md: 24 },
-            pb: { xs: 6, sm: 8, md: 10 },
+            pt: { xs: 10, sm: 12, md: 24 },
+            pb: { xs: 5, sm: 7, md: 10 },
           }}
         >
           <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center">
@@ -426,7 +426,9 @@ export default function Home() {
                   sx={{
                     display: "inline-flex",
                     alignItems: "center",
+                    flexWrap: "wrap",
                     gap: 1.25,
+                    maxWidth: "100%",
                     px: 1.75,
                     py: 0.9,
                     mb: 2.5,
@@ -437,8 +439,9 @@ export default function Home() {
                     boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08)",
                     letterSpacing: "0.16em",
                     textTransform: "uppercase",
-                    fontSize: { xs: 11, sm: 12 },
+                    fontSize: { xs: 10.5, sm: 12 },
                     fontWeight: 900,
+                    lineHeight: 1.35,
                   }}
                 >
                   <Box
@@ -451,7 +454,7 @@ export default function Home() {
                       boxShadow: "0 0 18px rgba(215,25,32,0.9)",
                     }}
                   />
-                  Montgomery • North Houston
+                  Based in Magnolia, TX • Serving Montgomery County & North Houston
                 </Box>
 
                 <Typography
@@ -483,7 +486,7 @@ export default function Home() {
                     fontSize: { xs: 16, sm: 18, md: 20 },
                     lineHeight: 1.65,
                     maxWidth: 760,
-                    mb: 3.5,
+                    mb: { xs: 2.5, md: 3.5 },
                   }}
                 >
                   Veteran-owned hydraulic cylinder repair for heavy equipment,
@@ -494,7 +497,7 @@ export default function Home() {
                 <Stack
                   direction={{ xs: "column", sm: "row" }}
                   spacing={1.5}
-                  sx={{ mb: 4, alignItems: { xs: "stretch", sm: "center" } }}
+                  sx={{ mb: 1.5, alignItems: { xs: "stretch", sm: "center" } }}
                 >
                   <Button
                     component={NextLink}
@@ -546,6 +549,39 @@ export default function Home() {
                   </Button>
                 </Stack>
 
+                <Stack
+                  spacing={0.35}
+                  sx={{
+                    mb: { xs: 2.75, md: 4 },
+                    color: "rgba(231,238,244,0.84)",
+                  }}
+                >
+                  <Typography
+                    component="a"
+                    href="tel:+19362496042"
+                    sx={{
+                      color: "#F7FAFC",
+                      fontWeight: 950,
+                      fontSize: { xs: 18, md: 20 },
+                      lineHeight: 1.2,
+                      textDecoration: "none",
+                      "&:hover": { color: "#fff" },
+                    }}
+                  >
+                    (936) 249-6042
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: "rgba(231,238,244,0.72)",
+                      fontWeight: 800,
+                      fontSize: { xs: 13, md: 14 },
+                      letterSpacing: "0.04em",
+                    }}
+                  >
+                    Mon–Fri • 8AM–5PM
+                  </Typography>
+                </Stack>
+
                 <Grid container spacing={1.25} sx={{ maxWidth: 820 }}>
                   {[
                     "Veteran-Owned",
@@ -553,7 +589,7 @@ export default function Home() {
                     "Pressure Tested Repairs",
                     "Pickup & Delivery Options",
                   ].map((badge) => (
-                    <Grid item xs={12} sm={6} md={3} key={badge}>
+                    <Grid item xs={6} sm={6} md={3} key={badge}>
                       <Box
                         sx={{
                           height: "100%",
@@ -570,7 +606,12 @@ export default function Home() {
                           sx={{
                             color: "#F7FAFC",
                             fontWeight: 900,
-                            fontSize: { xs: 13.5, md: 12.5, lg: 13.5 },
+                            fontSize: {
+                              xs: 12.5,
+                              sm: 13.5,
+                              md: 12.5,
+                              lg: 13.5,
+                            },
                             lineHeight: 1.25,
                           }}
                         >
@@ -1607,6 +1648,9 @@ export default function Home() {
           >
             <Grid container spacing={{ xs: 2.5, md: 4 }} alignItems="center">
               <Grid item xs={12} md={7.2}>
+                <Typography sx={{ ...eyebrowSx, mb: 1.25 }}>
+                  COMMERCIAL RELIABILITY
+                </Typography>
                 <Typography
                   sx={{
                     color: "#F7FAFC",
@@ -1617,8 +1661,7 @@ export default function Home() {
                     textWrap: "balance",
                   }}
                 >
-                  “Reliable hydraulic repair support built for heavy equipment
-                  operations and fleet uptime.”
+                  Repair support for equipment that needs to stay working.
                 </Typography>
                 <Typography
                   sx={{
@@ -1627,8 +1670,9 @@ export default function Home() {
                     color: "rgba(231,238,244,0.72)",
                   }}
                 >
-                  A practical repair partner for contractors, operators, and
-                  fleet managers who need straight answers and dependable work.
+                  Commercial reliability means clear repair direction,
+                  pressure-tested work, and communication that helps contractors
+                  and fleet managers plan downtime.
                 </Typography>
               </Grid>
               <Grid item xs={12} md={4.8}>
@@ -1859,7 +1903,9 @@ export default function Home() {
               <Grid item xs={12} md={6} key={panelIndex}>
                 <Box sx={{ ...lowerPanelSx, p: { xs: 2.5, md: 3.25 } }}>
                   <Typography sx={{ ...eyebrowSx, mb: 2 }}>
-                    Capability Panel 0{panelIndex + 1}
+                    {panelIndex === 0
+                      ? "Repair Standards"
+                      : "Quote & Uptime Support"}
                   </Typography>
                   <Stack spacing={2.25}>
                     {panel.map(([title, text]) => (
@@ -2176,7 +2222,7 @@ export default function Home() {
           {[
             {
               q: "How much does it cost to fix a hydraulic cylinder?",
-              a: "Hydraulic cylinder repair costs vary widely, from $200-$400 for simple reseals (kits $20-$150, labor $100-$200+) to several hundred or even over $1,000 for complex telescopic cylinder repair, re-chroming, or tube re-sleeving, with shop labor often $120-$160/hour plus parts. At Vetech Hydraulics, we try to provide a fair price for our customers so we stay at a price range that dose not exceed 50% of the cost of OEM cylinder replacement. Each cylinder is unique, so we recommend getting a detailed quote based on your specific needs.",
+              a: "Hydraulic cylinder repair costs vary widely, from $200-$400 for simple reseals (kits $20-$150, labor $100-$200+) to several hundred or even over $1,000 for complex telescopic cylinder repair, re-chroming, or tube re-sleeving, with shop labor often $120-$160/hour plus parts. At Vetech Hydraulics, we try to provide a fair price for our customers so we stay at a price range that does not exceed 50% of the cost of OEM cylinder replacement. Each cylinder is unique, so we recommend getting a detailed quote based on your specific needs.",
             },
             {
               q: "How fast can you turn around a standard repack?",

@@ -172,7 +172,8 @@ export default function Footer() {
               }}
             >
               Veteran-owned hydraulic cylinder repair for heavy equipment,
-              fleets, and commercial operations across North Houston.
+              fleets, and commercial operations. Based in Magnolia, TX and
+              serving Montgomery County & North Houston.
             </Typography>
 
             <Stack direction="row" flexWrap="wrap" gap={1}>

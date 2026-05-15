@@ -1,7 +1,7 @@
 // Reusable high-intent SMS CTA used across pages where customers are encouraged to text a cylinder photo.
 // Keep the phone number and prefilled body aligned with business contact details if those change.
 import React from "react";
-import { Button } from "@mui/material";
+import { Button, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
@@ -9,18 +9,25 @@ import { primaryCtaSx } from "../utils/visualStyles";
 
 const ConsultationButton = () => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"), { noSsr: true });
+  const smsHref =
+    "sms:+19362496042?&body=Hi%20Vetech%20Hydraulics%2C%20I%E2%80%99d%20like%20a%20fast%20quote.%20I%E2%80%99ll%20send%20a%20picture%20now.";
 
-  //const handleConsultationClick = () => {};
+  // Mobile visitors can text a photo immediately; desktop visitors go to the contact form to avoid unreliable sms: handling.
   return (
     <motion.div
-      whileHover={{ scale: 0.95 }} // Scale down slightly to simulate pressing
-      transition={{ duration: 0.2 }} // Quicker duration for a snappier effect
+      whileHover={{ scale: 0.98 }}
+      transition={{ duration: 0.2 }}
     >
       <Button
         variant="contained"
         startIcon={<ContactPhoneIcon />}
-        aria-label="Text Vetech Hydraulics a photo for a fast hydraulic cylinder repair quote"
-        href="sms:+19362496042?&body=Hi%20Vetech%20Hydraulics%2C%20I%E2%80%99d%20like%20a%20fast%20quote.%20I%E2%80%99ll%20send%20a%20picture%20now."
+        aria-label={
+          isMobile
+            ? "Text Vetech Hydraulics a photo for a fast hydraulic cylinder repair quote"
+            : "Request a fast hydraulic cylinder repair quote from Vetech Hydraulics"
+        }
+        href={isMobile ? smsHref : "/contact"}
         sx={{
           ...primaryCtaSx,
           mt: theme.spacing(3),
@@ -31,7 +38,7 @@ const ConsultationButton = () => {
             "0 18px 38px rgba(215,25,32,0.3), inset 0 1px 0 rgba(255,255,255,0.24)",
         }}
       >
-        Text Image for a Fast Quote
+        {isMobile ? "Text Image for a Fast Quote" : "Request a Fast Quote"}
       </Button>
     </motion.div>
   );
