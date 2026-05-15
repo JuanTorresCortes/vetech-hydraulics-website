@@ -1,4 +1,6 @@
 // src/pages/index.js
+// Home page: introduces Vetech, highlights core repair services, trust signals, service area coverage, FAQs, and primary CTAs.
+// SEO values and business schema are intentionally centralized near the page root so future edits do not get buried in section markup.
 import Head from "next/head";
 import Image from "next/image";
 import NextLink from "next/link";
@@ -276,6 +278,7 @@ const redBadgeSx = {
     "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 22px rgba(215,25,32,0.16)",
 };
 
+// Homepage repair cards: edit these entries when photos or featured service examples change.
 const recentRepairs = [
   {
     title: "Excavator Boom Cylinder Rebuild",
@@ -315,6 +318,7 @@ const recentRepairs = [
   },
 ];
 
+// Trust feature cards explain why commercial customers should choose the shop beyond price alone.
 const commercialTrustFeatures = [
   {
     title: "Pressure Tested Repairs",
@@ -365,6 +369,7 @@ export default function Home() {
 
   return (
     <>
+      {/* Homepage SEO and local business schema; keep metadata values intentional because they affect search snippets. */}
       <SeoHead
         title="Vetech Hydraulics | Hydraulic Cylinder Repair Experts"
         description="Vetech Hydraulics specializes in hydraulic cylinder repair and maintenance in Montgomery, Magnolia, Conroe and the greater North Houston area."

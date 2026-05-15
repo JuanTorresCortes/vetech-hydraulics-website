@@ -1,18 +1,14 @@
 // src/pages/api/contact.js
-// Server-side API route for handling contact form submissions.
-// Sends 2 emails using Resend:
-//   1) Notification to site owner (you)
-//   2) Auto-reply to the customer ("We received your message...")
-//
-// Notes:
-// - This runs only on the server (safe to use API keys).
-// - Keep CONTACT_FROM on your verified domain/subdomain for deliverability.
+// Server-side contact route for form submissions from src/pages/contact.js.
+// Flow: accept POST only, validate required fields, send owner notification, optionally send customer auto-reply.
+// Required environment variables: RESEND_API_KEY, CONTACT_FROM, and CONTACT_TO.
+// Keep CONTACT_FROM on a Resend-verified domain/subdomain for deliverability.
 
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Minimal HTML escaping (avoid injection in our email body)
+// Minimal HTML escaping protects email templates from rendering customer input as markup.
 function escapeHtml(str = "") {
   return String(str)
     .replace(/&/g, "&amp;")
@@ -22,16 +18,16 @@ function escapeHtml(str = "") {
 }
 
 export default async function handler(req, res) {
-  // Only allow POST from the contact form
+  // Only the contact form should hit this endpoint; other methods return a clear API error.
   if (req.method !== "POST") {
     return res.status(405).json({ ok: false, message: "Method Not Allowed" });
   }
 
   try {
-    // Extract user data; default to empty strings to avoid undefined
+    // Normalize incoming fields before validation so template strings never receive undefined values.
     const { name = "", email = "", phone = "", message = "" } = req.body || {};
 
-    // Basic validation (same constraints you use on the client)
+    // Server-side validation mirrors the form but remains authoritative for direct API calls.
     if (!name || !email || !message) {
       return res
         .status(400)
@@ -41,7 +37,7 @@ export default async function handler(req, res) {
         });
     }
 
-    // Load env (configured in .env.local)
+    // Load email configuration at request time so missing deployment variables produce actionable errors.
     const FROM = process.env.CONTACT_FROM; // e.g. "Vetech Forms <forms@notifications.vetech-hydraulics.com>"
     const TO = process.env.CONTACT_TO; // your inbox
     const KEY = process.env.RESEND_API_KEY;
@@ -63,7 +59,7 @@ export default async function handler(req, res) {
 
     const ownerSubject = "New Contact Form Submission — Vetech Hydraulics";
 
-    // Plain text (helps inbox placement)
+    // Plain text improves deliverability and keeps the owner notification readable in any mail client.
     const ownerText = [
       "New Website Contact",
       `Name: ${name}`,
@@ -74,7 +70,7 @@ export default async function handler(req, res) {
       message,
     ].join("\n");
 
-    // HTML body
+    // HTML version is escaped field-by-field because it includes customer-supplied content.
     const ownerHtml = `
       <div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;color:#111">
         <h2 style="margin:0 0 12px 0;font-weight:700;">New Website Contact</h2>
@@ -90,7 +86,7 @@ export default async function handler(req, res) {
       </div>
     `;
 
-    // Send to your inbox; set reply_to to the customer's email so "Reply" goes to them
+    // Owner notification is the critical email; reply_to lets the business respond directly to the customer.
     const { data: ownerData, error: ownerError } = await resend.emails.send({
       from: FROM, // must be on your verified domain/subdomain
       to: TO, // your real inbox
@@ -101,7 +97,7 @@ export default async function handler(req, res) {
     });
 
     if (ownerError) {
-      // If your own notification fails, stop here and surface error
+      // If the owner never receives the lead, treat the submission as failed so the customer can retry.
       console.error("Resend owner notification error:", ownerError);
       return res.status(500).json({
         ok: false,
@@ -160,8 +156,7 @@ export default async function handler(req, res) {
       </div>
     `;
 
-    // Send to the customer; set reply_to to YOUR inbox so their reply comes back to you
-    // (You could also omit reply_to here; this just makes "Reply" go to you.)
+    // Customer auto-reply confirms receipt; reply_to routes any follow-up back to the business inbox.
     const { error: customerError } = await resend.emails.send({
       from: FROM, // same verified sender
       to: email, // customer’s email
@@ -171,8 +166,7 @@ export default async function handler(req, res) {
       html: customerHtml,
     });
 
-    // If auto-reply fails for some reason, we won't fail the whole request.
-    // We already sent your notification; we just log this for investigation.
+    // Auto-reply failure is non-fatal because the owner notification already captured the lead.
     if (customerError) {
       console.warn(
         "Resend customer auto-reply error (non-fatal):",
@@ -180,13 +174,14 @@ export default async function handler(req, res) {
       );
     }
 
-    // Success response to the client (your contact page)
+    // Return the owner email id for diagnostics without exposing provider internals to the UI.
     return res.status(200).json({
       ok: true,
       id: ownerData?.id || null,
       autoReply: customerError ? "failed" : "sent",
     });
   } catch (err) {
+    // Unexpected errors are logged server-side while the client gets a generic failure message.
     console.error("Contact API unexpected error:", err);
     return res.status(500).json({ ok: false, message: "Server error." });
   }

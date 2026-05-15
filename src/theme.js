@@ -1,6 +1,7 @@
 // src/theme.js
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
+// Theme-level industrial tokens back MUI defaults; page-level sx helpers live in utils/visualStyles.js.
 const industrial = {
   red: "#D71920",
   redDark: "#B9151B",
@@ -31,6 +32,7 @@ let theme = createTheme({
   shape: {
     borderRadius: 12,
   },
+  // Typography favors bold, condensed-feeling headings for heavy-equipment/industrial positioning.
   typography: {
     fontFamily:
       'Inter, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif',
@@ -85,6 +87,7 @@ let theme = createTheme({
       textTransform: "uppercase",
     },
   },
+  // Component defaults keep cards and buttons consistent even when a page uses raw MUI components.
   components: {
     MuiCssBaseline: {
       styleOverrides: {

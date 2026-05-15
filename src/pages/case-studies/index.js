@@ -1,3 +1,5 @@
+// Case studies index: renders marketing-friendly repair scenarios from src/data/caseStudies.js.
+// Add or revise case study cards in the data file; this page should stay focused on listing and routing to detail pages.
 import Image from "next/image";
 import NextLink from "next/link";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
@@ -45,6 +47,7 @@ const Section = styled("section")(({ theme }) => ({
 export default function CaseStudiesIndexPage() {
   return (
     <>
+      {/* Case-study index SEO describes the collection; individual case metadata lives in caseStudies.js. */}
       <SeoHead
         title="Hydraulic Repair Case Studies | Vetech Hydraulics"
         description="Hydraulic cylinder repair case studies for fleet, construction, waste management, and heavy equipment repair scenarios from Vetech Hydraulics."
@@ -52,6 +55,7 @@ export default function CaseStudiesIndexPage() {
       />
 
       <Box component="main">
+        {/* Hero explains that these are example repair profiles rather than live customer records. */}
         <HeroSection>
           <Container
             maxWidth="lg"
@@ -90,6 +94,7 @@ export default function CaseStudiesIndexPage() {
         >
           <Container maxWidth="lg" sx={containerSx}>
             <Grid container spacing={{ xs: 2.5, md: 3 }}>
+              {/* Cards are generated from shared case-study data so detail pages and listings stay aligned. */}
               {caseStudies.map((caseStudy) => (
                 <Grid item xs={12} md={4} key={caseStudy.slug}>
                   <Box

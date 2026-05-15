@@ -1,4 +1,6 @@
 // src/components/Navbar.js
+// Site navigation shared by every route, including responsive desktop/mobile menu behavior.
+// Update navItems when routing changes; keep labels concise so the mobile drawer remains readable.
 import React, { useState } from "react";
 import NextLink from "next/link";
 import Image from "next/image";
