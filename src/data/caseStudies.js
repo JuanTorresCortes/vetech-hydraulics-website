@@ -2,6 +2,8 @@ import repairImg from "../image/repairImg.webp";
 import repackImg from "../image/repackImg.webp";
 import mobileImg from "../image/mobileImg.webp";
 
+// Case-study objects feed both the listing and dynamic detail pages; each slug must remain unique and sitemap-friendly.
+// heroImage and imageAlt are paired so designers can swap visuals without losing accessibility context.
 export const caseStudies = [
   {
     slug: "trash-truck-telescopic-cylinder-rebuild",
@@ -87,6 +89,7 @@ export const caseStudies = [
   },
 ];
 
+// Lookup map lets the dynamic route fetch a case study by slug during static generation.
 export const caseStudyMap = Object.fromEntries(
   caseStudies.map((caseStudy) => [caseStudy.slug, caseStudy]),
 );

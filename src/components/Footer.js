@@ -1,3 +1,5 @@
+// Site footer: shared navigation, trust badges, service-area links, and final quote CTA for every page.
+// Link arrays below are the safest edit points for designers or business owners updating footer content.
 import NextLink from "next/link";
 import Image from "next/image";
 import {
@@ -12,6 +14,7 @@ import {
 } from "@mui/material";
 import { containerSx, primaryCtaSx } from "../utils/visualStyles";
 
+// Footer service links intentionally point to broad pages rather than every individual subsection.
 const services = [
   { label: "Hydraulic Cylinder Repair", href: "/services" },
   { label: "Fleet Support", href: "/fleet-support" },
@@ -23,6 +26,7 @@ const services = [
   { label: "Pickup & Delivery", href: "/services" },
 ];
 
+// Keep this as a short priority list; the full city directory lives on /service-areas.
 const serviceAreas = [
   {
     label: "Magnolia",
@@ -47,6 +51,7 @@ const serviceAreas = [
   { label: "North Houston", href: "/service-areas" },
 ];
 
+// Short badges reinforce credibility without expanding the footer height.
 const trustBadges = [
   "Veteran-Owned",
   "Fleet Service Capable",
@@ -167,7 +172,8 @@ export default function Footer() {
               }}
             >
               Veteran-owned hydraulic cylinder repair for heavy equipment,
-              fleets, and commercial operations across North Houston.
+              fleets, and commercial operations. Based in Magnolia, TX and
+              serving Montgomery County & North Houston.
             </Typography>
 
             <Stack direction="row" flexWrap="wrap" gap={1}>

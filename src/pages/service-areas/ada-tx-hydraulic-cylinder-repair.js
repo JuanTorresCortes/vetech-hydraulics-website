@@ -1,4 +1,6 @@
 // src/pages/service-areas/ada-tx-hydraulic-cylinder-repair.js
+// Service-area landing page: targets one local city while reusing the same repair promise, CTA pattern, and SEO structure as the rest of the area pages.
+// If city coverage changes, keep this file, the service-area index, scripts, and sitemap in sync.
 
 import Head from "next/head";
 import Image from "next/image";

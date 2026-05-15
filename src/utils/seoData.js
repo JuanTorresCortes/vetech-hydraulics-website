@@ -1,5 +1,7 @@
 // src/utils/seoData.js
 
+// Business structured data shared by pages that need LocalBusiness-style JSON-LD.
+// Keep address, phone, service areas, and ownership signals aligned with public business listings.
 export const businessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -51,6 +53,7 @@ export const businessSchema = {
     },
   ],
 
+  // Search engines use this as a broad local-service signal; city landing pages handle city-specific copy.
   areaServed: [
     { "@type": "City", name: "Montgomery, TX" },
     { "@type": "City", name: "Magnolia, TX" },
@@ -86,6 +89,7 @@ export const businessSchema = {
   ownedBy: { "@type": "Person", name: "Juan N. Torres" },
   founder: { "@type": "Person", name: "Juan N. Torres" },
 
+  // High-level service catalog for structured data, not a replacement for visible service-page copy.
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Hydraulic Cylinder Repair Services",

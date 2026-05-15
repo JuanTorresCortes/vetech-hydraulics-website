@@ -1,3 +1,5 @@
+// Shared case-study detail template used by src/pages/case-studies/[slug].js for every repair profile.
+// The component expects a complete caseStudy object from src/data/caseStudies.js and keeps SEO, hero, detail blocks, and CTA layout in one place.
 import Image from "next/image";
 import NextLink from "next/link";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
@@ -51,6 +53,7 @@ const AltSection = styled("section")(({ theme }) => ({
   backgroundColor: "#0B1B27",
 }));
 
+// DetailBlock keeps repeated case-study sections visually consistent while allowing varied narrative content.
 const DetailBlock = ({ eyebrow, title, children }) => (
   <Box sx={{ ...industrialCardSx, p: { xs: 2.5, md: 3.5 }, height: "100%" }}>
     {eyebrow && <Typography sx={{ ...eyebrowSx, mb: 1 }}>{eyebrow}</Typography>}
@@ -74,6 +77,7 @@ const DetailBlock = ({ eyebrow, title, children }) => (
 export default function CaseStudyPage({ caseStudy }) {
   return (
     <>
+      {/* Detail-page metadata comes from the case study data object to keep listing and page copy synchronized. */}
       <SeoHead
         title={caseStudy.metaTitle}
         description={caseStudy.metaDescription}
@@ -81,6 +85,7 @@ export default function CaseStudyPage({ caseStudy }) {
       />
 
       <Box component="main">
+        {/* Hero summarizes the repair scenario and uses the case image as atmospheric support, not the primary content. */}
         <HeroSection>
           <Image
             src={caseStudy.heroImage}

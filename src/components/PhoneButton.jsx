@@ -1,4 +1,6 @@
 // src/components/PhoneButton.js
+// Fixed mobile call CTA rendered globally from _app so phone users always have an easy contact path.
+// The spacer below prevents page content from being covered by the fixed bar on small screens.
 import React from "react";
 import { Box, Typography, Link as MuiLink } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";

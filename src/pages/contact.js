@@ -1,4 +1,6 @@
 // src/pages/contact.js
+// Contact page: customer-facing intake form, direct phone/email details, and expectation-setting copy for quote requests.
+// Client validation mirrors the API route, while email delivery and final validation remain server-side in pages/api/contact.js.
 import SeoHead from "../components/SeoHead";
 import Image from "next/image";
 import {
@@ -171,6 +173,7 @@ export default function ContactPage() {
     }
   };
 
+  // Trust items summarize why a visitor should submit the form instead of continuing to shop around.
   const trustItems = [
     "Veteran-Owned",
     "Fleet Service Capable",
@@ -180,6 +183,7 @@ export default function ContactPage() {
 
   return (
     <>
+      {/* Contact SEO metadata keeps quote-request intent focused on the form and direct contact options. */}
       <SeoHead
         title="Contact Us | Vetech Hydraulics"
         description="Contact Vetech Hydraulics for cylinder repair quotes and scheduling."
@@ -187,7 +191,8 @@ export default function ContactPage() {
       />
 
       {/* ------------------------------- HERO -------------------------------- */}
-      <Hero>
+      {/* Hero gives phone-first visitors direct contact options before the longer intake form. */}
+        <Hero>
         <Image
           src={backHoe}
           alt="Heavy equipment hydraulic cylinder repair support"
