@@ -4,6 +4,7 @@ import Head from "next/head";
 import { Box, Container, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import ConsultationButton from "../../components/ConsultationButton";
+import { BUSINESS } from "../../config/business";
 
 const Section = styled("section")(({ theme }) => ({
   paddingBlock: theme.spacing(8),
@@ -53,7 +54,7 @@ export default function KarenServicePage() {
         />
         <link
           rel="canonical"
-          href="https://www.vetechhydraulics.com/service-areas/karen-tx-hydraulic-cylinder-repair"
+          href={`${BUSINESS.siteUrl}/service-areas/karen-tx-hydraulic-cylinder-repair`}
         />
       </Head>
 

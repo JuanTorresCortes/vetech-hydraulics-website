@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import ConsultationButton from "../../components/ConsultationButton";
+import { BUSINESS } from "../../config/business";
 
 /* ------------------------------ Full-bleed Layout ------------------------------ */
 const FullBleed = {
@@ -140,7 +141,7 @@ export default function AndersonServicePage() {
         />
         <link
           rel="canonical"
-          href="https://www.vetechhydraulics.com/service-areas/anderson-tx-hydraulic-cylinder-repair"
+          href={`${BUSINESS.siteUrl}/service-areas/anderson-tx-hydraulic-cylinder-repair`}
         />
         <script type="application/ld+json">
           {JSON.stringify(serviceSchemaAnderson)}

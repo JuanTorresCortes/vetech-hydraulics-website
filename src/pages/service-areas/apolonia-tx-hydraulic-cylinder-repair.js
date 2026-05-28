@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import ConsultationButton from "../../components/ConsultationButton";
+import { BUSINESS } from "../../config/business";
 import backHoe from "../../image/backHoe.webp";
 
 /* ------------------------------ Full-bleed Layout ------------------------------ */
@@ -133,7 +134,7 @@ export default function ApoloniaServicePage() {
         />
         <link
           rel="canonical"
-          href="https://www.vetechhydraulics.com/service-areas/apolonia-tx-hydraulic-cylinder-repair"
+          href={`${BUSINESS.siteUrl}/service-areas/apolonia-tx-hydraulic-cylinder-repair`}
         />
         <script type="application/ld+json">
           {JSON.stringify(serviceSchemaApolonia)}
