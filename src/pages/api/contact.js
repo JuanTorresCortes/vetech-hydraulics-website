@@ -1,6 +1,6 @@
 // src/pages/api/contact.js
 // Server-side contact route for form submissions from src/pages/contact.js.
-// Flow: accept POST only, validate required fields, send owner notification, optionally send customer auto-reply.
+// Flow: rate-limit by IP, validate required fields, send owner notification, optionally send customer auto-reply.
 // Required environment variables: RESEND_API_KEY, CONTACT_FROM, and CONTACT_TO.
 // Keep CONTACT_FROM on a Resend-verified domain/subdomain for deliverability.
 
@@ -9,6 +9,48 @@ import { BUSINESS } from "../../config/business";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+/* ----------------------------- Rate limiting ------------------------------ */
+// In-memory store: resets on cold start, but sufficient for low-traffic contact forms.
+// For persistent rate limiting across serverless instances, swap for Upstash Redis.
+const rateLimitMap = new Map();
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const RATE_LIMIT_MAX = 5; // max submissions per IP per window
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+  if (!entry || now - entry.windowStart > RATE_LIMIT_WINDOW_MS) {
+    rateLimitMap.set(ip, { count: 1, windowStart: now });
+    return false;
+  }
+  if (entry.count >= RATE_LIMIT_MAX) return true;
+  entry.count++;
+  return false;
+}
+
+// Prevent unbounded memory growth by pruning stale entries periodically.
+function pruneRateLimitMap() {
+  const now = Date.now();
+  for (const [ip, entry] of rateLimitMap.entries()) {
+    if (now - entry.windowStart > RATE_LIMIT_WINDOW_MS) rateLimitMap.delete(ip);
+  }
+}
+
+/* ------------------------------ Validation ------------------------------- */
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_NAME_LENGTH = 100;
+const MAX_MESSAGE_LENGTH = 5000;
+
+function validate({ name, email, message }) {
+  if (!name || !email || !message) return "Please include name, email, and message.";
+  if (name.length > MAX_NAME_LENGTH) return "Name is too long.";
+  if (!EMAIL_REGEX.test(email)) return "Please enter a valid email address.";
+  if (message.length > MAX_MESSAGE_LENGTH)
+    return `Message must be under ${MAX_MESSAGE_LENGTH} characters.`;
+  return null;
+}
+
+/* ------------------------------ HTML escaping ----------------------------- */
 // Minimal HTML escaping protects email templates from rendering customer input as markup.
 function escapeHtml(str = "") {
   return String(str)
@@ -18,24 +60,35 @@ function escapeHtml(str = "") {
     .replace(/"/g, "&quot;");
 }
 
+/* -------------------------------- Handler --------------------------------- */
 export default async function handler(req, res) {
   // Only the contact form should hit this endpoint; other methods return a clear API error.
   if (req.method !== "POST") {
     return res.status(405).json({ ok: false, message: "Method Not Allowed" });
   }
 
+  // Prune stale entries occasionally (every request is fine at this traffic level).
+  pruneRateLimitMap();
+
+  const ip =
+    req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
+    req.socket?.remoteAddress ||
+    "unknown";
+
+  if (isRateLimited(ip)) {
+    return res.status(429).json({
+      ok: false,
+      message: "Too many submissions. Please wait an hour and try again.",
+    });
+  }
+
   try {
     // Normalize incoming fields before validation so template strings never receive undefined values.
     const { name = "", email = "", phone = "", message = "" } = req.body || {};
 
-    // Server-side validation mirrors the form but remains authoritative for direct API calls.
-    if (!name || !email || !message) {
-      return res
-        .status(400)
-        .json({
-          ok: false,
-          message: "Please include name, email, and message.",
-        });
+    const validationError = validate({ name, email, message });
+    if (validationError) {
+      return res.status(400).json({ ok: false, message: validationError });
     }
 
     // Load email configuration at request time so missing deployment variables produce actionable errors.
@@ -44,17 +97,11 @@ export default async function handler(req, res) {
     const KEY = process.env.RESEND_API_KEY;
 
     if (!KEY)
-      return res
-        .status(500)
-        .json({ ok: false, message: "Server missing RESEND_API_KEY." });
+      return res.status(500).json({ ok: false, message: "Server missing RESEND_API_KEY." });
     if (!FROM)
-      return res
-        .status(500)
-        .json({ ok: false, message: "Server missing CONTACT_FROM." });
+      return res.status(500).json({ ok: false, message: "Server missing CONTACT_FROM." });
     if (!TO)
-      return res
-        .status(500)
-        .json({ ok: false, message: "Server missing CONTACT_TO." });
+      return res.status(500).json({ ok: false, message: "Server missing CONTACT_TO." });
 
     /* ----------------------- 1) Owner notification email ----------------------- */
 
@@ -78,10 +125,7 @@ export default async function handler(req, res) {
         <p><strong>Name:</strong> ${escapeHtml(name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
         <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
-        <p><strong>Message:</strong><br/>${escapeHtml(message).replace(
-          /\n/g,
-          "<br/>"
-        )}</p>
+        <p><strong>Message:</strong><br/>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>
         <hr style="border:none;border-top:1px solid #eee;margin:16px 0;" />
         <p style="color:#666;font-size:12px;">Sent from ${BUSINESS.siteUrl}</p>
       </div>
@@ -120,7 +164,7 @@ export default async function handler(req, res) {
       "",
       "Thanks for contacting Vetech Hydraulics — we received your message and will get back to you shortly.",
       "",
-      "Here’s what we got:",
+      "Here's what we got:",
       `Name: ${name}`,
       `Email: ${email}`,
       `Phone: ${phone || "N/A"}`,
@@ -138,16 +182,14 @@ export default async function handler(req, res) {
       <div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;color:#111">
         <p style="margin:0 0 12px 0;">${customerGreeting}</p>
         <p style="margin:0 0 12px 0;">Thanks for contacting <strong>Vetech Hydraulics</strong> — we received your message and will get back to you shortly.</p>
-        <p style="margin:16px 0 6px 0;font-weight:700;">Here’s what we got:</p>
+        <p style="margin:16px 0 6px 0;font-weight:700;">Here's what we got:</p>
         <ul style="margin:0 0 12px 18px;padding:0;">
           <li><strong>Name:</strong> ${escapeHtml(name)}</li>
           <li><strong>Email:</strong> ${escapeHtml(email)}</li>
           <li><strong>Phone:</strong> ${escapeHtml(phone || "N/A")}</li>
         </ul>
         <p style="margin:6px 0;"><strong>Message:</strong></p>
-        <p style="white-space:pre-wrap;margin:0 0 16px 0;">${escapeHtml(
-          message
-        )}</p>
+        <p style="white-space:pre-wrap;margin:0 0 16px 0;">${escapeHtml(message)}</p>
         <hr style="border:none;border-top:1px solid #eee;margin:16px 0;" />
         <p style="margin:0;color:#555;">
           Vetech Hydraulics<br/>
@@ -160,7 +202,7 @@ export default async function handler(req, res) {
     // Customer auto-reply confirms receipt; reply_to routes any follow-up back to the business inbox.
     const { error: customerError } = await resend.emails.send({
       from: FROM, // same verified sender
-      to: email, // customer’s email
+      to: email, // customer's email
       reply_to: TO, // replies go back to your business inbox
       subject: customerSubject,
       text: customerText,
@@ -169,10 +211,7 @@ export default async function handler(req, res) {
 
     // Auto-reply failure is non-fatal because the owner notification already captured the lead.
     if (customerError) {
-      console.warn(
-        "Resend customer auto-reply error (non-fatal):",
-        customerError
-      );
+      console.warn("Resend customer auto-reply error (non-fatal):", customerError);
     }
 
     // Return the owner email id for diagnostics without exposing provider internals to the UI.

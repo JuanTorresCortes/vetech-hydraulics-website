@@ -32,7 +32,7 @@ import {
   primaryCtaSx,
   sectionBase,
 } from "../utils/visualStyles";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BUSINESS } from "../config/business";
 import confetti from "canvas-confetti";
 import backHoe from "../image/backHoe.webp";
@@ -134,15 +134,35 @@ const iconBadgeSx = {
 
 /* --------------------------------- Page ---------------------------------- */
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_MESSAGE_LENGTH = 5000;
+const MAX_NAME_LENGTH = 100;
+
 export default function ContactPage() {
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState({ ok: null, msg: "" });
   const [toast, setToast] = useState({ open: false, msg: "", severity: "warning" });
   const formRef = useRef(null);
+  const confettiTimerRef = useRef(null);
+
+  // Auto-dismiss success banner after 5 seconds
+  useEffect(() => {
+    if (status.ok === true) {
+      const t = setTimeout(() => setStatus({ ok: null, msg: "" }), 5000);
+      return () => clearTimeout(t);
+    }
+  }, [status.ok]);
+
+  // Clean up confetti timer on unmount
+  useEffect(() => {
+    return () => {
+      if (confettiTimerRef.current) clearTimeout(confettiTimerRef.current);
+    };
+  }, []);
 
   const launchConfetti = () => {
     confetti({ particleCount: 90, spread: 70, origin: { y: 0.3 }, scalar: 0.9 });
-    setTimeout(() => {
+    confettiTimerRef.current = setTimeout(() => {
       confetti({ particleCount: 60, angle: 60, spread: 55, origin: { x: 0 } });
       confetti({ particleCount: 60, angle: 120, spread: 55, origin: { x: 1 } });
     }, 200);
@@ -162,6 +182,18 @@ export default function ContactPage() {
 
     if (!payload.name || !payload.email || !payload.message) {
       setStatus({ ok: false, msg: "Please fill in name, email, and message." });
+      return;
+    }
+    if (payload.name.length > MAX_NAME_LENGTH) {
+      setStatus({ ok: false, msg: "Name is too long." });
+      return;
+    }
+    if (!EMAIL_REGEX.test(payload.email)) {
+      setStatus({ ok: false, msg: "Please enter a valid email address." });
+      return;
+    }
+    if (payload.message.length > MAX_MESSAGE_LENGTH) {
+      setStatus({ ok: false, msg: `Message must be under ${MAX_MESSAGE_LENGTH} characters.` });
       return;
     }
 
