@@ -1,6 +1,6 @@
 // Reusable high-intent SMS CTA used across pages where customers are encouraged to text a cylinder photo.
 // Keep the phone number and prefilled body aligned with business contact details if those change.
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { motion } from "framer-motion";
@@ -10,8 +10,20 @@ import { BUSINESS } from "../config/business";
 
 const ConsultationButton = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"), { noSsr: true });
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const [mounted, setMounted] = useState(false);
   const smsHref = BUSINESS.smsHref;
+
+  // Wait for client hydration before switching to the mobile variant.
+  // Without this guard, the server renders desktop HTML and the client immediately
+  // renders mobile HTML (different href/label/text), causing a hydration mismatch.
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Before mount: show desktop version to match SSR output.
+  // After mount: show the correct responsive version.
+  const showMobile = mounted && isMobile;
 
   // Mobile visitors can text a photo immediately; desktop visitors go to the contact form to avoid unreliable sms: handling.
   return (
@@ -23,11 +35,11 @@ const ConsultationButton = () => {
         variant="contained"
         startIcon={<ContactPhoneIcon />}
         aria-label={
-          isMobile
+          showMobile
             ? "Text Vetech Hydraulics a photo for a fast hydraulic cylinder repair quote"
             : "Request a fast hydraulic cylinder repair quote from Vetech Hydraulics"
         }
-        href={isMobile ? smsHref : "/contact"}
+        href={showMobile ? smsHref : "/contact"}
         sx={{
           ...primaryCtaSx,
           mt: theme.spacing(3),
@@ -38,7 +50,7 @@ const ConsultationButton = () => {
             "0 18px 38px rgba(215,25,32,0.3), inset 0 1px 0 rgba(255,255,255,0.24)",
         }}
       >
-        {isMobile ? "Text Image for a Fast Quote" : "Get a Fast Quote"}
+        {showMobile ? "Text Image for a Fast Quote" : "Get a Fast Quote"}
       </Button>
     </motion.div>
   );
