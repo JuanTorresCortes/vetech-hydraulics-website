@@ -193,7 +193,7 @@ const Navbar = () => {
       onKeyDown={toggleDrawer(false)}
       sx={{
         width: "100vw",
-        minHeight: "100svh",
+        minHeight: "125svh",
         ...containerSx,
         pt: 2,
         pb: 4,
