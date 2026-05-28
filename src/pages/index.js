@@ -41,6 +41,7 @@ import {
   sectionBase,
 } from "../utils/visualStyles";
 import { businessSchema } from "../utils/seoData";
+import { BUSINESS } from "../config/business";
 import backHoe from "../image/backHoe.webp";
 import map from "../image/map.webp";
 import ConsultationButton from "../components/ConsultationButton";
@@ -503,7 +504,7 @@ export default function Home() {
                 >
                   <Button
                     component="a"
-                    href="tel:+19362496042"
+                    href={BUSINESS.phoneTel}
                     variant="contained"
                     startIcon={<PhoneIcon />}
                     sx={{
@@ -561,7 +562,7 @@ export default function Home() {
                 >
                   <Typography
                     component="a"
-                    href="tel:+19362496042"
+                    href={BUSINESS.phoneTel}
                     sx={{
                       color: "#F7FAFC",
                       fontWeight: 950,
@@ -571,7 +572,7 @@ export default function Home() {
                       "&:hover": { color: "#fff" },
                     }}
                   >
-                    (936) 249-6042
+                    {BUSINESS.phoneDisplay}
                   </Typography>
                   <Typography
                     sx={{
@@ -581,7 +582,7 @@ export default function Home() {
                       letterSpacing: "0.04em",
                     }}
                   >
-                    Mon–Fri • 8AM–5PM
+                    {BUSINESS.hoursShort}
                   </Typography>
                 </Stack>
 
@@ -1215,7 +1216,7 @@ export default function Home() {
             <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
               <Button
                 component="a"
-                href="tel:+19362496042"
+                href={BUSINESS.phoneTel}
                 variant="contained"
                 startIcon={<PhoneIcon />}
                 sx={{
@@ -1476,7 +1477,7 @@ export default function Home() {
             >
               <Button
                 component="a"
-                href="tel:+19362496042"
+                href={BUSINESS.phoneTel}
                 variant="contained"
                 startIcon={<PhoneIcon />}
                 sx={{
@@ -1498,7 +1499,7 @@ export default function Home() {
               </Button>
               <Button
                 component="a"
-                href="mailto:juan@vetech-hydraulics.com"
+                href={BUSINESS.emailMailto}
                 variant="outlined"
                 startIcon={<EmailIcon />}
                 sx={{
@@ -1689,7 +1690,7 @@ export default function Home() {
                 >
                   <Button
                     component="a"
-                    href="tel:+19362496042"
+                    href={BUSINESS.phoneTel}
                     variant="contained"
                     startIcon={<PhoneIcon />}
                     sx={primaryCtaSx}
@@ -1698,7 +1699,7 @@ export default function Home() {
                   </Button>
                   <Button
                     component="a"
-                    href="mailto:juan@vetech-hydraulics.com"
+                    href={BUSINESS.emailMailto}
                     variant="outlined"
                     startIcon={<EmailIcon />}
                     sx={secondaryCtaSx}

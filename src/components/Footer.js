@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { containerSx, primaryCtaSx } from "../utils/visualStyles";
 import PhoneIcon from "@mui/icons-material/Phone";
+import { BUSINESS } from "../config/business";
 
 // Footer service links intentionally point to broad pages rather than every individual subsection.
 const services = [
@@ -240,8 +241,8 @@ export default function Footer() {
                 >
                   Phone
                 </Typography>
-                <MuiLink href="tel:+19362496042" sx={footerLinkSx}>
-                  (936) 249-6042
+                <MuiLink href={BUSINESS.phoneTel} sx={footerLinkSx}>
+                  {BUSINESS.phoneDisplay}
                 </MuiLink>
               </Box>
               <Box>
@@ -251,10 +252,10 @@ export default function Footer() {
                   Email
                 </Typography>
                 <MuiLink
-                  href="mailto:juan@vetech-hydraulics.com"
+                  href={BUSINESS.emailMailto}
                   sx={footerLinkSx}
                 >
-                  juan@vetech-hydraulics.com
+                  {BUSINESS.email}
                 </MuiLink>
               </Box>
               <Box>
@@ -266,14 +267,14 @@ export default function Footer() {
                 <Typography
                   sx={{ color: "rgba(231,238,244,0.78)", fontWeight: 700 }}
                 >
-                  Mon–Fri: 8:00 AM – 5:00 PM
+                  {BUSINESS.hours}
                 </Typography>
               </Box>
             </Stack>
 
             <Button
               component="a"
-              href="tel:+19362496042"
+              href={BUSINESS.phoneTel}
               variant="contained"
               fullWidth
               startIcon={<PhoneIcon />}

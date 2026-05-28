@@ -5,6 +5,7 @@
 // Keep CONTACT_FROM on a Resend-verified domain/subdomain for deliverability.
 
 import { Resend } from "resend";
+import { BUSINESS } from "../../config/business";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -82,7 +83,7 @@ export default async function handler(req, res) {
           "<br/>"
         )}</p>
         <hr style="border:none;border-top:1px solid #eee;margin:16px 0;" />
-        <p style="color:#666;font-size:12px;">Sent from vetech-hydraulics.com</p>
+        <p style="color:#666;font-size:12px;">Sent from ${BUSINESS.siteUrl}</p>
       </div>
     `;
 
@@ -128,8 +129,8 @@ export default async function handler(req, res) {
       message,
       "",
       "— Vetech Hydraulics",
-      "https://vetech-hydraulics.com",
-      "(832) 901-7158",
+      BUSINESS.siteUrl,
+      BUSINESS.phoneDisplay,
     ];
     const customerText = customerTextLines.join("\n");
 
@@ -150,8 +151,8 @@ export default async function handler(req, res) {
         <hr style="border:none;border-top:1px solid #eee;margin:16px 0;" />
         <p style="margin:0;color:#555;">
           Vetech Hydraulics<br/>
-          <a href="https://vetech-hydraulics.com" style="color:#0a66c2;text-decoration:none;">vetech-hydraulics.com</a><br/>
-          (832) 901-7158
+          <a href="${BUSINESS.siteUrl}" style="color:#0a66c2;text-decoration:none;">${BUSINESS.siteUrl.replace("https://", "")}</a><br/>
+          ${BUSINESS.phoneDisplay}
         </p>
       </div>
     `;

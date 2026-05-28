@@ -25,6 +25,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { useRouter } from "next/router";
 import { containerSx, primaryCtaSx } from "../utils/visualStyles";
+import { BUSINESS } from "../config/business";
 
 const NAV_LINKS = [
   { text: "Home", href: "/" },
@@ -265,7 +266,7 @@ const Navbar = () => {
       <Box sx={{ mt: 3 }}>
         <Button
           component="a"
-          href="tel:+19362496042"
+          href={BUSINESS.phoneTel}
           fullWidth
           variant="contained"
           startIcon={<PhoneIcon />}
@@ -344,7 +345,7 @@ const Navbar = () => {
               {DesktopLinks}
               <Button
                 component="a"
-                href="tel:+19362496042"
+                href={BUSINESS.phoneTel}
                 variant="contained"
                 startIcon={<PhoneIcon />}
                 sx={{ ...requestServiceButtonSx, ml: 1.5 }}

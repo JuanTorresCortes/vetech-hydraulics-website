@@ -35,6 +35,7 @@ import {
   secondaryCtaSx,
   sectionBase,
 } from "../../utils/visualStyles";
+import { BUSINESS } from "../../config/business";
 import backHoe from "../../image/backHoe.webp";
 import map from "../../image/map.webp";
 
@@ -367,10 +368,10 @@ const serviceSchema = {
     "Hydraulic cylinder repair, repacking, rod polishing, welding, pressure testing",
   provider: {
     "@type": "LocalBusiness",
-    "@id": "https://www.vetechhydraulics.com/#business",
+    "@id": `${BUSINESS.siteUrl}/#business`,
     name: "Vetech Hydraulics",
-    url: "https://www.vetechhydraulics.com",
-    telephone: "+1-936-249-6042",
+    url: BUSINESS.siteUrl,
+    telephone: BUSINESS.phoneSchemaFormat,
     areaServed: CORE_CITIES.map((c) => ({
       "@type": "City",
       name: `${c}, TX`,
@@ -922,14 +923,14 @@ export default function ServiceAreasOverview() {
             <PhoneIcon sx={{ color: industrialColors.hydraulicRed }} />
 
             <MuiLink
-              href="tel:+19362496042"
+              href={BUSINESS.phoneTel}
               sx={{
                 color: industrialColors.hydraulicRed,
                 textDecoration: "none",
                 fontWeight: 900,
               }}
             >
-              (936) 249-6042
+              {BUSINESS.phoneDisplay}
             </MuiLink>
           </Typography>
         </Box>

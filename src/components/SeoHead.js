@@ -1,8 +1,9 @@
 // Central SEO helper for pages that do not need custom next/head markup.
 // Pass page-specific title, description, path, and optional schema while this component handles canonical/Open Graph defaults.
 import Head from "next/head";
+import { BUSINESS } from "../config/business";
 
-const SITE_URL = "https://www.vetechhydraulics.com";
+const SITE_URL = BUSINESS.siteUrl;
 const DEFAULT_IMAGE = `${SITE_URL}/VTH-logo.png`;
 
 export default function SeoHead({

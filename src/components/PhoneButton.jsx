@@ -5,10 +5,11 @@ import React from "react";
 import { Box, Typography, Link as MuiLink } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { red } from "@mui/material/colors";
+import { BUSINESS } from "../config/business";
 
 export default function PhoneButton({
-  phoneDisplay = "(936) 249-6042",
-  phoneHref = "+19362496042",
+  phoneDisplay = BUSINESS.phoneDisplay,
+  phoneHref = BUSINESS.phone,
 }) {
   return (
     <>

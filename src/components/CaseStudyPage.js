@@ -15,6 +15,7 @@ import {
   secondaryCtaSx,
   sectionBase,
 } from "../utils/visualStyles";
+import { BUSINESS } from "../config/business";
 
 const HeroSection = styled(Box)(({ theme }) => ({
   width: "100vw",
@@ -257,7 +258,7 @@ export default function CaseStudyPage({ caseStudy }) {
                 </Button>
                 <Button
                   component="a"
-                  href="tel:+19362496042"
+                  href={BUSINESS.phoneTel}
                   variant="outlined"
                   sx={secondaryCtaSx}
                 >

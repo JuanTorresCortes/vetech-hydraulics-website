@@ -32,6 +32,7 @@ import {
   secondaryCtaSx,
   sectionBase,
 } from "../utils/visualStyles";
+import { BUSINESS } from "../config/business";
 import mobileImg from "../image/mobileImg.webp";
 
 const HeroSection = styled(Box)(({ theme }) => ({
@@ -548,7 +549,7 @@ export default function FleetSupportPage() {
                 </Button>
                 <Button
                   component="a"
-                  href="tel:+19362496042"
+                  href={BUSINESS.phoneTel}
                   variant="outlined"
                   sx={secondaryCtaSx}
                 >

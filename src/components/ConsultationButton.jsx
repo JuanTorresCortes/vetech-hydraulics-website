@@ -6,12 +6,12 @@ import { useTheme } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 import { primaryCtaSx } from "../utils/visualStyles";
+import { BUSINESS } from "../config/business";
 
 const ConsultationButton = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"), { noSsr: true });
-  const smsHref =
-    "sms:+19362496042?&body=Hi%20Vetech%20Hydraulics%2C%20I%E2%80%99d%20like%20a%20fast%20quote.%20I%E2%80%99ll%20send%20a%20picture%20now.";
+  const smsHref = BUSINESS.smsHref;
 
   // Mobile visitors can text a photo immediately; desktop visitors go to the contact form to avoid unreliable sms: handling.
   return (

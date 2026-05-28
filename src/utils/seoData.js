@@ -2,26 +2,28 @@
 
 // Business structured data shared by pages that need LocalBusiness-style JSON-LD.
 // Keep address, phone, service areas, and ownership signals aligned with public business listings.
+import { BUSINESS } from "../config/business";
+
 export const businessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.vetechhydraulics.com/#business",
+  "@id": `${BUSINESS.siteUrl}/#business`,
 
   name: "Vetech Hydraulics",
-  url: "https://www.vetechhydraulics.com",
+  url: BUSINESS.siteUrl,
   description:
     "Vetech Hydraulics specializes in hydraulic cylinder repair and maintenance in Montgomery, Magnolia, Conroe and the greater North Houston area.",
 
-  telephone: "+1-936-249-6042",
-  email: "juan@vetech-hydraulics.com",
+  telephone: BUSINESS.phoneSchemaFormat,
+  email: BUSINESS.email,
   priceRange: "$$",
 
   // Strong entity signals
-  logo: "https://www.vetechhydraulics.com/VTH-logo.png",
+  logo: `${BUSINESS.siteUrl}/VTH-logo.png`,
   image: [
-    "https://www.vetechhydraulics.com/VTH-logo.png",
-    "https://www.vetechhydraulics.com/juanTech.webp",
-    "https://www.vetechhydraulics.com/juanVet.webp",
+    `${BUSINESS.siteUrl}/VTH-logo.png`,
+    `${BUSINESS.siteUrl}/juanTech.webp`,
+    `${BUSINESS.siteUrl}/juanVet.webp`,
   ],
 
 
@@ -46,7 +48,7 @@ export const businessSchema = {
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: "+1-936-249-6042",
+      telephone: BUSINESS.phoneSchemaFormat,
       contactType: "customer service",
       areaServed: "US-TX",
       availableLanguage: ["en", "es"],

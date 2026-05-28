@@ -33,6 +33,7 @@ import {
   sectionBase,
 } from "../utils/visualStyles";
 import { useRef, useState } from "react";
+import { BUSINESS } from "../config/business";
 import confetti from "canvas-confetti";
 import backHoe from "../image/backHoe.webp";
 
@@ -197,7 +198,7 @@ export default function ContactPage() {
   return (
     <>
       <SeoHead
-        title="Contact Vetech Hydraulics | Call (936) 249-6042"
+        title={`Contact Vetech Hydraulics | Call ${BUSINESS.phoneDisplay}`}
         description="Call or email Vetech Hydraulics for fast hydraulic cylinder repair quotes. Serving Montgomery, Conroe, Magnolia, and North Houston."
         path="/contact"
       />
@@ -256,7 +257,7 @@ export default function ContactPage() {
           <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5} alignItems={{ xs: "stretch", sm: "center" }}>
             <Button
               component="a"
-              href="tel:+19362496042"
+              href={BUSINESS.phoneTel}
               variant="contained"
               startIcon={<PhoneIcon />}
               sx={{
@@ -274,11 +275,11 @@ export default function ContactPage() {
                 "&:hover": { bgcolor: "#B9151B" },
               }}
             >
-              (936) 249-6042
+              {BUSINESS.phoneDisplay}
             </Button>
             <Button
               component="a"
-              href="mailto:juan@vetech-hydraulics.com"
+              href={BUSINESS.emailMailto}
               variant="outlined"
               startIcon={<EmailIcon />}
               sx={{
@@ -316,7 +317,7 @@ export default function ContactPage() {
                 </Typography>
                 <Typography
                   component="a"
-                  href="tel:+19362496042"
+                  href={BUSINESS.phoneTel}
                   sx={{
                     color: "#F7FAFC",
                     fontWeight: 950,
@@ -329,14 +330,14 @@ export default function ContactPage() {
                     "&:hover": { color: "#D71920" },
                   }}
                 >
-                  (936) 249-6042
+                  {BUSINESS.phoneDisplay}
                 </Typography>
                 <Typography sx={{ color: "rgba(231,238,244,0.72)", fontSize: 14, mb: 2.5 }}>
-                  Mon–Fri: 8:00 AM – 5:00 PM
+                  {BUSINESS.hours}
                 </Typography>
                 <Button
                   component="a"
-                  href="tel:+19362496042"
+                  href={BUSINESS.phoneTel}
                   variant="contained"
                   fullWidth
                   startIcon={<PhoneIcon />}
@@ -358,7 +359,7 @@ export default function ContactPage() {
                 </Typography>
                 <Typography
                   component="a"
-                  href="mailto:juan@vetech-hydraulics.com"
+                  href={BUSINESS.emailMailto}
                   sx={{
                     color: "#F7FAFC",
                     fontWeight: 900,
@@ -371,14 +372,14 @@ export default function ContactPage() {
                     "&:hover": { color: "#D71920" },
                   }}
                 >
-                  juan@vetech-hydraulics.com
+                  {BUSINESS.email}
                 </Typography>
                 <Typography sx={{ color: "rgba(231,238,244,0.72)", fontSize: 14, mb: 2.5 }}>
                   We typically respond same business day.
                 </Typography>
                 <Button
                   component="a"
-                  href="mailto:juan@vetech-hydraulics.com"
+                  href={BUSINESS.emailMailto}
                   variant="outlined"
                   fullWidth
                   startIcon={<EmailIcon />}
@@ -433,7 +434,7 @@ export default function ContactPage() {
                       Business Hours
                     </Typography>
                     <Typography sx={{ color: "#F7FAFC", fontWeight: 900, fontSize: 15 }}>
-                      Mon–Fri: 8:00 AM – 5:00 PM
+                      {BUSINESS.hours}
                     </Typography>
                   </Box>
                 </Box>
