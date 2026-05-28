@@ -33,12 +33,14 @@ import {
   bodyCopySx,
   containerSx,
   eyebrowSx,
+  fullBleed,
   headlineSx,
   industrialCardSx,
   industrialColors,
+  PageAltSection,
+  PageSection,
   primaryCtaSx,
   secondaryCtaSx,
-  sectionBase,
 } from "../utils/visualStyles";
 import { businessSchema } from "../utils/seoData";
 import { BUSINESS } from "../config/business";
@@ -54,14 +56,11 @@ import VeteranOwnershipSection from "@/components/VeteranOwnershipSection";
 
 /* ------------------------------ Styled UI ------------------------------ */
 
-const FullBleed = {
-  width: "100vw",
-  marginLeft: "calc(50% - 50vw)",
-  marginRight: "calc(50% - 50vw)",
-};
+const Section = PageSection;
+const AltSection = PageAltSection;
 
 const HeroSection = styled(Box)(({ theme }) => ({
-  ...FullBleed,
+  ...fullBleed,
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -125,16 +124,6 @@ const HeroSection = styled(Box)(({ theme }) => ({
       "linear-gradient(90deg, transparent, rgba(185,197,205,0.75), rgba(183,28,28,0.9), rgba(185,197,205,0.75), transparent)",
     zIndex: 3,
   },
-}));
-
-const Section = styled("section")(({ theme }) => ({
-  ...sectionBase(theme),
-  backgroundColor: "#0F2331",
-}));
-
-const AltSection = styled("section")(({ theme }) => ({
-  ...sectionBase(theme),
-  backgroundColor: "#0B1B27",
 }));
 
 const SectionTitle = ({ children, subtitle }) => (
@@ -369,9 +358,6 @@ export default function Home() {
     },
   };
 
-  // Consistent inner container spacing across sections
-  const innerContainerSx = containerSx;
-
   return (
     <>
       {/* Homepage SEO and local business schema; keep metadata values intentional because they affect search snippets. */}
@@ -421,7 +407,7 @@ export default function Home() {
           sx={{
             position: "relative",
             zIndex: 2,
-            ...innerContainerSx,
+            ...containerSx,
             pt: { xs: 10, sm: 12, md: 24 },
             pb: { xs: 5, sm: 7, md: 10 },
           }}
@@ -737,7 +723,7 @@ export default function Home() {
             "radial-gradient(circle at 12% 0%, rgba(215,25,32,0.15), transparent 34%), linear-gradient(180deg, #071522 0%, #0B1B27 52%, #07131D 100%)",
         }}
       >
-        <Container maxWidth="lg" sx={innerContainerSx}>
+        <Container maxWidth="lg" sx={containerSx}>
           <Box sx={{ textAlign: "center", mb: { xs: 4, md: 6 } }}>
             <Typography
               sx={{
@@ -973,7 +959,7 @@ export default function Home() {
       >
         <Container
           maxWidth="lg"
-          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+          sx={{ position: "relative", zIndex: 1, ...containerSx }}
         >
           <Grid
             container
@@ -1274,7 +1260,7 @@ export default function Home() {
             "radial-gradient(circle at 86% 8%, rgba(215,25,32,0.16), transparent 30%), linear-gradient(180deg, #050D14 0%, #0A1823 48%, #06111A 100%)",
         }}
       >
-        <Container maxWidth="lg" sx={innerContainerSx}>
+        <Container maxWidth="lg" sx={containerSx}>
           <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center">
             <Grid item xs={12} md={6.7}>
               <Typography
@@ -1553,7 +1539,7 @@ export default function Home() {
       >
         <Container
           maxWidth="lg"
-          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+          sx={{ position: "relative", zIndex: 1, ...containerSx }}
         >
           <Grid
             container
@@ -1722,7 +1708,7 @@ export default function Home() {
       <AltSection id="why-us" sx={lowerAltSectionBgSx}>
         <Container
           maxWidth="lg"
-          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+          sx={{ position: "relative", zIndex: 1, ...containerSx }}
         >
           <SectionTitle subtitle="Built for contractors, fleet managers, and operators.">
             Why Choose Vetech Hydraulics
@@ -1782,7 +1768,7 @@ export default function Home() {
       <Section id="failures" sx={lowerSectionBgSx}>
         <Container
           maxWidth="lg"
-          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+          sx={{ position: "relative", zIndex: 1, ...containerSx }}
         >
           <SectionTitle subtitle="What typically goes wrong — and how we fix it.">
             Common Hydraulic Cylinder Failures We See Every Day
@@ -1877,7 +1863,7 @@ export default function Home() {
       <AltSection id="capabilities" sx={lowerAltSectionBgSx}>
         <Container
           maxWidth="lg"
-          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+          sx={{ position: "relative", zIndex: 1, ...containerSx }}
         >
           <SectionTitle subtitle="From small-bore to large telescopic cylinders.">
             Our Cylinder Repair Capabilities
@@ -1942,7 +1928,7 @@ export default function Home() {
       <Section id="repair-vs-replace" sx={lowerSectionBgSx}>
         <Container
           maxWidth="lg"
-          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+          sx={{ position: "relative", zIndex: 1, ...containerSx }}
         >
           <SectionTitle subtitle="Helping you make the right call for your equipment and budget.">
             Repair vs. Replacement
@@ -2024,7 +2010,7 @@ export default function Home() {
       <Section id="process" sx={lowerAltSectionBgSx}>
         <Container
           maxWidth="lg"
-          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+          sx={{ position: "relative", zIndex: 1, ...containerSx }}
         >
           <SectionTitle subtitle="Simple, transparent, and efficient.">
             Our Repair Process
@@ -2075,7 +2061,7 @@ export default function Home() {
       <AltSection id="quality" sx={lowerSectionBgSx}>
         <Container
           maxWidth="lg"
-          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+          sx={{ position: "relative", zIndex: 1, ...containerSx }}
         >
           <SectionTitle subtitle="Your cylinders run under extreme pressure — we treat them that way.">
             Quality, Testing & Reliability
@@ -2120,7 +2106,7 @@ export default function Home() {
       <AltSection id="areas" sx={lowerAltSectionBgSx}>
         <Container
           maxWidth="lg"
-          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+          sx={{ position: "relative", zIndex: 1, ...containerSx }}
         >
           <SectionTitle subtitle="Local pickup and delivery available.">
             Service Areas
@@ -2206,7 +2192,7 @@ export default function Home() {
       <Section id="quote" sx={lowerSectionBgSx}>
         <Container
           maxWidth="lg"
-          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+          sx={{ position: "relative", zIndex: 1, ...containerSx }}
         >
           <Box
             sx={{
@@ -2229,7 +2215,7 @@ export default function Home() {
       <AltSection id="faq" sx={lowerAltSectionBgSx}>
         <Container
           maxWidth="lg"
-          sx={{ position: "relative", zIndex: 1, ...innerContainerSx }}
+          sx={{ position: "relative", zIndex: 1, ...containerSx }}
         >
           <SectionTitle>FAQ</SectionTitle>
 

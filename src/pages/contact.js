@@ -27,6 +27,7 @@ import {
   bodyCopySx,
   containerSx,
   eyebrowSx,
+  fullBleed,
   industrialCardSx,
   industrialColors,
   primaryCtaSx,
@@ -39,14 +40,8 @@ import backHoe from "../image/backHoe.webp";
 
 /* ---------------------------- Layout primitives ---------------------------- */
 
-const FullBleed = {
-  width: "100vw",
-  marginLeft: "calc(50% - 50vw)",
-  marginRight: "calc(50% - 50vw)",
-};
-
 const Hero = styled(Box)(({ theme }) => ({
-  ...FullBleed,
+  ...fullBleed,
   position: "relative",
   minHeight: "58vh",
   display: "flex",

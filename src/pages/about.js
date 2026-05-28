@@ -8,27 +8,32 @@ import { Box, Container, Typography, Grid, Button, Stack } from "@mui/material";
 import { styled } from "@mui/system";
 import {
   bodyCopySx,
+  containedWidthSx,
   containerSx,
   eyebrowSx,
   headlineSx,
+  industrialAltSectionSx,
   industrialCardSx,
   industrialColors,
+  industrialSectionSx,
+  innerContainerSx,
+  PageAltSection,
+  PageSection,
   primaryCtaSx,
   secondaryCtaSx,
-  sectionBase,
 } from "../utils/visualStyles";
 import cylinder1 from "../image/cylinder-1.webp";
 import cylinder2 from "../image/cylinder-2.webp";
 
 /* ------------------------------ Styled UI ------------------------------ */
-const FullBleed = {
+
+const Section = PageSection;
+const AltSection = PageAltSection;
+
+const Hero = styled(Box)(({ theme }) => ({
   width: "100vw",
   marginLeft: "calc(50% - 50vw)",
   marginRight: "calc(50% - 50vw)",
-};
-
-const Hero = styled(Box)(({ theme }) => ({
-  ...FullBleed,
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -69,47 +74,6 @@ const Hero = styled(Box)(({ theme }) => ({
   },
 }));
 
-const Section = styled("section")(({ theme }) => ({
-  ...sectionBase(theme),
-  backgroundColor: "#0F2331",
-}));
-
-const AltSection = styled("section")(({ theme }) => ({
-  ...sectionBase(theme),
-  backgroundColor: "#0B1B27",
-}));
-
-const industrialSectionSx = {
-  position: "relative",
-  background:
-    "radial-gradient(circle at 10% 12%, rgba(215,25,32,0.105), transparent 28%), radial-gradient(circle at 92% 18%, rgba(110,193,255,0.07), transparent 26%), linear-gradient(180deg, #050A0F 0%, #0A1721 48%, #06111A 100%)",
-  "&::before": {
-    content: '""',
-    position: "absolute",
-    inset: 0,
-    pointerEvents: "none",
-    opacity: 0.28,
-    backgroundImage:
-      "linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px)",
-    backgroundSize: "56px 56px",
-    maskImage:
-      "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.86) 18%, rgba(0,0,0,0.48) 78%, transparent 100%)",
-  },
-};
-
-const industrialAltSectionSx = {
-  ...industrialSectionSx,
-  background:
-    "radial-gradient(circle at 86% 16%, rgba(110,193,255,0.065), transparent 28%), radial-gradient(circle at 12% 84%, rgba(215,25,32,0.075), transparent 26%), linear-gradient(180deg, #07131D 0%, #091925 50%, #050D14 100%)",
-};
-
-const innerContainerSx = {
-  ...containerSx,
-  position: "relative",
-  zIndex: 1,
-};
-
-const contentWidthSx = { maxWidth: 1120, mx: "auto" };
 
 const premiumCardSx = {
   ...industrialCardSx,
@@ -264,7 +228,7 @@ export default function AboutPage() {
               zIndex: 2,
             }}
           >
-            <Box sx={contentWidthSx}>
+            <Box sx={containedWidthSx}>
               <Box sx={{ maxWidth: 960 }}>
                 <Typography sx={{ ...eyebrowSx, mb: 1.5 }}>
                   ABOUT VETECH HYDRAULICS
@@ -334,7 +298,7 @@ export default function AboutPage() {
         {/* ============================== MISSION / STORY ============================== */}
         <Section sx={industrialSectionSx}>
           <Container maxWidth={false} disableGutters sx={innerContainerSx}>
-            <Box sx={contentWidthSx}>
+            <Box sx={containedWidthSx}>
               <SectionTitle
                 eyebrow="MISSION & COMPANY STORY"
                 subtitle="Fast turnarounds. Clear communication. Fair pricing. Tested results."
@@ -416,7 +380,7 @@ export default function AboutPage() {
         {/* ============================== VETERAN CREDIBILITY ============================== */}
         <AltSection sx={industrialAltSectionSx}>
           <Container maxWidth={false} disableGutters sx={innerContainerSx}>
-            <Box sx={contentWidthSx}>
+            <Box sx={containedWidthSx}>
               <SectionTitle
                 eyebrow="VETERAN-OWNED CREDIBILITY"
                 subtitle="Community-driven. Precision-focused. Built for the people who keep Texas working."
@@ -526,7 +490,7 @@ export default function AboutPage() {
         {/* ============================== VALUES ============================== */}
         <Section sx={industrialSectionSx}>
           <Container maxWidth={false} disableGutters sx={innerContainerSx}>
-            <Box sx={contentWidthSx}>
+            <Box sx={containedWidthSx}>
               <SectionTitle
                 eyebrow="OPERATING VALUES"
                 subtitle="The standards behind every repair conversation, inspection, quote, rebuild, and delivery."
@@ -556,7 +520,7 @@ export default function AboutPage() {
         {/* ============================== EXPECTATIONS ============================== */}
         <AltSection sx={industrialAltSectionSx}>
           <Container maxWidth={false} disableGutters sx={innerContainerSx}>
-            <Box sx={contentWidthSx}>
+            <Box sx={containedWidthSx}>
               <SectionTitle
                 eyebrow="WHAT CUSTOMERS CAN EXPECT"
                 subtitle="A practical repair process designed to reduce surprises, protect uptime, and support commercial hydraulic equipment."
@@ -586,7 +550,7 @@ export default function AboutPage() {
         {/* ============================== INDUSTRIES ============================== */}
         <Section sx={industrialSectionSx}>
           <Container maxWidth={false} disableGutters sx={innerContainerSx}>
-            <Box sx={contentWidthSx}>
+            <Box sx={containedWidthSx}>
               <Grid container spacing={{ xs: 3, md: 5 }} alignItems="center">
                 <Grid item xs={12} md={5.2}>
                   <Typography sx={{ ...eyebrowSx, mb: 1.25 }}>
@@ -641,7 +605,7 @@ export default function AboutPage() {
         {/* ================================ CTA ================================ */}
         <AltSection sx={industrialAltSectionSx}>
           <Container maxWidth={false} disableGutters sx={innerContainerSx}>
-            <Box sx={contentWidthSx}>
+            <Box sx={containedWidthSx}>
               <Box
                 sx={{
                   ...premiumCardSx,

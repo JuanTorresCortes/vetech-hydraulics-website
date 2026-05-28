@@ -1,6 +1,7 @@
 // Shared visual tokens for the industrial theme used across page-specific MUI sx objects.
 // Prefer extending these helpers before introducing one-off colors, spacing, or CTA styles.
 // Industrial color system: hydraulic red for action/trust accents, gunmetal backgrounds, and steel borders.
+import { styled } from "@mui/system";
 export const industrialColors = {
   hydraulicRed: "#D71920",
   hydraulicRedDark: "#B9151B",
@@ -131,4 +132,47 @@ export const secondaryCtaSx = {
     bgcolor: "rgba(255,255,255,0.08)",
     transform: "translateY(-1px)",
   },
+};
+
+// Shared full-bleed section components used by most pages; pages with unique gradient backgrounds should define their own.
+export const PageSection = styled("section")(({ theme }) => ({
+  ...sectionBase(theme),
+  backgroundColor: "#0F2331",
+}));
+
+export const PageAltSection = styled("section")(({ theme }) => ({
+  ...sectionBase(theme),
+  backgroundColor: "#0B1B27",
+}));
+
+// Grid-pattern background used on content sections across About and Services pages.
+export const industrialSectionSx = {
+  position: "relative",
+  background:
+    "radial-gradient(circle at 10% 12%, rgba(215,25,32,0.105), transparent 28%), radial-gradient(circle at 92% 18%, rgba(110,193,255,0.07), transparent 26%), linear-gradient(180deg, #050A0F 0%, #0A1721 48%, #06111A 100%)",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    pointerEvents: "none",
+    opacity: 0.28,
+    backgroundImage:
+      "linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px)",
+    backgroundSize: "56px 56px",
+    maskImage:
+      "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.86) 18%, rgba(0,0,0,0.48) 78%, transparent 100%)",
+  },
+};
+
+export const industrialAltSectionSx = {
+  ...industrialSectionSx,
+  background:
+    "radial-gradient(circle at 86% 16%, rgba(110,193,255,0.065), transparent 28%), radial-gradient(circle at 12% 84%, rgba(215,25,32,0.075), transparent 26%), linear-gradient(180deg, #07131D 0%, #091925 50%, #050D14 100%)",
+};
+
+// Container with stacking context; use inside full-bleed sections that overlay background imagery.
+export const innerContainerSx = {
+  ...containerSx,
+  position: "relative",
+  zIndex: 1,
 };

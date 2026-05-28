@@ -28,9 +28,10 @@ import {
   eyebrowSx,
   headlineSx,
   industrialCardSx,
+  PageAltSection,
+  PageSection,
   primaryCtaSx,
   secondaryCtaSx,
-  sectionBase,
 } from "../utils/visualStyles";
 import { BUSINESS } from "../config/business";
 import mobileImg from "../image/mobileImg.webp";
@@ -62,15 +63,8 @@ const HeroSection = styled(Box)(({ theme }) => ({
   },
 }));
 
-const Section = styled("section")(({ theme }) => ({
-  ...sectionBase(theme),
-  backgroundColor: "#0F2331",
-}));
-
-const AltSection = styled("section")(({ theme }) => ({
-  ...sectionBase(theme),
-  backgroundColor: "#0B1B27",
-}));
+const Section = PageSection;
+const AltSection = PageAltSection;
 
 const SectionHeader = ({ eyebrow, title, children }) => (
   <Box sx={{ textAlign: "center", mb: { xs: 4, md: 6 } }}>
