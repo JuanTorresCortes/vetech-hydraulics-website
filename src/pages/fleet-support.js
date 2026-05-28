@@ -252,6 +252,7 @@ export default function FleetSupportPage() {
         title="Fleet Hydraulic Cylinder Repair | Vetech Hydraulics"
         description="Commercial hydraulic cylinder repair support for fleets, contractors, municipalities, trash trucks, construction equipment, and industrial operators across North Houston."
         path="/fleet-support"
+        ogImage="/og/fleet.webp"
       />
 
       <Box component="main">

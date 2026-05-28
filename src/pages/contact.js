@@ -233,6 +233,7 @@ export default function ContactPage() {
         title={`Contact Vetech Hydraulics | Call ${BUSINESS.phoneDisplay}`}
         description="Call or email Vetech Hydraulics for fast hydraulic cylinder repair quotes. Serving Montgomery, Conroe, Magnolia, and North Houston."
         path="/contact"
+        ogImage="/cover-image.png"
       />
 
       {/* -------------------------------- HERO -------------------------------- */}

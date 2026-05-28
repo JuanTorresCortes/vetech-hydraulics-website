@@ -229,6 +229,7 @@ export default function AboutPage() {
         title="About Us | Vetech Hydraulics"
         description="Learn about Vetech Hydraulics—our mission, founder story, and commitment to fast, reliable hydraulic cylinder repairs with fair pricing and tested results."
         path="/about"
+        ogImage="/juanTech.webp"
       />
 
       <Box component="main">
@@ -394,6 +395,7 @@ export default function AboutPage() {
                       sizes="(max-width: 900px) 100vw, 40vw"
                       loading="lazy"
                       quality={82}
+                      placeholder="blur"
                       style={{ objectFit: "cover" }}
                     />
                     <Box
@@ -450,6 +452,8 @@ export default function AboutPage() {
                             sizes="(max-width: 900px) 50vw, 25vw"
                             loading="lazy"
                             quality={82}
+                            placeholder="blur"
+                            blurDataURL="data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAUAmJYgCdAEO/gHOAAA="
                             style={{
                               objectFit: "cover",
                               objectPosition: "center top",

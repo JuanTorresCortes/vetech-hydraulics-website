@@ -271,6 +271,7 @@ export default function ServicesPage() {
         title="Services | Vetech Hydraulics"
         description="Hydraulic cylinder repair services focused on precision rebuilding, fair pricing, pressure testing, and minimizing downtime."
         path="/services"
+        ogImage="/og/repair.webp"
       />
 
       <Box component="main">

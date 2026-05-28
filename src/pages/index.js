@@ -180,6 +180,7 @@ const CardImage = ({
       sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
       loading="lazy"
       quality={82}
+      placeholder="blur"
       style={{ objectFit: "cover" }}
     />
   </Box>
@@ -202,6 +203,7 @@ const CardImageMap = ({ alt = "service area map", src = map }) => (
       sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 40vw"
       loading="lazy"
       quality={82}
+      placeholder="blur"
       style={{ objectFit: "cover" }}
     />
   </Box>
@@ -377,6 +379,7 @@ export default function Home() {
         title="Vetech Hydraulics | Hydraulic Cylinder Repair Experts"
         description="Vetech Hydraulics specializes in hydraulic cylinder repair and maintenance in Montgomery, Magnolia, Conroe and the greater North Houston area."
         path="/"
+        ogImage="/cover-image.png"
       />
       <Head>
         <script
@@ -1082,6 +1085,7 @@ export default function Home() {
                         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 25vw"
                         loading="lazy"
                         quality={82}
+                        placeholder="blur"
                         className="repair-image"
                         style={{
                           objectFit: "cover",

@@ -52,6 +52,7 @@ export default function CaseStudiesIndexPage() {
         title="Hydraulic Repair Case Studies | Vetech Hydraulics"
         description="Hydraulic cylinder repair case studies for fleet, construction, waste management, and heavy equipment repair scenarios from Vetech Hydraulics."
         path="/case-studies"
+        ogImage="/og/repair.webp"
       />
 
       <Box component="main">
@@ -116,6 +117,7 @@ export default function CaseStudiesIndexPage() {
                         sizes="(max-width: 900px) 100vw, 33vw"
                         loading="lazy"
                         quality={82}
+                        placeholder="blur"
                         style={{ objectFit: "cover" }}
                       />
                       <Box
