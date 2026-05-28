@@ -1,7 +1,7 @@
 // src/components/Navbar.js
 // Site navigation shared by every route, including responsive desktop/mobile menu behavior.
 // Update navItems when routing changes; keep labels concise so the mobile drawer remains readable.
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NextLink from "next/link";
 import Image from "next/image";
 import {
@@ -50,9 +50,16 @@ const Navbar = () => {
     ) {
       return;
     }
-
     setDrawerOpen(open);
   };
+
+  // Close the drawer the moment Next.js starts navigating to a new route.
+  // This handles taps on NextLink items where the route change can race the click event.
+  useEffect(() => {
+    const handleRouteChange = () => setDrawerOpen(false);
+    router.events.on("routeChangeStart", handleRouteChange);
+    return () => router.events.off("routeChangeStart", handleRouteChange);
+  }, [router.events]);
 
   const isActive = (href) => {
     if (href === "/") return router.pathname === "/";
