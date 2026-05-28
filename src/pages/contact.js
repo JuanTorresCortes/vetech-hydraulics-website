@@ -161,6 +161,8 @@ export default function ContactPage() {
   }, []);
 
   const launchConfetti = () => {
+    // Clear any pending timer from a previous submission before starting a new burst.
+    if (confettiTimerRef.current) clearTimeout(confettiTimerRef.current);
     confetti({ particleCount: 90, spread: 70, origin: { y: 0.3 }, scalar: 0.9 });
     confettiTimerRef.current = setTimeout(() => {
       confetti({ particleCount: 60, angle: 60, spread: 55, origin: { x: 0 } });
@@ -204,6 +206,13 @@ export default function ContactPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+
+      // Guard against non-JSON responses (e.g. Vercel 500 HTML error pages).
+      const contentType = res.headers.get("content-type") ?? "";
+      if (!contentType.includes("application/json")) {
+        throw new Error(`Unexpected response type: ${res.status}`);
+      }
+
       const data = await res.json();
 
       if (data?.ok) {

@@ -38,7 +38,7 @@ const ConsultationButton = () => {
             "0 18px 38px rgba(215,25,32,0.3), inset 0 1px 0 rgba(255,255,255,0.24)",
         }}
       >
-        {isMobile ? "Text Image for a Fast Quote" : "Request a Fast Quote"}
+        {isMobile ? "Text Image for a Fast Quote" : "Get a Fast Quote"}
       </Button>
     </motion.div>
   );

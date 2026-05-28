@@ -76,6 +76,13 @@ const DetailBlock = ({ eyebrow, title, children }) => (
 );
 
 export default function CaseStudyPage({ caseStudy }) {
+  // Guard: warn in development if a case study entry is missing required fields.
+  if (process.env.NODE_ENV === "development") {
+    if (!caseStudy?.imageAlt) console.warn(`[CaseStudyPage] "${caseStudy?.slug}" is missing imageAlt — image will have empty alt text.`);
+    if (!caseStudy?.metaTitle) console.warn(`[CaseStudyPage] "${caseStudy?.slug}" is missing metaTitle.`);
+    if (!caseStudy?.metaDescription) console.warn(`[CaseStudyPage] "${caseStudy?.slug}" is missing metaDescription.`);
+  }
+
   return (
     <>
       {/* Detail-page metadata comes from the case study data object to keep listing and page copy synchronized. */}

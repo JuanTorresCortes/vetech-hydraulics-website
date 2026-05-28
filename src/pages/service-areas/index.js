@@ -433,6 +433,7 @@ export default function ServiceAreasOverview() {
         />
         <link rel="canonical" href={canonicalUrl} />
 
+        {/* Safe: serviceSchema and breadcrumbSchema are trusted static objects. JSON.stringify prevents injection. */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}

@@ -9,7 +9,6 @@ import { BUSINESS } from "../config/business";
 
 export default function PhoneButton({
   phoneDisplay = BUSINESS.phoneDisplay,
-  phoneHref = BUSINESS.phone,
 }) {
   return (
     <>
@@ -44,7 +43,7 @@ export default function PhoneButton({
           <PhoneIcon sx={{ color: red[500] }} />
 
           <MuiLink
-            href={`tel:${phoneHref}`}
+            href={BUSINESS.phoneTel}
             aria-label={`Call Vetech Hydraulics at ${phoneDisplay}`}
             sx={{
               color: red[500],

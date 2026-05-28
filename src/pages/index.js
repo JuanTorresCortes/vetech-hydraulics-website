@@ -382,6 +382,7 @@ export default function Home() {
         ogImage="/cover-image.png"
       />
       <Head>
+        {/* Safe: businessSchema is a trusted static object. JSON.stringify prevents injection. */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
