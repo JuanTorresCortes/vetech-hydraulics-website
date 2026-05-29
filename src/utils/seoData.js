@@ -18,6 +18,21 @@ export const businessSchema = {
   email: BUSINESS.email,
   priceRange: "$$",
 
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: BUSINESS.streetAddress,
+    addressLocality: BUSINESS.addressLocality,
+    addressRegion: BUSINESS.addressRegion,
+    postalCode: BUSINESS.postalCode,
+    addressCountry: BUSINESS.addressCountry,
+  },
+
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 30.2099,
+    longitude: -95.5757,
+  },
+
   // Strong entity signals
   logo: `${BUSINESS.siteUrl}/VTH-logo.png`,
   image: [
@@ -68,6 +83,17 @@ export const businessSchema = {
     { "@type": "City", name: "Splendora, TX" },
     { "@type": "City", name: "Humble, TX" },
     { "@type": "City", name: "Atascocita, TX" },
+    { "@type": "City", name: "Huntsville, TX" },
+    { "@type": "City", name: "Navasota, TX" },
+    { "@type": "City", name: "Waller, TX" },
+    { "@type": "City", name: "Hempstead, TX" },
+    { "@type": "City", name: "Plantersville, TX" },
+    { "@type": "City", name: "Stagecoach, TX" },
+    { "@type": "City", name: "Klein, TX" },
+    { "@type": "City", name: "Pinehurst, TX" },
+    { "@type": "City", name: "Huffman, TX" },
+    { "@type": "City", name: "Cleveland, TX" },
+    { "@type": "City", name: "Prairie View, TX" },
   ],
 
   // SDVOSB / Veteran-owned signals (safe)

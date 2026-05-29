@@ -100,7 +100,7 @@ const Navbar = () => {
         }}
       >
         <Image
-          src="/VTH-logo.png"
+          src="/VTH-logo.webp"
           alt="Vetech Hydraulics"
           fill
           priority={!mobile}

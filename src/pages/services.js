@@ -232,10 +232,11 @@ export default function ServicesPage() {
     <>
       {/* Services SEO metadata is page-specific; do not change copy here unless intentionally updating search positioning. */}
       <SeoHead
-        title="Services | Vetech Hydraulics"
-        description="Hydraulic cylinder repair services focused on precision rebuilding, fair pricing, pressure testing, and minimizing downtime."
+        title="Hydraulic Cylinder Repair Services in Montgomery TX | Vetech Hydraulics"
+        description="Hydraulic cylinder repacking, rod repair, pressure testing & mobile service near Montgomery, Conroe & North Houston TX. Veteran-owned. Call (936) 249-6042."
         path="/services"
         ogImage="/og/repair.webp"
+        keywords="hydraulic cylinder repair services Montgomery TX, hydraulic cylinder repacking, rod polishing, hydraulic pressure testing, mobile hydraulic service, North Houston hydraulic repair"
       />
 
       <Box component="main">
@@ -244,7 +245,7 @@ export default function ServicesPage() {
         <Hero>
           <Image
             src={cylinder4}
-            alt="Hydraulic equipment background"
+            alt="Hydraulic cylinder repair equipment used by Vetech Hydraulics in Montgomery TX"
             fill
             priority
             sizes="100vw"
@@ -291,7 +292,7 @@ export default function ServicesPage() {
                     textWrap: "balance",
                   }}
                 >
-                  Heavy-Duty Hydraulic Repair Built for Uptime
+                  Heavy-Duty Hydraulic Cylinder Repair in Montgomery & North Houston TX
                 </Typography>
 
                 <Typography
@@ -305,7 +306,7 @@ export default function ServicesPage() {
                 >
                   Hydraulic cylinder repair, repacking, rod repair, pressure
                   testing, and service support for heavy equipment, fleets, and
-                  job sites across North Houston.
+                  job sites across Montgomery County and North Houston, TX.
                 </Typography>
 
                 <Stack

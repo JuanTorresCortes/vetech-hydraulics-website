@@ -49,10 +49,11 @@ export default function CaseStudiesIndexPage() {
     <>
       {/* Case-study index SEO describes the collection; individual case metadata lives in caseStudies.js. */}
       <SeoHead
-        title="Hydraulic Repair Case Studies | Vetech Hydraulics"
-        description="Hydraulic cylinder repair case studies for fleet, construction, waste management, and heavy equipment repair scenarios from Vetech Hydraulics."
+        title="Hydraulic Cylinder Repair Case Studies | Montgomery TX | Vetech Hydraulics"
+        description="Real hydraulic cylinder repair scenarios for fleets, excavators & waste management equipment near Montgomery & Conroe TX. See our repair process in action."
         path="/case-studies"
         ogImage="/og/repair.webp"
+        keywords="hydraulic cylinder repair case studies Montgomery TX, hydraulic repair examples Conroe TX, excavator hydraulic repair, fleet hydraulic cylinder rebuild"
       />
 
       <Box component="main">

@@ -425,11 +425,15 @@ export default function ServiceAreasOverview() {
     <>
       <Head>
         <title>
-          Service Areas | Hydraulic Cylinder Repair | Vetech Hydraulics
+          Hydraulic Cylinder Repair Service Areas | Montgomery County TX | Vetech Hydraulics
         </title>
         <meta
           name="description"
-          content="Hydraulic cylinder repair service areas across Montgomery, Magnolia, Conroe, Willis, The Woodlands, and the greater North Houston region. Pickup/delivery options and fast turnarounds."
+          content="Hydraulic cylinder repair serving Montgomery, Conroe, Magnolia, The Woodlands, Tomball, Spring & 45+ cities in North Houston TX. Pickup & delivery available."
+        />
+        <meta
+          name="keywords"
+          content="hydraulic cylinder repair near me Montgomery TX, hydraulic repair Conroe TX, hydraulic repair The Woodlands TX, hydraulic cylinder service Montgomery County, North Houston hydraulic repair"
         />
         <link rel="canonical" href={canonicalUrl} />
 

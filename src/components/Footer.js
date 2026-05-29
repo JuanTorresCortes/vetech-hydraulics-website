@@ -144,7 +144,7 @@ export default function Footer() {
                 }}
               >
                 <Image
-                  src="/VTH-logo.png"
+                  src="/VTH-logo.webp"
                   alt="Vetech Hydraulics logo"
                   fill
                   sizes="60px"
@@ -251,10 +251,7 @@ export default function Footer() {
                 >
                   Email
                 </Typography>
-                <MuiLink
-                  href={BUSINESS.emailMailto}
-                  sx={footerLinkSx}
-                >
+                <MuiLink href={BUSINESS.emailMailto} sx={footerLinkSx}>
                   {BUSINESS.email}
                 </MuiLink>
               </Box>

@@ -14,6 +14,7 @@ export default function SeoHead({
   path = "/",
   ogImage,
   type = "website",
+  keywords,
 }) {
   const canonicalUrl = `${SITE_URL}${path === "/" ? "/" : path}`;
   // Build an absolute URL — OG image tags must be fully qualified for crawlers.
@@ -23,6 +24,7 @@ export default function SeoHead({
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={canonicalUrl} />
 
       <meta property="og:title" content={title} />

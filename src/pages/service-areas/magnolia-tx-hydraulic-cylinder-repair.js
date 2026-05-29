@@ -52,6 +52,12 @@ export default function MagnoliaServicePage() {
           name="description"
           content="Vetech Hydraulics provides hydraulic cylinder repair, repacking, and testing in Magnolia, TX. Text a picture of your cylinder for a fast quote."
         />
+        <meta name="keywords" content="hydraulic cylinder repair Magnolia TX, hydraulic repair Magnolia Texas, hydraulic cylinder repacking Magnolia TX, hydraulic service Magnolia TX 77354" />
+        <meta property="og:title" content="Hydraulic Cylinder Repair in Magnolia, TX | Vetech Hydraulics" />
+        <meta property="og:description" content="Vetech Hydraulics provides hydraulic cylinder repair, repacking, and testing in Magnolia, TX. Text a picture of your cylinder for a fast quote." />
+        <meta property="og:url" content={`${BUSINESS.siteUrl}/service-areas/magnolia-tx-hydraulic-cylinder-repair`} />
+        <meta property="og:image" content={`${BUSINESS.siteUrl}/og/repair.webp`} />
+        <meta name="twitter:card" content="summary_large_image" />
         <link
           rel="canonical"
           href={`${BUSINESS.siteUrl}/service-areas/magnolia-tx-hydraulic-cylinder-repair`}

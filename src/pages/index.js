@@ -362,10 +362,11 @@ export default function Home() {
     <>
       {/* Homepage SEO and local business schema; keep metadata values intentional because they affect search snippets. */}
       <SeoHead
-        title="Vetech Hydraulics | Hydraulic Cylinder Repair Experts"
-        description="Vetech Hydraulics specializes in hydraulic cylinder repair and maintenance in Montgomery, Magnolia, Conroe and the greater North Houston area."
+        title="Hydraulic Cylinder Repair in Montgomery TX | Vetech Hydraulics"
+        description="Veteran-owned hydraulic cylinder repair in Montgomery, Conroe, Magnolia & North Houston. Fast turnarounds, pressure-tested results. Call (936) 249-6042."
         path="/"
         ogImage="/cover-image.png"
+        keywords="hydraulic cylinder repair Montgomery TX, hydraulic repair Conroe TX, hydraulic cylinder repair Magnolia TX, hydraulic repair North Houston, hydraulic cylinder repacking, hydraulic hose repair, veteran-owned hydraulic repair"
       />
       <Head>
         {/* Safe: businessSchema is a trusted static object. JSON.stringify prevents injection. */}
@@ -447,7 +448,8 @@ export default function Home() {
                       boxShadow: "0 0 18px rgba(215,25,32,0.9)",
                     }}
                   />
-                  Based in Magnolia, TX • Serving Montgomery County & North Houston
+                  Based in Magnolia, TX • Serving Montgomery County & North
+                  Houston
                 </Box>
 
                 <Typography
@@ -664,7 +666,7 @@ export default function Home() {
                     }}
                   >
                     <Image
-                      src="/VTH-logo.png"
+                      src="/VTH-logo.webp"
                       alt="Vetech Hydraulics logo"
                       fill
                       sizes="390px"

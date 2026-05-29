@@ -190,10 +190,11 @@ export default function AboutPage() {
     <>
       {/* About-page metadata supports brand trust searches; keep values coordinated with public business positioning. */}
       <SeoHead
-        title="About Us | Vetech Hydraulics"
-        description="Learn about Vetech Hydraulics—our mission, founder story, and commitment to fast, reliable hydraulic cylinder repairs with fair pricing and tested results."
+        title="About Vetech Hydraulics | Veteran-Owned Hydraulic Repair in Magnolia TX"
+        description="Veteran-owned hydraulic cylinder repair shop serving Montgomery County & North Houston TX. Learn our mission, values, and commitment to pressure-tested results."
         path="/about"
         ogImage="/juanTech.webp"
+        keywords="veteran-owned hydraulic repair Montgomery TX, hydraulic cylinder repair Magnolia TX, SDVOSB hydraulic repair Texas, Vetech Hydraulics about"
       />
 
       <Box component="main">

@@ -2,6 +2,8 @@
 // Contact page: phone-first layout with direct call/email/address info up top,
 // and a secondary message form for after-hours or written inquiries.
 import SeoHead from "../components/SeoHead";
+import Head from "next/head";
+import { businessSchema } from "../utils/seoData";
 import Image from "next/image";
 import {
   Alert,
@@ -234,11 +236,19 @@ export default function ContactPage() {
   return (
     <>
       <SeoHead
-        title={`Contact Vetech Hydraulics | Call ${BUSINESS.phoneDisplay}`}
-        description="Call or email Vetech Hydraulics for fast hydraulic cylinder repair quotes. Serving Montgomery, Conroe, Magnolia, and North Houston."
+        title="Contact Vetech Hydraulics | Hydraulic Repair in Montgomery & Conroe TX"
+        description="Call (936) 249-6042 for fast hydraulic cylinder repair quotes in Montgomery, Conroe, Magnolia & North Houston TX. Veteran-owned. Quick turnarounds."
         path="/contact"
         ogImage="/cover-image.png"
+        keywords="contact hydraulic repair Montgomery TX, hydraulic cylinder repair quote Conroe TX, hydraulic repair Magnolia TX, hydraulic service North Houston"
       />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
+        />
+      </Head>
 
       {/* -------------------------------- HERO -------------------------------- */}
       <Hero>
