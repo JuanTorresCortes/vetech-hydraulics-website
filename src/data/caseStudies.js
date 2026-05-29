@@ -1,6 +1,6 @@
-import repairImg from "../image/repairImg.webp";
-import repackImg from "../image/repackImg.webp";
-import mobileImg from "../image/mobileImg.webp";
+import tele from "../image/tele.webp";
+import esc from "../image/esc.webp";
+import tele2 from "../image/vetech_telescopic_cylinder.webp";
 
 // Case-study objects feed both the listing and dynamic detail pages; each slug must remain unique and sitemap-friendly.
 // heroImage and imageAlt are paired so designers can swap visuals without losing accessibility context.
@@ -12,7 +12,7 @@ export const caseStudies = [
     equipmentType: "Waste management fleet / telescopic cylinder",
     summary:
       "A fleet-focused telescopic cylinder rebuild scenario for a trash truck route vehicle that needed dependable hydraulic performance and fast return-to-service planning.",
-    heroImage: mobileImg,
+    heroImage: tele,
     imageAlt:
       "Trash truck hydraulic cylinder rebuild example for fleet service planning",
     metaTitle: "Trash Truck Telescopic Cylinder Rebuild | Vetech Hydraulics",
@@ -39,7 +39,7 @@ export const caseStudies = [
     equipmentType: "Construction equipment / excavator cylinder",
     summary:
       "A heavy equipment rod repair scenario focused on surface condition, seal life, and job-site reliability for an excavator hydraulic cylinder.",
-    heroImage: repairImg,
+    heroImage: esc,
     imageAlt:
       "Excavator hydraulic cylinder rod repair example showing damaged cylinder components",
     metaTitle: "Excavator Hydraulic Cylinder Rod Repair | Vetech Hydraulics",
@@ -66,7 +66,7 @@ export const caseStudies = [
     equipmentType: "Heavy equipment / multi-stage hydraulic cylinder",
     summary:
       "A multi-stage cylinder repacking and pressure testing scenario built around leak control, verification, and commercial-grade workmanship.",
-    heroImage: repackImg,
+    heroImage: tele2,
     imageAlt:
       "Multi-stage hydraulic cylinder repacking and pressure testing example",
     metaTitle:
