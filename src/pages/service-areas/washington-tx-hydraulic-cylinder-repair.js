@@ -56,6 +56,12 @@ export default function WashingtonServicePage() {
           rel="canonical"
           href={`${BUSINESS.siteUrl}/service-areas/washington-tx-hydraulic-cylinder-repair`}
         />
+        <meta name="keywords" content="hydraulic cylinder repair Washington TX, hydraulic repair Washington Texas, hydraulic cylinder repacking Washington TX, hydraulic service near Washington TX" />
+        <meta property="og:title" content="Hydraulic Cylinder Repair in Washington, TX | Vetech Hydraulics" />
+        <meta property="og:description" content="Vetech Hydraulics provides hydraulic cylinder repair, repacking, and testing in Washington, TX. Text a picture of your cylinder for a fast quote." />
+        <meta property="og:url" content={`${BUSINESS.siteUrl}/service-areas/washington-tx-hydraulic-cylinder-repair`} />
+        <meta property="og:image" content={`${BUSINESS.siteUrl}/og/repair.webp`} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       <AltSection>

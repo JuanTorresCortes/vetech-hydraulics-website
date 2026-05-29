@@ -369,10 +369,53 @@ export default function Home() {
         keywords="hydraulic cylinder repair Montgomery TX, hydraulic repair Conroe TX, hydraulic cylinder repair Magnolia TX, hydraulic repair North Houston, hydraulic cylinder repacking, hydraulic hose repair, veteran-owned hydraulic repair"
       />
       <Head>
-        {/* Safe: businessSchema is a trusted static object. JSON.stringify prevents injection. */}
+        {/* Safe: businessSchema and faqSchema are trusted static objects. JSON.stringify prevents injection. */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "How much does it cost to fix a hydraulic cylinder?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Hydraulic cylinder repair costs vary widely, from $200–$400 for simple reseals to several hundred or over $1,000 for complex telescopic cylinder repair or re-chroming. At Vetech Hydraulics, we aim to stay under 50% of OEM replacement cost. Each cylinder is unique — contact us for a quote.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How fast can you turn around a standard repack?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Typical turnaround is 24–72 hours depending on parts availability and shop queue. Emergency service is available.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Do you test cylinders before delivery?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes. Every repair is pressure tested to verify no leaks and proper operation before the cylinder is returned.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Can you pick up my cylinder from a job site?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "We offer pickup and delivery in Montgomery County and surrounding areas. Mobile pull and install options are also available.",
+                  },
+                },
+              ],
+            }),
+          }}
         />
       </Head>
 
@@ -472,7 +515,7 @@ export default function Home() {
                     textShadow: "0 18px 42px rgba(0,0,0,0.55)",
                   }}
                 >
-                  PRECISION HYDRAULIC CYLINDER REPAIR
+                  HYDRAULIC CYLINDER REPAIR IN MONTGOMERY & NORTH HOUSTON TX
                 </Typography>
 
                 <Typography

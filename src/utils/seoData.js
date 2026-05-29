@@ -146,5 +146,9 @@ export const businessSchema = {
     ],
   },
 
-  sameAs: [],
+  // Add social / directory profile URLs here once live — strengthens Google entity graph
+  sameAs: [
+    "https://www.google.com/maps/search/Vetech+Hydraulics+Magnolia+TX",
+    "https://www.facebook.com/vetechhydraulics",
+  ],
 };

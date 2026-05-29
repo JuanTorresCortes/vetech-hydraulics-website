@@ -56,6 +56,12 @@ export default function RomanForestServicePage() {
           rel="canonical"
           href={`${BUSINESS.siteUrl}/service-areas/roman-forest-tx-hydraulic-cylinder-repair`}
         />
+        <meta name="keywords" content="hydraulic cylinder repair Roman Forest TX, hydraulic repair Roman Forest Texas, hydraulic cylinder repacking Roman Forest TX, hydraulic service near Roman Forest TX" />
+        <meta property="og:title" content="Hydraulic Cylinder Repair in Roman Forest, TX | Vetech Hydraulics" />
+        <meta property="og:description" content="Vetech Hydraulics provides hydraulic cylinder repair, repacking, and testing in Roman Forest, TX. Text a picture of your cylinder for a fast quote." />
+        <meta property="og:url" content={`${BUSINESS.siteUrl}/service-areas/roman-forest-tx-hydraulic-cylinder-repair`} />
+        <meta property="og:image" content={`${BUSINESS.siteUrl}/og/repair.webp`} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       <AltSection>

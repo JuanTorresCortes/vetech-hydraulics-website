@@ -146,6 +146,12 @@ export default function AndersonServicePage() {
         <script type="application/ld+json">
           {JSON.stringify(serviceSchemaAnderson)}
         </script>
+        <meta name="keywords" content="hydraulic cylinder repair Anderson TX, hydraulic repair Anderson Texas, hydraulic cylinder repacking Anderson TX, hydraulic service near Anderson TX" />
+        <meta property="og:title" content="Hydraulic Cylinder Repair in Anderson, TX | Vetech Hydraulics" />
+        <meta property="og:description" content="Vetech Hydraulics provides hydraulic cylinder repair, repacking, and testing in Anderson, TX. Text a picture of your cylinder for a fast quote." />
+        <meta property="og:url" content={`${BUSINESS.siteUrl}/service-areas/anderson-tx-hydraulic-cylinder-repair`} />
+        <meta property="og:image" content={`${BUSINESS.siteUrl}/og/repair.webp`} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       {/* ============================== HERO ============================== */}

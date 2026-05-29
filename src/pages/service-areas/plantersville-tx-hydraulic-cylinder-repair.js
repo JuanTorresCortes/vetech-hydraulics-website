@@ -56,6 +56,12 @@ export default function PlantersvilleServicePage() {
           rel="canonical"
           href={`${BUSINESS.siteUrl}/service-areas/plantersville-tx-hydraulic-cylinder-repair`}
         />
+        <meta name="keywords" content="hydraulic cylinder repair Plantersville TX, hydraulic repair Plantersville Texas, hydraulic cylinder repacking Plantersville TX, hydraulic service near Plantersville TX" />
+        <meta property="og:title" content="Hydraulic Cylinder Repair in Plantersville, TX | Vetech Hydraulics" />
+        <meta property="og:description" content="Vetech Hydraulics provides hydraulic cylinder repair, repacking, and testing in Plantersville, TX. Text a picture of your cylinder for a fast quote." />
+        <meta property="og:url" content={`${BUSINESS.siteUrl}/service-areas/plantersville-tx-hydraulic-cylinder-repair`} />
+        <meta property="og:image" content={`${BUSINESS.siteUrl}/og/repair.webp`} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       <AltSection>
