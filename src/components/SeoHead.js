@@ -1,12 +1,12 @@
 // Central SEO helper for pages that do not need custom next/head markup.
 // Pass page-specific title, description, path, and optional ogImage while this component handles canonical/Open Graph defaults.
-// ogImage accepts a root-relative path like "/cover-image.png" or "/og/repair.webp".
+// ogImage accepts a root-relative path like "/cover-image.webp" or "/og/repair.webp".
 // Omit ogImage to fall back to the logo.
 import Head from "next/head";
 import { BUSINESS } from "../config/business";
 
 const SITE_URL = BUSINESS.siteUrl;
-const DEFAULT_OG_IMAGE = `${SITE_URL}/VTH-logo.png`;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/VTH-logo.webp`;
 
 export default function SeoHead({
   title,

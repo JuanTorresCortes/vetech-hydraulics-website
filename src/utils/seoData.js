@@ -34,9 +34,9 @@ export const businessSchema = {
   },
 
   // Strong entity signals
-  logo: `${BUSINESS.siteUrl}/VTH-logo.png`,
+  logo: `${BUSINESS.siteUrl}/VTH-logo.webp`,
   image: [
-    `${BUSINESS.siteUrl}/VTH-logo.png`,
+    `${BUSINESS.siteUrl}/VTH-logo.webp`,
     `${BUSINESS.siteUrl}/juanTech.webp`,
     `${BUSINESS.siteUrl}/juanVet.webp`,
   ],

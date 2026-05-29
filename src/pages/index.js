@@ -365,7 +365,7 @@ export default function Home() {
         title="Hydraulic Cylinder Repair in Montgomery TX | Vetech Hydraulics"
         description="Veteran-owned hydraulic cylinder repair in Montgomery, Conroe, Magnolia & North Houston. Fast turnarounds, pressure-tested results. Call (936) 249-6042."
         path="/"
-        ogImage="/cover-image.png"
+        ogImage="/cover-image.webp"
         keywords="hydraulic cylinder repair Montgomery TX, hydraulic repair Conroe TX, hydraulic cylinder repair Magnolia TX, hydraulic repair North Houston, hydraulic cylinder repacking, hydraulic hose repair, veteran-owned hydraulic repair"
       />
       <Head>
