@@ -137,6 +137,12 @@ export default function AdaServicePage() {
         <script type="application/ld+json">
           {JSON.stringify(serviceSchemaAda)}
         </script>
+        <meta name="keywords" content="hydraulic cylinder repair Ada TX, hydraulic repair Ada Texas, hydraulic cylinder repacking Ada TX, hydraulic service near Ada TX" />
+        <meta property="og:title" content="Hydraulic Cylinder Repair in Ada, TX | Vetech Hydraulics" />
+        <meta property="og:description" content="Vetech Hydraulics provides hydraulic cylinder repair, repacking, and testing in Ada, TX. Text a picture of your cylinder for a fast quote." />
+        <meta property="og:url" content={`${BUSINESS.siteUrl}/service-areas/ada-tx-hydraulic-cylinder-repair`} />
+        <meta property="og:image" content={`${BUSINESS.siteUrl}/og/repair.webp`} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       {/* ============================== HERO ============================== */}

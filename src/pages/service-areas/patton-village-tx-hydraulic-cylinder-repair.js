@@ -56,6 +56,12 @@ export default function PattonVillageServicePage() {
           rel="canonical"
           href={`${BUSINESS.siteUrl}/service-areas/patton-village-tx-hydraulic-cylinder-repair`}
         />
+        <meta name="keywords" content="hydraulic cylinder repair Patton Village TX, hydraulic repair Patton Village Texas, hydraulic cylinder repacking Patton Village TX, hydraulic service near Patton Village TX" />
+        <meta property="og:title" content="Hydraulic Cylinder Repair in Patton Village, TX | Vetech Hydraulics" />
+        <meta property="og:description" content="Vetech Hydraulics provides hydraulic cylinder repair, repacking, and testing in Patton Village, TX. Text a picture of your cylinder for a fast quote." />
+        <meta property="og:url" content={`${BUSINESS.siteUrl}/service-areas/patton-village-tx-hydraulic-cylinder-repair`} />
+        <meta property="og:image" content={`${BUSINESS.siteUrl}/og/repair.webp`} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       <AltSection>

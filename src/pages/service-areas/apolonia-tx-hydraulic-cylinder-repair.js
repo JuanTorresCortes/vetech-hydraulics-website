@@ -139,6 +139,12 @@ export default function ApoloniaServicePage() {
         <script type="application/ld+json">
           {JSON.stringify(serviceSchemaApolonia)}
         </script>
+        <meta name="keywords" content="hydraulic cylinder repair Apolonia TX, hydraulic repair Apolonia Texas, hydraulic cylinder repacking Apolonia TX, hydraulic service near Apolonia TX" />
+        <meta property="og:title" content="Hydraulic Cylinder Repair in Apolonia, TX | Vetech Hydraulics" />
+        <meta property="og:description" content="Vetech Hydraulics provides hydraulic cylinder repair, repacking, and testing in Apolonia, TX. Text a picture of your cylinder for a fast quote." />
+        <meta property="og:url" content={`${BUSINESS.siteUrl}/service-areas/apolonia-tx-hydraulic-cylinder-repair`} />
+        <meta property="og:image" content={`${BUSINESS.siteUrl}/og/repair.webp`} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       {/* ============================== HERO ============================== */}

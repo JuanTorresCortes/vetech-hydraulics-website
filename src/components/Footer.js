@@ -19,11 +19,12 @@ import { BUSINESS } from "../config/business";
 // Footer service links intentionally point to broad pages rather than every individual subsection.
 const services = [
   { label: "Hydraulic Cylinder Repair", href: "/services" },
+  { label: "Excavator Cylinder Repair", href: "/excavator-hydraulic-cylinder-repair" },
+  { label: "Trash Truck Cylinder Repair", href: "/trash-truck-hydraulic-cylinder-repair" },
+  { label: "Repair Cost Guide", href: "/hydraulic-cylinder-repair-cost" },
   { label: "Fleet Support", href: "/fleet-support" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Cylinder Repacking", href: "/services" },
-  { label: "Rod Polishing", href: "/services" },
-  { label: "Weld Repair", href: "/services" },
   { label: "Pressure Testing", href: "/services" },
   { label: "Pickup & Delivery", href: "/services" },
 ];
