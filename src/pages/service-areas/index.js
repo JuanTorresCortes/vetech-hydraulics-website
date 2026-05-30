@@ -1,25 +1,20 @@
 // src/pages/service-areas/index.js
-// Service areas index: organizes city landing pages for nearby hydraulic cylinder repair searches.
-// City arrays below determine cards, alphabetized lists, and links; update generated pages and sitemap entries when service-area coverage changes.
+// Service areas index: 16 hardcoded core cities — no generated pages, no extended directory.
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import {
   Box,
   Container,
   Typography,
   Grid,
   Button,
-  TextField,
-  InputAdornment,
   Stack,
-  useMediaQuery,
   Link as MuiLink,
 } from "@mui/material";
 import { styled, useTheme } from "@mui/system";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import PhoneIcon from "@mui/icons-material/Phone";
-import SearchIcon from "@mui/icons-material/Search";
 import PlaceIcon from "@mui/icons-material/Place";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import VerifiedIcon from "@mui/icons-material/Verified";
@@ -188,7 +183,6 @@ const SectionTitle = ({ children, eyebrow, subtitle }) => (
     <Typography component="h2" variant="h3" sx={headlineSx}>
       {children}
     </Typography>
-
     {subtitle && (
       <Typography
         sx={{
@@ -205,155 +199,106 @@ const SectionTitle = ({ children, eyebrow, subtitle }) => (
   </Box>
 );
 
-/* ----------------------------- Helpers ----------------------------------- */
-const slugFromCity = (city) => {
-  if (city === "The Woodlands") return "woodlands";
-  return city
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-};
-
-const buildAreaPath = (city) => {
-  const slug = slugFromCity(city);
-  return `/service-areas/${slug}-tx-hydraulic-cylinder-repair`;
-};
-
-const groupByFirstLetter = (items) => {
-  return items.reduce((acc, city) => {
-    const letter = city[0]?.toUpperCase() || "#";
-    if (!acc[letter]) acc[letter] = [];
-    acc[letter].push(city);
-    return acc;
-  }, {});
-};
-
 /* ---------------------------- Data --------------------------------------- */
-// Core cities receive priority placement because they represent the primary nearby service market.
-const CORE_CITIES = [
-  "Montgomery",
-  "Magnolia",
-  "Conroe",
-  "The Woodlands",
-  "Willis",
-  "Tomball",
-  "Spring",
-  "New Caney",
-  "Splendora",
-  "Humble",
-  "Atascocita",
-];
-
-// Primary city cards are short local summaries used for the top service-area grid.
-const PRIMARY_CITY_CARDS = [
+const CITY_CARDS = [
   {
     city: "Magnolia",
-    text: "Hydraulic cylinder repair, cylinder repacking, pickup, and delivery support for Magnolia contractors, fleets, and job sites.",
+    slug: "magnolia",
+    text: "Our home base. Hydraulic cylinder repair, repacking, pickup, and delivery for Magnolia contractors, fleets, and job sites.",
   },
   {
     city: "Montgomery",
-    text: "Local hydraulic repair coordination for Montgomery equipment owners needing dependable cylinder turnaround and pressure-tested repairs.",
+    slug: "montgomery",
+    text: "Local hydraulic repair for Montgomery equipment owners needing dependable cylinder turnaround and pressure-tested rebuilds.",
   },
   {
     city: "Conroe",
+    slug: "conroe",
     text: "Cylinder repair and repacking for Conroe heavy equipment, trash trucks, dump trailers, and commercial fleet operations.",
   },
   {
     city: "The Woodlands",
-    text: "Fleet and job-site hydraulic support near The Woodlands with service options for commercial equipment and cylinder leaks.",
+    slug: "woodlands",
+    text: "Fleet and job-site hydraulic support near The Woodlands for commercial equipment, construction, and cylinder leaks.",
   },
   {
     city: "Tomball",
-    text: "Hydraulic cylinder repair support for Tomball contractors, construction equipment, agriculture equipment, and work trucks.",
+    slug: "tomball",
+    text: "Hydraulic cylinder repair for Tomball contractors, construction equipment, agriculture equipment, and work trucks.",
   },
   {
-    city: "North Houston",
-    text: "North Houston service-area support for heavy equipment cylinders, pickup/delivery planning, and fast repair communication.",
+    city: "Spring",
+    slug: "spring",
+    text: "Fast cylinder repair for Spring-area construction crews, fleets, and equipment operators along the I-45 and SH-99 corridors.",
+  },
+  {
+    city: "Houston",
+    slug: "houston",
+    text: "Serving the greater Houston metro — construction fleets, refuse equipment, dump trucks, and industrial machinery.",
+  },
+  {
+    city: "Humble",
+    slug: "humble",
+    text: "Hydraulic cylinder repair for Humble and north Harris County construction crews, commercial fleets, and utility equipment.",
+  },
+  {
+    city: "Hempstead",
+    slug: "hempstead",
+    text: "Serving Hempstead and Waller County with cylinder repair for agriculture, ranching, construction, and county equipment.",
+  },
+  {
+    city: "Waller",
+    slug: "waller",
+    text: "Hydraulic cylinder repair for Waller-area row crop operations, construction equipment, and dump trucks along US-290.",
+  },
+  {
+    city: "Navasota",
+    slug: "navasota",
+    text: "Serving Navasota and Grimes County — timber, forestry, agriculture, and construction cylinder repair.",
+  },
+  {
+    city: "Cleveland",
+    slug: "cleveland",
+    text: "Hydraulic repair for Cleveland-area oil field service equipment, timber operations, and construction in Liberty County.",
+  },
+  {
+    city: "New Caney",
+    slug: "new-caney",
+    text: "Fast cylinder repair for New Caney's growing construction corridor, land clearing equipment, and ag operations.",
+  },
+  {
+    city: "Willis",
+    slug: "willis",
+    text: "Serving Willis and north Montgomery County with cylinder repair for agriculture, construction, and Lake Conroe area equipment.",
+  },
+  {
+    city: "Huntsville",
+    slug: "huntsville",
+    text: "Hydraulic cylinder repair for Huntsville and Walker County — timber, agriculture, municipal, and construction equipment.",
+  },
+  {
+    city: "Splendora",
+    slug: "splendora",
+    text: "Serving Splendora and the US-59 corridor with cylinder repair for rural ag, land clearing, and dump truck equipment.",
   },
 ];
 
-// Extended city list feeds the alphabetical directory and should match generated local pages where possible.
-const EXTENDED_CITIES = [
-  "Millican",
-  "Navasota",
-  "Washington",
-  "Anderson",
-  "Apolonia",
-  "Richards",
-  "Whitehall",
-  "Fields Store",
-  "Hempstead",
-  "Prairie View",
-  "Pine Island",
-  "Buckhorn",
-  "Waller",
-  "Plantersville",
-  "Pinebrook",
-  "Todd Mission",
-  "Fetzer",
-  "Bobville",
-  "Karen",
-  "Pinehurst",
-  "Stagecoach",
-  "Rose Hill",
-  "Kohrville",
-  "Porter Heights",
-  "Grangerland",
-  "Klein",
-  "Westfield",
-  "Panorama Village",
-  "Ada",
-  "Waverly",
-  "New Waverly",
-  "Patton Village",
-  "Roman Forest",
-  "Plum Grove",
-  "Cleveland",
-  "North Cleveland",
-  "Westcott",
-  "Eastgate",
-  "Huffman",
-];
-
-// Focus parts describe the repair needs common across local service-area pages.
-const FOCUS_PARTS = [
-  "Hydraulic cylinder repair & repacking",
-  "Telescopic cylinder repair",
-  "Trash truck hydraulic cylinders",
-  "Construction & farm equipment cylinders",
-  "On-site pull/install support (when needed)",
-  "Pickup and delivery options",
-];
-
-const combinedFocus = FOCUS_PARTS.join(" • ");
-
-// Support cards explain how the shop serves nearby customers beyond a static location list.
 const supportCards = [
   {
     Icon: LocalShippingIcon,
-    title: "Pickup & Delivery Planning",
-    text: "Coordinate cylinder pickup and delivery across Montgomery County and North Houston when downtime matters.",
+    title: "Pickup & Delivery",
+    text: "Coordinate cylinder pickup and delivery across our service area when downtime matters and transport isn't easy.",
   },
   {
     Icon: VerifiedIcon,
     title: "Pressure-Tested Repairs",
-    text: "Repaired cylinders are checked for leak control and dependable operation before return to service.",
+    text: "Every repaired cylinder is bench pressure tested before it leaves the shop — no exceptions.",
   },
   {
     Icon: EngineeringIcon,
     title: "Built for Fleets",
     text: "Support for trash trucks, heavy equipment, construction machinery, agriculture equipment, and commercial fleets.",
   },
-];
-
-// Commercial support cards speak to fleet and business-owner concerns about downtime.
-const commercialSupport = [
-  "Fleets",
-  "Contractors",
-  "Trash trucks",
-  "Construction equipment",
-  "Agricultural equipment",
-  "Industrial machinery",
 ];
 
 /* --------------------------- JSON-LD Schema ------------------------------ */
@@ -372,12 +317,11 @@ const serviceSchema = {
     name: "Vetech Hydraulics",
     url: BUSINESS.siteUrl,
     telephone: BUSINESS.phoneSchemaFormat,
-    areaServed: CORE_CITIES.map((c) => ({
+    areaServed: CITY_CARDS.map((c) => ({
       "@type": "City",
-      name: `${c}, TX`,
+      name: `${c.city}, TX`,
     })),
   },
-  areaServed: [...CORE_CITIES, ...EXTENDED_CITIES].map((c) => `${c}, TX`),
 };
 
 const breadcrumbSchema = {
@@ -403,23 +347,6 @@ const breadcrumbSchema = {
 export default function ServiceAreasOverview() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const [query, setQuery] = React.useState("");
-
-  const allCities = React.useMemo(
-    () => [...CORE_CITIES, ...EXTENDED_CITIES],
-    []
-  );
-
-  const filtered = React.useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return allCities;
-    return allCities.filter((c) => c.toLowerCase().includes(q));
-  }, [query, allCities]);
-
-  const grouped = React.useMemo(() => {
-    const sorted = [...filtered].sort((a, b) => a.localeCompare(b));
-    return groupByFirstLetter(sorted);
-  }, [filtered]);
 
   return (
     <>
@@ -429,15 +356,13 @@ export default function ServiceAreasOverview() {
         </title>
         <meta
           name="description"
-          content="Hydraulic cylinder repair serving Montgomery, Conroe, Magnolia, The Woodlands, Tomball, Spring & 45+ cities in North Houston TX. Pickup & delivery available."
+          content="Hydraulic cylinder repair serving Magnolia, Montgomery, Conroe, The Woodlands, Houston, Humble, Huntsville & surrounding North Houston TX cities. Veteran-owned. Pickup & delivery available."
         />
         <meta
           name="keywords"
           content="hydraulic cylinder repair near me Montgomery TX, hydraulic repair Conroe TX, hydraulic repair The Woodlands TX, hydraulic cylinder service Montgomery County, North Houston hydraulic repair"
         />
         <link rel="canonical" href={canonicalUrl} />
-
-        {/* Safe: serviceSchema and breadcrumbSchema are trusted static objects. JSON.stringify prevents injection. */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
@@ -449,8 +374,7 @@ export default function ServiceAreasOverview() {
       </Head>
 
       {/* =============================== HERO =============================== */}
-      {/* Hero introduces regional coverage and sends visitors to either the city list or quote CTA. */}
-        <Hero>
+      <Hero>
         <Image
           src={backHoe}
           alt="Hydraulic equipment operating in North Houston"
@@ -482,7 +406,7 @@ export default function ServiceAreasOverview() {
           <Box sx={contentWidthSx}>
             <Box sx={{ maxWidth: 940 }}>
               <Typography sx={{ ...eyebrowSx, mb: 1.5 }}>
-                NORTH HOUSTON SERVICE AREAS
+                SERVICE AREAS
               </Typography>
 
               <Typography
@@ -500,8 +424,7 @@ export default function ServiceAreasOverview() {
                   textWrap: "balance",
                 }}
               >
-                Hydraulic Cylinder Repair Across Montgomery County and North
-                Houston
+                Hydraulic Cylinder Repair Across North Houston & Montgomery County
               </Typography>
 
               <Typography
@@ -513,10 +436,9 @@ export default function ServiceAreasOverview() {
                   color: "rgba(231,238,244,0.84)",
                 }}
               >
-                Hydraulic cylinder repair, cylinder repacking, pickup and
-                delivery, and job-site support for heavy equipment, fleets, and
-                work sites across Montgomery, Conroe, Magnolia, The Woodlands,
-                Tomball, and North Houston.
+                Veteran-owned hydraulic cylinder repair, repacking, and pressure-tested rebuilds
+                for heavy equipment, fleets, and job sites across 16 cities in North Houston
+                and the surrounding region. Pickup and delivery available.
               </Typography>
 
               <Stack
@@ -546,19 +468,19 @@ export default function ServiceAreasOverview() {
         </Container>
       </Hero>
 
-      {/* ========================= PRIMARY SERVICE AREAS ======================= */}
+      {/* ========================= CITY CARDS ======================= */}
       <Section sx={industrialSectionSx}>
         <Container maxWidth={false} disableGutters sx={innerContainerSx}>
           <Box sx={contentWidthSx}>
             <SectionTitle
-              eyebrow="PRIMARY SERVICE CORRIDOR"
-              subtitle="Premium hydraulic cylinder repair support for the cities where we most commonly coordinate pickup, delivery, and fleet-service logistics."
+              eyebrow="16 CITIES SERVED"
+              subtitle="Every city page is fully written with local equipment context, services, and FAQs specific to that area."
             >
-              Core Service Areas
+              Our Service Areas
             </SectionTitle>
 
             <Grid container spacing={{ xs: 2, md: 3 }}>
-              {PRIMARY_CITY_CARDS.map((item) => (
+              {CITY_CARDS.map((item) => (
                 <Grid item xs={12} sm={6} md={4} key={item.city}>
                   <Box sx={premiumCardSx}>
                     <Stack direction="row" spacing={1.5} alignItems="center">
@@ -572,7 +494,7 @@ export default function ServiceAreasOverview() {
                     </Typography>
                     <Button
                       component={Link}
-                      href={buildAreaPath(item.city)}
+                      href={`/service-areas/${item.slug}-tx-hydraulic-cylinder-repair`}
                       variant="outlined"
                       sx={{ ...secondaryCtaSx, mt: 2.25, width: "100%" }}
                     >
@@ -599,16 +521,18 @@ export default function ServiceAreasOverview() {
                   Service Radius Built Around Uptime
                 </Typography>
                 <Typography sx={{ ...bodyCopySx, mt: 1.5 }}>
-                  We support hydraulic cylinder repair and repacking needs
-                  across the Lake Conroe, Montgomery County, and North Houston
-                  region with pickup/delivery planning and job-site coordination
-                  when equipment cannot sit idle.
+                  We support hydraulic cylinder repair and repacking needs across
+                  Montgomery County, North Houston, and the surrounding region with
+                  pickup and delivery planning for equipment operators who can&apos;t
+                  afford to sit and wait.
                 </Typography>
                 <Box sx={{ ...premiumCardSx, mt: 3 }}>
                   <Typography sx={{ ...eyebrowSx, mb: 1 }}>
-                    COMMON SERVICE SUPPORT
+                    EVERY REPAIR INCLUDES
                   </Typography>
-                  <Typography sx={cardBodySx}>{combinedFocus}</Typography>
+                  <Typography sx={cardBodySx}>
+                    Teardown & inspection • Seal replacement • Rod evaluation • Pressure testing • Return-ready verification
+                  </Typography>
                 </Box>
               </Grid>
 
@@ -634,9 +558,9 @@ export default function ServiceAreasOverview() {
                   <Box sx={{ p: { xs: 2.5, md: 3 } }}>
                     <Typography sx={cardTitleSx}>North Houston Coverage</Typography>
                     <Typography sx={{ ...cardBodySx, mt: 1 }}>
-                      Typical service radius for pickup, delivery, and on-site
-                      support. If you are near this corridor, there is a good
-                      chance we can help plan the fastest path back to service.
+                      Based in Magnolia, TX — serving a broad corridor from Houston
+                      north through Montgomery County and east through Liberty and
+                      Walker County.
                     </Typography>
                   </Box>
                 </Box>
@@ -652,12 +576,12 @@ export default function ServiceAreasOverview() {
           <Box sx={contentWidthSx}>
             <SectionTitle
               eyebrow="COMMERCIAL HYDRAULIC SUPPORT"
-              subtitle="Service-area coverage is built around the equipment operators, fleets, and businesses that cannot afford repeat downtime."
+              subtitle="Built around the equipment operators, fleets, and businesses that cannot afford repeat downtime."
             >
               Built for Fleets, Contractors, and Heavy Equipment
             </SectionTitle>
 
-            <Grid container spacing={{ xs: 2, md: 3 }} sx={{ mb: { xs: 3, md: 4 } }}>
+            <Grid container spacing={{ xs: 2, md: 3 }}>
               {supportCards.map(({ Icon, title, text }) => (
                 <Grid item xs={12} md={4} key={title}>
                   <Box sx={premiumCardSx}>
@@ -672,173 +596,12 @@ export default function ServiceAreasOverview() {
                 </Grid>
               ))}
             </Grid>
-
-            <Grid container spacing={{ xs: 1.5, sm: 2 }}>
-              {commercialSupport.map((item) => (
-                <Grid item xs={12} sm={6} md={4} key={item}>
-                  <Box
-                    sx={{
-                      ...premiumCardSx,
-                      p: { xs: 2, md: 2.25 },
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 1.5,
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        width: 10,
-                        height: 10,
-                        borderRadius: "50%",
-                        bgcolor: industrialColors.hydraulicRed,
-                        boxShadow: "0 0 18px rgba(215,25,32,0.46)",
-                        flexShrink: 0,
-                      }}
-                    />
-                    <Typography sx={{ color: "#fff", fontWeight: 900 }}>
-                      {item}
-                    </Typography>
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
           </Box>
         </Container>
       </Section>
 
-      {/* ========================= ALL CITIES (SEARCH + GROUPED) ======================= */}
-      <AltSection sx={industrialAltSectionSx}>
-        <Container maxWidth={false} disableGutters sx={innerContainerSx}>
-          <Box sx={contentWidthSx}>
-            <SectionTitle
-              eyebrow="EXTENDED SERVICE AREAS"
-              subtitle="Search your city and jump to the local hydraulic cylinder repair page."
-            >
-              All Service Areas
-            </SectionTitle>
-
-            <Box sx={{ maxWidth: 620, mx: "auto", mb: { xs: 3, md: 4 } }}>
-              <TextField
-                fullWidth
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search city (example: Magnolia, Humble, Navasota)"
-                variant="outlined"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon sx={{ color: "rgba(247,250,252,0.72)" }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    color: "#fff",
-                    bgcolor: "rgba(3,7,11,0.44)",
-                    borderRadius: 2.5,
-                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06)",
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgba(190,202,212,0.24)",
-                  },
-                  "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgba(190,202,212,0.44)",
-                  },
-                  "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: `${industrialColors.hydraulicRed} !important`,
-                    borderWidth: "1px !important",
-                  },
-                  "& input::placeholder": {
-                    color: "rgba(231,238,244,0.62)",
-                    opacity: 1,
-                  },
-                }}
-              />
-
-              <Typography
-                sx={{
-                  mt: 1,
-                  color: "rgba(231,238,244,0.72)",
-                  fontSize: 13.5,
-                  textAlign: "center",
-                }}
-              >
-                Showing {filtered.length} location
-                {filtered.length === 1 ? "" : "s"}
-              </Typography>
-            </Box>
-
-            {filtered.length === 0 ? (
-              <Box sx={{ ...premiumCardSx, textAlign: "center" }}>
-                <Typography sx={cardTitleSx}>No matches found.</Typography>
-                <Typography sx={{ ...cardBodySx, mt: 1 }}>
-                  Send us your location and a photo of the cylinder — we’ll
-                  confirm coverage, pickup/delivery options, and the fastest
-                  path forward.
-                </Typography>
-                <Button
-                  component={Link}
-                  href="/contact"
-                  variant="contained"
-                  sx={{ ...primaryCtaSx, mt: 2.5 }}
-                >
-                  Request Service
-                </Button>
-              </Box>
-            ) : (
-              <Grid container spacing={{ xs: 2, md: 2.5 }}>
-                {Object.keys(grouped)
-                  .sort()
-                  .map((letter) => (
-                    <Grid item xs={12} key={letter}>
-                      <Box sx={{ ...premiumCardSx, p: { xs: 2, sm: 2.5 } }}>
-                        <Typography sx={{ ...eyebrowSx, mb: 1.25 }}>
-                          {letter}
-                        </Typography>
-
-                        <Grid container spacing={1.25}>
-                          {grouped[letter].map((city) => (
-                            <Grid item xs={12} sm={6} md={4} key={city}>
-                              <Button
-                                component={Link}
-                                href={buildAreaPath(city)}
-                                variant="text"
-                                sx={{
-                                  width: "100%",
-                                  justifyContent: "space-between",
-                                  textTransform: "none",
-                                  fontWeight: 850,
-                                  color: industrialColors.text,
-                                  bgcolor: "rgba(3,7,11,0.34)",
-                                  border: "1px solid rgba(190,202,212,0.16)",
-                                  borderRadius: 2,
-                                  px: 1.5,
-                                  py: 1.1,
-                                  minWidth: 0,
-                                  "&:hover": {
-                                    color: "#fff",
-                                    bgcolor: "rgba(215,25,32,0.11)",
-                                    borderColor: "rgba(215,25,32,0.36)",
-                                  },
-                                }}
-                              >
-                                <span>{city}, TX</span>
-                                <span style={{ opacity: 0.75 }}>→</span>
-                              </Button>
-                            </Grid>
-                          ))}
-                        </Grid>
-                      </Box>
-                    </Grid>
-                  ))}
-              </Grid>
-            )}
-          </Box>
-        </Container>
-      </AltSection>
-
       {/* ============================= FINAL CTA ============================ */}
-      <Section sx={industrialSectionSx}>
+      <AltSection sx={industrialAltSectionSx}>
         <Container maxWidth={false} disableGutters sx={innerContainerSx}>
           <Box sx={contentWidthSx}>
             <Box
@@ -864,9 +627,9 @@ export default function ServiceAreasOverview() {
                   maxWidth: 760,
                 }}
               >
-                Send your city, job-site location, and a quick cylinder photo —
-                we’ll confirm coverage, pickup/delivery options, and the fastest
-                path to get your equipment back in service.
+                Text a photo of your cylinder and your location — we&apos;ll confirm
+                coverage, pickup and delivery options, and the fastest path to get
+                your equipment back in service.
               </Typography>
               <Stack
                 direction={{ xs: "column", sm: "row" }}
@@ -883,18 +646,18 @@ export default function ServiceAreasOverview() {
                   Request Service
                 </Button>
                 <Button
-                  component={Link}
-                  href="/contact"
+                  component="a"
+                  href={BUSINESS.phoneTel}
                   variant="outlined"
                   sx={secondaryCtaSx}
                 >
-                  Contact Us
+                  Call Now
                 </Button>
               </Stack>
             </Box>
           </Box>
         </Container>
-      </Section>
+      </AltSection>
 
       {/* ============================= MOBILE STICKY CTA ============================ */}
       {isMobile && (
@@ -926,7 +689,6 @@ export default function ServiceAreasOverview() {
             }}
           >
             <PhoneIcon sx={{ color: industrialColors.hydraulicRed }} />
-
             <MuiLink
               href={BUSINESS.phoneTel}
               sx={{
@@ -943,9 +705,3 @@ export default function ServiceAreasOverview() {
     </>
   );
 }
-
-export const meta = {
-  title: "Service Areas | Hydraulic Cylinder Repair | Vetech Hydraulics",
-  description:
-    "Hydraulic cylinder repair service areas across Montgomery, Magnolia, Conroe, Willis, The Woodlands, and the greater North Houston region. Pickup/delivery options and fast turnarounds.",
-};
