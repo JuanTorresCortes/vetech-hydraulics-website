@@ -1,9 +1,16 @@
 // Willis TX service area page — north Montgomery County, I-45 corridor, agriculture and lake area equipment.
 import Head from "next/head";
+import Image from "next/image";
 import { Box, Container, Divider, Grid, Typography } from "@mui/material";
-import { styled } from "@mui/system";
+import { keyframes, styled } from "@mui/system";
 import ConsultationButton from "../../components/ConsultationButton";
 import { BUSINESS } from "../../config/business";
+import heroImg from "./img/willis_hero_img.webp";
+
+const zoomOut = keyframes`
+  from { transform: scale(1.07); }
+  to   { transform: scale(1.0);  }
+`;
 
 const Section = styled("section")(({ theme }) => ({
   paddingBlock: theme.spacing(8),
@@ -59,22 +66,25 @@ export default function WillisServicePage() {
       </Head>
 
       {/* HERO */}
-      <AltSection>
-        <Container maxWidth={false} disableGutters sx={{ px: { xs: 2, sm: 3 }, maxWidth: "1100px", mx: "auto" }}>
-          <Typography
-            component="h1"
-            variant="h2"
-            sx={{ fontWeight: 800, fontSize: { xs: "clamp(26px, 7vw, 36px)", md: "clamp(32px, 4vw, 46px)" }, textWrap: "balance", mb: 2, color: "#fff" }}
-          >
+      <Box component="section" sx={{ position: "relative", minHeight: { xs: "60svh", md: "68vh" }, overflow: "hidden", display: "flex", alignItems: "center" }}>
+        <Box sx={{ position: "absolute", inset: 0, transformOrigin: "center center", animation: `${zoomOut} 8s ease-out forwards` }}>
+          <Image src={heroImg} alt="Hydraulic equipment in Willis TX" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center" }} />
+        </Box>
+        <Box sx={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(90deg, rgba(3,8,14,0.92) 0%, rgba(6,15,24,0.78) 48%, rgba(3,8,14,0.58) 100%), linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 60%)" }} />
+        <Container maxWidth={false} disableGutters sx={{ px: { xs: 2, sm: 3 }, maxWidth: "1100px", mx: "auto", position: "relative", zIndex: 2, py: { xs: 10, md: 14 } }}>
+          <Typography component="h1" variant="h2" sx={{ fontWeight: 800, fontSize: { xs: "clamp(28px, 7vw, 40px)", md: "clamp(36px, 4vw, 52px)" }, textWrap: "balance", mb: 2, color: "#fff", lineHeight: 1.1 }}>
             Hydraulic Cylinder Repair in Willis, Texas
           </Typography>
-          <Typography sx={{ color: "rgba(255,255,255,0.8)", maxWidth: 780, mb: 2, lineHeight: 1.75 }}>
-            Vetech Hydraulics serves equipment operators in Willis, TX and north Montgomery
-            County with hydraulic cylinder repair, repacking, and pressure-tested rebuilds.
-            Willis sits along I-45 north of Conroe — a stretch of the county where agriculture,
-            rural land operations, and Lake Conroe-area construction keep a steady mix of
-            equipment in service throughout the year.
+          <Typography sx={{ color: "rgba(255,255,255,0.85)", maxWidth: 640, mb: 3, lineHeight: 1.75, fontSize: { xs: 15, md: 16 } }}>
+            Vetech Hydraulics serves equipment operators in Willis, TX and north Montgomery County with hydraulic cylinder repair, repacking, and pressure-tested rebuilds. Willis sits along I-45 north of Conroe — a stretch of the county where agriculture, rural land operations, and Lake Conroe-area construction keep a steady mix of equipment in service throughout the year.
           </Typography>
+          <ConsultationButton />
+        </Container>
+      </Box>
+
+      {/* HERO BODY COPY */}
+      <AltSection>
+        <Container maxWidth={false} disableGutters sx={{ px: { xs: 2, sm: 3 }, maxWidth: "1100px", mx: "auto" }}>
           <Typography sx={{ color: "rgba(255,255,255,0.8)", maxWidth: 780, mb: 2, lineHeight: 1.75 }}>
             North Montgomery County has a strong agricultural base — cattle operations,
             hay production, and row crop farming that relies on tractors, loader attachments,
@@ -83,12 +93,11 @@ export default function WillisServicePage() {
             development, and there&apos;s a wide variety of equipment that needs dependable
             cylinder repair without a long drive to find it.
           </Typography>
-          <Typography sx={{ color: "rgba(255,255,255,0.8)", maxWidth: 780, mb: 3, lineHeight: 1.75 }}>
+          <Typography sx={{ color: "rgba(255,255,255,0.8)", maxWidth: 780, lineHeight: 1.75 }}>
             We&apos;re in Magnolia, TX — about 25–30 minutes from Willis via TX-105 or I-45.
             Pickup and delivery is available for north Montgomery County customers who need
             help getting cylinders to and from the shop.
           </Typography>
-          <ConsultationButton />
         </Container>
       </AltSection>
 

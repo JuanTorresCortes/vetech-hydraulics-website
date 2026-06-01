@@ -1,9 +1,16 @@
 // New Caney TX service area page — Montgomery County, US-59 growth corridor, construction and residential development.
 import Head from "next/head";
+import Image from "next/image";
 import { Box, Container, Divider, Grid, Typography } from "@mui/material";
-import { styled } from "@mui/system";
+import { keyframes, styled } from "@mui/system";
 import ConsultationButton from "../../components/ConsultationButton";
 import { BUSINESS } from "../../config/business";
+import heroImg from "./img/newCaney_hero_img.webp";
+
+const zoomOut = keyframes`
+  from { transform: scale(1.07); }
+  to   { transform: scale(1.0);  }
+`;
 
 const Section = styled("section")(({ theme }) => ({
   paddingBlock: theme.spacing(8),
@@ -59,23 +66,25 @@ export default function NewCaneyServicePage() {
       </Head>
 
       {/* HERO */}
-      <AltSection>
-        <Container maxWidth={false} disableGutters sx={{ px: { xs: 2, sm: 3 }, maxWidth: "1100px", mx: "auto" }}>
-          <Typography
-            component="h1"
-            variant="h2"
-            sx={{ fontWeight: 800, fontSize: { xs: "clamp(26px, 7vw, 36px)", md: "clamp(32px, 4vw, 46px)" }, textWrap: "balance", mb: 2, color: "#fff" }}
-          >
+      <Box component="section" sx={{ position: "relative", minHeight: { xs: "60svh", md: "68vh" }, overflow: "hidden", display: "flex", alignItems: "center" }}>
+        <Box sx={{ position: "absolute", inset: 0, transformOrigin: "center center", animation: `${zoomOut} 8s ease-out forwards` }}>
+          <Image src={heroImg} alt="Hydraulic equipment in New Caney TX" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center" }} />
+        </Box>
+        <Box sx={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(90deg, rgba(3,8,14,0.92) 0%, rgba(6,15,24,0.78) 48%, rgba(3,8,14,0.58) 100%), linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 60%)" }} />
+        <Container maxWidth={false} disableGutters sx={{ px: { xs: 2, sm: 3 }, maxWidth: "1100px", mx: "auto", position: "relative", zIndex: 2, py: { xs: 10, md: 14 } }}>
+          <Typography component="h1" variant="h2" sx={{ fontWeight: 800, fontSize: { xs: "clamp(28px, 7vw, 40px)", md: "clamp(36px, 4vw, 52px)" }, textWrap: "balance", mb: 2, color: "#fff", lineHeight: 1.1 }}>
             Hydraulic Cylinder Repair in New Caney, Texas
           </Typography>
-          <Typography sx={{ color: "rgba(255,255,255,0.8)", maxWidth: 780, mb: 2, lineHeight: 1.75 }}>
-            Vetech Hydraulics serves equipment operators in New Caney, TX and east Montgomery
-            County with hydraulic cylinder repair, repacking, and pressure-tested rebuilds.
-            New Caney sits along US-59 in one of the fastest-growing corridors north of
-            Houston — residential and commercial development has brought a significant
-            concentration of construction equipment, dump trucks, and land-clearing machinery
-            to the area.
+          <Typography sx={{ color: "rgba(255,255,255,0.85)", maxWidth: 640, mb: 3, lineHeight: 1.75, fontSize: { xs: 15, md: 16 } }}>
+            Vetech Hydraulics serves equipment operators in New Caney, TX and east Montgomery County with hydraulic cylinder repair, repacking, and pressure-tested rebuilds. New Caney sits along US-59 in one of the fastest-growing corridors north of Houston — residential and commercial development has brought a significant concentration of construction equipment, dump trucks, and land-clearing machinery to the area.
           </Typography>
+          <ConsultationButton />
+        </Container>
+      </Box>
+
+      {/* HERO BODY COPY */}
+      <AltSection>
+        <Container maxWidth={false} disableGutters sx={{ px: { xs: 2, sm: 3 }, maxWidth: "1100px", mx: "auto" }}>
           <Typography sx={{ color: "rgba(255,255,255,0.8)", maxWidth: 780, mb: 2, lineHeight: 1.75 }}>
             East Montgomery County also has active agriculture and rural operations between
             the job sites — tractors, hay equipment, and ranch machinery that run alongside
@@ -83,12 +92,11 @@ export default function NewCaneyServicePage() {
             or a loader with a blown rod seal, we rebuild it right and pressure test it
             before it leaves the shop.
           </Typography>
-          <Typography sx={{ color: "rgba(255,255,255,0.8)", maxWidth: 780, mb: 3, lineHeight: 1.75 }}>
+          <Typography sx={{ color: "rgba(255,255,255,0.8)", maxWidth: 780, lineHeight: 1.75 }}>
             We&apos;re in Magnolia, TX — about 35 minutes from New Caney via TX-99 or
             FM 1485. Pickup and delivery is available for Montgomery County customers
             who need help moving cylinders to and from the shop.
           </Typography>
-          <ConsultationButton />
         </Container>
       </AltSection>
 

@@ -1,10 +1,17 @@
 // Service-area landing page: targets one local city while reusing the same repair promise, CTA pattern, and SEO structure as the rest of the area pages.
 // If city coverage changes, keep this file, the service-area index, scripts, and sitemap in sync.
 import Head from "next/head";
+import Image from "next/image";
 import { Box, Container, Typography } from "@mui/material";
-import { styled } from "@mui/system";
+import { keyframes, styled } from "@mui/system";
 import ConsultationButton from "../../components/ConsultationButton";
 import { BUSINESS } from "../../config/business";
+import heroImg from "./img/waller_hero_img.webp";
+
+const zoomOut = keyframes`
+  from { transform: scale(1.07); }
+  to   { transform: scale(1.0);  }
+`;
 
 const Section = styled("section")(({ theme }) => ({
   paddingBlock: theme.spacing(8),
@@ -64,29 +71,29 @@ export default function WallerServicePage() {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
+      {/* HERO */}
+      <Box component="section" sx={{ position: "relative", minHeight: { xs: "60svh", md: "68vh" }, overflow: "hidden", display: "flex", alignItems: "center" }}>
+        <Box sx={{ position: "absolute", inset: 0, transformOrigin: "center center", animation: `${zoomOut} 8s ease-out forwards` }}>
+          <Image src={heroImg} alt="Hydraulic equipment in Waller TX" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center" }} />
+        </Box>
+        <Box sx={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(90deg, rgba(3,8,14,0.92) 0%, rgba(6,15,24,0.78) 48%, rgba(3,8,14,0.58) 100%), linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 60%)" }} />
+        <Container maxWidth={false} disableGutters sx={{ px: { xs: 2, sm: 3 }, maxWidth: "1100px", mx: "auto", position: "relative", zIndex: 2, py: { xs: 10, md: 14 } }}>
+          <Typography component="h1" variant="h2" sx={{ fontWeight: 800, fontSize: { xs: "clamp(28px, 7vw, 40px)", md: "clamp(36px, 4vw, 52px)" }, textWrap: "balance", mb: 2, color: "#fff", lineHeight: 1.1 }}>
+            Hydraulic Cylinder Repair in Waller, Texas
+          </Typography>
+          <Typography sx={{ color: "rgba(255,255,255,0.85)", maxWidth: 640, mb: 3, lineHeight: 1.75, fontSize: { xs: 15, md: 16 } }}>
+            Vetech Hydraulics provides hydraulic cylinder repair, repacking, and pressure-tested rebuilds for equipment operators in Waller, TX and throughout Waller County. Located off US-290 between Houston and Hempstead, Waller sits in the middle of some of the most active agricultural and construction corridor in the region.
+          </Typography>
+          <ConsultationButton />
+        </Container>
+      </Box>
+
       <AltSection>
         <Container
           maxWidth={false}
           disableGutters
           sx={{ px: { xs: 2, sm: 3 }, maxWidth: "1100px", mx: "auto" }}
         >
-          <Typography
-            component="h1"
-            variant="h2"
-            sx={{
-              fontWeight: 800,
-              fontSize: {
-                xs: "clamp(26px, 7vw, 36px)",
-                md: "clamp(32px, 4vw, 46px)",
-              },
-              textWrap: "balance",
-              mb: 2,
-              color: "#fff",
-            }}
-          >
-            Hydraulic Cylinder Repair in Waller, Texas
-          </Typography>
-
           <Typography
             sx={{ color: "rgba(255,255,255,0.8)", maxWidth: 720, mb: 3 }}
           >
