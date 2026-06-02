@@ -479,7 +479,7 @@ export default function Home() {
             <Typography
               sx={{
                 color: "#CC0000",
-                fontWeight: 950,
+                fontWeight: 700,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 fontSize: { xs: 12, md: 13 },
@@ -493,7 +493,7 @@ export default function Home() {
               variant="h3"
               sx={{
                 color: "#F0F0F0",
-                fontWeight: 950,
+                fontWeight: 700,
                 fontSize: {
                   xs: "clamp(26px, 7vw, 38px)",
                   md: "clamp(36px, 4vw, 54px)",
@@ -631,7 +631,7 @@ export default function Home() {
                     <Typography
                       variant="h6"
                       sx={{
-                        fontWeight: 950,
+                        fontWeight: 700,
                         mb: 1.15,
                         color: "#F0F0F0",
                         lineHeight: 1.14,
@@ -659,7 +659,7 @@ export default function Home() {
                         sx={{
                           px: 0,
                           color: "#F0F0F0",
-                          fontWeight: 950,
+                          fontWeight: 700,
                           letterSpacing: "0.08em",
                           textTransform: "uppercase",
                           fontSize: 12,
@@ -725,7 +725,7 @@ export default function Home() {
               <Typography
                 sx={{
                   color: "#CC0000",
-                  fontWeight: 950,
+                  fontWeight: 700,
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
                   fontSize: { xs: 12, md: 13 },
@@ -739,7 +739,7 @@ export default function Home() {
                 variant="h3"
                 sx={{
                   color: "#F0F0F0",
-                  fontWeight: 950,
+                  fontWeight: 700,
                   fontSize: {
                     xs: "clamp(27px, 7vw, 40px)",
                     md: "clamp(38px, 4vw, 56px)",
@@ -859,7 +859,7 @@ export default function Home() {
                           color: "#fff",
                           border: "1px solid rgba(255,255,255,0.22)",
                           boxShadow: "0 12px 26px rgba(0,0,0,0.32)",
-                          fontWeight: 950,
+                          fontWeight: 700,
                           letterSpacing: "0.08em",
                           textTransform: "uppercase",
                           fontSize: 10.5,
@@ -899,7 +899,7 @@ export default function Home() {
                       variant="h6"
                       sx={{
                         color: "#F0F0F0",
-                        fontWeight: 950,
+                        fontWeight: 700,
                         lineHeight: 1.14,
                         letterSpacing: "-0.02em",
                         fontSize: { xs: 20, md: 21 },
@@ -946,7 +946,7 @@ export default function Home() {
                 component="h3"
                 sx={{
                   color: "#F0F0F0",
-                  fontWeight: 950,
+                  fontWeight: 700,
                   letterSpacing: "-0.01em",
                   lineHeight: 1.08,
                   fontSize: { xs: 25, md: 34 },
@@ -973,7 +973,7 @@ export default function Home() {
                   py: 1.35,
                   borderRadius: "2px",
                   bgcolor: "#CC0000",
-                  fontWeight: 950,
+                  fontWeight: 700,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   boxShadow: "0 16px 34px rgba(204,0,0,0.28)",
@@ -993,7 +993,7 @@ export default function Home() {
                   color: "#F0F0F0",
                   borderColor: "rgba(255,255,255,0.42)",
                   bgcolor: "rgba(255,255,255,0.035)",
-                  fontWeight: 950,
+                  fontWeight: 700,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   "&:hover": {
@@ -1026,7 +1026,7 @@ export default function Home() {
               <Typography
                 sx={{
                   color: "#CC0000",
-                  fontWeight: 950,
+                  fontWeight: 700,
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
                   fontSize: { xs: 12, md: 13 },
@@ -1040,7 +1040,7 @@ export default function Home() {
                 variant="h3"
                 sx={{
                   color: "#F0F0F0",
-                  fontWeight: 950,
+                  fontWeight: 700,
                   fontSize: {
                     xs: "clamp(26px, 7vw, 38px)",
                     md: "clamp(36px, 4vw, 52px)",
@@ -1164,7 +1164,7 @@ export default function Home() {
                         border: "1px solid rgba(204,0,0,0.38)",
                         boxShadow:
                           "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 20px rgba(204,0,0,0.13)",
-                        fontWeight: 950,
+                        fontWeight: 700,
                         letterSpacing: "0.06em",
                       }}
                     >
@@ -1173,7 +1173,7 @@ export default function Home() {
                     <Typography
                       sx={{
                         color: "#F0F0F0",
-                        fontWeight: 950,
+                        fontWeight: 700,
                         fontSize: { xs: 18, md: 19 },
                         lineHeight: 1.18,
                       }}
@@ -1214,7 +1214,7 @@ export default function Home() {
               component="h3"
               sx={{
                 color: "#F0F0F0",
-                fontWeight: 950,
+                fontWeight: 700,
                 fontSize: { xs: 24, md: 34 },
                 lineHeight: 1.08,
                 letterSpacing: "-0.01em",
@@ -1241,7 +1241,7 @@ export default function Home() {
                   borderRadius: "2px",
                   bgcolor: "#CC0000",
                   color: "#fff",
-                  fontWeight: 950,
+                  fontWeight: 700,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   boxShadow:
@@ -1263,7 +1263,7 @@ export default function Home() {
                   borderRadius: "2px",
                   color: "#E0E0E0",
                   borderColor: "rgba(255,255,255,0.44)",
-                  fontWeight: 950,
+                  fontWeight: 700,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   bgcolor: "rgba(255,255,255,0.035)",
@@ -1376,7 +1376,7 @@ export default function Home() {
                     component="h3"
                     sx={{
                       color: "#F0F0F0",
-                      fontWeight: 950,
+                      fontWeight: 700,
                       fontSize: { xs: 20, md: 21 },
                       lineHeight: 1.14,
                       letterSpacing: "-0.025em",
@@ -1422,7 +1422,7 @@ export default function Home() {
                 <Typography
                   sx={{
                     color: "#F0F0F0",
-                    fontWeight: 950,
+                    fontWeight: 700,
                     fontSize: { xs: 24, md: 34 },
                     lineHeight: 1.12,
                     letterSpacing: "-0.01em",
@@ -1816,7 +1816,7 @@ export default function Home() {
               <Grid key={s.step} item xs={12} sm={6} md={3}>
                 <Box sx={lowerPanelSx}>
                   <Box
-                    sx={{ ...redBadgeSx, mb: 2, fontWeight: 950, fontSize: 18 }}
+                    sx={{ ...redBadgeSx, mb: 2, fontWeight: 700, fontSize: 18 }}
                   >
                     {s.step}
                   </Box>

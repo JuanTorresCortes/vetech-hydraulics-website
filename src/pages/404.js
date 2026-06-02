@@ -19,10 +19,12 @@ const NAV_LINKS = [
 export default function NotFoundPage() {
   return (
     <>
+      {/* SEO FIX: noIndex prevents 404 page from being indexed by search engines */}
       <SeoHead
         title="Page Not Found | Vetech Hydraulics"
         description="The page you're looking for doesn't exist. Return to Vetech Hydraulics for hydraulic cylinder repair in North Houston."
         path="/404"
+        noIndex={true}
       />
 
       <Box
@@ -53,7 +55,7 @@ export default function NotFoundPage() {
               aria-hidden="true"
               sx={{
                 fontSize: { xs: "clamp(100px, 28vw, 180px)" },
-                fontWeight: 950,
+                fontWeight: 700,
                 lineHeight: 0.9,
                 letterSpacing: "-0.06em",
                 color: "transparent",
@@ -83,7 +85,7 @@ export default function NotFoundPage() {
               component="h1"
               sx={{
                 color: industrialColors.text,
-                fontWeight: 950,
+                fontWeight: 700,
                 fontSize: { xs: "clamp(26px, 7vw, 42px)" },
                 lineHeight: 1.1,
                 letterSpacing: "0em",

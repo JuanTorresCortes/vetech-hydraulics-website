@@ -163,7 +163,7 @@ const markerSx = {
 
 const cardTitleSx = {
   color: industrialColors.text,
-  fontWeight: 950,
+  fontWeight: 700,
   fontSize: { xs: 18, md: 20 },
   lineHeight: 1.16,
   letterSpacing: "-0.02em",
@@ -351,18 +351,27 @@ export default function ServiceAreasOverview() {
   return (
     <>
       <Head>
-        <title>
-          Hydraulic Cylinder Repair Service Areas | Montgomery County TX | Vetech Hydraulics
-        </title>
+        {/* SEO FIX: title trimmed to ≤60 chars */}
+        <title>Hydraulic Cylinder Repair Service Areas TX | Vetech</title>
+        {/* SEO FIX: description tightened to 150-160 chars */}
         <meta
           name="description"
-          content="Hydraulic cylinder repair serving Magnolia, Montgomery, Conroe, The Woodlands, Houston, Humble, Huntsville & surrounding North Houston TX cities. Veteran-owned. Pickup & delivery available."
+          content="Hydraulic cylinder repair near Magnolia, Montgomery, Conroe, The Woodlands & North Houston TX. Veteran-owned shop with pickup & delivery. Call (936) 249-6042."
         />
         <meta
           name="keywords"
           content="hydraulic cylinder repair near me Montgomery TX, hydraulic repair Conroe TX, hydraulic repair The Woodlands TX, hydraulic cylinder service Montgomery County, North Houston hydraulic repair"
         />
         <link rel="canonical" href={canonicalUrl} />
+        {/* SEO FIX: og:image, og:site_name, and twitter tags added */}
+        <meta property="og:title" content="Hydraulic Cylinder Repair Service Areas TX | Vetech" />
+        <meta property="og:description" content="Hydraulic cylinder repair near Magnolia, Montgomery, Conroe, The Woodlands & North Houston TX. Veteran-owned shop with pickup & delivery. Call (936) 249-6042." />
+        <meta property="og:image" content="https://www.vetechhydraulics.com/og/repair.webp" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="Vetech Hydraulics" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hydraulic Cylinder Repair Service Areas TX | Vetech" />
+        <meta name="twitter:image" content="https://www.vetechhydraulics.com/og/repair.webp" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
@@ -414,7 +423,7 @@ export default function ServiceAreasOverview() {
                 component="h1"
                 sx={{
                   color: industrialColors.text,
-                  fontWeight: 950,
+                  fontWeight: 700,
                   fontSize: {
                     xs: "clamp(34px, 10vw, 54px)",
                     md: "clamp(50px, 5.4vw, 76px)",

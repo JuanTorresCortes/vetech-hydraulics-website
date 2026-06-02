@@ -34,6 +34,38 @@ export default function MyApp({ Component, pageProps }) {
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
+      {/* SEO FIX: Skip-to-main-content link improves accessibility and Core Web Vitals a11y score */}
+      <a
+        href="#main-content"
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          top: "auto",
+          width: "1px",
+          height: "1px",
+          overflow: "hidden",
+          zIndex: 9999,
+          background: "#080808",
+          color: "#f0f0f0",
+          padding: "8px 16px",
+          textDecoration: "none",
+          fontFamily: "Inter, sans-serif",
+        }}
+        onFocus={(e) => {
+          e.currentTarget.style.left = "8px";
+          e.currentTarget.style.top = "8px";
+          e.currentTarget.style.width = "auto";
+          e.currentTarget.style.height = "auto";
+        }}
+        onBlur={(e) => {
+          e.currentTarget.style.left = "-9999px";
+          e.currentTarget.style.width = "1px";
+          e.currentTarget.style.height = "1px";
+        }}
+      >
+        Skip to main content
+      </a>
+
       {/* Google Analytics 4 — only loads when NEXT_PUBLIC_GA_ID is defined */}
       {GA_ID && (
         <>
@@ -53,7 +85,10 @@ export default function MyApp({ Component, pageProps }) {
       )}
 
       <Navbar />
-      <Component {...pageProps} />
+      {/* id="main-content" here makes the skip-to-main link functional on every page */}
+      <main id="main-content">
+        <Component {...pageProps} />
+      </main>
       {/* Fixed mobile call bar lives outside pages so page content does not need to duplicate it. */}
       <PhoneButton />
       <Footer />

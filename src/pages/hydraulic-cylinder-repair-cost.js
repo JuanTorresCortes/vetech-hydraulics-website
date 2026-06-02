@@ -84,7 +84,7 @@ export default function HydraulicCylinderRepairCost() {
   return (
     <>
       <SeoHead
-        title="Hydraulic Cylinder Repair Cost in Montgomery TX | Vetech Hydraulics"
+        title="Hydraulic Cylinder Repair Cost TX | Vetech Hydraulics"
         description="How much does hydraulic cylinder repair cost in Texas? Honest pricing guide from $150–$1,500+. Veteran-owned shop near Montgomery, Conroe & North Houston."
         path="/hydraulic-cylinder-repair-cost"
         ogImage="/cover-image.webp"
@@ -123,7 +123,7 @@ export default function HydraulicCylinderRepairCost() {
               variant="h1"
               sx={{
                 color: "#F0F0F0",
-                fontWeight: 950,
+                fontWeight: 700,
                 fontSize: { xs: "clamp(30px, 9vw, 50px)", md: "clamp(46px, 5vw, 68px)" },
                 lineHeight: 0.97,
                 letterSpacing: "-0.01em",
@@ -166,13 +166,13 @@ export default function HydraulicCylinderRepairCost() {
             {pricingTiers.map((tier) => (
               <Grid item xs={12} sm={6} key={tier.label}>
                 <Box sx={cardSx}>
-                  <Typography sx={{ color: industrialColors.hydraulicRed, fontWeight: 950, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", mb: 0.75 }}>
+                  <Typography sx={{ color: industrialColors.hydraulicRed, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", mb: 0.75 }}>
                     {tier.note}
                   </Typography>
-                  <Typography sx={{ color: "#F0F0F0", fontWeight: 950, fontSize: { xs: 20, md: 22 }, lineHeight: 1.1, mb: 0.5 }}>
+                  <Typography sx={{ color: "#F0F0F0", fontWeight: 700, fontSize: { xs: 20, md: 22 }, lineHeight: 1.1, mb: 0.5 }}>
                     {tier.label}
                   </Typography>
-                  <Typography sx={{ color: "#6EC1FF", fontWeight: 950, fontSize: { xs: 26, md: 30 }, lineHeight: 1.1, mb: 1.5 }}>
+                  <Typography sx={{ color: "#6EC1FF", fontWeight: 700, fontSize: { xs: 26, md: 30 }, lineHeight: 1.1, mb: 1.5 }}>
                     {tier.range}
                   </Typography>
                   <Divider sx={{ borderColor: "rgba(255,255,255,0.18)", mb: 1.5 }} />
@@ -209,7 +209,7 @@ export default function HydraulicCylinderRepairCost() {
             {factors.map(([title, text]) => (
               <Grid item xs={12} sm={6} md={4} key={title}>
                 <Box sx={cardSx}>
-                  <Typography sx={{ color: "#F0F0F0", fontWeight: 950, fontSize: { xs: 17, md: 18 }, lineHeight: 1.2, mb: 1 }}>
+                  <Typography sx={{ color: "#F0F0F0", fontWeight: 700, fontSize: { xs: 17, md: 18 }, lineHeight: 1.2, mb: 1 }}>
                     {title}
                   </Typography>
                   <Typography sx={{ color: industrialColors.mutedText, lineHeight: 1.72, fontSize: { xs: 14.5, md: 15 } }}>
@@ -254,7 +254,7 @@ export default function HydraulicCylinderRepairCost() {
                     flexShrink: 0, width: 40, height: 40, borderRadius: 2,
                     display: "grid", placeItems: "center",
                     bgcolor: "rgba(204,0,0,0.16)", border: "1px solid rgba(204,0,0,0.38)",
-                    color: "#fff", fontWeight: 950, fontSize: 14,
+                    color: "#fff", fontWeight: 700, fontSize: 14,
                   }}>
                     {step.replace("Step ", "")}
                   </Box>

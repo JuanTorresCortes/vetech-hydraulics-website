@@ -62,7 +62,7 @@ const DetailBlock = ({ eyebrow, title, children }) => (
       component="h2"
       sx={{
         color: "#F0F0F0",
-        fontWeight: 950,
+        fontWeight: 700,
         fontSize: { xs: 24, md: 32 },
         lineHeight: 1.12,
         letterSpacing: "-0.01em",
@@ -92,7 +92,7 @@ export default function CaseStudyPage({ caseStudy }) {
         path={`/case-studies/${caseStudy.slug}`}
       />
 
-      <Box component="main">
+      <Box component="div">
         {/* Hero summarizes the repair scenario and uses the case image as atmospheric support, not the primary content. */}
         <HeroSection>
           <Image

@@ -236,7 +236,7 @@ export default function ContactPage() {
   return (
     <>
       <SeoHead
-        title="Contact Vetech Hydraulics | Hydraulic Repair in Montgomery & Conroe TX"
+        title="Contact Vetech Hydraulics | Magnolia TX Repair Shop"
         description="Call (936) 249-6042 for fast hydraulic cylinder repair quotes in Montgomery, Conroe, Magnolia & North Houston TX. Veteran-owned. Quick turnarounds."
         path="/contact"
         ogImage="/cover-image.webp"
@@ -284,7 +284,7 @@ export default function ContactPage() {
             component="h1"
             sx={{
               color: "#F0F0F0",
-              fontWeight: 950,
+              fontWeight: 700,
               fontSize: { xs: "clamp(34px, 10vw, 52px)", md: "clamp(52px, 6vw, 74px)" },
               lineHeight: { xs: 1, md: 0.96 },
               letterSpacing: { xs: "-0.045em", md: "-0.06em" },
@@ -359,7 +359,7 @@ export default function ContactPage() {
                 <Box sx={iconBadgeSx}>
                   <PhoneIcon sx={{ fontSize: 26 }} />
                 </Box>
-                <Typography sx={{ color: industrialColors.hydraulicRed, fontWeight: 950, letterSpacing: "0.14em", textTransform: "uppercase", fontSize: 12, mb: 0.75 }}>
+                <Typography sx={{ color: industrialColors.hydraulicRed, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", fontSize: 12, mb: 0.75 }}>
                   Call Us
                 </Typography>
                 <Typography
@@ -367,7 +367,7 @@ export default function ContactPage() {
                   href={BUSINESS.phoneTel}
                   sx={{
                     color: "#F0F0F0",
-                    fontWeight: 950,
+                    fontWeight: 700,
                     fontSize: { xs: 28, md: 32 },
                     lineHeight: 1.1,
                     letterSpacing: "-0.02em",
@@ -401,7 +401,7 @@ export default function ContactPage() {
                 <Box sx={iconBadgeSx}>
                   <EmailIcon sx={{ fontSize: 26 }} />
                 </Box>
-                <Typography sx={{ color: industrialColors.hydraulicRed, fontWeight: 950, letterSpacing: "0.14em", textTransform: "uppercase", fontSize: 12, mb: 0.75 }}>
+                <Typography sx={{ color: industrialColors.hydraulicRed, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", fontSize: 12, mb: 0.75 }}>
                   Email Us
                 </Typography>
                 <Typography
@@ -454,7 +454,7 @@ export default function ContactPage() {
                 <Box sx={iconBadgeSx}>
                   <LocationOnIcon sx={{ fontSize: 26 }} />
                 </Box>
-                <Typography sx={{ color: industrialColors.hydraulicRed, fontWeight: 950, letterSpacing: "0.14em", textTransform: "uppercase", fontSize: 12, mb: 0.75 }}>
+                <Typography sx={{ color: industrialColors.hydraulicRed, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", fontSize: 12, mb: 0.75 }}>
                   Mailing Address
                 </Typography>
                 <Typography
@@ -500,7 +500,7 @@ export default function ContactPage() {
               component="h2"
               sx={{
                 color: "#F0F0F0",
-                fontWeight: 950,
+                fontWeight: 700,
                 fontSize: { xs: "clamp(26px, 7vw, 36px)", md: "clamp(32px, 3.5vw, 44px)" },
                 lineHeight: 1.06,
                 letterSpacing: "-0.01em",

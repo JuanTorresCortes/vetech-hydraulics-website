@@ -99,7 +99,87 @@ export default function ServiceAreaPageTemplate({
           property="og:image"
           content={`${BUSINESS.siteUrl}/og/repair.webp`}
         />
+        {/* SEO FIX: og:site_name for social sharing */}
+        <meta property="og:site_name" content="Vetech Hydraulics" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seoTitle} />
+        <meta name="twitter:description" content={seoDescription} />
+        <meta name="twitter:image" content={`${BUSINESS.siteUrl}/og/repair.webp`} />
+
+        {/* SEO FIX: LocalBusiness JSON-LD with city-specific areaServed for local pack rankings */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "@id": `${BUSINESS.siteUrl}/service-areas/${canonicalSlug}#business`,
+              name: "Vetech Hydraulics",
+              url: `${BUSINESS.siteUrl}/service-areas/${canonicalSlug}`,
+              telephone: BUSINESS.phoneSchemaFormat,
+              email: BUSINESS.email,
+              image: `${BUSINESS.siteUrl}/og/repair.webp`,
+              logo: `${BUSINESS.siteUrl}/VTH-logo.webp`,
+              priceRange: "$$",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: BUSINESS.streetAddress,
+                addressLocality: BUSINESS.addressLocality,
+                addressRegion: BUSINESS.addressRegion,
+                postalCode: BUSINESS.postalCode,
+                addressCountry: BUSINESS.addressCountry,
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 30.2099,
+                longitude: -95.7516,
+              },
+              areaServed: {
+                "@type": "City",
+                name: `${cityName}, ${stateAbbr}`,
+              },
+              openingHoursSpecification: [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                  opens: "08:00",
+                  closes: "17:00",
+                },
+              ],
+            }),
+          }}
+        />
+
+        {/* SEO FIX: BreadcrumbList JSON-LD for sitelinks breadcrumb in SERPs */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: BUSINESS.siteUrl,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Service Areas",
+                  item: `${BUSINESS.siteUrl}/service-areas`,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: `${cityName}, ${stateAbbr} Hydraulic Cylinder Repair`,
+                  item: `${BUSINESS.siteUrl}/service-areas/${canonicalSlug}`,
+                },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       {/* ── HERO ─────────────────────────────────────────────────────── */}
@@ -195,7 +275,7 @@ export default function ServiceAreaPageTemplate({
             component="h1"
             sx={{
               ...headlineSx,
-              fontWeight: 950,
+              fontWeight: 700,
               fontSize: {
                 xs: "clamp(28px, 7vw, 42px)",
                 md: "clamp(36px, 4.2vw, 58px)",

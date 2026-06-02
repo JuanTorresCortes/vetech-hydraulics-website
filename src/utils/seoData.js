@@ -27,10 +27,11 @@ export const businessSchema = {
     addressCountry: BUSINESS.addressCountry,
   },
 
+  // SEO FIX: corrected longitude for Magnolia TX (was -95.5757, correct is -95.7516)
   geo: {
     "@type": "GeoCoordinates",
     latitude: 30.2099,
-    longitude: -95.5757,
+    longitude: -95.7516,
   },
 
   // Strong entity signals

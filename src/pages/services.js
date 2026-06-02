@@ -99,7 +99,7 @@ const premiumCardSx = {
 
 const cardTitleSx = {
   color: industrialColors.text,
-  fontWeight: 950,
+  fontWeight: 700,
   fontSize: { xs: 18, md: 20 },
   lineHeight: 1.16,
   letterSpacing: "-0.02em",
@@ -122,7 +122,7 @@ const markerSx = {
   border: "1px solid rgba(204,0,0,0.38)",
   boxShadow:
     "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 22px rgba(204,0,0,0.16)",
-  fontWeight: 950,
+  fontWeight: 700,
   letterSpacing: "0.06em",
   fontSize: 13,
 };
@@ -232,14 +232,14 @@ export default function ServicesPage() {
     <>
       {/* Services SEO metadata is page-specific; do not change copy here unless intentionally updating search positioning. */}
       <SeoHead
-        title="Hydraulic Cylinder Repair Services in Montgomery TX | Vetech Hydraulics"
-        description="Hydraulic cylinder repacking, rod repair, pressure testing & mobile service near Montgomery, Conroe & North Houston TX. Veteran-owned. Call (936) 249-6042."
+        title="Hydraulic Cylinder Repair Services | Vetech Hydraulics"
+        description="Cylinder repacking, rod repair, pressure testing & mobile service near Montgomery, Conroe & North Houston TX. Veteran-owned shop. Call (936) 249-6042."
         path="/services"
         ogImage="/og/repair.webp"
         keywords="hydraulic cylinder repair services Montgomery TX, hydraulic cylinder repacking, rod polishing, hydraulic pressure testing, mobile hydraulic service, North Houston hydraulic repair"
       />
 
-      <Box component="main">
+      <Box component="div">
         {/* ============================== HERO ============================== */}
         {/* Hero introduces the full service offering before visitors reach individual service cards. */}
         <Hero>
@@ -282,7 +282,7 @@ export default function ServicesPage() {
                   component="h1"
                   sx={{
                     color: industrialColors.text,
-                    fontWeight: 950,
+                    fontWeight: 700,
                     fontSize: {
                       xs: "clamp(34px, 10vw, 54px)",
                       md: "clamp(54px, 5.8vw, 78px)",

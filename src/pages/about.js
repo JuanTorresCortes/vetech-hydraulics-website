@@ -109,14 +109,14 @@ const markerSx = {
   border: "1px solid rgba(204,0,0,0.38)",
   boxShadow:
     "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 22px rgba(204,0,0,0.16)",
-  fontWeight: 950,
+  fontWeight: 700,
   letterSpacing: "0.06em",
   fontSize: 13,
 };
 
 const cardTitleSx = {
   color: industrialColors.text,
-  fontWeight: 950,
+  fontWeight: 700,
   fontSize: { xs: 18, md: 20 },
   lineHeight: 1.16,
   letterSpacing: "-0.02em",
@@ -190,14 +190,14 @@ export default function AboutPage() {
     <>
       {/* About-page metadata supports brand trust searches; keep values coordinated with public business positioning. */}
       <SeoHead
-        title="About Vetech Hydraulics | Veteran-Owned Hydraulic Repair in Magnolia TX"
-        description="Veteran-owned hydraulic cylinder repair shop serving Montgomery County & North Houston TX. Learn our mission, values, and commitment to pressure-tested results."
+        title="About Vetech Hydraulics | Veteran-Owned Shop, Magnolia TX"
+        description="Veteran-owned hydraulic cylinder repair shop serving Montgomery County & North Houston TX. Our mission, values, and commitment to pressure-tested results."
         path="/about"
         ogImage="/juanTech.webp"
         keywords="veteran-owned hydraulic repair Montgomery TX, hydraulic cylinder repair Magnolia TX, SDVOSB hydraulic repair Texas, Vetech Hydraulics about"
       />
 
-      <Box component="main">
+      <Box component="div">
         {/* ============================== HERO ============================== */}
         {/* Hero frames the shop story and veteran-owned credibility before deeper company details. */}
         <Hero>
@@ -240,7 +240,7 @@ export default function AboutPage() {
                   component="h1"
                   sx={{
                     color: industrialColors.text,
-                    fontWeight: 950,
+                    fontWeight: 700,
                     fontSize: {
                       xs: "clamp(34px, 10vw, 54px)",
                       md: "clamp(50px, 5.2vw, 74px)",

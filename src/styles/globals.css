@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+/* SEO FIX: @import removed — Google Fonts are now loaded via <link> tags in _document.js to eliminate render-blocking */
 
 /* Global design tokens mirror the industrial MUI theme for any plain CSS that sits outside component sx styles. */
 :root {

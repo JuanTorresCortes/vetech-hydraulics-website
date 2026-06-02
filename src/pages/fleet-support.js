@@ -225,7 +225,7 @@ const FeatureCard = ({ title, text, Icon }) => (
       component="h3"
       sx={{
         color: "#F0F0F0",
-        fontWeight: 950,
+        fontWeight: 700,
         fontSize: { xs: 20, md: 21 },
         lineHeight: 1.14,
         letterSpacing: "-0.025em",
@@ -243,14 +243,14 @@ export default function FleetSupportPage() {
     <>
       {/* Fleet-support SEO metadata targets commercial repair and uptime-focused search intent. */}
       <SeoHead
-        title="Fleet Hydraulic Cylinder Repair Montgomery TX | Vetech Hydraulics"
+        title="Fleet Hydraulic Cylinder Repair | Vetech Hydraulics TX"
         description="Commercial fleet hydraulic cylinder repair near Montgomery, Conroe & North Houston TX. Trash trucks, excavators, construction fleets. Call (936) 249-6042."
         path="/fleet-support"
         ogImage="/og/fleet.webp"
         keywords="fleet hydraulic cylinder repair Montgomery TX, commercial hydraulic repair Conroe TX, hydraulic repair trash trucks North Houston, fleet hydraulic service Montgomery County"
       />
 
-      <Box component="main">
+      <Box component="div">
         {/* Hero positions the shop for fleet uptime needs before visitors reach the workflow details. */}
         <HeroSection>
           <Image
@@ -426,7 +426,7 @@ export default function FleetSupportPage() {
                     component="h3"
                     sx={{
                       color: "#F0F0F0",
-                      fontWeight: 950,
+                      fontWeight: 700,
                       fontSize: { xs: 24, md: 31 },
                       lineHeight: 1.12,
                       letterSpacing: "-0.01em",
@@ -472,7 +472,7 @@ export default function FleetSupportPage() {
                       <Typography
                         sx={{
                           color: "rgba(220,220,220,0.58)",
-                          fontWeight: 950,
+                          fontWeight: 700,
                           letterSpacing: "0.12em",
                           fontSize: 12,
                         }}
@@ -484,7 +484,7 @@ export default function FleetSupportPage() {
                       component="h3"
                       sx={{
                         color: "#F0F0F0",
-                        fontWeight: 950,
+                        fontWeight: 700,
                         fontSize: { xs: 19, md: 20 },
                         lineHeight: 1.14,
                         letterSpacing: "-0.025em",

@@ -49,14 +49,14 @@ export default function CaseStudiesIndexPage() {
     <>
       {/* Case-study index SEO describes the collection; individual case metadata lives in caseStudies.js. */}
       <SeoHead
-        title="Hydraulic Cylinder Repair Case Studies | Montgomery TX | Vetech Hydraulics"
+        title="Hydraulic Cylinder Repair Case Studies | Vetech TX"
         description="Real hydraulic cylinder repair scenarios for fleets, excavators & waste management equipment near Montgomery & Conroe TX. See our repair process in action."
         path="/case-studies"
         ogImage="/og/repair.webp"
         keywords="hydraulic cylinder repair case studies Montgomery TX, hydraulic repair examples Conroe TX, excavator hydraulic repair, fleet hydraulic cylinder rebuild"
       />
 
-      <Box component="main">
+      <Box component="div">
         {/* Hero explains that these are example repair profiles rather than live customer records. */}
         <HeroSection>
           <Container
@@ -140,7 +140,7 @@ export default function CaseStudiesIndexPage() {
                           bgcolor: "rgba(204,0,0,0.9)",
                           color: "#fff",
                           fontSize: 11,
-                          fontWeight: 950,
+                          fontWeight: 700,
                           letterSpacing: "0.08em",
                           textTransform: "uppercase",
                         }}
@@ -156,7 +156,7 @@ export default function CaseStudiesIndexPage() {
                         component="h2"
                         sx={{
                           color: "#F0F0F0",
-                          fontWeight: 950,
+                          fontWeight: 700,
                           fontSize: { xs: 22, md: 24 },
                           lineHeight: 1.12,
                           letterSpacing: "0em",

@@ -102,7 +102,7 @@ export default function TrashTruckHydraulicCylinderRepair() {
   return (
     <>
       <SeoHead
-        title="Trash Truck Hydraulic Cylinder Repair Montgomery TX | Vetech Hydraulics"
+        title="Trash Truck Hydraulic Cylinder Repair TX | Vetech"
         description="Waste fleet hydraulic cylinder repair near Montgomery, Conroe & North Houston TX. Telescopic cylinders, packer & tailgate rebuilds. Call (936) 249-6042."
         path="/trash-truck-hydraulic-cylinder-repair"
         ogImage="/og/repair.webp"
@@ -135,7 +135,7 @@ export default function TrashTruckHydraulicCylinderRepair() {
               variant="h1"
               sx={{
                 color: "#F0F0F0",
-                fontWeight: 950,
+                fontWeight: 700,
                 fontSize: { xs: "clamp(32px, 9vw, 52px)", md: "clamp(48px, 5.5vw, 72px)" },
                 lineHeight: 0.96,
                 letterSpacing: "-0.01em",
@@ -178,7 +178,7 @@ export default function TrashTruckHydraulicCylinderRepair() {
             {services.map((s) => (
               <Grid item xs={12} sm={6} md={4} key={s.title}>
                 <Box sx={cardSx}>
-                  <Typography sx={{ color: "#F0F0F0", fontWeight: 950, fontSize: { xs: 18, md: 20 }, lineHeight: 1.16, letterSpacing: "-0.02em", mb: 1 }}>
+                  <Typography sx={{ color: "#F0F0F0", fontWeight: 700, fontSize: { xs: 18, md: 20 }, lineHeight: 1.16, letterSpacing: "-0.02em", mb: 1 }}>
                     {s.title}
                   </Typography>
                   <Typography sx={{ color: industrialColors.mutedText, lineHeight: 1.72, fontSize: { xs: 14.5, md: 15.5 } }}>
@@ -218,7 +218,7 @@ export default function TrashTruckHydraulicCylinderRepair() {
                 ["Fleet Account Service", "We work with fleet managers on scheduling, paperwork, and multi-unit coordination to keep repair cycles predictable."],
               ].map(([title, text]) => (
                 <Box key={title} sx={{ mb: 2.5 }}>
-                  <Typography sx={{ color: "#F0F0F0", fontWeight: 950, fontSize: { xs: 16, md: 17 }, mb: 0.5 }}>{title}</Typography>
+                  <Typography sx={{ color: "#F0F0F0", fontWeight: 700, fontSize: { xs: 16, md: 17 }, mb: 0.5 }}>{title}</Typography>
                   <Typography sx={{ ...bodyCopySx }}>{text}</Typography>
                 </Box>
               ))}
