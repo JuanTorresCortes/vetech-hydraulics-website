@@ -147,9 +147,27 @@ export const businessSchema = {
     ],
   },
 
-  // Add social / directory profile URLs here once live — strengthens Google entity graph
+  // sameAs — Google uses these to build the entity knowledge graph for your business.
+  // Replace placeholder URLs with your real profile URLs once each is live.
+  // PRIORITY ORDER: GBP > Facebook > Yelp > Instagram > LinkedIn
   sameAs: [
+    // ✅ UPDATE: Replace with your live Google Business Profile URL after setup
+    // Find it: Google Maps → search your business → share → copy link
     "https://www.google.com/maps/search/Vetech+Hydraulics+Magnolia+TX",
+
+    // ✅ UPDATE: Confirm this is your active Facebook page URL
     "https://www.facebook.com/vetechhydraulics",
+
+    // ✅ ADD: Your Yelp business page once created — important for local service businesses
+    // "https://www.yelp.com/biz/vetech-hydraulics-magnolia",
+
+    // ✅ ADD: Instagram handle if you have one
+    // "https://www.instagram.com/vetechhydraulics",
+
+    // ✅ ADD: LinkedIn company page if you have one
+    // "https://www.linkedin.com/company/vetech-hydraulics",
+
+    // ✅ ADD: BBB profile if registered
+    // "https://www.bbb.org/us/tx/magnolia/profile/hydraulic-equipment/vetech-hydraulics",
   ],
 };

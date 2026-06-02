@@ -12,7 +12,13 @@ export default function Document() {
         <meta name="theme-color" content="#080808" />
         <meta name="author" content="Vetech Hydraulics" />
         <meta name="robots" content="index, follow" />
-        <link rel="icon" href="/favicon.ico" />
+
+        {/* Favicon suite — covers all browsers, devices, and PWA installs */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+        <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
 
         {/* SEO FIX: Google Fonts moved from CSS @import to document <Head> — eliminates render-blocking @import */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
