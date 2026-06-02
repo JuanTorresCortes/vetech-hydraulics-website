@@ -52,6 +52,8 @@ import repackImg from "../image/repackImg.webp";
 import repairImg from "../image/repairImg.webp";
 import mobileImg from "../image/mobileImg.webp";
 import hero1 from "../image/hero1.webp";
+import coverImage from "../image/cover-image.webp";
+//public / cover - image.webp;
 import VeteranOwnershipSection from "@/components/VeteranOwnershipSection";
 
 /* ------------------------------ Styled UI ------------------------------ */
@@ -422,7 +424,7 @@ export default function Home() {
       {/* ============================== HERO ============================== */}
       <HeroSection id="home">
         <Image
-          src={hero1}
+          src={coverImage}
           alt="Heavy equipment and hydraulic-powered machinery serviced by Vetech Hydraulics"
           fill
           priority

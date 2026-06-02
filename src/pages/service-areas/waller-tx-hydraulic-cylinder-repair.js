@@ -1,142 +1,66 @@
-// Service-area landing page: targets one local city while reusing the same repair promise, CTA pattern, and SEO structure as the rest of the area pages.
-// If city coverage changes, keep this file, the service-area index, scripts, and sitemap in sync.
-import Head from "next/head";
-import Image from "next/image";
-import { Box, Container, Typography } from "@mui/material";
-import { keyframes, styled } from "@mui/system";
-import ConsultationButton from "../../components/ConsultationButton";
-import { BUSINESS } from "../../config/business";
+// Waller TX — Waller County, US-290 corridor, agriculture and construction.
+import ServiceAreaPageTemplate from "../../components/ServiceAreaPageTemplate";
 import heroImg from "./img/waller_hero_img.webp";
-
-const zoomOut = keyframes`
-  from { transform: scale(1.07); }
-  to   { transform: scale(1.0);  }
-`;
-
-const Section = styled("section")(({ theme }) => ({
-  paddingBlock: theme.spacing(8),
-  [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
-  backgroundColor: "#0F2331",
-}));
-
-const AltSection = styled("section")(({ theme }) => ({
-  paddingBlock: theme.spacing(8),
-  [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(10) },
-  backgroundColor: "#0B1B27",
-}));
-
-const SectionTitle = ({ children, subtitle }) => (
-  <Box sx={{ textAlign: "center", mb: 6 }}>
-    <Typography
-      component="h2"
-      variant="h3"
-      sx={{
-        color: "#fff",
-        fontWeight: 800,
-        fontSize: {
-          xs: "clamp(22px, 5.5vw, 32px)",
-          md: "clamp(28px, 3vw, 40px)",
-        },
-        textWrap: "balance",
-      }}
-    >
-      {children}
-    </Typography>
-    {subtitle && (
-      <Typography sx={{ color: "rgba(255,255,255,0.72)", mt: 1 }}>
-        {subtitle}
-      </Typography>
-    )}
-  </Box>
-);
 
 export default function WallerServicePage() {
   return (
-    <>
-      <Head>
-        <title>Hydraulic Cylinder Repair in Waller, TX | Vetech Hydraulics</title>
-        <meta
-          name="description"
-          content="Vetech Hydraulics provides hydraulic cylinder repair, repacking, and testing in Waller, TX. Text a picture of your cylinder for a fast quote."
-        />
-        <link
-          rel="canonical"
-          href={`${BUSINESS.siteUrl}/service-areas/waller-tx-hydraulic-cylinder-repair`}
-        />
-        <meta name="keywords" content="hydraulic cylinder repair Waller TX, hydraulic repair Waller Texas, hydraulic cylinder repacking Waller TX, hydraulic service near Waller TX" />
-        <meta property="og:title" content="Hydraulic Cylinder Repair in Waller, TX | Vetech Hydraulics" />
-        <meta property="og:description" content="Vetech Hydraulics provides hydraulic cylinder repair, repacking, and testing in Waller, TX. Text a picture of your cylinder for a fast quote." />
-        <meta property="og:url" content={`${BUSINESS.siteUrl}/service-areas/waller-tx-hydraulic-cylinder-repair`} />
-        <meta property="og:image" content={`${BUSINESS.siteUrl}/og/repair.webp`} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-
-      {/* HERO */}
-      <Box component="section" sx={{ position: "relative", minHeight: { xs: "60svh", md: "68vh" }, overflow: "hidden", display: "flex", alignItems: "center" }}>
-        <Box sx={{ position: "absolute", inset: 0, transformOrigin: "center center", animation: `${zoomOut} 8s ease-out forwards` }}>
-          <Image src={heroImg} alt="Hydraulic equipment in Waller TX" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center" }} />
-        </Box>
-        <Box sx={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(90deg, rgba(3,8,14,0.92) 0%, rgba(6,15,24,0.78) 48%, rgba(3,8,14,0.58) 100%), linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 60%)" }} />
-        <Container maxWidth={false} disableGutters sx={{ px: { xs: 2, sm: 3 }, maxWidth: "1100px", mx: "auto", position: "relative", zIndex: 2, py: { xs: 10, md: 14 } }}>
-          <Typography component="h1" variant="h2" sx={{ fontWeight: 800, fontSize: { xs: "clamp(28px, 7vw, 40px)", md: "clamp(36px, 4vw, 52px)" }, textWrap: "balance", mb: 2, color: "#fff", lineHeight: 1.1 }}>
-            Hydraulic Cylinder Repair in Waller, Texas
-          </Typography>
-          <Typography sx={{ color: "rgba(255,255,255,0.85)", maxWidth: 640, mb: 3, lineHeight: 1.75, fontSize: { xs: 15, md: 16 } }}>
-            Vetech Hydraulics provides hydraulic cylinder repair, repacking, and pressure-tested rebuilds for equipment operators in Waller, TX and throughout Waller County. Located off US-290 between Houston and Hempstead, Waller sits in the middle of some of the most active agricultural and construction corridor in the region.
-          </Typography>
-          <ConsultationButton />
-        </Container>
-      </Box>
-
-      <AltSection>
-        <Container
-          maxWidth={false}
-          disableGutters
-          sx={{ px: { xs: 2, sm: 3 }, maxWidth: "1100px", mx: "auto" }}
-        >
-          <Typography
-            sx={{ color: "rgba(255,255,255,0.8)", maxWidth: 720, mb: 3 }}
-          >
-            Vetech Hydraulics services equipment owners in Waller, TX and the surrounding
-            area with hydraulic cylinder repacking, rod work, and pressure-tested rebuilds.
-            Text or email a photo of your cylinder and we&apos;ll help you figure out the best repair plan.
-          </Typography>
-
-          <ConsultationButton />
-        </Container>
-      </AltSection>
-
-      <Section>
-        <Container
-          maxWidth={false}
-          disableGutters
-          sx={{
-            px: { xs: 2, sm: 3 },
-            maxWidth: "900px",
-            mx: "auto",
-            textAlign: "center",
-          }}
-        >
-          <SectionTitle subtitle="Text a picture for a fast response.">
-            Need Hydraulic Cylinder Repair in Waller, TX?
-          </SectionTitle>
-
-          <Typography
-            sx={{
-              color: "rgba(255,255,255,0.8)",
-              mb: 3,
-              maxWidth: 640,
-              mx: "auto",
-            }}
-          >
-            If you&apos;re near Waller and dealing with a leaking or weak cylinder,
-            reach out. We&apos;ll review your photos, give you a ballpark estimate,
-            and help you get back to work with less downtime.
-          </Typography>
-
-          <ConsultationButton />
-        </Container>
-      </Section>
-    </>
+    <ServiceAreaPageTemplate
+      seoTitle="Hydraulic Cylinder Repair in Waller, TX | Vetech Hydraulics"
+      seoDescription="Vetech Hydraulics provides hydraulic cylinder repair, repacking, and testing in Waller, TX. Text a picture of your cylinder for a fast quote."
+      seoKeywords="hydraulic cylinder repair Waller TX, hydraulic repair Waller Texas, hydraulic cylinder repacking Waller TX, hydraulic service near Waller TX"
+      canonicalSlug="waller-tx-hydraulic-cylinder-repair"
+      heroImg={heroImg}
+      heroAlt="Hydraulic equipment in Waller TX"
+      cityName="Waller"
+      stateAbbr="TX"
+      heroHeadline="Hydraulic Cylinder Repair in Waller, Texas"
+      heroParagraph="Vetech Hydraulics provides hydraulic cylinder repair, repacking, and pressure-tested rebuilds for equipment operators in Waller, TX and throughout Waller County. Located off US-290 between Houston and Hempstead, Waller sits in the middle of some of the most active agricultural and construction corridors in the region."
+      bodyParagraph1="Vetech Hydraulics services equipment owners in Waller, TX and the surrounding area with hydraulic cylinder repacking, rod work, and pressure-tested rebuilds. Text or email a photo of your cylinder and we'll help you figure out the best repair plan."
+      bodyParagraph2="If you're near Waller and dealing with a leaking or weak cylinder, reach out. We'll review your photos, give you a ballpark estimate, and help you get back to work with less downtime."
+      equipmentSubtitle="Agriculture, construction, and fleet equipment along the US-290 corridor."
+      equipmentCards={[
+        {
+          title: "Agriculture & Ranch Equipment",
+          text: "Tractors, hay equipment, loader attachments, and livestock handling chutes for the farms and ranches throughout Waller County. We repack and rebuild ag cylinders that have taken a full season of work and need to go back in service fast.",
+        },
+        {
+          title: "Construction & Land Clearing",
+          text: "Active construction along the US-290 corridor keeps excavators, bulldozers, and skid steers working in and around Waller. We repair boom, arm, bucket, and blade cylinders with fast turnarounds for contractors on tight schedules.",
+        },
+        {
+          title: "Dump Trucks & Aggregate Haulers",
+          text: "Telescopic hoist cylinders on dump trucks and aggregate trailers running the US-290 corridor cycle hard under heavy loads. We rebuild multi-stage cylinders with the correct seals and full pressure testing before they go back to work.",
+        },
+        {
+          title: "Utility & Municipal Equipment",
+          text: "Road department equipment, backhoes, and public works machinery serving Waller County. We support commercial and municipal accounts with reliable turnaround times and honest diagnostics.",
+        },
+      ]}
+      servicesList={[
+        "Cylinder Repacking & Seal Replacement",
+        "Rod Polishing & Reconditioning",
+        "Weld Repair — Mounts, Eyes & Barrel Ends",
+        "Full Cylinder Teardown & Rebuild",
+        "Telescopic Cylinder Repair",
+        "Bench Pressure Testing",
+        "Pickup & Delivery — Waller County Area",
+        "Photo Estimates — Text a Picture for a Same-Day Quote",
+      ]}
+      faqHeading="Questions from Waller & Waller County Operators"
+      faqItems={[
+        {
+          q: "How far is Vetech Hydraulics from Waller?",
+          a: "We're in Magnolia, TX — about 25–30 minutes from Waller via US-290 east to SH-249. Drop-offs are welcome at the shop, and we offer pickup and delivery for Waller County customers who need help transporting cylinders.",
+        },
+        {
+          q: "Can you repair ag cylinders quickly during the busy season?",
+          a: "Yes. We understand farm downtime during a tight weather window costs more than the repair. Text us a photo early and we can often stage seals before you arrive — cutting turnaround time significantly.",
+        },
+        {
+          q: "What's the quickest way to get a quote?",
+          a: "Text or email a photo of the cylinder — front, side, and the damaged area — along with the bore size and what it came off of. We can usually turn a ballpark estimate around the same day without needing a shop visit first.",
+        },
+      ]}
+    />
   );
 }
