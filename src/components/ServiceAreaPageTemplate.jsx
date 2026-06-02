@@ -140,7 +140,7 @@ export default function ServiceAreaPageTemplate({
             inset: 0,
             zIndex: 1,
             background:
-              "linear-gradient(90deg, rgba(2,6,10,0.95) 0%, rgba(2,6,10,0.88) 46%, rgba(7,21,34,0.6) 100%), linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.18) 60%)",
+              "linear-gradient(90deg, rgba(8,8,10,0.95) 0%, rgba(8,8,10,0.88) 46%, rgba(7,21,34,0.6) 100%), linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.18) 60%)",
           }}
         />
 
@@ -162,9 +162,9 @@ export default function ServiceAreaPageTemplate({
               display: "inline-flex",
               alignItems: "center",
               gap: 1,
-              bgcolor: "rgba(215,25,32,0.14)",
-              border: "1px solid rgba(215,25,32,0.36)",
-              borderRadius: "999px",
+              bgcolor: "rgba(204,0,0,0.14)",
+              border: "1px solid rgba(204,0,0,0.36)",
+              borderRadius: "2px",
               px: 2,
               py: 0.6,
               mb: 3,
@@ -183,7 +183,7 @@ export default function ServiceAreaPageTemplate({
               sx={{
                 ...eyebrowSx,
                 fontSize: { xs: 10, md: 11 },
-                color: "#F7CDCE",
+                color: "#FFD0D0",
               }}
             >
               BASED IN MAGNOLIA, TX &bull; SERVING {cityName.toUpperCase()} AREA
@@ -201,7 +201,7 @@ export default function ServiceAreaPageTemplate({
                 md: "clamp(36px, 4.2vw, 58px)",
               },
               textTransform: "uppercase",
-              letterSpacing: "-0.045em",
+              letterSpacing: "-0.01em",
               mb: 2.5,
               maxWidth: 800,
             }}
@@ -276,9 +276,9 @@ export default function ServiceAreaPageTemplate({
                   display: "flex",
                   alignItems: "center",
                   gap: 0.75,
-                  bgcolor: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(190,202,212,0.18)",
-                  borderRadius: "8px",
+                  bgcolor: "rgba(18,18,22,0.7)",
+                  border: "1px solid rgba(255,255,255,0.18)",
+                  borderRadius: "4px",
                   px: 1.5,
                   py: 0.65,
                 }}
@@ -369,7 +369,7 @@ export default function ServiceAreaPageTemplate({
                         right: 0,
                         height: 3,
                         background:
-                          "linear-gradient(90deg, #D71920 0%, rgba(215,25,32,0.4) 100%)",
+                          "linear-gradient(90deg, #CC0000 0%, rgba(204,0,0,0.4) 100%)",
                         borderRadius: "3px 3px 0 0",
                       },
                     }}
@@ -425,9 +425,9 @@ export default function ServiceAreaPageTemplate({
                       gap: 1.5,
                       p: { xs: 2, md: 2.25 },
                       borderRadius: 2,
-                      bgcolor: "rgba(8,19,28,0.72)",
-                      border: "1px solid rgba(190,202,212,0.14)",
-                      boxShadow: "inset 3px 0 0 rgba(215,25,32,0.7)",
+                      bgcolor: "rgba(14,14,18,0.72)",
+                      border: "1px solid rgba(255,255,255,0.14)",
+                      boxShadow: "inset 3px 0 0 rgba(204,0,0,0.7)",
                     }}
                   >
                     <Box
@@ -437,7 +437,7 @@ export default function ServiceAreaPageTemplate({
                         borderRadius: "50%",
                         bgcolor: industrialColors.hydraulicRed,
                         flexShrink: 0,
-                        boxShadow: "0 0 10px rgba(215,25,32,0.5)",
+                        boxShadow: "0 0 10px rgba(204,0,0,0.5)",
                       }}
                     />
                     <Typography
@@ -478,12 +478,12 @@ export default function ServiceAreaPageTemplate({
                   disableGutters
                   elevation={0}
                   sx={{
-                    bgcolor: "rgba(8,19,28,0.92)",
-                    borderRadius: "14px !important",
+                    bgcolor: "rgba(14,14,18,0.92)",
+                    borderRadius: "4px !important",
                     border: `1px solid ${industrialColors.steel}`,
                     "&:before": { display: "none" },
                     "&.Mui-expanded": {
-                      borderColor: "rgba(215,25,32,0.32)",
+                      borderColor: "rgba(204,0,0,0.32)",
                     },
                   }}
                 >
@@ -527,8 +527,8 @@ export default function ServiceAreaPageTemplate({
                 mt: { xs: 5, md: 7 },
                 p: { xs: 3, md: 4 },
                 borderRadius: 3,
-                bgcolor: "rgba(215,25,32,0.08)",
-                border: "1px solid rgba(215,25,32,0.28)",
+                bgcolor: "rgba(204,0,0,0.08)",
+                border: "1px solid rgba(204,0,0,0.28)",
                 textAlign: "center",
               }}
             >

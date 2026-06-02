@@ -1,18 +1,14 @@
-// src/components/PhoneButton.js
-// Fixed mobile call CTA rendered globally from _app so phone users always have an easy contact path.
-// The spacer below prevents page content from being covered by the fixed bar on small screens.
+// src/components/PhoneButton.jsx
+// Fixed mobile call CTA — hero-palette, Oswald font, CC0000 red.
 import React from "react";
 import { Box, Typography, Link as MuiLink } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
-import { red } from "@mui/material/colors";
 import { BUSINESS } from "../config/business";
 
-export default function PhoneButton({
-  phoneDisplay = BUSINESS.phoneDisplay,
-}) {
+export default function PhoneButton({ phoneDisplay = BUSINESS.phoneDisplay }) {
   return (
     <>
-      {/* Mobile Sticky Call CTA */}
+      {/* Mobile sticky call bar — hidden on md+ */}
       <Box
         sx={{
           position: "fixed",
@@ -20,35 +16,39 @@ export default function PhoneButton({
           left: 0,
           right: 0,
           zIndex: 1300,
-          display: { xs: "flex", md: "none" }, // mobile only
+          display: { xs: "flex", md: "none" },
           justifyContent: "center",
           alignItems: "center",
           py: 1.25,
           px: 2,
-          bgcolor: "#0F2331",
-          borderTop: "1px solid rgba(255,255,255,0.12)",
+          bgcolor: "#0a0a0a",
+          borderTop: "1px solid rgba(204,0,0,0.35)",
+          boxShadow: "0 -4px 20px rgba(0,0,0,0.6)",
         }}
       >
         <Typography
-          variant="h6"
           sx={{
             display: "flex",
             alignItems: "center",
             gap: 1,
-            fontWeight: 900,
-            letterSpacing: 0.2,
+            fontFamily: "'Oswald', sans-serif",
+            fontWeight: 600,
+            letterSpacing: "0.06em",
             lineHeight: 1,
+            textTransform: "uppercase",
+            fontSize: 15,
           }}
         >
-          <PhoneIcon sx={{ color: red[500] }} />
-
+          <PhoneIcon sx={{ color: "#CC0000", fontSize: 20 }} />
           <MuiLink
             href={BUSINESS.phoneTel}
             aria-label={`Call Vetech Hydraulics at ${phoneDisplay}`}
             sx={{
-              color: red[500],
+              color: "#CC0000",
               textDecoration: "none",
-              fontWeight: 900,
+              fontFamily: "'Oswald', sans-serif",
+              fontWeight: 600,
+              "&:hover": { color: "#ff2222" },
             }}
           >
             {phoneDisplay}
@@ -56,8 +56,8 @@ export default function PhoneButton({
         </Typography>
       </Box>
 
-      {/* Spacer so content isn't hidden behind fixed bar (mobile only) */}
-      <Box sx={{ display: { xs: "block", md: "none" }, height: 56 }} />
+      {/* Spacer so page content isn't hidden behind fixed bar */}
+      <Box sx={{ display: { xs: "block", md: "none" }, height: 54 }} />
     </>
   );
 }

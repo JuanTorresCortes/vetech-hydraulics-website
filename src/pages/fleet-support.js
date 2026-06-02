@@ -47,7 +47,7 @@ const HeroSection = styled(Box)(({ theme }) => ({
   overflow: "hidden",
   color: "#fff",
   background:
-    "radial-gradient(circle at 14% 18%, rgba(215,25,32,0.24), transparent 34%), linear-gradient(135deg, #02060A 0%, #071522 48%, #02060A 100%)",
+    "radial-gradient(circle at 14% 18%, rgba(204,0,0,0.24), transparent 34%), linear-gradient(135deg, #080808 0%, #0a0a0a 48%, #080808 100%)",
   [theme.breakpoints.down("md")]: { minHeight: "68svh" },
   [theme.breakpoints.down("sm")]: { minHeight: "72svh" },
   "&::before": {
@@ -200,7 +200,7 @@ const FeatureCard = ({ title, text, Icon }) => (
         right: 0,
         height: 3,
         background:
-          "linear-gradient(90deg, #D71920, rgba(215,25,32,0.24), rgba(190,202,212,0.28))",
+          "linear-gradient(90deg, #CC0000, rgba(204,0,0,0.24), rgba(255,255,255,0.28))",
       },
     }}
   >
@@ -213,10 +213,10 @@ const FeatureCard = ({ title, text, Icon }) => (
         display: "grid",
         placeItems: "center",
         color: "#fff",
-        bgcolor: "rgba(215,25,32,0.14)",
-        border: "1px solid rgba(215,25,32,0.34)",
+        bgcolor: "rgba(204,0,0,0.14)",
+        border: "1px solid rgba(204,0,0,0.34)",
         boxShadow:
-          "inset 0 1px 0 rgba(255,255,255,0.12), 0 18px 36px rgba(0,0,0,0.26), 0 0 22px rgba(215,25,32,0.16)",
+          "inset 0 1px 0 rgba(255,255,255,0.12), 0 18px 36px rgba(0,0,0,0.26), 0 0 22px rgba(204,0,0,0.16)",
       }}
     >
       <Icon aria-hidden="true" sx={{ fontSize: 27 }} />
@@ -224,7 +224,7 @@ const FeatureCard = ({ title, text, Icon }) => (
     <Typography
       component="h3"
       sx={{
-        color: "#F7FAFC",
+        color: "#F0F0F0",
         fontWeight: 950,
         fontSize: { xs: 20, md: 21 },
         lineHeight: 1.14,
@@ -272,7 +272,7 @@ export default function FleetSupportPage() {
               inset: 0,
               zIndex: 1,
               background:
-                "linear-gradient(90deg, rgba(2,6,10,0.98) 0%, rgba(2,6,10,0.88) 46%, rgba(7,21,34,0.58) 100%), linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0.18))",
+                "linear-gradient(90deg, rgba(8,8,10,0.98) 0%, rgba(8,8,10,0.88) 46%, rgba(7,21,34,0.58) 100%), linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0.18))",
             }}
           />
 
@@ -288,7 +288,7 @@ export default function FleetSupportPage() {
                 component="h1"
                 variant="h1"
                 sx={{
-                  color: "#F7FAFC",
+                  color: "#F0F0F0",
                   maxWidth: 920,
                   textShadow: "0 18px 42px rgba(0,0,0,0.55)",
                 }}
@@ -337,7 +337,7 @@ export default function FleetSupportPage() {
         <Section
           sx={{
             background:
-              "radial-gradient(circle at 12% 0%, rgba(215,25,32,0.14), transparent 34%), linear-gradient(180deg, #071522 0%, #0B1B27 52%, #07131D 100%)",
+              "radial-gradient(circle at 12% 0%, rgba(204,0,0,0.14), transparent 34%), linear-gradient(180deg, #0a0a0a 0%, #0e0e0e 52%, #080808 100%)",
           }}
         >
           <Container maxWidth="lg" sx={containerSx}>
@@ -361,7 +361,7 @@ export default function FleetSupportPage() {
         <AltSection
           sx={{
             background:
-              "radial-gradient(circle at 88% 10%, rgba(110,193,255,0.1), transparent 28%), linear-gradient(180deg, #050D14 0%, #0A1823 52%, #06111A 100%)",
+              "radial-gradient(circle at 88% 10%,  transparent 28%), linear-gradient(180deg, #080808 0%, #0e0e0e 52%, #080808 100%)",
           }}
         >
           <Container maxWidth="lg" sx={containerSx}>
@@ -385,7 +385,7 @@ export default function FleetSupportPage() {
         <Section
           sx={{
             background:
-              "radial-gradient(circle at 12% 18%, rgba(215,25,32,0.16), transparent 30%), linear-gradient(180deg, #07131D 0%, #0A1721 52%, #050D14 100%)",
+              "radial-gradient(circle at 12% 18%, rgba(204,0,0,0.16), transparent 30%), linear-gradient(180deg, #080808 0%, #0e0e0e 52%, #080808 100%)",
           }}
         >
           <Container maxWidth="lg" sx={containerSx}>
@@ -415,21 +415,21 @@ export default function FleetSupportPage() {
                     ...industrialCardSx,
                     p: { xs: 2.75, md: 4 },
                     boxShadow:
-                      "0 26px 72px rgba(0,0,0,0.34), inset 4px 0 0 rgba(215,25,32,0.9), inset 0 1px 0 rgba(255,255,255,0.08)",
+                      "0 26px 72px rgba(0,0,0,0.34), inset 4px 0 0 rgba(204,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.08)",
                   }}
                 >
                   <MilitaryTechIcon
                     aria-hidden="true"
-                    sx={{ color: "#D71920", fontSize: 38, mb: 1.5 }}
+                    sx={{ color: "#CC0000", fontSize: 38, mb: 1.5 }}
                   />
                   <Typography
                     component="h3"
                     sx={{
-                      color: "#F7FAFC",
+                      color: "#F0F0F0",
                       fontWeight: 950,
                       fontSize: { xs: 24, md: 31 },
                       lineHeight: 1.12,
-                      letterSpacing: "-0.035em",
+                      letterSpacing: "-0.01em",
                       textWrap: "balance",
                     }}
                   >
@@ -467,11 +467,11 @@ export default function FleetSupportPage() {
                     <Stack direction="row" alignItems="center" spacing={1.25}>
                       <Icon
                         aria-hidden="true"
-                        sx={{ color: "#D71920", fontSize: 27 }}
+                        sx={{ color: "#CC0000", fontSize: 27 }}
                       />
                       <Typography
                         sx={{
-                          color: "rgba(231,238,244,0.58)",
+                          color: "rgba(220,220,220,0.58)",
                           fontWeight: 950,
                           letterSpacing: "0.12em",
                           fontSize: 12,
@@ -483,7 +483,7 @@ export default function FleetSupportPage() {
                     <Typography
                       component="h3"
                       sx={{
-                        color: "#F7FAFC",
+                        color: "#F0F0F0",
                         fontWeight: 950,
                         fontSize: { xs: 19, md: 20 },
                         lineHeight: 1.14,
@@ -507,7 +507,7 @@ export default function FleetSupportPage() {
         <Section
           sx={{
             background:
-              "radial-gradient(circle at 50% 0%, rgba(215,25,32,0.2), transparent 34%), linear-gradient(180deg, #07131D 0%, #050A0F 100%)",
+              "radial-gradient(circle at 50% 0%, rgba(204,0,0,0.2), transparent 34%), linear-gradient(180deg, #080808 0%, #080808 100%)",
           }}
         >
           <Container maxWidth="lg" sx={containerSx}>

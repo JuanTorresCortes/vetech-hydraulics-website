@@ -52,7 +52,7 @@ const Hero = styled(Box)(({ theme }) => ({
   textAlign: "left",
   padding: 0,
   overflow: "hidden",
-  backgroundColor: "#050A0F",
+  backgroundColor: "#080808",
   [theme.breakpoints.down("lg")]: { minHeight: "70vh" },
   [theme.breakpoints.down("md")]: { minHeight: "66svh" },
   [theme.breakpoints.down("sm")]: { minHeight: "62svh" },
@@ -78,25 +78,25 @@ const Hero = styled(Box)(({ theme }) => ({
     height: 1,
     pointerEvents: "none",
     background:
-      "linear-gradient(90deg, transparent, rgba(190,202,212,0.55), rgba(215,25,32,0.72), rgba(190,202,212,0.55), transparent)",
+      "linear-gradient(90deg, transparent, rgba(255,255,255,0.55), rgba(204,0,0,0.72), rgba(255,255,255,0.55), transparent)",
     zIndex: 3,
   },
 }));
 
 const Section = styled("section")(({ theme }) => ({
   ...sectionBase(theme),
-  backgroundColor: "#0F2331",
+  backgroundColor: "#0a0a0a",
 }));
 
 const AltSection = styled("section")(({ theme }) => ({
   ...sectionBase(theme),
-  backgroundColor: "#0B1B27",
+  backgroundColor: "#0e0e0e",
 }));
 
 const industrialSectionSx = {
   position: "relative",
   background:
-    "radial-gradient(circle at 10% 12%, rgba(215,25,32,0.105), transparent 28%), radial-gradient(circle at 92% 18%, rgba(110,193,255,0.07), transparent 26%), linear-gradient(180deg, #050A0F 0%, #0A1721 48%, #06111A 100%)",
+    "radial-gradient(circle at 10% 12%, rgba(204,0,0,0.105), transparent 28%), radial-gradient(circle at 92% 18%,  transparent 26%), linear-gradient(180deg, #080808 0%, #0e0e0e 48%, #080808 100%)",
   "&::before": {
     content: '""',
     position: "absolute",
@@ -114,7 +114,7 @@ const industrialSectionSx = {
 const industrialAltSectionSx = {
   ...industrialSectionSx,
   background:
-    "radial-gradient(circle at 86% 16%, rgba(110,193,255,0.065), transparent 28%), radial-gradient(circle at 12% 84%, rgba(215,25,32,0.075), transparent 26%), linear-gradient(180deg, #07131D 0%, #091925 50%, #050D14 100%)",
+    "radial-gradient(circle at 86% 16%,  transparent 28%), radial-gradient(circle at 12% 84%, rgba(204,0,0,0.075), transparent 26%), linear-gradient(180deg, #080808 0%, #091925 50%, #080808 100%)",
 };
 
 const innerContainerSx = {
@@ -131,9 +131,9 @@ const premiumCardSx = {
   height: "100%",
   overflow: "hidden",
   p: { xs: 2.5, md: 3 },
-  bgcolor: "rgba(8,19,28,0.92)",
+  bgcolor: "rgba(14,14,18,0.92)",
   backgroundImage:
-    "linear-gradient(145deg, rgba(255,255,255,0.085), rgba(255,255,255,0.018) 52%, rgba(215,25,32,0.022))",
+    "linear-gradient(145deg, rgba(255,255,255,0.085), rgba(255,255,255,0.018) 52%, rgba(204,0,0,0.022))",
   border: `1px solid ${industrialColors.steel}`,
   "&::after": {
     content: '""',
@@ -143,7 +143,7 @@ const premiumCardSx = {
     top: 0,
     height: 3,
     background:
-      "linear-gradient(90deg, rgba(215,25,32,0.92), rgba(190,202,212,0.22), transparent)",
+      "linear-gradient(90deg, rgba(204,0,0,0.92), rgba(255,255,255,0.22), transparent)",
     pointerEvents: "none",
   },
 };
@@ -155,10 +155,10 @@ const markerSx = {
   display: "grid",
   placeItems: "center",
   color: "#fff",
-  bgcolor: "rgba(215,25,32,0.16)",
-  border: "1px solid rgba(215,25,32,0.38)",
+  bgcolor: "rgba(204,0,0,0.16)",
+  border: "1px solid rgba(204,0,0,0.38)",
   boxShadow:
-    "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 22px rgba(215,25,32,0.16)",
+    "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 22px rgba(204,0,0,0.16)",
 };
 
 const cardTitleSx = {
@@ -389,7 +389,7 @@ export default function ServiceAreasOverview() {
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(circle at 16% 30%, rgba(215,25,32,0.24), transparent 30%), radial-gradient(circle at 88% 18%, rgba(110,193,255,0.1), transparent 28%), linear-gradient(90deg, rgba(2,6,10,0.94) 0%, rgba(5,14,22,0.82) 48%, rgba(2,6,10,0.66) 100%), linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0.28))",
+              "radial-gradient(circle at 16% 30%, rgba(204,0,0,0.24), transparent 30%), radial-gradient(circle at 88% 18%,  transparent 28%), linear-gradient(90deg, rgba(8,8,10,0.94) 0%, rgba(5,14,22,0.82) 48%, rgba(8,8,10,0.66) 100%), linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0.28))",
           }}
         />
 
@@ -433,7 +433,7 @@ export default function ServiceAreasOverview() {
                   ...bodyCopySx,
                   maxWidth: 820,
                   fontSize: { xs: 15.5, md: 18 },
-                  color: "rgba(231,238,244,0.84)",
+                  color: "rgba(220,220,220,0.84)",
                 }}
               >
                 Veteran-owned hydraulic cylinder repair, repacking, and pressure-tested rebuilds
@@ -544,7 +544,7 @@ export default function ServiceAreasOverview() {
                       width: "100%",
                       pb: "62%",
                       overflow: "hidden",
-                      borderBottom: "1px solid rgba(190,202,212,0.18)",
+                      borderBottom: "1px solid rgba(255,255,255,0.18)",
                     }}
                   >
                     <Image
@@ -610,7 +610,7 @@ export default function ServiceAreasOverview() {
                 p: { xs: 3, md: 5 },
                 textAlign: "center",
                 backgroundImage:
-                  "radial-gradient(circle at 50% 0%, rgba(215,25,32,0.16), transparent 34%), linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.018))",
+                  "radial-gradient(circle at 50% 0%, rgba(204,0,0,0.16), transparent 34%), linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.018))",
               }}
             >
               <Typography sx={{ ...eyebrowSx, mb: 1.25 }}>
@@ -674,7 +674,7 @@ export default function ServiceAreasOverview() {
             py: 1.25,
             px: 2,
             bgcolor: "rgba(5,10,15,0.96)",
-            borderTop: "1px solid rgba(190,202,212,0.2)",
+            borderTop: "1px solid rgba(255,255,255,0.2)",
             boxShadow: "0 -14px 34px rgba(0,0,0,0.38)",
           }}
         >

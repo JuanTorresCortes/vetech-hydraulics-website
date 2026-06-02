@@ -47,7 +47,7 @@ const ConsultationButton = () => {
           py: 1.45,
           fontSize: { xs: 12, sm: 13 },
           boxShadow:
-            "0 18px 38px rgba(215,25,32,0.3), inset 0 1px 0 rgba(255,255,255,0.24)",
+            "0 18px 38px rgba(204,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.24)",
         }}
       >
         {showMobile ? "Text Image for a Fast Quote" : "Get a Fast Quote"}

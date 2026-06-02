@@ -6,7 +6,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {/* Keep these global values stable; page-specific SEO belongs in SeoHead or page Head tags. */}
-        <meta name="theme-color" content="#050D14" />
+        <meta name="theme-color" content="#080808" />
         <meta name="author" content="Vetech Hydraulics" />
         <meta name="robots" content="index, follow" />
         <link rel="icon" href="/favicon.ico" />

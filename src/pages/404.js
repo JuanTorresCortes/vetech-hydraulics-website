@@ -31,7 +31,7 @@ export default function NotFoundPage() {
           display: "flex",
           alignItems: "center",
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(215,25,32,0.06), transparent 70%), linear-gradient(180deg, #050A0F 0%, #081522 60%, #050D14 100%)",
+            "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(204,0,0,0.06), transparent 70%), linear-gradient(180deg, #080808 0%, #081522 60%, #080808 100%)",
           position: "relative",
           overflow: "hidden",
           "&::before": {
@@ -86,7 +86,7 @@ export default function NotFoundPage() {
                 fontWeight: 950,
                 fontSize: { xs: "clamp(26px, 7vw, 42px)" },
                 lineHeight: 1.1,
-                letterSpacing: "-0.03em",
+                letterSpacing: "0em",
                 mb: 1.5,
               }}
             >
@@ -95,7 +95,7 @@ export default function NotFoundPage() {
 
             <Typography
               sx={{
-                color: "rgba(231,238,244,0.72)",
+                color: "rgba(220,220,220,0.72)",
                 fontSize: { xs: 15, md: 17 },
                 lineHeight: 1.6,
                 maxWidth: 480,
@@ -132,9 +132,9 @@ export default function NotFoundPage() {
                 sx={{
                   px: 3.5,
                   py: 1.45,
-                  borderRadius: "10px",
-                  color: "#E7EEF4",
-                  borderColor: "rgba(190,202,212,0.42)",
+                  borderRadius: "2px",
+                  color: "#E0E0E0",
+                  borderColor: "rgba(255,255,255,0.42)",
                   fontWeight: 900,
                   textTransform: "uppercase",
                   letterSpacing: "0.08em",
@@ -153,7 +153,7 @@ export default function NotFoundPage() {
             <Box>
               <Typography
                 sx={{
-                  color: "rgba(231,238,244,0.44)",
+                  color: "rgba(220,220,220,0.44)",
                   fontSize: 11,
                   fontWeight: 800,
                   letterSpacing: "0.14em",
@@ -177,18 +177,18 @@ export default function NotFoundPage() {
                     size="small"
                     startIcon={<BuildIcon sx={{ fontSize: "14px !important" }} />}
                     sx={{
-                      color: "rgba(231,238,244,0.62)",
+                      color: "rgba(220,220,220,0.62)",
                       fontSize: 13,
                       fontWeight: 700,
                       textTransform: "none",
-                      border: "1px solid rgba(190,202,212,0.18)",
+                      border: "1px solid rgba(255,255,255,0.18)",
                       borderRadius: "8px",
                       px: 1.5,
                       py: 0.6,
                       bgcolor: "rgba(255,255,255,0.03)",
                       "&:hover": {
                         color: industrialColors.text,
-                        borderColor: "rgba(190,202,212,0.4)",
+                        borderColor: "rgba(255,255,255,0.4)",
                         bgcolor: "rgba(255,255,255,0.07)",
                       },
                     }}

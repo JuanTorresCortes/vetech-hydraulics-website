@@ -35,7 +35,7 @@ const cardSx = {
     top: 0,
     height: 3,
     background:
-      "linear-gradient(90deg, rgba(215,25,32,0.92), rgba(190,202,212,0.22), transparent)",
+      "linear-gradient(90deg, rgba(204,0,0,0.92), rgba(255,255,255,0.22), transparent)",
     pointerEvents: "none",
   },
 };
@@ -98,7 +98,7 @@ export default function HydraulicCylinderRepairCost() {
           marginLeft: "calc(50% - 50vw)",
           marginRight: "calc(50% - 50vw)",
           background:
-            "radial-gradient(circle at 16% 18%, rgba(215,25,32,0.22), transparent 34%), linear-gradient(135deg, #02060A 0%, #071522 48%, #02060A 100%)",
+            "radial-gradient(circle at 16% 18%, rgba(204,0,0,0.22), transparent 34%), linear-gradient(135deg, #080808 0%, #0a0a0a 48%, #080808 100%)",
           pt: { xs: 14, md: 22 },
           pb: { xs: 8, md: 12 },
           position: "relative",
@@ -122,18 +122,18 @@ export default function HydraulicCylinderRepairCost() {
               component="h1"
               variant="h1"
               sx={{
-                color: "#F7FAFC",
+                color: "#F0F0F0",
                 fontWeight: 950,
                 fontSize: { xs: "clamp(30px, 9vw, 50px)", md: "clamp(46px, 5vw, 68px)" },
                 lineHeight: 0.97,
-                letterSpacing: "-0.055em",
+                letterSpacing: "-0.01em",
                 textWrap: "balance",
                 mb: 2.5,
               }}
             >
               Hydraulic Cylinder Repair Cost in Montgomery & North Houston TX
             </Typography>
-            <Typography sx={{ ...bodyCopySx, maxWidth: 720, fontSize: { xs: 15.5, md: 18 }, color: "rgba(231,238,244,0.84)", mb: 3 }}>
+            <Typography sx={{ ...bodyCopySx, maxWidth: 720, fontSize: { xs: 15.5, md: 18 }, color: "rgba(220,220,220,0.84)", mb: 3 }}>
               Honest pricing ranges for common cylinder repairs — so you can plan your budget before
               you call. Every job is different, but this guide gives you a realistic starting point.
             </Typography>
@@ -169,13 +169,13 @@ export default function HydraulicCylinderRepairCost() {
                   <Typography sx={{ color: industrialColors.hydraulicRed, fontWeight: 950, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", mb: 0.75 }}>
                     {tier.note}
                   </Typography>
-                  <Typography sx={{ color: "#F7FAFC", fontWeight: 950, fontSize: { xs: 20, md: 22 }, lineHeight: 1.1, mb: 0.5 }}>
+                  <Typography sx={{ color: "#F0F0F0", fontWeight: 950, fontSize: { xs: 20, md: 22 }, lineHeight: 1.1, mb: 0.5 }}>
                     {tier.label}
                   </Typography>
                   <Typography sx={{ color: "#6EC1FF", fontWeight: 950, fontSize: { xs: 26, md: 30 }, lineHeight: 1.1, mb: 1.5 }}>
                     {tier.range}
                   </Typography>
-                  <Divider sx={{ borderColor: "rgba(190,202,212,0.18)", mb: 1.5 }} />
+                  <Divider sx={{ borderColor: "rgba(255,255,255,0.18)", mb: 1.5 }} />
                   <Typography sx={{ color: industrialColors.mutedText, lineHeight: 1.72, fontSize: { xs: 14.5, md: 15 } }}>
                     {tier.details}
                   </Typography>
@@ -183,8 +183,8 @@ export default function HydraulicCylinderRepairCost() {
               </Grid>
             ))}
           </Grid>
-          <Box sx={{ mt: { xs: 3, md: 4 }, p: { xs: 2.5, md: 3.5 }, borderRadius: 3, bgcolor: "rgba(215,25,32,0.08)", border: "1px solid rgba(215,25,32,0.3)" }}>
-            <Typography sx={{ color: "#F7FAFC", fontWeight: 900, fontSize: { xs: 15, md: 16 }, mb: 0.75 }}>
+          <Box sx={{ mt: { xs: 3, md: 4 }, p: { xs: 2.5, md: 3.5 }, borderRadius: 3, bgcolor: "rgba(204,0,0,0.08)", border: "1px solid rgba(204,0,0,0.3)" }}>
+            <Typography sx={{ color: "#F0F0F0", fontWeight: 900, fontSize: { xs: 15, md: 16 }, mb: 0.75 }}>
               Our Pricing Commitment
             </Typography>
             <Typography sx={{ ...bodyCopySx }}>
@@ -209,7 +209,7 @@ export default function HydraulicCylinderRepairCost() {
             {factors.map(([title, text]) => (
               <Grid item xs={12} sm={6} md={4} key={title}>
                 <Box sx={cardSx}>
-                  <Typography sx={{ color: "#F7FAFC", fontWeight: 950, fontSize: { xs: 17, md: 18 }, lineHeight: 1.2, mb: 1 }}>
+                  <Typography sx={{ color: "#F0F0F0", fontWeight: 950, fontSize: { xs: 17, md: 18 }, lineHeight: 1.2, mb: 1 }}>
                     {title}
                   </Typography>
                   <Typography sx={{ color: industrialColors.mutedText, lineHeight: 1.72, fontSize: { xs: 14.5, md: 15 } }}>
@@ -253,7 +253,7 @@ export default function HydraulicCylinderRepairCost() {
                   <Box sx={{
                     flexShrink: 0, width: 40, height: 40, borderRadius: 2,
                     display: "grid", placeItems: "center",
-                    bgcolor: "rgba(215,25,32,0.16)", border: "1px solid rgba(215,25,32,0.38)",
+                    bgcolor: "rgba(204,0,0,0.16)", border: "1px solid rgba(204,0,0,0.38)",
                     color: "#fff", fontWeight: 950, fontSize: 14,
                   }}>
                     {step.replace("Step ", "")}

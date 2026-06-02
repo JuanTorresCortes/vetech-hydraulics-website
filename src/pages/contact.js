@@ -51,7 +51,7 @@ const Hero = styled(Box)(({ theme }) => ({
   color: "#fff",
   overflow: "hidden",
   background:
-    "radial-gradient(circle at 16% 18%, rgba(215,25,32,0.22), transparent 34%), linear-gradient(135deg, #02060A 0%, #071522 48%, #02060A 100%)",
+    "radial-gradient(circle at 16% 18%, rgba(204,0,0,0.22), transparent 34%), linear-gradient(135deg, #080808 0%, #0a0a0a 48%, #080808 100%)",
   [theme.breakpoints.down("md")]: { minHeight: "52svh" },
   [theme.breakpoints.down("sm")]: { minHeight: "56svh" },
   "&::before": {
@@ -70,27 +70,27 @@ const Hero = styled(Box)(({ theme }) => ({
 const Section = styled("section")(({ theme }) => ({
   ...sectionBase(theme),
   background:
-    "radial-gradient(circle at 86% 0%, rgba(215,25,32,0.13), transparent 32%), linear-gradient(180deg, #07131D 0%, #0A1823 52%, #050D14 100%)",
+    "radial-gradient(circle at 86% 0%, rgba(204,0,0,0.13), transparent 32%), linear-gradient(180deg, #080808 0%, #0e0e0e 52%, #080808 100%)",
 }));
 
 const AltSection = styled("section")(({ theme }) => ({
   ...sectionBase(theme),
   background:
-    "radial-gradient(circle at 12% 0%, rgba(215,25,32,0.1), transparent 30%), linear-gradient(180deg, #050D14 0%, #071522 52%, #050A0F 100%)",
+    "radial-gradient(circle at 12% 0%, rgba(204,0,0,0.1), transparent 30%), linear-gradient(180deg, #080808 0%, #0a0a0a 52%, #080808 100%)",
 }));
 
 const fieldSx = {
-  "& .MuiInputLabel-root": { color: "rgba(231,238,244,0.72)" },
-  "& .MuiInputLabel-root.Mui-focused": { color: "#F7FAFC" },
+  "& .MuiInputLabel-root": { color: "rgba(220,220,220,0.72)" },
+  "& .MuiInputLabel-root.Mui-focused": { color: "#F0F0F0" },
   "& .MuiOutlinedInput-root": {
     color: "#fff",
-    bgcolor: "rgba(3,7,11,0.34)",
+    bgcolor: "rgba(8,8,10,0.34)",
     borderRadius: 2,
-    "& fieldset": { borderColor: "rgba(190,202,212,0.2)" },
-    "&:hover fieldset": { borderColor: "rgba(190,202,212,0.38)" },
+    "& fieldset": { borderColor: "rgba(255,255,255,0.2)" },
+    "&:hover fieldset": { borderColor: "rgba(255,255,255,0.38)" },
     "&.Mui-focused fieldset": {
-      borderColor: "rgba(215,25,32,0.72)",
-      boxShadow: "0 0 0 1px rgba(215,25,32,0.18)",
+      borderColor: "rgba(204,0,0,0.72)",
+      boxShadow: "0 0 0 1px rgba(204,0,0,0.18)",
     },
   },
 };
@@ -111,7 +111,7 @@ const contactCardSx = {
     right: 0,
     height: 3,
     background:
-      "linear-gradient(90deg, #D71920 0%, rgba(215,25,32,0.35) 48%, rgba(190,202,212,0.35) 100%)",
+      "linear-gradient(90deg, #CC0000 0%, rgba(204,0,0,0.35) 48%, rgba(255,255,255,0.35) 100%)",
   },
 };
 
@@ -122,9 +122,9 @@ const iconBadgeSx = {
   display: "grid",
   placeItems: "center",
   color: "#fff",
-  bgcolor: "rgba(215,25,32,0.16)",
-  border: "1px solid rgba(215,25,32,0.38)",
-  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 22px rgba(215,25,32,0.16)",
+  bgcolor: "rgba(204,0,0,0.16)",
+  border: "1px solid rgba(204,0,0,0.38)",
+  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 22px rgba(204,0,0,0.16)",
   mb: 2,
   flexShrink: 0,
 };
@@ -270,7 +270,7 @@ export default function ContactPage() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(90deg, rgba(2,6,10,0.96) 0%, rgba(2,6,10,0.86) 45%, rgba(7,21,34,0.55) 100%), linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0.18))",
+              "linear-gradient(90deg, rgba(8,8,10,0.96) 0%, rgba(8,8,10,0.86) 45%, rgba(7,21,34,0.55) 100%), linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0.18))",
             zIndex: 1,
           }}
         />
@@ -283,7 +283,7 @@ export default function ContactPage() {
             variant="h1"
             component="h1"
             sx={{
-              color: "#F7FAFC",
+              color: "#F0F0F0",
               fontWeight: 950,
               fontSize: { xs: "clamp(34px, 10vw, 52px)", md: "clamp(52px, 6vw, 74px)" },
               lineHeight: { xs: 1, md: 0.96 },
@@ -310,16 +310,16 @@ export default function ContactPage() {
               sx={{
                 px: { xs: 3.5, md: 5 },
                 py: 1.65,
-                borderRadius: "10px",
-                bgcolor: "#D71920",
+                borderRadius: "2px",
+                bgcolor: "#CC0000",
                 color: "#fff",
                 fontWeight: 900,
                 textTransform: "uppercase",
                 letterSpacing: "0.08em",
                 fontSize: { xs: 15, md: 16 },
-                boxShadow: "0 18px 38px rgba(215,25,32,0.3), inset 0 1px 0 rgba(255,255,255,0.24)",
+                boxShadow: "0 18px 38px rgba(204,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.24)",
                 border: "1px solid rgba(255,255,255,0.16)",
-                "&:hover": { bgcolor: "#B9151B" },
+                "&:hover": { bgcolor: "#A80000" },
               }}
             >
               {BUSINESS.phoneDisplay}
@@ -332,9 +332,9 @@ export default function ContactPage() {
               sx={{
                 px: { xs: 3.5, md: 4.5 },
                 py: 1.65,
-                borderRadius: "10px",
-                color: "#E7EEF4",
-                borderColor: "rgba(185,197,205,0.42)",
+                borderRadius: "2px",
+                color: "#E0E0E0",
+                borderColor: "rgba(255,255,255,0.42)",
                 fontWeight: 900,
                 textTransform: "uppercase",
                 letterSpacing: "0.08em",
@@ -366,7 +366,7 @@ export default function ContactPage() {
                   component="a"
                   href={BUSINESS.phoneTel}
                   sx={{
-                    color: "#F7FAFC",
+                    color: "#F0F0F0",
                     fontWeight: 950,
                     fontSize: { xs: 28, md: 32 },
                     lineHeight: 1.1,
@@ -374,12 +374,12 @@ export default function ContactPage() {
                     textDecoration: "none",
                     display: "block",
                     mb: 0.75,
-                    "&:hover": { color: "#D71920" },
+                    "&:hover": { color: "#CC0000" },
                   }}
                 >
                   {BUSINESS.phoneDisplay}
                 </Typography>
-                <Typography sx={{ color: "rgba(231,238,244,0.72)", fontSize: 14, mb: 2.5 }}>
+                <Typography sx={{ color: "rgba(220,220,220,0.72)", fontSize: 14, mb: 2.5 }}>
                   {BUSINESS.hours}
                 </Typography>
                 <Button
@@ -408,7 +408,7 @@ export default function ContactPage() {
                   component="a"
                   href={BUSINESS.emailMailto}
                   sx={{
-                    color: "#F7FAFC",
+                    color: "#F0F0F0",
                     fontWeight: 900,
                     fontSize: { xs: 16, md: 17 },
                     lineHeight: 1.3,
@@ -416,12 +416,12 @@ export default function ContactPage() {
                     display: "block",
                     mb: 0.75,
                     wordBreak: "break-all",
-                    "&:hover": { color: "#D71920" },
+                    "&:hover": { color: "#CC0000" },
                   }}
                 >
                   {BUSINESS.email}
                 </Typography>
-                <Typography sx={{ color: "rgba(231,238,244,0.72)", fontSize: 14, mb: 2.5 }}>
+                <Typography sx={{ color: "rgba(220,220,220,0.72)", fontSize: 14, mb: 2.5 }}>
                   We typically respond same business day.
                 </Typography>
                 <Button
@@ -433,9 +433,9 @@ export default function ContactPage() {
                   sx={{
                     mt: "auto",
                     py: 1.35,
-                    borderRadius: "10px",
-                    color: "#E7EEF4",
-                    borderColor: "rgba(185,197,205,0.42)",
+                    borderRadius: "2px",
+                    color: "#E0E0E0",
+                    borderColor: "rgba(255,255,255,0.42)",
                     fontWeight: 900,
                     textTransform: "uppercase",
                     letterSpacing: "0.08em",
@@ -459,7 +459,7 @@ export default function ContactPage() {
                 </Typography>
                 <Typography
                   sx={{
-                    color: "#F7FAFC",
+                    color: "#F0F0F0",
                     fontWeight: 900,
                     fontSize: { xs: 18, md: 20 },
                     lineHeight: 1.4,
@@ -468,19 +468,19 @@ export default function ContactPage() {
                 >
                   435 Southern Magnolia Way
                 </Typography>
-                <Typography sx={{ color: "#F7FAFC", fontWeight: 900, fontSize: { xs: 18, md: 20 }, lineHeight: 1.4, mb: 1 }}>
+                <Typography sx={{ color: "#F0F0F0", fontWeight: 900, fontSize: { xs: 18, md: 20 }, lineHeight: 1.4, mb: 1 }}>
                   Magnolia, TX 77354
                 </Typography>
 
-                <Divider sx={{ borderColor: "rgba(190,202,212,0.18)", my: 2 }} />
+                <Divider sx={{ borderColor: "rgba(255,255,255,0.18)", my: 2 }} />
 
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                   <AccessTimeIcon sx={{ color: industrialColors.hydraulicRed, fontSize: 18 }} />
                   <Box>
-                    <Typography sx={{ color: "rgba(231,238,244,0.52)", fontSize: 11, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                    <Typography sx={{ color: "rgba(220,220,220,0.52)", fontSize: 11, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase" }}>
                       Business Hours
                     </Typography>
-                    <Typography sx={{ color: "#F7FAFC", fontWeight: 900, fontSize: 15 }}>
+                    <Typography sx={{ color: "#F0F0F0", fontWeight: 900, fontSize: 15 }}>
                       {BUSINESS.hours}
                     </Typography>
                   </Box>
@@ -499,11 +499,11 @@ export default function ContactPage() {
             <Typography
               component="h2"
               sx={{
-                color: "#F7FAFC",
+                color: "#F0F0F0",
                 fontWeight: 950,
                 fontSize: { xs: "clamp(26px, 7vw, 36px)", md: "clamp(32px, 3.5vw, 44px)" },
                 lineHeight: 1.06,
-                letterSpacing: "-0.04em",
+                letterSpacing: "-0.01em",
                 mb: 1.25,
               }}
             >
@@ -527,7 +527,7 @@ export default function ContactPage() {
                 left: 0,
                 right: 0,
                 height: 4,
-                background: "linear-gradient(90deg, #D71920 0%, rgba(215,25,32,0.35) 48%, rgba(190,202,212,0.35) 100%)",
+                background: "linear-gradient(90deg, #CC0000 0%, rgba(204,0,0,0.35) 48%, rgba(255,255,255,0.35) 100%)",
               },
             }}
           >
@@ -572,7 +572,7 @@ export default function ContactPage() {
                       sx={{
                         ...primaryCtaSx,
                         py: 1.5,
-                        "&.Mui-disabled": { color: "rgba(255,255,255,0.55)", bgcolor: "rgba(215,25,32,0.42)" },
+                        "&.Mui-disabled": { color: "rgba(255,255,255,0.55)", bgcolor: "rgba(204,0,0,0.42)" },
                       }}
                     >
                       {sending ? "Sending..." : "Send Message"}

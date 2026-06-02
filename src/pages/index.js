@@ -5,6 +5,8 @@ import Head from "next/head";
 import Image from "next/image";
 import NextLink from "next/link";
 import SeoHead from "../components/SeoHead";
+import HeroSection from "../components/vetech_hero/HeroSection";
+
 import {
   Box,
   Container,
@@ -56,98 +58,136 @@ import coverImage from "../image/cover-image.webp";
 //public / cover - image.webp;
 import VeteranOwnershipSection from "@/components/VeteranOwnershipSection";
 
+/* ── Scroll-reveal helpers ────────────────────────────────────────────── */
+
+// Fade + slide-up on scroll — use for headings, copy blocks, CTA panels.
+const FadeUp = ({ children, delay = 0, className }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 32 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-60px" }}
+    transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
+    className={className}
+  >
+    {children}
+  </motion.div>
+);
+
+// Stagger container — children animate in sequence as the grid enters view.
+const StaggerGrid = ({ children, delay = 0 }) => (
+  <motion.div
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true, margin: "-60px" }}
+    variants={{
+      hidden: {},
+      show: { transition: { delayChildren: delay, staggerChildren: 0.1 } },
+    }}
+  >
+    {children}
+  </motion.div>
+);
+
+// Individual card item — used as direct child of StaggerGrid.
+const StaggerItem = ({ children }) => (
+  <motion.div
+    variants={{
+      hidden: { opacity: 0, y: 28 },
+      show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+    }}
+    style={{ height: "100%" }}
+  >
+    {children}
+  </motion.div>
+);
+
 /* ------------------------------ Styled UI ------------------------------ */
 
 const Section = PageSection;
 const AltSection = PageAltSection;
 
-const HeroSection = styled(Box)(({ theme }) => ({
-  ...fullBleed,
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  background:
-    "radial-gradient(circle at 18% 22%, rgba(183,28,28,0.28) 0%, rgba(183,28,28,0) 32%), linear-gradient(135deg, #02060A 0%, #071522 38%, #0D2334 70%, #02060A 100%)",
-  color: "#fff",
-  position: "relative",
-  textAlign: "left",
-  padding: 0,
-  overflow: "hidden",
+// const HeroSection = styled(Box)(({ theme }) => ({
+//   ...fullBleed,
+//   display: "flex",
+//   justifyContent: "center",
+//   alignItems: "center",
+//   background:
+//     "radial-gradient(circle at 18% 22%, rgba(183,28,28,0.28) 0%, rgba(183,28,28,0) 32%), linear-gradient(135deg, #080808 0%, #0a0a0a 38%, #0D2334 70%, #080808 100%)",
+//   color: "#fff",
+//   position: "relative",
+//   textAlign: "left",
+//   padding: 0,
+//   overflow: "hidden",
 
-  // Desktop / large screens
-  minHeight: "92vh",
+//   // Desktop / large screens
+//   minHeight: "92vh",
 
-  // Large laptops
-  [theme.breakpoints.down("xl")]: {
-    minHeight: "90vh",
-  },
+//   // Large laptops
+//   [theme.breakpoints.down("xl")]: {
+//     minHeight: "90vh",
+//   },
 
-  // Laptops / landscape tablets
-  [theme.breakpoints.down("lg")]: {
-    minHeight: "88vh",
-  },
+//   // Laptops / landscape tablets
+//   [theme.breakpoints.down("lg")]: {
+//     minHeight: "88vh",
+//   },
 
-  // Tablets
-  [theme.breakpoints.down("md")]: {
-    minHeight: "82svh",
-  },
+//   // Tablets
+//   [theme.breakpoints.down("md")]: {
+//     minHeight: "82svh",
+//   },
 
-  // Phones
-  [theme.breakpoints.down("sm")]: {
-    minHeight: "78svh",
-  },
+//   // Phones
+//   [theme.breakpoints.down("sm")]: {
+//     minHeight: "78svh",
+//   },
 
-  // Very small phones (old iPhones / SE)
-  "@media (max-width: 321px)": {
-    minHeight: "100svh",
-  },
+//   // Very small phones (old iPhones / SE)
+//   "@media (max-width: 321px)": {
+//     minHeight: "100svh",
+//   },
 
-  "&::before": {
-    content: '""',
-    position: "absolute",
-    inset: 0,
-    pointerEvents: "none",
-    backgroundImage:
-      "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
-    backgroundSize: "46px 46px",
-    maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 74%)",
-    zIndex: 1,
-  },
+//   "&::before": {
+//     content: '""',
+//     position: "absolute",
+//     inset: 0,
+//     pointerEvents: "none",
+//     backgroundImage:
+//       "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
+//     backgroundSize: "46px 46px",
+//     maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 74%)",
+//     zIndex: 1,
+//   },
 
-  "&::after": {
-    content: '""',
-    position: "absolute",
-    left: "6%",
-    right: "6%",
-    bottom: 0,
-    height: "1px",
-    pointerEvents: "none",
-    background:
-      "linear-gradient(90deg, transparent, rgba(185,197,205,0.75), rgba(183,28,28,0.9), rgba(185,197,205,0.75), transparent)",
-    zIndex: 3,
-  },
-}));
+//   "&::after": {
+//     content: '""',
+//     position: "absolute",
+//     left: "6%",
+//     right: "6%",
+//     bottom: 0,
+//     height: "1px",
+//     pointerEvents: "none",
+//     background:
+//       "linear-gradient(90deg, transparent, rgba(255,255,255,0.75), rgba(183,28,28,0.9), rgba(255,255,255,0.75), transparent)",
+//     zIndex: 3,
+//   },
+// }));
 
 const SectionTitle = ({ children, subtitle }) => (
-  <Box sx={{ textAlign: "center", mb: { xs: 4, md: 6 } }}>
-    <Typography component="h2" variant="h3" sx={headlineSx}>
-      {children}
-    </Typography>
-
-    {subtitle && (
-      <Typography
-        sx={{
-          ...bodyCopySx,
-          mt: 1.25,
-          maxWidth: 820,
-          mx: "auto",
-          textWrap: "balance",
-        }}
-      >
-        {subtitle}
+  <FadeUp>
+    <Box sx={{ textAlign: "center", mb: { xs: 4, md: 6 } }}>
+      <Typography component="h2" variant="h3" sx={headlineSx}>
+        {children}
       </Typography>
-    )}
-  </Box>
+      {subtitle && (
+        <Typography
+          sx={{ ...bodyCopySx, mt: 1.25, maxWidth: 820, mx: "auto", textWrap: "balance" }}
+        >
+          {subtitle}
+        </Typography>
+      )}
+    </Box>
+  </FadeUp>
 );
 
 // Image cards (16:9). Card already clips via overflow:hidden, so radius here should be 0.
@@ -200,28 +240,29 @@ const CardImageMap = ({ alt = "service area map", src = map }) => (
   </Box>
 );
 
+// Hero-matched section backgrounds: near-black with subtle red radial, no blue tints.
 const lowerSectionBgSx = {
   position: "relative",
   background:
-    "radial-gradient(circle at 10% 12%, rgba(215,25,32,0.11), transparent 28%), radial-gradient(circle at 92% 18%, rgba(110,193,255,0.075), transparent 26%), linear-gradient(180deg, #050A0F 0%, #0A1721 48%, #06111A 100%)",
+    "radial-gradient(circle at 10% 12%, rgba(204,0,0,0.10), transparent 30%), linear-gradient(180deg, #080808 0%, #0e0e0e 50%, #080808 100%)",
   "&::before": {
     content: '""',
     position: "absolute",
     inset: 0,
     pointerEvents: "none",
-    opacity: 0.28,
+    opacity: 0.18,
     backgroundImage:
-      "linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px)",
+      "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
     backgroundSize: "56px 56px",
     maskImage:
-      "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.86) 18%, rgba(0,0,0,0.48) 78%, transparent 100%)",
+      "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.9) 18%, rgba(0,0,0,0.5) 78%, transparent 100%)",
   },
 };
 
 const lowerAltSectionBgSx = {
   ...lowerSectionBgSx,
   background:
-    "radial-gradient(circle at 86% 16%, rgba(110,193,255,0.07), transparent 28%), radial-gradient(circle at 12% 84%, rgba(215,25,32,0.075), transparent 26%), linear-gradient(180deg, #07131D 0%, #091925 50%, #050D14 100%)",
+    "radial-gradient(circle at 90% 12%, rgba(204,0,0,0.08), transparent 28%), linear-gradient(180deg, #0e0e0e 0%, #080808 50%, #0e0e0e 100%)",
 };
 
 const lowerPanelSx = {
@@ -230,29 +271,27 @@ const lowerPanelSx = {
   height: "100%",
   overflow: "hidden",
   p: { xs: 2.5, md: 3 },
-  bgcolor: "rgba(8,19,28,0.92)",
-  backgroundImage:
-    "linear-gradient(145deg, rgba(255,255,255,0.085), rgba(255,255,255,0.018) 52%, rgba(215,25,32,0.022))",
-  border: `1px solid ${industrialColors.steel}`,
+  // Red top-strip accent mirrors the hero info card label style
   "&::after": {
     content: '""',
     position: "absolute",
     left: 0,
     right: 0,
     top: 0,
-    height: 3,
-    background:
-      "linear-gradient(90deg, rgba(215,25,32,0.92), rgba(190,202,212,0.22), transparent)",
+    height: 2,
+    background: "linear-gradient(90deg, #CC0000, rgba(204,0,0,0.3), transparent)",
     pointerEvents: "none",
   },
 };
 
 const lowerTitleSx = {
+  fontFamily: "'Oswald', sans-serif",
   color: industrialColors.text,
-  fontWeight: 950,
+  fontWeight: 600,
   fontSize: { xs: 18, md: 20 },
   lineHeight: 1.16,
-  letterSpacing: "-0.02em",
+  letterSpacing: "0.01em",
+  textTransform: "uppercase",
 };
 
 const lowerBodySx = {
@@ -266,12 +305,11 @@ const redBadgeSx = {
   placeItems: "center",
   width: 44,
   height: 44,
-  borderRadius: 2,
+  borderRadius: "2px",
   color: "#fff",
-  bgcolor: "rgba(215,25,32,0.16)",
-  border: "1px solid rgba(215,25,32,0.38)",
-  boxShadow:
-    "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 22px rgba(215,25,32,0.16)",
+  bgcolor: "rgba(204,0,0,0.16)",
+  border: "1px solid rgba(204,0,0,0.38)",
+  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.1), 0 0 20px rgba(204,0,0,0.14)",
 };
 
 // Homepage repair cards: edit these entries when photos or featured service examples change.
@@ -422,341 +460,7 @@ export default function Home() {
       </Head>
 
       {/* ============================== HERO ============================== */}
-      <HeroSection id="home">
-        <Image
-          src={coverImage}
-          alt="Heavy equipment and hydraulic-powered machinery serviced by Vetech Hydraulics"
-          fill
-          priority
-          sizes="100vw"
-          style={{
-            objectFit: "cover",
-            objectPosition: "center center",
-            opacity: 0.24,
-            filter: "contrast(1.12) saturate(0.72)",
-          }}
-        />
-
-        <Box
-          sx={{
-            position: "absolute",
-            inset: 0,
-            pointerEvents: "none",
-            background:
-              "linear-gradient(90deg, rgba(2,6,10,0.98) 0%, rgba(2,6,10,0.9) 42%, rgba(7,21,34,0.62) 100%), linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.22) 70%)",
-            zIndex: 1,
-          }}
-        />
-
-        <Container
-          maxWidth="lg"
-          sx={{
-            position: "relative",
-            zIndex: 2,
-            ...containerSx,
-            pt: { xs: 10, sm: 12, md: 24 },
-            pb: { xs: 5, sm: 7, md: 10 },
-          }}
-        >
-          <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center">
-            <Grid item xs={12} md={7}>
-              <motion.div {...fadeUp}>
-                <Box
-                  sx={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    flexWrap: "wrap",
-                    gap: 1.25,
-                    maxWidth: "100%",
-                    px: 1.75,
-                    py: 0.9,
-                    mb: 2.5,
-                    borderRadius: "999px",
-                    color: "#D6DEE6",
-                    bgcolor: "rgba(255,255,255,0.045)",
-                    border: "1px solid rgba(185,197,205,0.24)",
-                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08)",
-                    letterSpacing: "0.16em",
-                    textTransform: "uppercase",
-                    fontSize: { xs: 10.5, sm: 12 },
-                    fontWeight: 900,
-                    lineHeight: 1.35,
-                  }}
-                >
-                  <Box
-                    component="span"
-                    sx={{
-                      width: 8,
-                      height: 8,
-                      borderRadius: "50%",
-                      bgcolor: "#D71920",
-                      boxShadow: "0 0 18px rgba(215,25,32,0.9)",
-                    }}
-                  />
-                  Based in Magnolia, TX • Serving Montgomery County & North
-                  Houston
-                </Box>
-
-                <Typography
-                  component="h1"
-                  variant="h1"
-                  sx={{
-                    fontSize: {
-                      xs: "clamp(34px, 10vw, 52px)",
-                      sm: "clamp(44px, 8vw, 68px)",
-                      md: "clamp(54px, 6vw, 82px)",
-                    },
-                    lineHeight: { xs: 0.98, md: 0.94 },
-                    fontWeight: 950,
-                    letterSpacing: { xs: "-0.045em", md: "-0.06em" },
-                    textTransform: "uppercase",
-                    textWrap: "balance",
-                    color: "#F7FAFC",
-                    mb: 2.5,
-                    maxWidth: 940,
-                    textShadow: "0 18px 42px rgba(0,0,0,0.55)",
-                  }}
-                >
-                  HYDRAULIC CYLINDER REPAIR IN MONTGOMERY & NORTH HOUSTON TX
-                </Typography>
-
-                <Typography
-                  sx={{
-                    color: "rgba(231,238,244,0.84)",
-                    fontSize: { xs: 16, sm: 18, md: 20 },
-                    lineHeight: 1.65,
-                    maxWidth: 760,
-                    mb: { xs: 2.5, md: 3.5 },
-                  }}
-                >
-                  Veteran-owned hydraulic cylinder repair for heavy equipment,
-                  fleets, and commercial operations across Montgomery, Conroe,
-                  Magnolia, The Woodlands, and North Houston.
-                </Typography>
-
-                <Stack
-                  direction={{ xs: "column", sm: "row" }}
-                  spacing={1.5}
-                  sx={{ mb: 1.5, alignItems: { xs: "stretch", sm: "center" } }}
-                >
-                  <Button
-                    component="a"
-                    href={BUSINESS.phoneTel}
-                    variant="contained"
-                    startIcon={<PhoneIcon />}
-                    sx={{
-                      px: { xs: 3.5, md: 4.5 },
-                      py: 1.55,
-                      borderRadius: "10px",
-                      bgcolor: "#D71920",
-                      color: "#fff",
-                      fontWeight: 900,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                      boxShadow:
-                        "0 18px 38px rgba(215,25,32,0.28), inset 0 1px 0 rgba(255,255,255,0.24)",
-                      border: "1px solid rgba(255,255,255,0.16)",
-                      "&:hover": {
-                        bgcolor: "#B9151B",
-                        boxShadow:
-                          "0 22px 44px rgba(215,25,32,0.34), inset 0 1px 0 rgba(255,255,255,0.22)",
-                      },
-                    }}
-                  >
-                    Call Now
-                  </Button>
-
-                  <Button
-                    component={NextLink}
-                    href="/services"
-                    variant="outlined"
-                    sx={{
-                      px: { xs: 3.5, md: 4.5 },
-                      py: 1.55,
-                      borderRadius: "10px",
-                      color: "#E7EEF4",
-                      borderColor: "rgba(185,197,205,0.42)",
-                      fontWeight: 900,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                      bgcolor: "rgba(255,255,255,0.035)",
-                      "&:hover": {
-                        borderColor: "rgba(255,255,255,0.72)",
-                        bgcolor: "rgba(255,255,255,0.08)",
-                      },
-                    }}
-                  >
-                    View Services
-                  </Button>
-                </Stack>
-
-                <Stack
-                  spacing={0.35}
-                  sx={{
-                    mb: { xs: 2.75, md: 4 },
-                    color: "rgba(231,238,244,0.84)",
-                  }}
-                >
-                  <Typography
-                    component="a"
-                    href={BUSINESS.phoneTel}
-                    sx={{
-                      color: "#F7FAFC",
-                      fontWeight: 950,
-                      fontSize: { xs: 18, md: 20 },
-                      lineHeight: 1.2,
-                      textDecoration: "none",
-                      "&:hover": { color: "#fff" },
-                    }}
-                  >
-                    {BUSINESS.phoneDisplay}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      color: "rgba(231,238,244,0.72)",
-                      fontWeight: 800,
-                      fontSize: { xs: 13, md: 14 },
-                      letterSpacing: "0.04em",
-                    }}
-                  >
-                    {BUSINESS.hoursShort}
-                  </Typography>
-                </Stack>
-
-                <Grid container spacing={1.25} sx={{ maxWidth: 820 }}>
-                  {[
-                    "Veteran-Owned",
-                    "Fleet Service Capable",
-                    "Pressure Tested Repairs",
-                    "Pickup & Delivery Options",
-                  ].map((badge) => (
-                    <Grid item xs={6} sm={6} md={3} key={badge}>
-                      <Box
-                        sx={{
-                          height: "100%",
-                          px: 1.5,
-                          py: 1.25,
-                          borderRadius: 2,
-                          bgcolor: "rgba(9,23,35,0.78)",
-                          border: "1px solid rgba(185,197,205,0.18)",
-                          boxShadow:
-                            "inset 3px 0 0 #D71920, inset 0 1px 0 rgba(255,255,255,0.06)",
-                        }}
-                      >
-                        <Typography
-                          sx={{
-                            color: "#F7FAFC",
-                            fontWeight: 900,
-                            fontSize: {
-                              xs: 12.5,
-                              sm: 13.5,
-                              md: 12.5,
-                              lg: 13.5,
-                            },
-                            lineHeight: 1.25,
-                          }}
-                        >
-                          {badge}
-                        </Typography>
-                      </Box>
-                    </Grid>
-                  ))}
-                </Grid>
-              </motion.div>
-            </Grid>
-
-            <Grid
-              item
-              xs={12}
-              md={5}
-              sx={{ display: { xs: "none", md: "block" } }}
-            >
-              <motion.div
-                initial={{ opacity: 0, x: 18 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-              >
-                <Box
-                  sx={{
-                    position: "relative",
-                    ml: "auto",
-                    maxWidth: 390,
-                    borderRadius: 4,
-                    p: 3,
-                    background:
-                      "linear-gradient(145deg, rgba(255,255,255,0.13), rgba(255,255,255,0.035))",
-                    border: "1px solid rgba(185,197,205,0.22)",
-                    boxShadow:
-                      "0 28px 80px rgba(0,0,0,0.46), inset 0 1px 0 rgba(255,255,255,0.12)",
-                    overflow: "hidden",
-                    "&::before": {
-                      content: '""',
-                      position: "absolute",
-                      inset: 12,
-                      borderRadius: 3,
-                      border: "1px solid rgba(215,25,32,0.24)",
-                      pointerEvents: "none",
-                    },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      position: "relative",
-                      height: 180,
-                      mb: 3,
-                      borderRadius: 3,
-                      bgcolor: "rgba(0,0,0,0.32)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <Image
-                      src="/VTH-logo.webp"
-                      alt="Vetech Hydraulics logo"
-                      fill
-                      sizes="390px"
-                      style={{ objectFit: "contain", padding: "24px" }}
-                    />
-                  </Box>
-
-                  <Typography
-                    sx={{
-                      color: "#6EC1FF",
-                      fontWeight: 900,
-                      letterSpacing: "0.14em",
-                      textTransform: "uppercase",
-                      fontSize: 12,
-                      mb: 1,
-                    }}
-                  >
-                    Industrial Repair Standard
-                  </Typography>
-                  <Typography
-                    sx={{
-                      color: "#fff",
-                      fontWeight: 900,
-                      fontSize: 24,
-                      lineHeight: 1.12,
-                    }}
-                  >
-                    Built for uptime, tested before return.
-                  </Typography>
-                  <Typography
-                    sx={{
-                      color: "rgba(255,255,255,0.72)",
-                      mt: 1.5,
-                      lineHeight: 1.65,
-                    }}
-                  >
-                    Cylinder repacking, component repair, and service support
-                    for equipment that cannot sit idle.
-                  </Typography>
-                </Box>
-              </motion.div>
-            </Grid>
-          </Grid>
-        </Container>
-      </HeroSection>
+      <HeroSection />
 
       {/* ====================== VETERAN OWNERSHIP ======================= */}
       <VeteranOwnershipSection />
@@ -767,14 +471,14 @@ export default function Home() {
         sx={{
           position: "relative",
           background:
-            "radial-gradient(circle at 12% 0%, rgba(215,25,32,0.15), transparent 34%), linear-gradient(180deg, #071522 0%, #0B1B27 52%, #07131D 100%)",
+            "radial-gradient(circle at 12% 0%, rgba(204,0,0,0.15), transparent 34%), linear-gradient(180deg, #0a0a0a 0%, #0e0e0e 52%, #080808 100%)",
         }}
       >
         <Container maxWidth="lg" sx={containerSx}>
           <Box sx={{ textAlign: "center", mb: { xs: 4, md: 6 } }}>
             <Typography
               sx={{
-                color: "#D71920",
+                color: "#CC0000",
                 fontWeight: 950,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
@@ -788,14 +492,14 @@ export default function Home() {
               component="h2"
               variant="h3"
               sx={{
-                color: "#F7FAFC",
+                color: "#F0F0F0",
                 fontWeight: 950,
                 fontSize: {
                   xs: "clamp(26px, 7vw, 38px)",
                   md: "clamp(36px, 4vw, 54px)",
                 },
                 lineHeight: 1.02,
-                letterSpacing: "-0.045em",
+                letterSpacing: "-0.01em",
                 textWrap: "balance",
                 maxWidth: 900,
                 mx: "auto",
@@ -805,7 +509,7 @@ export default function Home() {
             </Typography>
             <Typography
               sx={{
-                color: "rgba(231,238,244,0.74)",
+                color: "rgba(220,220,220,0.74)",
                 mt: 1.5,
                 mx: "auto",
                 maxWidth: 720,
@@ -819,6 +523,7 @@ export default function Home() {
             </Typography>
           </Box>
 
+          <StaggerGrid>
           <Grid container spacing={{ xs: 2.5, md: 3 }}>
             {[
               {
@@ -853,12 +558,12 @@ export default function Home() {
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
-                    bgcolor: "rgba(9,23,35,0.9)",
+                    bgcolor: "rgba(14,14,18,0.9)",
                     backgroundImage:
                       "linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015))",
                     borderRadius: 3,
                     overflow: "hidden",
-                    border: "1px solid rgba(190,202,212,0.18)",
+                    border: "1px solid rgba(255,255,255,0.18)",
                     boxShadow:
                       "0 22px 58px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08)",
                     transition:
@@ -871,14 +576,14 @@ export default function Home() {
                       right: 0,
                       height: 4,
                       background:
-                        "linear-gradient(90deg, #D71920 0%, rgba(215,25,32,0.35) 45%, rgba(190,202,212,0.35) 100%)",
+                        "linear-gradient(90deg, #CC0000 0%, rgba(204,0,0,0.35) 45%, rgba(255,255,255,0.35) 100%)",
                       zIndex: 2,
                     },
                     "&:hover": {
                       transform: { md: "translateY(-6px)" },
-                      borderColor: "rgba(215,25,32,0.42)",
+                      borderColor: "rgba(204,0,0,0.42)",
                       boxShadow:
-                        "0 28px 70px rgba(0,0,0,0.38), 0 0 0 1px rgba(215,25,32,0.12), inset 0 1px 0 rgba(255,255,255,0.1)",
+                        "0 28px 70px rgba(0,0,0,0.38), 0 0 0 1px rgba(204,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.1)",
                     },
                   }}
                   elevation={0}
@@ -890,7 +595,7 @@ export default function Home() {
                         position: "absolute",
                         inset: 0,
                         background:
-                          "linear-gradient(to top, rgba(3,7,11,0.82), rgba(3,7,11,0.12) 58%, rgba(3,7,11,0.0))",
+                          "linear-gradient(to top, rgba(8,8,10,0.82), rgba(8,8,10,0.12) 58%, rgba(8,8,10,0.0))",
                       }}
                     />
                     <Typography
@@ -900,10 +605,10 @@ export default function Home() {
                         bottom: 16,
                         px: 1.25,
                         py: 0.65,
-                        borderRadius: "999px",
-                        color: "#F7FAFC",
-                        bgcolor: "rgba(3,7,11,0.74)",
-                        border: "1px solid rgba(190,202,212,0.22)",
+                        borderRadius: "2px",
+                        color: "#F0F0F0",
+                        bgcolor: "rgba(8,8,10,0.74)",
+                        border: "1px solid rgba(255,255,255,0.22)",
                         fontWeight: 900,
                         letterSpacing: "0.08em",
                         textTransform: "uppercase",
@@ -928,7 +633,7 @@ export default function Home() {
                       sx={{
                         fontWeight: 950,
                         mb: 1.15,
-                        color: "#F7FAFC",
+                        color: "#F0F0F0",
                         lineHeight: 1.14,
                         letterSpacing: "-0.02em",
                         fontSize: { xs: 21, md: 22 },
@@ -938,7 +643,7 @@ export default function Home() {
                     </Typography>
                     <Typography
                       sx={{
-                        color: "rgba(231,238,244,0.78)",
+                        color: "rgba(220,220,220,0.78)",
                         lineHeight: 1.7,
                         mb: 2.5,
                       }}
@@ -953,7 +658,7 @@ export default function Home() {
                         variant="text"
                         sx={{
                           px: 0,
-                          color: "#F7FAFC",
+                          color: "#F0F0F0",
                           fontWeight: 950,
                           letterSpacing: "0.08em",
                           textTransform: "uppercase",
@@ -963,11 +668,11 @@ export default function Home() {
                             width: 28,
                             height: 2,
                             mr: 1.25,
-                            bgcolor: "#D71920",
-                            boxShadow: "0 0 14px rgba(215,25,32,0.75)",
+                            bgcolor: "#CC0000",
+                            boxShadow: "0 0 14px rgba(204,0,0,0.75)",
                           },
                           "&:hover": {
-                            color: "#D71920",
+                            color: "#CC0000",
                             bgcolor: "transparent",
                           },
                         }}
@@ -980,6 +685,7 @@ export default function Home() {
               </Grid>
             ))}
           </Grid>
+          </StaggerGrid>
         </Container>
       </Section>
 
@@ -989,7 +695,7 @@ export default function Home() {
         sx={{
           position: "relative",
           background:
-            "radial-gradient(circle at 10% 12%, rgba(215,25,32,0.18), transparent 30%), radial-gradient(circle at 92% 18%, rgba(110,193,255,0.1), transparent 26%), linear-gradient(180deg, #050A0F 0%, #0A1721 46%, #06111A 100%)",
+            "radial-gradient(circle at 10% 12%, rgba(204,0,0,0.18), transparent 30%), radial-gradient(circle at 92% 18%,  transparent 26%), linear-gradient(180deg, #080808 0%, #0e0e0e 46%, #080808 100%)",
           "&::before": {
             content: '\"\"',
             position: "absolute",
@@ -1008,6 +714,7 @@ export default function Home() {
           maxWidth="lg"
           sx={{ position: "relative", zIndex: 1, ...containerSx }}
         >
+          <FadeUp>
           <Grid
             container
             spacing={{ xs: 3, md: 5 }}
@@ -1017,7 +724,7 @@ export default function Home() {
             <Grid item xs={12} md={7.6}>
               <Typography
                 sx={{
-                  color: "#D71920",
+                  color: "#CC0000",
                   fontWeight: 950,
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
@@ -1031,14 +738,14 @@ export default function Home() {
                 component="h2"
                 variant="h3"
                 sx={{
-                  color: "#F7FAFC",
+                  color: "#F0F0F0",
                   fontWeight: 950,
                   fontSize: {
                     xs: "clamp(27px, 7vw, 40px)",
                     md: "clamp(38px, 4vw, 56px)",
                   },
                   lineHeight: 1.02,
-                  letterSpacing: "-0.045em",
+                  letterSpacing: "-0.01em",
                   textWrap: "balance",
                   maxWidth: 880,
                 }}
@@ -1049,7 +756,7 @@ export default function Home() {
             <Grid item xs={12} md={4.4}>
               <Typography
                 sx={{
-                  color: "rgba(231,238,244,0.78)",
+                  color: "rgba(220,220,220,0.78)",
                   lineHeight: 1.75,
                   fontSize: { xs: 14.5, md: 16 },
                 }}
@@ -1061,7 +768,9 @@ export default function Home() {
               </Typography>
             </Grid>
           </Grid>
+          </FadeUp>
 
+          <StaggerGrid>
           <Grid container spacing={{ xs: 2.5, md: 3 }}>
             {recentRepairs.map((repair) => (
               <Grid item xs={12} sm={6} lg={3} key={repair.title}>
@@ -1073,10 +782,10 @@ export default function Home() {
                     flexDirection: "column",
                     overflow: "hidden",
                     borderRadius: 3,
-                    bgcolor: "rgba(8,19,28,0.92)",
+                    bgcolor: "rgba(14,14,18,0.92)",
                     backgroundImage:
                       "linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.018))",
-                    border: "1px solid rgba(185,197,205,0.2)",
+                    border: "1px solid rgba(255,255,255,0.2)",
                     boxShadow:
                       "0 24px 66px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,255,255,0.08)",
                     transition:
@@ -1087,14 +796,14 @@ export default function Home() {
                       inset: 0,
                       pointerEvents: "none",
                       background:
-                        "linear-gradient(135deg, rgba(215,25,32,0.16), transparent 26%, rgba(255,255,255,0.04) 100%)",
+                        "linear-gradient(135deg, rgba(204,0,0,0.16), transparent 26%, rgba(255,255,255,0.04) 100%)",
                       opacity: 0.7,
                     },
                     "&:hover": {
                       transform: { md: "translateY(-7px)" },
-                      borderColor: "rgba(215,25,32,0.48)",
+                      borderColor: "rgba(204,0,0,0.48)",
                       boxShadow:
-                        "0 34px 82px rgba(0,0,0,0.44), 0 0 0 1px rgba(215,25,32,0.14), inset 0 1px 0 rgba(255,255,255,0.1)",
+                        "0 34px 82px rgba(0,0,0,0.44), 0 0 0 1px rgba(204,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.1)",
                     },
                     "&:hover .repair-image": {
                       transform: "scale(1.045)",
@@ -1106,7 +815,7 @@ export default function Home() {
                     sx={{
                       position: "relative",
                       overflow: "hidden",
-                      borderBottom: "1px solid rgba(185,197,205,0.16)",
+                      borderBottom: "1px solid rgba(255,255,255,0.16)",
                     }}
                   >
                     <Box
@@ -1132,7 +841,7 @@ export default function Home() {
                           position: "absolute",
                           inset: 0,
                           background:
-                            "linear-gradient(to top, rgba(2,6,10,0.88), rgba(2,6,10,0.14) 58%, rgba(2,6,10,0.2))",
+                            "linear-gradient(to top, rgba(8,8,10,0.88), rgba(8,8,10,0.14) 58%, rgba(8,8,10,0.2))",
                         }}
                       />
                     </Box>
@@ -1145,8 +854,8 @@ export default function Home() {
                           left: 16,
                           px: 1.35,
                           py: 0.65,
-                          borderRadius: "999px",
-                          bgcolor: "rgba(215,25,32,0.92)",
+                          borderRadius: "2px",
+                          bgcolor: "rgba(204,0,0,0.92)",
                           color: "#fff",
                           border: "1px solid rgba(255,255,255,0.22)",
                           boxShadow: "0 12px 26px rgba(0,0,0,0.32)",
@@ -1189,7 +898,7 @@ export default function Home() {
                     <Typography
                       variant="h6"
                       sx={{
-                        color: "#F7FAFC",
+                        color: "#F0F0F0",
                         fontWeight: 950,
                         lineHeight: 1.14,
                         letterSpacing: "-0.02em",
@@ -1201,7 +910,7 @@ export default function Home() {
                     </Typography>
                     <Typography
                       sx={{
-                        color: "rgba(231,238,244,0.76)",
+                        color: "rgba(220,220,220,0.76)",
                         lineHeight: 1.68,
                         fontSize: 14.5,
                       }}
@@ -1213,16 +922,18 @@ export default function Home() {
               </Grid>
             ))}
           </Grid>
+          </StaggerGrid>
 
+          <FadeUp delay={0.1}>
           <Box
             sx={{
               mt: { xs: 4, md: 5 },
               p: { xs: 2.5, md: 4 },
               borderRadius: 3,
-              bgcolor: "rgba(9,23,35,0.86)",
-              border: "1px solid rgba(185,197,205,0.2)",
+              bgcolor: "rgba(14,14,18,0.86)",
+              border: "1px solid rgba(255,255,255,0.2)",
               boxShadow:
-                "0 24px 66px rgba(0,0,0,0.32), inset 4px 0 0 #D71920, inset 0 1px 0 rgba(255,255,255,0.08)",
+                "0 24px 66px rgba(0,0,0,0.32), inset 4px 0 0 #CC0000, inset 0 1px 0 rgba(255,255,255,0.08)",
               display: "flex",
               flexDirection: { xs: "column", md: "row" },
               alignItems: { xs: "stretch", md: "center" },
@@ -1234,9 +945,9 @@ export default function Home() {
               <Typography
                 component="h3"
                 sx={{
-                  color: "#F7FAFC",
+                  color: "#F0F0F0",
                   fontWeight: 950,
-                  letterSpacing: "-0.035em",
+                  letterSpacing: "-0.01em",
                   lineHeight: 1.08,
                   fontSize: { xs: 25, md: 34 },
                   mb: 0.9,
@@ -1245,7 +956,7 @@ export default function Home() {
                 Need a Hydraulic Cylinder Rebuilt?
               </Typography>
               <Typography
-                sx={{ color: "rgba(231,238,244,0.72)", lineHeight: 1.65 }}
+                sx={{ color: "rgba(220,220,220,0.72)", lineHeight: 1.65 }}
               >
                 Send details, photos, or fleet requirements and we will help map
                 the fastest path to a dependable repair.
@@ -1260,13 +971,13 @@ export default function Home() {
                 sx={{
                   px: 3.5,
                   py: 1.35,
-                  borderRadius: "10px",
-                  bgcolor: "#D71920",
+                  borderRadius: "2px",
+                  bgcolor: "#CC0000",
                   fontWeight: 950,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
-                  boxShadow: "0 16px 34px rgba(215,25,32,0.28)",
-                  "&:hover": { bgcolor: "#B9151B" },
+                  boxShadow: "0 16px 34px rgba(204,0,0,0.28)",
+                  "&:hover": { bgcolor: "#A80000" },
                 }}
               >
                 Call Now
@@ -1278,9 +989,9 @@ export default function Home() {
                 sx={{
                   px: 3.5,
                   py: 1.35,
-                  borderRadius: "10px",
-                  color: "#F7FAFC",
-                  borderColor: "rgba(185,197,205,0.42)",
+                  borderRadius: "2px",
+                  color: "#F0F0F0",
+                  borderColor: "rgba(255,255,255,0.42)",
                   bgcolor: "rgba(255,255,255,0.035)",
                   fontWeight: 950,
                   letterSpacing: "0.08em",
@@ -1295,6 +1006,7 @@ export default function Home() {
               </Button>
             </Stack>
           </Box>
+          </FadeUp>
         </Container>
       </AltSection>
 
@@ -1304,15 +1016,16 @@ export default function Home() {
         sx={{
           position: "relative",
           background:
-            "radial-gradient(circle at 86% 8%, rgba(215,25,32,0.16), transparent 30%), linear-gradient(180deg, #050D14 0%, #0A1823 48%, #06111A 100%)",
+            "radial-gradient(circle at 86% 8%, rgba(204,0,0,0.16), transparent 30%), linear-gradient(180deg, #080808 0%, #0e0e0e 48%, #080808 100%)",
         }}
       >
         <Container maxWidth="lg" sx={containerSx}>
+          <FadeUp>
           <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center">
             <Grid item xs={12} md={6.7}>
               <Typography
                 sx={{
-                  color: "#D71920",
+                  color: "#CC0000",
                   fontWeight: 950,
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
@@ -1326,14 +1039,14 @@ export default function Home() {
                 component="h2"
                 variant="h3"
                 sx={{
-                  color: "#F7FAFC",
+                  color: "#F0F0F0",
                   fontWeight: 950,
                   fontSize: {
                     xs: "clamp(26px, 7vw, 38px)",
                     md: "clamp(36px, 4vw, 52px)",
                   },
                   lineHeight: 1.04,
-                  letterSpacing: "-0.045em",
+                  letterSpacing: "-0.01em",
                   textWrap: "balance",
                   maxWidth: 860,
                 }}
@@ -1348,15 +1061,15 @@ export default function Home() {
                 sx={{
                   p: { xs: 2.5, md: 3 },
                   borderRadius: 3,
-                  bgcolor: "rgba(9,23,35,0.82)",
-                  border: "1px solid rgba(190,202,212,0.18)",
+                  bgcolor: "rgba(14,14,18,0.82)",
+                  border: "1px solid rgba(255,255,255,0.18)",
                   boxShadow:
-                    "0 22px 58px rgba(0,0,0,0.26), inset 4px 0 0 rgba(215,25,32,0.82), inset 0 1px 0 rgba(255,255,255,0.08)",
+                    "0 22px 58px rgba(0,0,0,0.26), inset 4px 0 0 rgba(204,0,0,0.82), inset 0 1px 0 rgba(255,255,255,0.08)",
                 }}
               >
                 <Typography
                   sx={{
-                    color: "rgba(231,238,244,0.82)",
+                    color: "rgba(220,220,220,0.82)",
                     lineHeight: 1.75,
                     fontSize: { xs: 15, md: 16 },
                   }}
@@ -1370,7 +1083,9 @@ export default function Home() {
               </Box>
             </Grid>
           </Grid>
+          </FadeUp>
 
+          <StaggerGrid>
           <Grid
             container
             spacing={{ xs: 2.25, md: 3 }}
@@ -1414,16 +1129,16 @@ export default function Home() {
                     height: "100%",
                     p: { xs: 2.25, md: 2.5 },
                     borderRadius: 3,
-                    bgcolor: "rgba(12,29,42,0.86)",
+                    bgcolor: "rgba(14,14,18,0.86)",
                     backgroundImage:
                       "linear-gradient(145deg, rgba(255,255,255,0.075), rgba(255,255,255,0.012))",
-                    border: "1px solid rgba(190,202,212,0.16)",
+                    border: "1px solid rgba(255,255,255,0.16)",
                     boxShadow: "inset 0 1px 0 rgba(255,255,255,0.07)",
                     transition:
                       "transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease",
                     "&:hover": {
                       transform: { md: "translateY(-5px)" },
-                      borderColor: "rgba(215,25,32,0.4)",
+                      borderColor: "rgba(204,0,0,0.4)",
                       boxShadow:
                         "0 22px 54px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.09)",
                     },
@@ -1445,10 +1160,10 @@ export default function Home() {
                         display: "grid",
                         placeItems: "center",
                         color: "#fff",
-                        bgcolor: "rgba(215,25,32,0.16)",
-                        border: "1px solid rgba(215,25,32,0.38)",
+                        bgcolor: "rgba(204,0,0,0.16)",
+                        border: "1px solid rgba(204,0,0,0.38)",
                         boxShadow:
-                          "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 20px rgba(215,25,32,0.13)",
+                          "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 20px rgba(204,0,0,0.13)",
                         fontWeight: 950,
                         letterSpacing: "0.06em",
                       }}
@@ -1457,7 +1172,7 @@ export default function Home() {
                     </Box>
                     <Typography
                       sx={{
-                        color: "#F7FAFC",
+                        color: "#F0F0F0",
                         fontWeight: 950,
                         fontSize: { xs: 18, md: 19 },
                         lineHeight: 1.18,
@@ -1469,7 +1184,7 @@ export default function Home() {
 
                   <Typography
                     sx={{
-                      color: "rgba(231,238,244,0.76)",
+                      color: "rgba(220,220,220,0.76)",
                       lineHeight: 1.7,
                       fontSize: 14.5,
                     }}
@@ -1480,15 +1195,17 @@ export default function Home() {
               </Grid>
             ))}
           </Grid>
+          </StaggerGrid>
 
+          <FadeUp delay={0.1}>
           <Box
             sx={{
               mt: { xs: 4, md: 6 },
               p: { xs: 2.75, md: 4 },
               borderRadius: 4,
               textAlign: "center",
-              bgcolor: "rgba(3,7,11,0.52)",
-              border: "1px solid rgba(190,202,212,0.18)",
+              bgcolor: "rgba(8,8,10,0.52)",
+              border: "1px solid rgba(255,255,255,0.18)",
               boxShadow:
                 "0 24px 70px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08)",
             }}
@@ -1496,11 +1213,11 @@ export default function Home() {
             <Typography
               component="h3"
               sx={{
-                color: "#F7FAFC",
+                color: "#F0F0F0",
                 fontWeight: 950,
                 fontSize: { xs: 24, md: 34 },
                 lineHeight: 1.08,
-                letterSpacing: "-0.035em",
+                letterSpacing: "-0.01em",
                 textWrap: "balance",
                 mb: 2.5,
               }}
@@ -1521,16 +1238,16 @@ export default function Home() {
                 sx={{
                   px: { xs: 3.5, md: 4.5 },
                   py: 1.45,
-                  borderRadius: "10px",
-                  bgcolor: "#D71920",
+                  borderRadius: "2px",
+                  bgcolor: "#CC0000",
                   color: "#fff",
                   fontWeight: 950,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   boxShadow:
-                    "0 18px 38px rgba(215,25,32,0.26), inset 0 1px 0 rgba(255,255,255,0.24)",
+                    "0 18px 38px rgba(204,0,0,0.26), inset 0 1px 0 rgba(255,255,255,0.24)",
                   border: "1px solid rgba(255,255,255,0.16)",
-                  "&:hover": { bgcolor: "#B9151B" },
+                  "&:hover": { bgcolor: "#A80000" },
                 }}
               >
                 Call Now
@@ -1543,9 +1260,9 @@ export default function Home() {
                 sx={{
                   px: { xs: 3.5, md: 4.5 },
                   py: 1.45,
-                  borderRadius: "10px",
-                  color: "#E7EEF4",
-                  borderColor: "rgba(190,202,212,0.44)",
+                  borderRadius: "2px",
+                  color: "#E0E0E0",
+                  borderColor: "rgba(255,255,255,0.44)",
                   fontWeight: 950,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
@@ -1560,6 +1277,7 @@ export default function Home() {
               </Button>
             </Stack>
           </Box>
+          </FadeUp>
         </Container>
       </AltSection>
 
@@ -1569,7 +1287,7 @@ export default function Home() {
         sx={{
           position: "relative",
           background:
-            "radial-gradient(circle at 8% 12%, rgba(215,25,32,0.16), transparent 30%), radial-gradient(circle at 92% 18%, rgba(110,193,255,0.1), transparent 26%), linear-gradient(180deg, #050D14 0%, #0A1721 48%, #07131D 100%)",
+            "radial-gradient(circle at 8% 12%, rgba(204,0,0,0.16), transparent 30%), radial-gradient(circle at 92% 18%,  transparent 26%), linear-gradient(180deg, #080808 0%, #0e0e0e 48%, #080808 100%)",
           "&::before": {
             content: '""',
             position: "absolute",
@@ -1588,6 +1306,7 @@ export default function Home() {
           maxWidth="lg"
           sx={{ position: "relative", zIndex: 1, ...containerSx }}
         >
+          <FadeUp>
           <Grid
             container
             spacing={{ xs: 3, md: 5 }}
@@ -1610,7 +1329,9 @@ export default function Home() {
               </Typography>
             </Grid>
           </Grid>
+          </FadeUp>
 
+          <StaggerGrid>
           <Grid container spacing={{ xs: 2.25, md: 3 }}>
             {commercialTrustFeatures.map(({ title, text, Icon }) => (
               <Grid item xs={12} sm={6} md={4} key={title}>
@@ -1629,7 +1350,7 @@ export default function Home() {
                       right: 0,
                       height: 3,
                       background:
-                        "linear-gradient(90deg, #D71920, rgba(215,25,32,0.24), rgba(190,202,212,0.28))",
+                        "linear-gradient(90deg, #CC0000, rgba(204,0,0,0.24), rgba(255,255,255,0.28))",
                     },
                   }}
                 >
@@ -1642,10 +1363,10 @@ export default function Home() {
                       display: "grid",
                       placeItems: "center",
                       color: "#fff",
-                      bgcolor: "rgba(215,25,32,0.14)",
-                      border: "1px solid rgba(215,25,32,0.34)",
+                      bgcolor: "rgba(204,0,0,0.14)",
+                      border: "1px solid rgba(204,0,0,0.34)",
                       boxShadow:
-                        "inset 0 1px 0 rgba(255,255,255,0.12), 0 18px 36px rgba(0,0,0,0.26), 0 0 22px rgba(215,25,32,0.16)",
+                        "inset 0 1px 0 rgba(255,255,255,0.12), 0 18px 36px rgba(0,0,0,0.26), 0 0 22px rgba(204,0,0,0.16)",
                     }}
                   >
                     <Icon aria-hidden="true" sx={{ fontSize: 27 }} />
@@ -1654,7 +1375,7 @@ export default function Home() {
                   <Typography
                     component="h3"
                     sx={{
-                      color: "#F7FAFC",
+                      color: "#F0F0F0",
                       fontWeight: 950,
                       fontSize: { xs: 20, md: 21 },
                       lineHeight: 1.14,
@@ -1666,7 +1387,7 @@ export default function Home() {
                   </Typography>
                   <Typography
                     sx={{
-                      color: "rgba(231,238,244,0.76)",
+                      color: "rgba(220,220,220,0.76)",
                       fontSize: 14.5,
                       lineHeight: 1.7,
                     }}
@@ -1677,18 +1398,20 @@ export default function Home() {
               </Grid>
             ))}
           </Grid>
+          </StaggerGrid>
 
+          <FadeUp delay={0.1}>
           <Box
             sx={{
               mt: { xs: 4, md: 5 },
               p: { xs: 2.75, md: 4 },
               borderRadius: 4,
-              bgcolor: "rgba(3,7,11,0.56)",
+              bgcolor: "rgba(8,8,10,0.56)",
               backgroundImage:
-                "linear-gradient(135deg, rgba(215,25,32,0.13), transparent 34%, rgba(255,255,255,0.045))",
-              border: "1px solid rgba(190,202,212,0.2)",
+                "linear-gradient(135deg, rgba(204,0,0,0.13), transparent 34%, rgba(255,255,255,0.045))",
+              border: "1px solid rgba(255,255,255,0.2)",
               boxShadow:
-                "0 26px 72px rgba(0,0,0,0.32), inset 4px 0 0 rgba(215,25,32,0.9), inset 0 1px 0 rgba(255,255,255,0.08)",
+                "0 26px 72px rgba(0,0,0,0.32), inset 4px 0 0 rgba(204,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.08)",
             }}
           >
             <Grid container spacing={{ xs: 2.5, md: 4 }} alignItems="center">
@@ -1698,11 +1421,11 @@ export default function Home() {
                 </Typography>
                 <Typography
                   sx={{
-                    color: "#F7FAFC",
+                    color: "#F0F0F0",
                     fontWeight: 950,
                     fontSize: { xs: 24, md: 34 },
                     lineHeight: 1.12,
-                    letterSpacing: "-0.035em",
+                    letterSpacing: "-0.01em",
                     textWrap: "balance",
                   }}
                 >
@@ -1712,7 +1435,7 @@ export default function Home() {
                   sx={{
                     ...bodyCopySx,
                     mt: 1.25,
-                    color: "rgba(231,238,244,0.72)",
+                    color: "rgba(220,220,220,0.72)",
                   }}
                 >
                   Commercial reliability means clear repair direction,
@@ -1748,6 +1471,7 @@ export default function Home() {
               </Grid>
             </Grid>
           </Box>
+          </FadeUp>
         </Container>
       </Section>
 
@@ -1761,6 +1485,7 @@ export default function Home() {
             Why Choose Vetech Hydraulics
           </SectionTitle>
 
+          <StaggerGrid>
           <Grid container spacing={{ xs: 2, md: 3 }}>
             {[
               {
@@ -1808,6 +1533,7 @@ export default function Home() {
               </Grid>
             ))}
           </Grid>
+          </StaggerGrid>
         </Container>
       </AltSection>
 
@@ -1858,8 +1584,8 @@ export default function Home() {
                       height: "100%",
                       p: { xs: 2, md: 2.25 },
                       borderRadius: 3,
-                      bgcolor: "rgba(3,7,11,0.32)",
-                      border: "1px solid rgba(190,202,212,0.16)",
+                      bgcolor: "rgba(8,8,10,0.32)",
+                      border: "1px solid rgba(255,255,255,0.16)",
                       boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06)",
                     }}
                   >
@@ -1879,7 +1605,7 @@ export default function Home() {
             <Divider
               sx={{
                 my: { xs: 2.5, md: 3 },
-                borderColor: "rgba(190,202,212,0.18)",
+                borderColor: "rgba(255,255,255,0.18)",
               }}
             />
 
@@ -1892,7 +1618,7 @@ export default function Home() {
               <Typography
                 sx={{
                   ...lowerBodySx,
-                  color: "rgba(247,250,252,0.88)",
+                  color: "rgba(240,240,240,0.88)",
                   maxWidth: 760,
                 }}
               >
@@ -2039,7 +1765,7 @@ export default function Home() {
                     <Typography
                       sx={{
                         ...lowerBodySx,
-                        color: "rgba(247,250,252,0.88)",
+                        color: "rgba(240,240,240,0.88)",
                         mt: 1.5,
                       }}
                     >
@@ -2063,6 +1789,7 @@ export default function Home() {
             Our Repair Process
           </SectionTitle>
 
+          <StaggerGrid>
           <Grid container spacing={{ xs: 2, md: 3 }}>
             {[
               {
@@ -2101,6 +1828,7 @@ export default function Home() {
               </Grid>
             ))}
           </Grid>
+          </StaggerGrid>
         </Container>
       </Section>
 
@@ -2114,6 +1842,7 @@ export default function Home() {
             Quality, Testing & Reliability
           </SectionTitle>
 
+          <StaggerGrid>
           <Grid container spacing={{ xs: 2, md: 3 }}>
             {[
               [
@@ -2146,6 +1875,7 @@ export default function Home() {
               </Grid>
             ))}
           </Grid>
+          </StaggerGrid>
         </Container>
       </AltSection>
 
@@ -2171,7 +1901,7 @@ export default function Home() {
                 </Typography>
 
                 <Divider
-                  sx={{ my: 2.5, borderColor: "rgba(190,202,212,0.18)" }}
+                  sx={{ my: 2.5, borderColor: "rgba(255,255,255,0.18)" }}
                 />
 
                 <Typography sx={lowerTitleSx}>
@@ -2198,7 +1928,7 @@ export default function Home() {
                 </Typography>
 
                 <Divider
-                  sx={{ my: 2.5, borderColor: "rgba(190,202,212,0.18)" }}
+                  sx={{ my: 2.5, borderColor: "rgba(255,255,255,0.18)" }}
                 />
 
                 <Typography sx={lowerTitleSx}>
@@ -2216,7 +1946,7 @@ export default function Home() {
               <Card sx={{ ...lowerPanelSx, p: 0 }} elevation={0}>
                 <Box
                   sx={{
-                    borderBottom: "1px solid rgba(190,202,212,0.18)",
+                    borderBottom: "1px solid rgba(255,255,255,0.18)",
                     position: "relative",
                   }}
                 >
@@ -2247,7 +1977,7 @@ export default function Home() {
               p: { xs: 3, md: 5 },
               textAlign: "center",
               backgroundImage:
-                "radial-gradient(circle at 50% 0%, rgba(215,25,32,0.16), transparent 34%), linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.018))",
+                "radial-gradient(circle at 50% 0%, rgba(204,0,0,0.16), transparent 34%), linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.018))",
             }}
           >
             <SectionTitle subtitle="Send a picture for a fast quote.">
@@ -2288,21 +2018,21 @@ export default function Home() {
               key={item.q}
               disableGutters
               sx={{
-                bgcolor: "rgba(8,19,28,0.92)",
+                bgcolor: "rgba(14,14,18,0.92)",
                 backgroundImage:
                   "linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.014))",
                 color: "#fff",
-                borderRadius: "14px !important",
+                borderRadius: "4px !important",
                 mb: 2,
-                border: "1px solid rgba(190,202,212,0.2)",
+                border: "1px solid rgba(255,255,255,0.2)",
                 boxShadow:
                   "0 18px 44px rgba(0,0,0,0.24), inset 0 1px 0 rgba(255,255,255,0.07)",
                 overflow: "hidden",
                 "&:before": { display: "none" },
                 "&.Mui-expanded": {
-                  borderColor: "rgba(215,25,32,0.42)",
+                  borderColor: "rgba(204,0,0,0.42)",
                   boxShadow:
-                    "0 24px 58px rgba(0,0,0,0.34), 0 0 0 1px rgba(215,25,32,0.08), inset 0 1px 0 rgba(255,255,255,0.08)",
+                    "0 24px 58px rgba(0,0,0,0.34), 0 0 0 1px rgba(204,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.08)",
                 },
               }}
             >

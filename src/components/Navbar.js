@@ -1,6 +1,5 @@
 // src/components/Navbar.js
-// Site navigation shared by every route, including responsive desktop/mobile menu behavior.
-// Update navItems when routing changes; keep labels concise so the mobile drawer remains readable.
+// Site navigation — hero-palette colors, Oswald links, scroll-shrink effect, bigger logo.
 import React, { useEffect, useState } from "react";
 import NextLink from "next/link";
 import Image from "next/image";
@@ -28,44 +27,47 @@ import { containerSx, primaryCtaSx } from "../utils/visualStyles";
 import { BUSINESS } from "../config/business";
 
 const NAV_LINKS = [
-  { text: "Home", href: "/" },
-  { text: "Services", href: "/services" },
+  { text: "Home",          href: "/" },
+  { text: "Services",      href: "/services" },
   { text: "Fleet Support", href: "/fleet-support" },
-  { text: "Case Studies", href: "/case-studies" },
+  { text: "Case Studies",  href: "/case-studies" },
   { text: "Service Areas", href: "/service-areas" },
-  { text: "About", href: "/about" },
-  { text: "Contact", href: "/contact" },
+  { text: "About",         href: "/about" },
+  { text: "Contact",       href: "/contact" },
 ];
 
 const Navbar = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const theme = useTheme();
+  const [drawerOpen, setDrawerOpen]   = useState(false);
+  const [scrolled,   setScrolled]     = useState(false);
+  const theme   = useTheme();
   const isMobile = useMediaQuery("(max-width: 1300px)");
-  const router = useRouter();
+  const router  = useRouter();
 
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event?.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-    setDrawerOpen(open);
-  };
+  // Scroll-shrink: compress navbar once user scrolls past 40px
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-  // Close the drawer the moment Next.js starts navigating to a new route.
-  // This handles taps on NextLink items where the route change can race the click event.
+  // Close drawer on route change
   useEffect(() => {
     const handleRouteChange = () => setDrawerOpen(false);
     router.events.on("routeChangeStart", handleRouteChange);
     return () => router.events.off("routeChangeStart", handleRouteChange);
   }, [router.events]);
 
+  const toggleDrawer = (open) => (event) => {
+    if (event?.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) return;
+    setDrawerOpen(open);
+  };
+
   const isActive = (href) => {
     if (href === "/") return router.pathname === "/";
     return router.pathname === href || router.pathname.startsWith(`${href}/`);
   };
 
+  // ── Logo / Brand ─────────────────────────────────────────
   const Brand = ({ mobile = false }) => (
     <Box
       component={NextLink}
@@ -74,7 +76,6 @@ const Navbar = () => {
       sx={{
         display: "inline-flex",
         alignItems: "center",
-        minWidth: 0,
         flexShrink: 0,
         textDecoration: "none",
       }}
@@ -82,19 +83,24 @@ const Navbar = () => {
       <Box
         sx={{
           position: "relative",
+          // Desktop logo — bigger than before, shrinks slightly when scrolled
           width: mobile
-            ? { xs: "min(56vw, 208px)", sm: 226, md: 238 }
-            : { md: 246, lg: 274, xl: 306 },
+            ? { xs: "min(58vw, 230px)", sm: 248, md: 262 }
+            : scrolled
+            ? { md: 260, lg: 290, xl: 318 }
+            : { md: 290, lg: 322, xl: 356 },
           height: mobile
-            ? { xs: 78, sm: 86, md: 90 }
-            : { md: 94, lg: 102, xl: 108 },
+            ? { xs: 84, sm: 92, md: 96 }
+            : scrolled
+            ? { md: 96, lg: 106, xl: 114 }
+            : { md: 108, lg: 120, xl: 130 },
           flex: "0 0 auto",
+          transition: "width 280ms ease, height 280ms ease, filter 180ms ease, transform 180ms ease",
           filter:
-            "drop-shadow(0 14px 24px rgba(0,0,0,0.42)) drop-shadow(0 0 14px rgba(215,25,32,0.18))",
-          transition: "filter 180ms ease, transform 180ms ease",
+            "drop-shadow(0 10px 20px rgba(0,0,0,0.5)) drop-shadow(0 0 12px rgba(204,0,0,0.2))",
           "&:hover": {
             filter:
-              "drop-shadow(0 16px 28px rgba(0,0,0,0.46)) drop-shadow(0 0 18px rgba(215,25,32,0.26))",
+              "drop-shadow(0 12px 24px rgba(0,0,0,0.55)) drop-shadow(0 0 18px rgba(204,0,0,0.32))",
             transform: "translateY(-1px)",
           },
         }}
@@ -106,8 +112,8 @@ const Navbar = () => {
           priority={!mobile}
           sizes={
             mobile
-              ? "(max-width: 600px) 56vw, 238px"
-              : "(max-width: 1536px) 274px, 306px"
+              ? "(max-width: 600px) 58vw, 262px"
+              : "(max-width: 1536px) 322px, 356px"
           }
           style={{ objectFit: "contain" }}
         />
@@ -115,13 +121,7 @@ const Navbar = () => {
     </Box>
   );
 
-  const requestServiceButtonSx = {
-    ...primaryCtaSx,
-    px: 2.4,
-    py: 1.15,
-    fontSize: 12.5,
-  };
-
+  // ── Desktop nav links ─────────────────────────────────────
   const DesktopLinks = (
     <Box
       component="nav"
@@ -129,9 +129,8 @@ const Navbar = () => {
       sx={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "flex-end",
         ml: "auto",
-        gap: 0.45,
+        gap: 0.25,
         whiteSpace: "nowrap",
       }}
     >
@@ -145,36 +144,38 @@ const Navbar = () => {
             aria-current={active ? "page" : undefined}
             sx={{
               position: "relative",
-              px: 1.45,
-              py: 1.15,
-              borderRadius: "10px",
-              color: active ? "#fff" : "rgba(231,238,244,0.78)",
+              px: 1.5,
+              py: 1,
+              borderRadius: "2px",
+              color: active ? "#fff" : "rgba(220,220,220,0.72)",
               textDecoration: "none",
-              fontWeight: 850,
-              fontSize: 14,
-              letterSpacing: "0.015em",
-              transition:
-                "color 160ms ease, background 160ms ease, transform 160ms ease",
-              bgcolor: active ? "rgba(215,25,32,0.13)" : "transparent",
+              fontFamily: "'Oswald', sans-serif",
+              fontWeight: 500,
+              fontSize: 13.5,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              transition: "color 160ms ease, background 160ms ease, transform 160ms ease",
+              bgcolor: active ? "rgba(204,0,0,0.12)" : "transparent",
+              // Red underline for active page
               "&::after": {
                 content: '""',
                 position: "absolute",
-                left: 14,
-                right: 14,
-                bottom: 6,
-                height: 2,
+                left: 12,
+                right: 12,
+                bottom: 4,
+                height: "2px",
                 borderRadius: 2,
-                bgcolor: active ? "#D71920" : "transparent",
-                boxShadow: active ? "0 0 14px rgba(215,25,32,0.8)" : "none",
+                bgcolor: active ? "#CC0000" : "transparent",
+                boxShadow: active ? "0 0 10px rgba(204,0,0,0.7)" : "none",
                 transition: "background 160ms ease, box-shadow 160ms ease",
               },
               "&:hover": {
                 color: "#fff",
-                bgcolor: "rgba(255,255,255,0.055)",
+                bgcolor: "rgba(255,255,255,0.05)",
                 transform: "translateY(-1px)",
                 "&::after": {
-                  bgcolor: "#D71920",
-                  boxShadow: "0 0 14px rgba(215,25,32,0.75)",
+                  bgcolor: "#CC0000",
+                  boxShadow: "0 0 10px rgba(204,0,0,0.6)",
                 },
               },
             }}
@@ -186,6 +187,7 @@ const Navbar = () => {
     </Box>
   );
 
+  // ── Mobile drawer ─────────────────────────────────────────
   const DrawerList = (
     <Box
       role="presentation"
@@ -199,10 +201,11 @@ const Navbar = () => {
         pt: 2,
         pb: 4,
         background:
-          "radial-gradient(circle at 20% 0%, rgba(215,25,32,0.18), transparent 32%), linear-gradient(145deg, #03070B 0%, #091722 54%, #020508 100%)",
+          "radial-gradient(circle at 20% 0%, rgba(204,0,0,0.14), transparent 34%), linear-gradient(160deg, #080808 0%, #0e0e0e 55%, #080808 100%)",
         color: "#fff",
       }}
     >
+      {/* Drawer header */}
       <Box
         sx={{
           display: "flex",
@@ -218,15 +221,17 @@ const Navbar = () => {
           onClick={toggleDrawer(false)}
           sx={{
             color: "#fff",
-            border: "1px solid rgba(190,202,212,0.2)",
-            bgcolor: "rgba(255,255,255,0.045)",
+            border: "1px solid rgba(255,255,255,0.12)",
+            bgcolor: "rgba(255,255,255,0.04)",
+            borderRadius: "2px",
+            "&:hover": { bgcolor: "rgba(204,0,0,0.14)", borderColor: "rgba(204,0,0,0.4)" },
           }}
         >
           <CloseIcon />
         </IconButton>
       </Box>
 
-      <Divider sx={{ borderColor: "rgba(190,202,212,0.18)", mb: 2 }} />
+      <Divider sx={{ borderColor: "rgba(255,255,255,0.08)", mb: 2 }} />
 
       <List disablePadding sx={{ display: "grid", gap: 1 }}>
         {NAV_LINKS.map(({ text, href }) => {
@@ -238,31 +243,28 @@ const Navbar = () => {
               href={href}
               aria-current={active ? "page" : undefined}
               sx={{
-                minHeight: 58,
-                borderRadius: 2,
-                color: active ? "#fff" : "rgba(231,238,244,0.84)",
-                bgcolor: active
-                  ? "rgba(215,25,32,0.16)"
-                  : "rgba(255,255,255,0.035)",
+                minHeight: 56,
+                borderRadius: "2px",
+                color: active ? "#fff" : "rgba(220,220,220,0.82)",
+                bgcolor: active ? "rgba(204,0,0,0.14)" : "rgba(255,255,255,0.03)",
                 border: active
-                  ? "1px solid rgba(215,25,32,0.48)"
-                  : "1px solid rgba(190,202,212,0.12)",
-                boxShadow: active
-                  ? "inset 4px 0 0 #D71920"
-                  : "inset 4px 0 0 transparent",
+                  ? "1px solid rgba(204,0,0,0.42)"
+                  : "1px solid rgba(255,255,255,0.07)",
+                boxShadow: active ? "inset 3px 0 0 #CC0000" : "inset 3px 0 0 transparent",
                 transition: "background 160ms ease, border-color 160ms ease",
                 "&:hover": {
-                  bgcolor: "rgba(255,255,255,0.07)",
-                  borderColor: "rgba(215,25,32,0.36)",
+                  bgcolor: "rgba(255,255,255,0.06)",
+                  borderColor: "rgba(204,0,0,0.3)",
                 },
               }}
             >
               <ListItemText
                 primary={text}
                 primaryTypographyProps={{
-                  fontWeight: 950,
+                  fontFamily: "'Oswald', sans-serif",
+                  fontWeight: 600,
                   fontSize: 18,
-                  letterSpacing: "0.05em",
+                  letterSpacing: "0.08em",
                   textTransform: "uppercase",
                 }}
               />
@@ -271,6 +273,7 @@ const Navbar = () => {
         })}
       </List>
 
+      {/* Mobile CTA */}
       <Box sx={{ mt: 3 }}>
         <Button
           component="a"
@@ -278,25 +281,36 @@ const Navbar = () => {
           fullWidth
           variant="contained"
           startIcon={<PhoneIcon />}
-          sx={{ ...requestServiceButtonSx, minHeight: 58, fontSize: 14 }}
+          sx={{
+            ...primaryCtaSx,
+            minHeight: 56,
+            fontSize: 15,
+          }}
         >
-          Call Now
+          CALL NOW
         </Button>
       </Box>
     </Box>
   );
 
+  // ── AppBar ────────────────────────────────────────────────
   return (
     <AppBar
       position="sticky"
       sx={{
         top: 0,
-        background:
-          "linear-gradient(180deg, rgba(3,7,11,0.94) 0%, rgba(5,12,18,0.88) 100%)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
-        borderBottom: "1px solid rgba(190,202,212,0.2)",
-        boxShadow: "0 18px 42px rgba(0,0,0,0.38)",
+        background: scrolled
+          ? "rgba(8,8,8,0.97)"
+          : "linear-gradient(180deg, rgba(8,8,8,0.92) 0%, rgba(10,10,10,0.86) 100%)",
+        backdropFilter: "blur(16px)",
+        WebkitBackdropFilter: "blur(16px)",
+        borderBottom: scrolled
+          ? "1px solid rgba(204,0,0,0.2)"
+          : "1px solid rgba(255,255,255,0.07)",
+        boxShadow: scrolled
+          ? "0 4px 24px rgba(0,0,0,0.6)"
+          : "0 8px 32px rgba(0,0,0,0.4)",
+        transition: "background 280ms ease, border-color 280ms ease, box-shadow 280ms ease",
         zIndex: theme.zIndex.drawer + 1,
       }}
       elevation={0}
@@ -308,9 +322,13 @@ const Navbar = () => {
         <Toolbar
           disableGutters
           sx={{
-            minHeight: { xs: 88, sm: 96, md: 104, lg: 112 },
+            // Toolbar height shrinks slightly once scrolled
+            minHeight: scrolled
+              ? { xs: 76, sm: 82, md: 88, lg: 94 }
+              : { xs: 92, sm: 100, md: 110, lg: 118 },
+            transition: "min-height 280ms ease",
             justifyContent: "space-between",
-            gap: { xs: 2, md: 3.5 },
+            gap: { xs: 2, md: 3 },
           }}
         >
           <Brand mobile={isMobile} />
@@ -322,10 +340,13 @@ const Navbar = () => {
                 sx={{
                   ml: "auto",
                   color: "#fff",
-                  border: "1px solid rgba(190,202,212,0.22)",
-                  bgcolor: "rgba(255,255,255,0.045)",
-                  borderRadius: 2,
-                  "&:hover": { bgcolor: "rgba(215,25,32,0.14)" },
+                  border: "1px solid rgba(255,255,255,0.14)",
+                  bgcolor: "rgba(255,255,255,0.04)",
+                  borderRadius: "2px",
+                  "&:hover": {
+                    bgcolor: "rgba(204,0,0,0.14)",
+                    borderColor: "rgba(204,0,0,0.4)",
+                  },
                 }}
                 aria-label="Open menu"
               >
@@ -356,9 +377,16 @@ const Navbar = () => {
                 href={BUSINESS.phoneTel}
                 variant="contained"
                 startIcon={<PhoneIcon />}
-                sx={{ ...requestServiceButtonSx, ml: 1.5 }}
+                sx={{
+                  ...primaryCtaSx,
+                  ml: 2,
+                  px: 2.5,
+                  py: 1.1,
+                  fontSize: 13,
+                  flexShrink: 0,
+                }}
               >
-                Call Now
+                CALL NOW
               </Button>
             </>
           )}

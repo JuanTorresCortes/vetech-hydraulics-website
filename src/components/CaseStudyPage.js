@@ -28,7 +28,7 @@ const HeroSection = styled(Box)(({ theme }) => ({
   overflow: "hidden",
   color: "#fff",
   background:
-    "radial-gradient(circle at 16% 18%, rgba(215,25,32,0.22), transparent 34%), linear-gradient(135deg, #02060A 0%, #071522 48%, #02060A 100%)",
+    "radial-gradient(circle at 16% 18%, rgba(204,0,0,0.22), transparent 34%), linear-gradient(135deg, #080808 0%, #0a0a0a 48%, #080808 100%)",
   [theme.breakpoints.down("md")]: { minHeight: "66svh" },
   [theme.breakpoints.down("sm")]: { minHeight: "70svh" },
   "&::before": {
@@ -46,12 +46,12 @@ const HeroSection = styled(Box)(({ theme }) => ({
 
 const Section = styled("section")(({ theme }) => ({
   ...sectionBase(theme),
-  backgroundColor: "#0F2331",
+  backgroundColor: "#0a0a0a",
 }));
 
 const AltSection = styled("section")(({ theme }) => ({
   ...sectionBase(theme),
-  backgroundColor: "#0B1B27",
+  backgroundColor: "#0e0e0e",
 }));
 
 // DetailBlock keeps repeated case-study sections visually consistent while allowing varied narrative content.
@@ -61,11 +61,11 @@ const DetailBlock = ({ eyebrow, title, children }) => (
     <Typography
       component="h2"
       sx={{
-        color: "#F7FAFC",
+        color: "#F0F0F0",
         fontWeight: 950,
         fontSize: { xs: 24, md: 32 },
         lineHeight: 1.12,
-        letterSpacing: "-0.035em",
+        letterSpacing: "-0.01em",
         mb: 1.5,
       }}
     >
@@ -114,7 +114,7 @@ export default function CaseStudyPage({ caseStudy }) {
               inset: 0,
               zIndex: 1,
               background:
-                "linear-gradient(90deg, rgba(2,6,10,0.98) 0%, rgba(2,6,10,0.88) 48%, rgba(7,21,34,0.58) 100%), linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0.18))",
+                "linear-gradient(90deg, rgba(8,8,10,0.98) 0%, rgba(8,8,10,0.88) 48%, rgba(7,21,34,0.58) 100%), linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0.18))",
             }}
           />
           <Container
@@ -125,7 +125,7 @@ export default function CaseStudyPage({ caseStudy }) {
               <Typography sx={{ ...eyebrowSx, mb: 1.5 }}>
                 EXAMPLE REPAIR PROFILE
               </Typography>
-              <Typography component="h1" variant="h1" sx={{ color: "#F7FAFC" }}>
+              <Typography component="h1" variant="h1" sx={{ color: "#F0F0F0" }}>
                 {caseStudy.title}
               </Typography>
               <Typography
@@ -167,7 +167,7 @@ export default function CaseStudyPage({ caseStudy }) {
         <Section
           sx={{
             background:
-              "radial-gradient(circle at 12% 0%, rgba(215,25,32,0.14), transparent 34%), linear-gradient(180deg, #071522 0%, #0B1B27 52%, #07131D 100%)",
+              "radial-gradient(circle at 12% 0%, rgba(204,0,0,0.14), transparent 34%), linear-gradient(180deg, #0a0a0a 0%, #0e0e0e 52%, #080808 100%)",
           }}
         >
           <Container maxWidth="lg" sx={containerSx}>
@@ -227,7 +227,7 @@ export default function CaseStudyPage({ caseStudy }) {
         <Section
           sx={{
             background:
-              "radial-gradient(circle at 50% 0%, rgba(215,25,32,0.2), transparent 34%), linear-gradient(180deg, #07131D 0%, #050A0F 100%)",
+              "radial-gradient(circle at 50% 0%, rgba(204,0,0,0.2), transparent 34%), linear-gradient(180deg, #080808 0%, #080808 100%)",
           }}
         >
           <Container maxWidth="lg" sx={containerSx}>

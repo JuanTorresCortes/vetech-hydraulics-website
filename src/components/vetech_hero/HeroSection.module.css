@@ -1,0 +1,482 @@
+/* ═══════════════════════════════════════════════════════════════
+   HeroSection.module.css — VeTech Hydraulics hero
+   Accent: #CC0000 | Font: Oswald (condensed bold via Google Fonts)
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500&display=swap');
+
+/* ── Shell ─────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #0a0a0a;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Background ────────────────────────────────────────────── */
+.bgWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Wraps the Next/Image so framer-motion scale animates the bg, not the overlay */
+.bgMotion {
+  position: absolute;
+  inset: 0;
+  transform-origin: center center;
+}
+
+.bgImg {
+  object-fit: cover;
+  object-position: center right;
+}
+
+/* Dark gradient overlay — heavier on the left for readability */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(5, 5, 5, 0.92) 0%,
+    rgba(5, 5, 5, 0.80) 40%,
+    rgba(5, 5, 5, 0.30) 70%,
+    rgba(5, 5, 5, 0.10) 100%
+  );
+}
+
+/* ── Inner content (above bg) ──────────────────────────────── */
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 48px 48px;
+}
+
+/* ── Location badge ────────────────────────────────────────── */
+.locationBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #b0b0b0;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.locationDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #CC0000;
+  box-shadow: 0 0 6px #CC0000aa;
+  flex-shrink: 0;
+}
+
+/* ── Content grid ──────────────────────────────────────────── */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 48px;
+  align-items: end;
+  min-height: 480px;
+}
+
+/* ── Left column ───────────────────────────────────────────── */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Headline ──────────────────────────────────────────────── */
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  line-height: 0.92;
+}
+
+.headlineWhite,
+.headlineRed {
+  display: block;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(52px, 6.5vw, 90px);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  /* Distressed texture via mix-blend and text-shadow */
+  filter: url(#grunge) drop-shadow(2px 2px 0px rgba(0,0,0,0.5));
+}
+
+.headlineWhite {
+  color: #e8e8e8;
+  text-shadow:
+    1px 1px 0 #000,
+    -1px -1px 0 rgba(0,0,0,0.3),
+    3px 3px 6px rgba(0,0,0,0.7);
+}
+
+.headlineRed {
+  color: #CC0000;
+  text-shadow:
+    1px 1px 0 #7a0000,
+    -1px -1px 0 rgba(0,0,0,0.4),
+    3px 3px 8px rgba(0,0,0,0.8),
+    0 0 20px rgba(150, 0, 0, 0.3);
+}
+
+/* ── Subheadline ───────────────────────────────────────────── */
+.subheadline {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #a8a8a8;
+  max-width: 480px;
+  margin: 0;
+}
+
+/* ── Trust badges ──────────────────────────────────────────── */
+.trustRow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+  row-gap: 12px;
+}
+
+.trustBadge {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.trustBadge:first-child {
+  padding-left: 0;
+}
+
+/* Images already contain the icon + label text */
+.trustIcon {
+  object-fit: contain;
+  width: auto;
+  height: 52px;
+  max-width: 160px;
+}
+
+.trustDivider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+
+/* ── CTA buttons ───────────────────────────────────────────── */
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btnCall {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #CC0000;
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 2px;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.btnCall:hover {
+  background: #a80000;
+}
+
+.btnServices {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #e8e8e8;
+  font-family: 'Oswald', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 24px;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  border-radius: 2px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.btnServices:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+/* ── Hours line ────────────────────────────────────────────── */
+.hours {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #888;
+  margin-top: -8px;
+}
+
+/* ── Right column / Info card ──────────────────────────────── */
+.rightCol {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-bottom: 0;
+}
+
+.infoCard {
+  background: rgba(18, 18, 22, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  padding: 28px 28px 28px;
+  max-width: 340px;
+  width: 100%;
+}
+
+.cardLabel {
+  display: block;
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #CC0000;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.cardHeading {
+  font-family: 'Oswald', sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #f0f0f0;
+  line-height: 1.2;
+  margin: 0 0 14px;
+}
+
+.cardBody {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #888;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Industry bottom bar ───────────────────────────────────── */
+.industryBar {
+  position: relative;
+  z-index: 1;
+  background: rgba(10, 10, 12, 0.95);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 20px 0;
+}
+
+.industryBarInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.industryTagline {
+  font-family: 'Oswald', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #888;
+  text-transform: uppercase;
+  line-height: 1.5;
+  flex-shrink: 0;
+  min-width: 180px;
+}
+
+.industryTaglineRed {
+  color: #CC0000;
+}
+
+.industrySep {
+  width: 1px;
+  height: 56px;
+  background: rgba(255,255,255,0.12);
+  margin: 0 32px;
+  flex-shrink: 0;
+}
+
+.industryList {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+}
+
+.industryItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.industryItem:first-child {
+  padding-left: 0;
+}
+
+.industryItem:last-child {
+  border-right: none;
+}
+
+/* Images already contain icon + label text */
+.industryIcon {
+  object-fit: contain;
+  width: auto;
+  height: 88px;
+  max-width: 130px;
+}
+
+.industrySlogan {
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #aaa;
+  text-transform: uppercase;
+  line-height: 1.5;
+  text-align: right;
+  flex-shrink: 0;
+  min-width: 160px;
+}
+
+.industrySloganRed {
+  color: #CC0000;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — tablet / mobile
+   ══════════════════════════════════════════════════════════════ */
+
+/* Tablet: stack info card below */
+@media (max-width: 1024px) {
+  .inner {
+    padding: 28px 32px 40px;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 32px;
+  }
+
+  .rightCol {
+    justify-content: flex-start;
+  }
+
+  .infoCard {
+    max-width: 100%;
+  }
+
+  .industryBarInner {
+    padding: 0 32px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .industrySep {
+    display: none;
+  }
+
+  .industryTagline {
+    min-width: 100%;
+  }
+
+  .industryList {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .industryItem {
+    padding: 8px 16px;
+    border-right: none;
+  }
+
+  .industrySlogan {
+    min-width: 100%;
+    text-align: left;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .inner {
+    padding: 20px 20px 32px;
+  }
+
+  .headlineWhite,
+  .headlineRed {
+    font-size: clamp(40px, 11vw, 60px);
+  }
+
+  .trustRow {
+    gap: 8px;
+    row-gap: 8px;
+  }
+
+  .trustBadge {
+    padding: 0 10px;
+  }
+
+  .trustDivider {
+    height: 28px;
+  }
+
+  .ctaRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btnCall,
+  .btnServices {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .industryBar {
+    padding: 16px 0;
+  }
+
+  .industryBarInner {
+    padding: 0 20px;
+  }
+}

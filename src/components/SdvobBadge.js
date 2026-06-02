@@ -1,90 +1,93 @@
 // src/components/SdvobBadge.js
-// Compact SDVOSB credibility badge for pages or sections that need a small veteran-owned trust signal.
-// Use VeteranOwnershipSection when the page needs the larger explanatory version.
+// Compact veteran-owned trust band — hero palette, no SDVOSB imagery.
+// Replaces the old SBA icon badge with a clean industrial strip.
 import React from "react";
-import Image from "next/image";
 import { Box, Container, Typography, Stack } from "@mui/material";
 
-export default function SdvobBadge({
-  variant = "band", // "band" | "card"
-  title = "SDVOSB • Service-Disabled Veteran-Owned & Operated",
-  subtitle = "Veteran-owned. Service-first. Built on integrity and accountability.",
-  iconSrc = "/sdvoc.png",
-}) {
-  const isBand = variant === "band";
+const POINTS = [
+  { icon: "★", text: "Veteran-Owned & Operated" },
+  { icon: "✓", text: "Pressure Tested — Every Repair" },
+  { icon: "⚡", text: "Fast Turnaround" },
+  { icon: "🛡", text: "Service-First Work Ethic" },
+];
 
+export default function SdvobBadge({
+  title = "Veteran-Owned. Service-First. Built on Earned Trust.",
+}) {
   return (
     <Box
       component="section"
+      aria-label="Veteran-owned trust credentials"
       sx={{
+        width: "100vw",
+        marginLeft: "calc(50% - 50vw)",
+        marginRight: "calc(50% - 50vw)",
         py: { xs: 2.5, sm: 3 },
-        bgcolor: isBand ? "#0B1B27" : "transparent",
-        borderTop: isBand ? "1px solid rgba(255,255,255,0.08)" : "none",
-        borderBottom: isBand ? "1px solid rgba(255,255,255,0.08)" : "none",
+        bgcolor: "#0a0a0a",
+        borderTop: "1px solid rgba(255,255,255,0.07)",
+        borderBottom: "1px solid rgba(255,255,255,0.07)",
       }}
     >
-      <Container maxWidth={false} disableGutters sx={{ px: { xs: 2, sm: 3 } }}>
-        <Box
-          sx={{
-            maxWidth: 1100,
-            mx: "auto",
-            p: isBand ? { xs: 2, sm: 2.5 } : { xs: 2.5, sm: 3 },
-            borderRadius: 3,
-            bgcolor: isBand ? "#102A3A" : "#102A3A",
-            border: "1px solid rgba(255,255,255,0.08)",
-          }}
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          alignItems={{ xs: "flex-start", md: "center" }}
+          justifyContent="space-between"
+          gap={{ xs: 2, md: 4 }}
         >
-          <Stack
-            direction={{ xs: "column", sm: "row" }}
-            spacing={{ xs: 1.25, sm: 2 }}
-            alignItems={{ xs: "center", sm: "center" }}
-            justifyContent="center"
-            sx={{ textAlign: { xs: "center", sm: "left" } }}
+          {/* Label */}
+          <Typography
+            sx={{
+              fontFamily: "'Oswald', sans-serif",
+              fontWeight: 700,
+              fontSize: { xs: 14, md: 15 },
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "#F0F0F0",
+              flexShrink: 0,
+              "& span": { color: "#CC0000" },
+            }}
           >
-            <Box
-              sx={{
-                width: { xs: 64, sm: 72, md: 80 },
-                height: { xs: 64, sm: 72, md: 80 },
-                position: "relative",
-                flexShrink: 0,
-              }}
-            >
-              <Image
-                src={iconSrc}
-                alt="Service-Disabled Veteran-Owned Small Business (SDVOSB)"
-                fill
-                sizes="(max-width: 600px) 64px, (max-width: 900px) 72px, 80px"
-                style={{ objectFit: "contain" }}
-              />
-            </Box>
+            <span>★</span>&nbsp; {title}
+          </Typography>
 
-            <Box sx={{ minWidth: 0 }}>
-              <Typography
+          {/* Trust points */}
+          <Stack
+            direction="row"
+            flexWrap="wrap"
+            gap={{ xs: 1.5, md: 2.5 }}
+          >
+            {POINTS.map(({ icon, text }) => (
+              <Box
+                key={text}
                 sx={{
-                  color: "#fff",
-                  fontWeight: 900,
-                  fontSize: { xs: 14.5, sm: 16 },
-                  lineHeight: 1.2,
-                  textWrap: "balance",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.75,
                 }}
               >
-                {title}
-              </Typography>
-              <Typography
-                sx={{
-                  mt: 0.5,
-                  color: "rgba(255,255,255,0.78)",
-                  fontSize: { xs: 13.5, sm: 14.5 },
-                  lineHeight: 1.5,
-                  textWrap: "balance",
-                  maxWidth: 820,
-                }}
-              >
-                {subtitle}
-              </Typography>
-            </Box>
+                <Typography
+                  aria-hidden="true"
+                  sx={{ fontSize: 13, color: "#CC0000", lineHeight: 1 }}
+                >
+                  {icon}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontFamily: "'Oswald', sans-serif",
+                    fontSize: 12,
+                    fontWeight: 500,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "rgba(200,200,200,0.55)",
+                  }}
+                >
+                  {text}
+                </Typography>
+              </Box>
+            ))}
           </Stack>
-        </Box>
+        </Stack>
       </Container>
     </Box>
   );

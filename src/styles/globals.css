@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
 /* Global design tokens mirror the industrial MUI theme for any plain CSS that sits outside component sx styles. */
 :root {
-  --vetech-red: #d71920;
-  --vetech-red-dark: #b9151b;
-  --vetech-gunmetal: #050d14;
-  --vetech-panel: #0a1721;
-  --vetech-steel: rgba(190, 202, 212, 0.22);
-  --vetech-text: #f7fafc;
-  --vetech-muted: rgba(231, 238, 244, 0.76);
+  --vetech-red: #cc0000;
+  --vetech-red-dark: #a80000;
+  --vetech-gunmetal: #080808;
+  --vetech-panel: #111111;
+  --vetech-steel: rgba(255, 255, 255, 0.08);
+  --vetech-text: #f0f0f0;
+  --vetech-muted: rgba(200, 200, 200, 0.72);
   font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -43,7 +45,7 @@ body {
   background:
     radial-gradient(
       circle at 50% -10%,
-      rgba(215, 25, 32, 0.1),
+      rgba(204, 0, 0, 0.08),
       transparent 28%
     ),
     var(--vetech-gunmetal);
@@ -68,7 +70,7 @@ a {
 
 /* Visible focus rings support keyboard navigation without changing component-level styling. */
 :focus-visible {
-  outline: 3px solid rgba(215, 25, 32, 0.86);
+  outline: 3px solid rgba(204, 0, 0, 0.86);
   outline-offset: 3px;
 }
 

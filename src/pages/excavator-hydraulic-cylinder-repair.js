@@ -36,7 +36,7 @@ const Hero = styled(Box)(({ theme }) => ({
   overflow: "hidden",
   color: "#fff",
   background:
-    "radial-gradient(circle at 14% 18%, rgba(215,25,32,0.24), transparent 34%), linear-gradient(135deg, #02060A 0%, #071522 48%, #02060A 100%)",
+    "radial-gradient(circle at 14% 18%, rgba(204,0,0,0.24), transparent 34%), linear-gradient(135deg, #080808 0%, #0a0a0a 48%, #080808 100%)",
   [theme.breakpoints.down("md")]: { minHeight: "64svh" },
   [theme.breakpoints.down("sm")]: { minHeight: "68svh" },
   "&::before": {
@@ -66,7 +66,7 @@ const cardSx = {
     top: 0,
     height: 3,
     background:
-      "linear-gradient(90deg, rgba(215,25,32,0.92), rgba(190,202,212,0.22), transparent)",
+      "linear-gradient(90deg, rgba(204,0,0,0.92), rgba(255,255,255,0.22), transparent)",
     pointerEvents: "none",
   },
 };
@@ -123,7 +123,7 @@ export default function ExcavatorHydraulicCylinderRepair() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(90deg, rgba(2,6,10,0.96) 0%, rgba(2,6,10,0.84) 48%, rgba(7,21,34,0.6) 100%), linear-gradient(to top, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.18) 70%)",
+              "linear-gradient(90deg, rgba(8,8,10,0.96) 0%, rgba(8,8,10,0.84) 48%, rgba(7,21,34,0.6) 100%), linear-gradient(to top, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.18) 70%)",
             zIndex: 1,
           }}
         />
@@ -134,18 +134,18 @@ export default function ExcavatorHydraulicCylinderRepair() {
               component="h1"
               variant="h1"
               sx={{
-                color: "#F7FAFC",
+                color: "#F0F0F0",
                 fontWeight: 950,
                 fontSize: { xs: "clamp(32px, 9vw, 52px)", md: "clamp(48px, 5.5vw, 72px)" },
                 lineHeight: 0.96,
-                letterSpacing: "-0.055em",
+                letterSpacing: "-0.01em",
                 textWrap: "balance",
                 mb: 2.5,
               }}
             >
               Excavator Hydraulic Cylinder Repair in Montgomery & North Houston TX
             </Typography>
-            <Typography sx={{ ...bodyCopySx, maxWidth: 720, fontSize: { xs: 15.5, md: 18 }, color: "rgba(231,238,244,0.84)", mb: 3 }}>
+            <Typography sx={{ ...bodyCopySx, maxWidth: 720, fontSize: { xs: 15.5, md: 18 }, color: "rgba(220,220,220,0.84)", mb: 3 }}>
               Boom, arm, and bucket cylinder rebuilds for excavators and heavy construction equipment.
               Veteran-owned workmanship, pressure-tested repairs, and fast turnaround so your machine
               gets back to work.
@@ -179,7 +179,7 @@ export default function ExcavatorHydraulicCylinderRepair() {
             {services.map((s) => (
               <Grid item xs={12} sm={6} md={4} key={s.title}>
                 <Box sx={cardSx}>
-                  <Typography sx={{ color: "#F7FAFC", fontWeight: 950, fontSize: { xs: 18, md: 20 }, lineHeight: 1.16, letterSpacing: "-0.02em", mb: 1 }}>
+                  <Typography sx={{ color: "#F0F0F0", fontWeight: 950, fontSize: { xs: 18, md: 20 }, lineHeight: 1.16, letterSpacing: "-0.02em", mb: 1 }}>
                     {s.title}
                   </Typography>
                   <Typography sx={{ color: industrialColors.mutedText, lineHeight: 1.72, fontSize: { xs: 14.5, md: 15.5 } }}>
@@ -219,7 +219,7 @@ export default function ExcavatorHydraulicCylinderRepair() {
                 ["Veteran-Owned Accountability", "Clear communication, honest pricing, and disciplined workmanship on every repair — no surprises."],
               ].map(([title, text]) => (
                 <Box key={title} sx={{ mb: 2.5 }}>
-                  <Typography sx={{ color: "#F7FAFC", fontWeight: 950, fontSize: { xs: 16, md: 17 }, mb: 0.5 }}>{title}</Typography>
+                  <Typography sx={{ color: "#F0F0F0", fontWeight: 950, fontSize: { xs: 16, md: 17 }, mb: 0.5 }}>{title}</Typography>
                   <Typography sx={{ ...bodyCopySx }}>{text}</Typography>
                 </Box>
               ))}

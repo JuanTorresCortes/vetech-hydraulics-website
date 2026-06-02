@@ -25,7 +25,7 @@ const HeroSection = styled(Box)(({ theme }) => ({
   paddingBlock: theme.spacing(9),
   overflow: "hidden",
   background:
-    "radial-gradient(circle at 16% 18%, rgba(215,25,32,0.18), transparent 34%), linear-gradient(135deg, #02060A 0%, #071522 48%, #02060A 100%)",
+    "radial-gradient(circle at 16% 18%, rgba(204,0,0,0.18), transparent 34%), linear-gradient(135deg, #080808 0%, #0a0a0a 48%, #080808 100%)",
   [theme.breakpoints.up("md")]: { paddingBlock: theme.spacing(13) },
   "&::before": {
     content: '""',
@@ -41,7 +41,7 @@ const HeroSection = styled(Box)(({ theme }) => ({
 
 const Section = styled("section")(({ theme }) => ({
   ...sectionBase(theme),
-  backgroundColor: "#0F2331",
+  backgroundColor: "#0a0a0a",
 }));
 
 export default function CaseStudiesIndexPage() {
@@ -67,7 +67,7 @@ export default function CaseStudiesIndexPage() {
               <Typography sx={{ ...eyebrowSx, mb: 1.5 }}>
                 EXAMPLE REPAIR PROFILES
               </Typography>
-              <Typography component="h1" variant="h1" sx={{ color: "#F7FAFC" }}>
+              <Typography component="h1" variant="h1" sx={{ color: "#F0F0F0" }}>
                 Real-World Repair Scenarios Built Around Reliability
               </Typography>
               <Typography
@@ -91,7 +91,7 @@ export default function CaseStudiesIndexPage() {
         <Section
           sx={{
             background:
-              "radial-gradient(circle at 12% 0%, rgba(215,25,32,0.14), transparent 34%), linear-gradient(180deg, #071522 0%, #0B1B27 52%, #07131D 100%)",
+              "radial-gradient(circle at 12% 0%, rgba(204,0,0,0.14), transparent 34%), linear-gradient(180deg, #0a0a0a 0%, #0e0e0e 52%, #080808 100%)",
           }}
         >
           <Container maxWidth="lg" sx={containerSx}>
@@ -126,7 +126,7 @@ export default function CaseStudiesIndexPage() {
                           position: "absolute",
                           inset: 0,
                           background:
-                            "linear-gradient(to top, rgba(2,6,10,0.84), rgba(2,6,10,0.08))",
+                            "linear-gradient(to top, rgba(8,8,10,0.84), rgba(8,8,10,0.08))",
                         }}
                       />
                       <Typography
@@ -136,8 +136,8 @@ export default function CaseStudiesIndexPage() {
                           bottom: 14,
                           px: 1.25,
                           py: 0.65,
-                          borderRadius: "999px",
-                          bgcolor: "rgba(215,25,32,0.9)",
+                          borderRadius: "2px",
+                          bgcolor: "rgba(204,0,0,0.9)",
                           color: "#fff",
                           fontSize: 11,
                           fontWeight: 950,
@@ -155,11 +155,11 @@ export default function CaseStudiesIndexPage() {
                       <Typography
                         component="h2"
                         sx={{
-                          color: "#F7FAFC",
+                          color: "#F0F0F0",
                           fontWeight: 950,
                           fontSize: { xs: 22, md: 24 },
                           lineHeight: 1.12,
-                          letterSpacing: "-0.03em",
+                          letterSpacing: "0em",
                         }}
                       >
                         {caseStudy.shortTitle}
@@ -170,7 +170,7 @@ export default function CaseStudiesIndexPage() {
                       <Typography
                         sx={{
                           ...eyebrowSx,
-                          color: "rgba(231,238,244,0.58)",
+                          color: "rgba(220,220,220,0.58)",
                           mt: "auto",
                         }}
                       >
@@ -195,7 +195,7 @@ export default function CaseStudiesIndexPage() {
         <Section
           sx={{
             background:
-              "radial-gradient(circle at 50% 0%, rgba(215,25,32,0.2), transparent 34%), linear-gradient(180deg, #07131D 0%, #050A0F 100%)",
+              "radial-gradient(circle at 50% 0%, rgba(204,0,0,0.2), transparent 34%), linear-gradient(180deg, #080808 0%, #080808 100%)",
           }}
         >
           <Container maxWidth="lg" sx={containerSx}>
