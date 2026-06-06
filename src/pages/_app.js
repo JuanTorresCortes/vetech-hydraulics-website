@@ -3,46 +3,32 @@ import { useRouter } from "next/router";
 import Script from "next/script";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { CacheProvider } from "@emotion/react";
-import createCache from "@emotion/cache";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/globals.css";
 import theme from "../theme.js";
 import PhoneButton from "@/components/PhoneButton";
 
-function createEmotionCache() {
-  return createCache({ key: "css" });
-}
-const clientSideEmotionCache = createEmotionCache();
-
-// GA4 Measurement ID — set NEXT_PUBLIC_GA_ID in your .env.local (dev) and
-// Vercel environment variables (production). Scripts are skipped if unset.
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
-// Send a pageview hit to GA4 on every client-side route change.
 function sendPageview(url) {
   if (!GA_ID || typeof window === "undefined" || !window.gtag) return;
   window.gtag("config", GA_ID, { page_path: url });
 }
 
-// App shell: keeps global theming, navigation, mobile call CTA, and footer consistent across every route.
-export default function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }) {
+export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    // Fire on subsequent client-side navigations (initial pageview is handled by the gtag config script).
     const handleRouteChange = (url) => sendPageview(url);
     router.events.on("routeChangeComplete", handleRouteChange);
     return () => router.events.off("routeChangeComplete", handleRouteChange);
   }, [router.events]);
 
   return (
-    <CacheProvider value={emotionCache}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      {/* SEO FIX: Skip-to-main-content link improves accessibility and Core Web Vitals a11y score */}
       <a
         href="#main-content"
         style={{
@@ -74,7 +60,6 @@ export default function MyApp({ Component, pageProps, emotionCache = clientSideE
         Skip to main content
       </a>
 
-      {/* Google Analytics 4 — only loads when NEXT_PUBLIC_GA_ID is defined */}
       {GA_ID && (
         <>
           <Script
@@ -93,14 +78,11 @@ export default function MyApp({ Component, pageProps, emotionCache = clientSideE
       )}
 
       <Navbar />
-      {/* id="main-content" here makes the skip-to-main link functional on every page */}
-      <main id="main-content">
+      <main id="main-content" suppressHydrationWarning>
         <Component {...pageProps} />
       </main>
-      {/* Fixed mobile call bar lives outside pages so page content does not need to duplicate it. */}
       <PhoneButton />
       <Footer />
     </ThemeProvider>
-    </CacheProvider>
   );
 }

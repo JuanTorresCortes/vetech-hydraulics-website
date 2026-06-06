@@ -40,7 +40,7 @@ const Navbar = () => {
   const [drawerOpen, setDrawerOpen]   = useState(false);
   const [scrolled,   setScrolled]     = useState(false);
   const theme   = useTheme();
-  const isMobile = useMediaQuery("(max-width: 1300px)");
+  const isMobile = useMediaQuery("(max-width: 1300px)", { noSsr: true });
   const router  = useRouter();
 
   // Scroll-shrink: compress navbar once user scrolls past 40px
