@@ -3,11 +3,18 @@ import { useRouter } from "next/router";
 import Script from "next/script";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/globals.css";
 import theme from "../theme.js";
 import PhoneButton from "@/components/PhoneButton";
+
+function createEmotionCache() {
+  return createCache({ key: "css" });
+}
+const clientSideEmotionCache = createEmotionCache();
 
 // GA4 Measurement ID — set NEXT_PUBLIC_GA_ID in your .env.local (dev) and
 // Vercel environment variables (production). Scripts are skipped if unset.
@@ -20,7 +27,7 @@ function sendPageview(url) {
 }
 
 // App shell: keeps global theming, navigation, mobile call CTA, and footer consistent across every route.
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }) {
   const router = useRouter();
 
   useEffect(() => {
@@ -31,6 +38,7 @@ export default function MyApp({ Component, pageProps }) {
   }, [router.events]);
 
   return (
+    <CacheProvider value={emotionCache}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
@@ -93,5 +101,6 @@ export default function MyApp({ Component, pageProps }) {
       <PhoneButton />
       <Footer />
     </ThemeProvider>
+    </CacheProvider>
   );
 }
