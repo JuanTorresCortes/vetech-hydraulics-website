@@ -103,7 +103,7 @@ export default function ExcavatorHydraulicCylinderRepair() {
     <>
       <SeoHead
         title="Excavator Hydraulic Cylinder Repair TX | Vetech"
-        description="Excavator boom, arm & bucket cylinder repair near Montgomery, Conroe & North Houston TX. Pressure-tested rebuilds. Veteran-owned. Call (936) 249-6042."
+        description="Excavator boom, arm & bucket cylinder repair near Montgomery, Conroe & North Houston TX. Pressure-tested rebuilds. Veteran-owned. Call (936) 344-1436."
         path="/excavator-hydraulic-cylinder-repair"
         ogImage="/og/repair.webp"
         keywords="excavator hydraulic cylinder repair Montgomery TX, excavator cylinder repair Conroe TX, excavator boom cylinder repair, excavator arm cylinder repair North Houston, excavator bucket cylinder repair"
@@ -152,7 +152,7 @@ export default function ExcavatorHydraulicCylinderRepair() {
             </Typography>
             <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
               <Button component="a" href={BUSINESS.phoneTel} variant="contained" sx={primaryCtaSx}>
-                Call (936) 249-6042
+                Call (936) 344-1436
               </Button>
               <Button component={Link} href="/contact" variant="outlined" sx={secondaryCtaSx}>
                 Get a Quote

@@ -356,7 +356,7 @@ export default function ServiceAreasOverview() {
         {/* SEO FIX: description tightened to 150-160 chars */}
         <meta
           name="description"
-          content="Hydraulic cylinder repair near Magnolia, Montgomery, Conroe, The Woodlands & North Houston TX. Veteran-owned shop with pickup & delivery. Call (936) 249-6042."
+          content="Hydraulic cylinder repair near Magnolia, Montgomery, Conroe, The Woodlands & North Houston TX. Veteran-owned shop with pickup & delivery. Call (936) 344-1436."
         />
         <meta
           name="keywords"
@@ -365,7 +365,7 @@ export default function ServiceAreasOverview() {
         <link rel="canonical" href={canonicalUrl} />
         {/* SEO FIX: og:image, og:site_name, and twitter tags added */}
         <meta property="og:title" content="Hydraulic Cylinder Repair Service Areas TX | Vetech" />
-        <meta property="og:description" content="Hydraulic cylinder repair near Magnolia, Montgomery, Conroe, The Woodlands & North Houston TX. Veteran-owned shop with pickup & delivery. Call (936) 249-6042." />
+        <meta property="og:description" content="Hydraulic cylinder repair near Magnolia, Montgomery, Conroe, The Woodlands & North Houston TX. Veteran-owned shop with pickup & delivery. Call (936) 344-1436." />
         <meta property="og:image" content="https://www.vetechhydraulics.com/og/repair.webp" />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Vetech Hydraulics" />

@@ -6,7 +6,7 @@ export default function WillisServicePage() {
   return (
     <ServiceAreaPageTemplate
       seoTitle="Hydraulic Cylinder Repair in Willis, TX | Vetech Hydraulics"
-      seoDescription="Hydraulic cylinder repair for agriculture, construction & fleet equipment in Willis TX and north Montgomery County. Veteran-owned. Call (936) 249-6042 for a fast quote."
+      seoDescription="Hydraulic cylinder repair for agriculture, construction & fleet equipment in Willis TX and north Montgomery County. Veteran-owned. Call (936) 344-1436 for a fast quote."
       seoKeywords="hydraulic cylinder repair Willis TX, hydraulic repair north Montgomery County, agriculture hydraulic repair Willis TX, hydraulic cylinder repacking Willis, construction equipment hydraulic repair Willis Texas"
       canonicalSlug="willis-tx-hydraulic-cylinder-repair"
       heroImg={heroImg}

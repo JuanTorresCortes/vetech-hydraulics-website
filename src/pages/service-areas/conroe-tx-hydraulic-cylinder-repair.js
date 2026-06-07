@@ -6,7 +6,7 @@ export default function ConroeServicePage() {
   return (
     <ServiceAreaPageTemplate
       seoTitle="Hydraulic Cylinder Repair in Conroe, TX | Vetech Hydraulics"
-      seoDescription="Hydraulic cylinder repair for construction, fleets & industrial equipment in Conroe TX. Veteran-owned shop in Magnolia. Call (936) 249-6042 for a fast quote."
+      seoDescription="Hydraulic cylinder repair for construction, fleets & industrial equipment in Conroe TX. Veteran-owned shop in Magnolia. Call (936) 344-1436 for a fast quote."
       seoKeywords="hydraulic cylinder repair Conroe TX, hydraulic repair Conroe Texas, hydraulic cylinder repacking Conroe, construction equipment hydraulic repair Conroe TX, fleet hydraulic repair Conroe"
       canonicalSlug="conroe-tx-hydraulic-cylinder-repair"
       heroImg={heroImg}

@@ -6,7 +6,7 @@ export default function SplendoraServicePage() {
   return (
     <ServiceAreaPageTemplate
       seoTitle="Hydraulic Cylinder Repair in Splendora, TX | Vetech Hydraulics"
-      seoDescription="Hydraulic cylinder repair for agriculture, construction & rural equipment in Splendora TX along the US-59 corridor. Veteran-owned. Call (936) 249-6042 for a fast quote."
+      seoDescription="Hydraulic cylinder repair for agriculture, construction & rural equipment in Splendora TX along the US-59 corridor. Veteran-owned. Call (936) 344-1436 for a fast quote."
       seoKeywords="hydraulic cylinder repair Splendora TX, hydraulic repair Splendora Texas, agriculture hydraulic repair Splendora, hydraulic cylinder repacking Splendora TX, construction equipment hydraulic repair US-59 corridor"
       canonicalSlug="splendora-tx-hydraulic-cylinder-repair"
       heroImg={heroImg}

@@ -6,7 +6,7 @@ export default function HuntsvilleServicePage() {
   return (
     <ServiceAreaPageTemplate
       seoTitle="Hydraulic Cylinder Repair in Huntsville, TX | Vetech Hydraulics"
-      seoDescription="Hydraulic cylinder repair for agriculture, timber & construction equipment in Huntsville TX and Walker County. Veteran-owned. Call (936) 249-6042 for a fast quote."
+      seoDescription="Hydraulic cylinder repair for agriculture, timber & construction equipment in Huntsville TX and Walker County. Veteran-owned. Call (936) 344-1436 for a fast quote."
       seoKeywords="hydraulic cylinder repair Huntsville TX, hydraulic repair Walker County Texas, agriculture hydraulic repair Huntsville, hydraulic cylinder repacking Huntsville TX, timber equipment hydraulic repair Walker County"
       canonicalSlug="huntsville-tx-hydraulic-cylinder-repair"
       heroImg={heroImg}

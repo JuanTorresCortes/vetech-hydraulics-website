@@ -6,7 +6,7 @@ export default function WoodlandsServicePage() {
   return (
     <ServiceAreaPageTemplate
       seoTitle="Hydraulic Cylinder Repair Near The Woodlands, TX | Vetech Hydraulics"
-      seoDescription="Hydraulic cylinder repair for construction, commercial fleets & refuse equipment near The Woodlands TX. Veteran-owned shop in Magnolia. Call (936) 249-6042."
+      seoDescription="Hydraulic cylinder repair for construction, commercial fleets & refuse equipment near The Woodlands TX. Veteran-owned shop in Magnolia. Call (936) 344-1436."
       seoKeywords="hydraulic cylinder repair The Woodlands TX, hydraulic repair Woodlands Texas, hydraulic cylinder repacking The Woodlands, construction equipment hydraulic repair Woodlands TX, fleet hydraulic repair The Woodlands"
       canonicalSlug="woodlands-tx-hydraulic-cylinder-repair"
       heroImg={heroImg}

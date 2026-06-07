@@ -6,7 +6,7 @@ export default function SpringServicePage() {
   return (
     <ServiceAreaPageTemplate
       seoTitle="Hydraulic Cylinder Repair in Spring, TX | Vetech Hydraulics"
-      seoDescription="Hydraulic cylinder repair for construction, fleet & commercial equipment in Spring TX along the I-45 and SH-99 corridors. Veteran-owned. Call (936) 249-6042."
+      seoDescription="Hydraulic cylinder repair for construction, fleet & commercial equipment in Spring TX along the I-45 and SH-99 corridors. Veteran-owned. Call (936) 344-1436."
       seoKeywords="hydraulic cylinder repair Spring TX, hydraulic repair Spring Texas, hydraulic cylinder repacking Spring TX, construction equipment hydraulic repair Spring, fleet hydraulic repair Spring TX"
       canonicalSlug="spring-tx-hydraulic-cylinder-repair"
       heroImg={heroImg}

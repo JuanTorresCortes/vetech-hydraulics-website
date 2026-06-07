@@ -233,7 +233,7 @@ export default function ServicesPage() {
       {/* Services SEO metadata is page-specific; do not change copy here unless intentionally updating search positioning. */}
       <SeoHead
         title="Hydraulic Cylinder Repair Services | Vetech Hydraulics"
-        description="Cylinder repacking, rod repair, pressure testing & mobile service near Montgomery, Conroe & North Houston TX. Veteran-owned shop. Call (936) 249-6042."
+        description="Cylinder repacking, rod repair, pressure testing & mobile service near Montgomery, Conroe & North Houston TX. Veteran-owned shop. Call (936) 344-1436."
         path="/services"
         ogImage="/og/repair.webp"
         keywords="hydraulic cylinder repair services Montgomery TX, hydraulic cylinder repacking, rod polishing, hydraulic pressure testing, mobile hydraulic service, North Houston hydraulic repair"

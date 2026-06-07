@@ -6,7 +6,7 @@ export default function TomballServicePage() {
   return (
     <ServiceAreaPageTemplate
       seoTitle="Hydraulic Cylinder Repair in Tomball, TX | Vetech Hydraulics"
-      seoDescription="Hydraulic cylinder repair for agriculture, construction & fleet equipment in Tomball TX along the SH-249 corridor. Veteran-owned. Call (936) 249-6042 for a fast quote."
+      seoDescription="Hydraulic cylinder repair for agriculture, construction & fleet equipment in Tomball TX along the SH-249 corridor. Veteran-owned. Call (936) 344-1436 for a fast quote."
       seoKeywords="hydraulic cylinder repair Tomball TX, hydraulic repair Tomball Texas, hydraulic cylinder repacking Tomball, agriculture hydraulic repair Tomball TX, construction equipment hydraulic repair Tomball"
       canonicalSlug="tomball-tx-hydraulic-cylinder-repair"
       heroImg={heroImg}

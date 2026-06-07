@@ -103,7 +103,7 @@ export default function TrashTruckHydraulicCylinderRepair() {
     <>
       <SeoHead
         title="Trash Truck Hydraulic Cylinder Repair TX | Vetech"
-        description="Waste fleet hydraulic cylinder repair near Montgomery, Conroe & North Houston TX. Telescopic cylinders, packer & tailgate rebuilds. Call (936) 249-6042."
+        description="Waste fleet hydraulic cylinder repair near Montgomery, Conroe & North Houston TX. Telescopic cylinders, packer & tailgate rebuilds. Call (936) 344-1436."
         path="/trash-truck-hydraulic-cylinder-repair"
         ogImage="/og/repair.webp"
         keywords="trash truck hydraulic cylinder repair Montgomery TX, waste fleet hydraulic repair Conroe TX, telescopic cylinder repair North Houston, packer cylinder repair, garbage truck hydraulic repair"
@@ -151,7 +151,7 @@ export default function TrashTruckHydraulicCylinderRepair() {
             </Typography>
             <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
               <Button component="a" href={BUSINESS.phoneTel} variant="contained" sx={primaryCtaSx}>
-                Call (936) 249-6042
+                Call (936) 344-1436
               </Button>
               <Button component={Link} href="/fleet-support" variant="outlined" sx={secondaryCtaSx}>
                 Fleet Support

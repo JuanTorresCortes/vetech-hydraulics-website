@@ -6,7 +6,7 @@ export default function MagnoliaServicePage() {
   return (
     <ServiceAreaPageTemplate
       seoTitle="Hydraulic Cylinder Repair in Magnolia, TX | Vetech Hydraulics"
-      seoDescription="Veteran-owned hydraulic cylinder repair in Magnolia, TX — our home base. Fast repacking, rebuilds & pressure testing for ag, construction & fleet equipment. Call (936) 249-6042."
+      seoDescription="Veteran-owned hydraulic cylinder repair in Magnolia, TX — our home base. Fast repacking, rebuilds & pressure testing for ag, construction & fleet equipment. Call (936) 344-1436."
       seoKeywords="hydraulic cylinder repair Magnolia TX, hydraulic repair Magnolia Texas, hydraulic cylinder repacking Magnolia TX, hydraulic service Magnolia TX 77354"
       canonicalSlug="magnolia-tx-hydraulic-cylinder-repair"
       heroImg={heroImg}

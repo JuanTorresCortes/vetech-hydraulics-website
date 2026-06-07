@@ -244,7 +244,7 @@ export default function FleetSupportPage() {
       {/* Fleet-support SEO metadata targets commercial repair and uptime-focused search intent. */}
       <SeoHead
         title="Fleet Hydraulic Cylinder Repair | Vetech Hydraulics TX"
-        description="Commercial fleet hydraulic cylinder repair near Montgomery, Conroe & North Houston TX. Trash trucks, excavators, construction fleets. Call (936) 249-6042."
+        description="Commercial fleet hydraulic cylinder repair near Montgomery, Conroe & North Houston TX. Trash trucks, excavators, construction fleets. Call (936) 344-1436."
         path="/fleet-support"
         ogImage="/og/fleet.webp"
         keywords="fleet hydraulic cylinder repair Montgomery TX, commercial hydraulic repair Conroe TX, hydraulic repair trash trucks North Houston, fleet hydraulic service Montgomery County"

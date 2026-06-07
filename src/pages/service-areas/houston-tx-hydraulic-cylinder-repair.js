@@ -6,7 +6,7 @@ export default function HoustonServicePage() {
   return (
     <ServiceAreaPageTemplate
       seoTitle="Hydraulic Cylinder Repair Near Houston, TX | Vetech Hydraulics"
-      seoDescription="Hydraulic cylinder repair for Houston-area fleets, construction, and industrial equipment. Veteran-owned shop in Magnolia TX. Call (936) 249-6042 for a fast quote."
+      seoDescription="Hydraulic cylinder repair for Houston-area fleets, construction, and industrial equipment. Veteran-owned shop in Magnolia TX. Call (936) 344-1436 for a fast quote."
       seoKeywords="hydraulic cylinder repair Houston TX, hydraulic cylinder repair near Houston, hydraulic repair north Houston, fleet hydraulic repair Houston TX, construction equipment hydraulic repair Houston"
       canonicalSlug="houston-tx-hydraulic-cylinder-repair"
       heroImg={heroImg}

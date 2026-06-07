@@ -6,7 +6,7 @@ export default function HumbleServicePage() {
   return (
     <ServiceAreaPageTemplate
       seoTitle="Hydraulic Cylinder Repair in Humble, TX | Vetech Hydraulics"
-      seoDescription="Hydraulic cylinder repair for construction, fleet & industrial equipment in Humble TX and north Harris County. Veteran-owned. Call (936) 249-6042 for a fast quote."
+      seoDescription="Hydraulic cylinder repair for construction, fleet & industrial equipment in Humble TX and north Harris County. Veteran-owned. Call (936) 344-1436 for a fast quote."
       seoKeywords="hydraulic cylinder repair Humble TX, hydraulic repair north Harris County, construction equipment hydraulic repair Humble, hydraulic cylinder repacking Humble TX, fleet hydraulic repair Humble Texas"
       canonicalSlug="humble-tx-hydraulic-cylinder-repair"
       heroImg={heroImg}

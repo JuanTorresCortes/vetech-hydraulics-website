@@ -6,7 +6,7 @@ export default function NewCaneyServicePage() {
   return (
     <ServiceAreaPageTemplate
       seoTitle="Hydraulic Cylinder Repair in New Caney, TX | Vetech Hydraulics"
-      seoDescription="Hydraulic cylinder repair for construction, agriculture & fleet equipment in New Caney TX and east Montgomery County. Veteran-owned. Call (936) 249-6042 for a fast quote."
+      seoDescription="Hydraulic cylinder repair for construction, agriculture & fleet equipment in New Caney TX and east Montgomery County. Veteran-owned. Call (936) 344-1436 for a fast quote."
       seoKeywords="hydraulic cylinder repair New Caney TX, hydraulic repair Montgomery County Texas, construction equipment hydraulic repair New Caney, hydraulic cylinder repacking New Caney TX, agriculture hydraulic repair east Montgomery County"
       canonicalSlug="new-caney-tx-hydraulic-cylinder-repair"
       heroImg={heroImg}

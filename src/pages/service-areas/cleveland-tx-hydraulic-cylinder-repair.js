@@ -6,7 +6,7 @@ export default function ClevelandServicePage() {
   return (
     <ServiceAreaPageTemplate
       seoTitle="Hydraulic Cylinder Repair in Cleveland, TX | Vetech Hydraulics"
-      seoDescription="Hydraulic cylinder repair for timber, oil field, construction & agriculture equipment in Cleveland TX and the Liberty/San Jacinto County area. Veteran-owned. Call (936) 249-6042 for a fast quote."
+      seoDescription="Hydraulic cylinder repair for timber, oil field, construction & agriculture equipment in Cleveland TX and the Liberty/San Jacinto County area. Veteran-owned. Call (936) 344-1436 for a fast quote."
       seoKeywords="hydraulic cylinder repair Cleveland TX, hydraulic repair Liberty County Texas, oil field hydraulic cylinder repair Cleveland TX, timber forestry hydraulic repair Cleveland Texas, hydraulic cylinder repacking San Jacinto County"
       canonicalSlug="cleveland-tx-hydraulic-cylinder-repair"
       heroImg={heroImg}

@@ -382,7 +382,7 @@ export default function Home() {
       {/* Homepage SEO and local business schema; keep metadata values intentional because they affect search snippets. */}
       <SeoHead
         title="Hydraulic Cylinder Repair in Montgomery TX | Vetech Hydraulics"
-        description="Veteran-owned hydraulic cylinder repair in Montgomery, Conroe, Magnolia & North Houston. Fast turnarounds, pressure-tested results. Call (936) 249-6042."
+        description="Veteran-owned hydraulic cylinder repair in Montgomery, Conroe, Magnolia & North Houston. Fast turnarounds, pressure-tested results. Call (936) 344-1436."
         path="/"
         ogImage="/cover-image.webp"
         keywords="hydraulic cylinder repair Montgomery TX, hydraulic repair Conroe TX, hydraulic cylinder repair Magnolia TX, hydraulic repair North Houston, hydraulic cylinder repacking, hydraulic hose repair, veteran-owned hydraulic repair"

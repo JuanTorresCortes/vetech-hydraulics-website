@@ -6,7 +6,7 @@ export default function MontgomeryServicePage() {
   return (
     <ServiceAreaPageTemplate
       seoTitle="Hydraulic Cylinder Repair in Montgomery, TX | Vetech Hydraulics"
-      seoDescription="Hydraulic cylinder repair for agriculture, ranch & construction equipment in Montgomery TX and the Lake Conroe area. Veteran-owned. Call (936) 249-6042 for a fast quote."
+      seoDescription="Hydraulic cylinder repair for agriculture, ranch & construction equipment in Montgomery TX and the Lake Conroe area. Veteran-owned. Call (936) 344-1436 for a fast quote."
       seoKeywords="hydraulic cylinder repair Montgomery TX, hydraulic repair Montgomery Texas, hydraulic cylinder repacking Montgomery TX, hydraulic hose repair Montgomery, Montgomery County hydraulic repair"
       canonicalSlug="montgomery-tx-hydraulic-cylinder-repair"
       heroImg={heroImg}
