@@ -123,10 +123,8 @@ export default function ServiceAreaPageTemplate({
               priceRange: "$$",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: BUSINESS.streetAddress,
                 addressLocality: BUSINESS.addressLocality,
                 addressRegion: BUSINESS.addressRegion,
-                postalCode: BUSINESS.postalCode,
                 addressCountry: BUSINESS.addressCountry,
               },
               geo: {

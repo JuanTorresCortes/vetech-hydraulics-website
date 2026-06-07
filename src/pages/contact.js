@@ -448,14 +448,14 @@ export default function ContactPage() {
               </Box>
             </Grid>
 
-            {/* ADDRESS */}
+            {/* SERVICE AREA */}
             <Grid item xs={12} md={4}>
               <Box sx={contactCardSx}>
                 <Box sx={iconBadgeSx}>
                   <LocationOnIcon sx={{ fontSize: 26 }} />
                 </Box>
                 <Typography sx={{ color: industrialColors.hydraulicRed, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", fontSize: 12, mb: 0.75 }}>
-                  Mailing Address
+                  Service Area
                 </Typography>
                 <Typography
                   sx={{
@@ -466,10 +466,10 @@ export default function ContactPage() {
                     mb: 0.5,
                   }}
                 >
-                  435 Southern Magnolia Way
+                  Montgomery County
                 </Typography>
-                <Typography sx={{ color: "#F0F0F0", fontWeight: 900, fontSize: { xs: 18, md: 20 }, lineHeight: 1.4, mb: 1 }}>
-                  Magnolia, TX 77354
+                <Typography sx={{ color: "#a0a0a0", fontSize: 14, lineHeight: 1.6, mb: 1 }}>
+                  Magnolia · Conroe · The Woodlands · Spring · Tomball · Humble · Willis · Huntsville &amp; surrounding areas
                 </Typography>
 
                 <Divider sx={{ borderColor: "rgba(255,255,255,0.18)", my: 2 }} />

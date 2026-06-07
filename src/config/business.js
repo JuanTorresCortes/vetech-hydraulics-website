@@ -13,10 +13,8 @@ export const BUSINESS = {
   smsHref:
     "sms:+19363441436?&body=Hi%20Vetech%20Hydraulics%2C%20I%E2%80%99d%20like%20a%20fast%20quote.%20I%E2%80%99ll%20send%20a%20picture%20now.",
 
-  // NAP — keep these in sync with Google Business Profile and all directory listings
-  streetAddress: "435 Southern Magnolia Way",
+  // Service area — onsite business, no physical address listed publicly
   addressLocality: "Magnolia",
   addressRegion: "TX",
-  postalCode: "77354",
   addressCountry: "US",
 };
