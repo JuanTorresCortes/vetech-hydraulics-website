@@ -3,6 +3,76 @@
    Accent: #CC0000 | Font: Oswald (condensed bold via Google Fonts)
    ═══════════════════════════════════════════════════════════════ */
 
+/* ── CSS Animations (replaces framer-motion to avoid React 19 hydration issues) ── */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes kenBurns {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
+}
+
+.animFadeIn {
+  animation: fadeIn 0.6s ease forwards;
+  animation-delay: 0.1s;
+  opacity: 0;
+}
+
+.animFadeUp1 {
+  animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.animFadeUp2 {
+  animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.32s;
+  opacity: 0;
+}
+
+.animFadeUp3 {
+  animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.44s;
+  opacity: 0;
+}
+
+.animFadeUp4 {
+  animation: fadeUp 0.55s ease forwards;
+  animation-delay: 0.56s;
+  opacity: 0;
+}
+
+.animFadeUp5 {
+  animation: fadeUp 0.45s ease forwards;
+  animation-delay: 0.68s;
+  opacity: 0;
+}
+
+.animFadeUp6 {
+  animation: fadeUp 0.5s ease forwards;
+  animation-delay: 0.8s;
+  opacity: 0;
+}
+
+.animSlideRight {
+  animation: slideRight 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.55s;
+  opacity: 0;
+}
+
 /* SEO FIX: @import removed — Google Fonts are now loaded via <link> tags in _document.js to eliminate render-blocking */
 
 /* ── Shell ─────────────────────────────────────────────────── */
@@ -28,6 +98,7 @@
   position: absolute;
   inset: 0;
   transform-origin: center center;
+  animation: kenBurns 8s ease-out forwards;
 }
 
 .bgImg {
