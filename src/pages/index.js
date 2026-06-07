@@ -55,6 +55,10 @@ import repairImg from "../image/repairImg.webp";
 import mobileImg from "../image/mobileImg.webp";
 import hero1 from "../image/hero1.webp";
 import coverImage from "../image/cover-image.webp";
+import escavatorBoomRebuild from "../image/excavator_Boom_Rebuild.webp";
+import fleetDumpCylinder from "../image/fleet_dump_cylinder.webp";
+import loaderRodRepair from "../image/loader_rod_gland-repair.webp";
+import jobSitePull from "../image/job_site_pull.webp";
 //public / cover - image.webp;
 import VeteranOwnershipSection from "@/components/VeteranOwnershipSection";
 
@@ -331,7 +335,7 @@ const recentRepairs = [
       "Full teardown, seal replacement, rod cleanup, and bench pressure testing before return to the fleet.",
     equipment: "Excavator",
     status: "Pressure Tested",
-    image: repairImg,
+    image: escavatorBoomRebuild,
     alt: "Hydraulic cylinder repair example for an excavator boom cylinder rebuild",
   },
   {
@@ -340,7 +344,7 @@ const recentRepairs = [
       "Commercial cylinder repack focused on leak control, fast turnaround, and dependable daily route uptime.",
     equipment: "Fleet Truck",
     status: "Repacked",
-    image: repackImg,
+    image: fleetDumpCylinder,
     alt: "Hydraulic cylinder repacking example for a fleet dump cylinder",
   },
   {
@@ -349,7 +353,7 @@ const recentRepairs = [
       "Rod finish inspection, component repair, and seal-fit checks to improve service life under heavy load.",
     equipment: "Wheel Loader",
     status: "Rod Polished",
-    image: backHoe,
+    image: loaderRodRepair,
     alt: "Hydraulic rod repair example for heavy equipment loader cylinder service",
   },
   {
@@ -358,7 +362,7 @@ const recentRepairs = [
       "Pickup coordination, shop rebuild, and return support for operators who need equipment moving again quickly.",
     equipment: "Construction Equipment",
     status: "Weld Repaired",
-    image: mobileImg,
+    image: jobSitePull,
     alt: "Mobile hydraulic repair example for job-site cylinder turnaround",
   },
 ];
