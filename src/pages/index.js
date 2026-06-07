@@ -49,7 +49,6 @@ import { BUSINESS } from "../config/business";
 import backHoe from "../image/backHoe.webp";
 import map from "../image/map.webp";
 import ConsultationButton from "../components/ConsultationButton";
-import { motion } from "framer-motion";
 import repackImg from "../image/repackImg.webp";
 import repairImg from "../image/repairImg.webp";
 import mobileImg from "../image/mobileImg.webp";
@@ -64,49 +63,14 @@ import VeteranOwnershipSection from "@/components/VeteranOwnershipSection";
 
 /* ── Scroll-reveal helpers ────────────────────────────────────────────── */
 
-// Fade + slide-up on scroll — use for headings, copy blocks, CTA panels.
 const FadeUp = ({ children, delay = 0, className }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 32 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-60px" }}
-    transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
-    className={className}
-  >
-    {children}
-  </motion.div>
+  <div className={className}>{children}</div>
 );
 
-// Stagger container — children animate in sequence as the grid enters view.
-const StaggerGrid = ({ children, delay = 0 }) => (
-  <motion.div
-    initial="hidden"
-    whileInView="show"
-    viewport={{ once: true, margin: "-60px" }}
-    variants={{
-      hidden: {},
-      show: { transition: { delayChildren: delay, staggerChildren: 0.1 } },
-    }}
-  >
-    {children}
-  </motion.div>
-);
+const StaggerGrid = ({ children }) => <div>{children}</div>;
 
-// Individual card item — used as direct child of StaggerGrid.
 const StaggerItem = ({ children }) => (
-  <motion.div
-    variants={{
-      hidden: { opacity: 0, y: 28 },
-      show: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
-      },
-    }}
-    style={{ height: "100%" }}
-  >
-    {children}
-  </motion.div>
+  <div style={{ height: "100%" }}>{children}</div>
 );
 
 /* ------------------------------ Styled UI ------------------------------ */

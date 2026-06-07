@@ -5,10 +5,11 @@ import createEmotionCache from "../utils/createEmotionCache";
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
+      <Html lang="en" suppressHydrationWarning>
         <Head>
           <meta charSet="utf-8" />
           <meta name="theme-color" content="#080808" />
+          <meta name="color-scheme" content="only light" />
           <meta name="author" content="Vetech Hydraulics" />
           <meta name="robots" content="index, follow" />
 

@@ -12,7 +12,7 @@
   font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color-scheme: dark;
+  color-scheme: only light;
   color: var(--vetech-text);
   background-color: var(--vetech-gunmetal);
   font-synthesis: none;

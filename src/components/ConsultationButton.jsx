@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { motion } from "framer-motion";
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 import { primaryCtaSx } from "../utils/visualStyles";
 import { BUSINESS } from "../config/business";
@@ -27,10 +26,7 @@ const ConsultationButton = () => {
 
   // Mobile visitors can text a photo immediately; desktop visitors go to the contact form to avoid unreliable sms: handling.
   return (
-    <motion.div
-      whileHover={{ scale: 0.98 }}
-      transition={{ duration: 0.2 }}
-    >
+    <div>
       <Button
         variant="contained"
         startIcon={<ContactPhoneIcon />}
@@ -52,7 +48,7 @@ const ConsultationButton = () => {
       >
         {showMobile ? "Text Image for a Fast Quote" : "Get a Fast Quote"}
       </Button>
-    </motion.div>
+    </div>
   );
 };
 
