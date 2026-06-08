@@ -30,7 +30,6 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import EngineeringIcon from "@mui/icons-material/Engineering";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
-import { styled } from "@mui/system";
 import {
   bodyCopySx,
   containerSx,
@@ -52,13 +51,10 @@ import ConsultationButton from "../components/ConsultationButton";
 import repackImg from "../image/repackImg.webp";
 import repairImg from "../image/repairImg.webp";
 import mobileImg from "../image/mobileImg.webp";
-import hero1 from "../image/hero1.webp";
-import coverImage from "../image/cover-image.webp";
 import escavatorBoomRebuild from "../image/excavator_Boom_Rebuild.webp";
 import fleetDumpCylinder from "../image/fleet_dump_cylinder.webp";
 import loaderRodRepair from "../image/loader_rod_gland-repair.webp";
 import jobSitePull from "../image/job_site_pull.webp";
-//public / cover - image.webp;
 import VeteranOwnershipSection from "@/components/VeteranOwnershipSection";
 
 /* ── Scroll-reveal helpers ────────────────────────────────────────────── */
@@ -69,81 +65,10 @@ const FadeUp = ({ children, delay = 0, className }) => (
 
 const StaggerGrid = ({ children }) => <div>{children}</div>;
 
-const StaggerItem = ({ children }) => (
-  <div style={{ height: "100%" }}>{children}</div>
-);
-
 /* ------------------------------ Styled UI ------------------------------ */
 
 const Section = PageSection;
 const AltSection = PageAltSection;
-
-// const HeroSection = styled(Box)(({ theme }) => ({
-//   ...fullBleed,
-//   display: "flex",
-//   justifyContent: "center",
-//   alignItems: "center",
-//   background:
-//     "radial-gradient(circle at 18% 22%, rgba(183,28,28,0.28) 0%, rgba(183,28,28,0) 32%), linear-gradient(135deg, #080808 0%, #0a0a0a 38%, #0D2334 70%, #080808 100%)",
-//   color: "#fff",
-//   position: "relative",
-//   textAlign: "left",
-//   padding: 0,
-//   overflow: "hidden",
-
-//   // Desktop / large screens
-//   minHeight: "92vh",
-
-//   // Large laptops
-//   [theme.breakpoints.down("xl")]: {
-//     minHeight: "90vh",
-//   },
-
-//   // Laptops / landscape tablets
-//   [theme.breakpoints.down("lg")]: {
-//     minHeight: "88vh",
-//   },
-
-//   // Tablets
-//   [theme.breakpoints.down("md")]: {
-//     minHeight: "82svh",
-//   },
-
-//   // Phones
-//   [theme.breakpoints.down("sm")]: {
-//     minHeight: "78svh",
-//   },
-
-//   // Very small phones (old iPhones / SE)
-//   "@media (max-width: 321px)": {
-//     minHeight: "100svh",
-//   },
-
-//   "&::before": {
-//     content: '""',
-//     position: "absolute",
-//     inset: 0,
-//     pointerEvents: "none",
-//     backgroundImage:
-//       "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
-//     backgroundSize: "46px 46px",
-//     maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 74%)",
-//     zIndex: 1,
-//   },
-
-//   "&::after": {
-//     content: '""',
-//     position: "absolute",
-//     left: "6%",
-//     right: "6%",
-//     bottom: 0,
-//     height: "1px",
-//     pointerEvents: "none",
-//     background:
-//       "linear-gradient(90deg, transparent, rgba(255,255,255,0.75), rgba(183,28,28,0.9), rgba(255,255,255,0.75), transparent)",
-//     zIndex: 3,
-//   },
-// }));
 
 const SectionTitle = ({ children, subtitle }) => (
   <FadeUp>
@@ -368,15 +293,6 @@ const commercialTrustFeatures = [
 /* --------------------------------- Page --------------------------------- */
 
 export default function Home() {
-  const fadeUp = {
-    initial: { opacity: 0, y: 10 },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
-
   return (
     <>
       {/* Homepage SEO and local business schema; keep metadata values intentional because they affect search snippets. */}
