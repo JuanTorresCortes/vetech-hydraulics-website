@@ -61,6 +61,8 @@ export default function WallerServicePage() {
           a: "Text or email a photo of the cylinder — front, side, and the damaged area — along with the bore size and what it came off of. We can usually turn a ballpark estimate around the same day without needing a shop visit first.",
         },
       ]}
+      cityLat={30.0557}
+      cityLng={-95.9269}
     />
   );
 }

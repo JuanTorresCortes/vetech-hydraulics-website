@@ -61,6 +61,8 @@ export default function NewCaneyServicePage() {
           a: "Yes. Mulcher head and land-clearing equipment cylinders deal with heavy debris impact and constant shock loads. We rebuild these with upgraded seal compounds when appropriate and pressure test them before they go back on the machine.",
         },
       ]}
+      cityLat={30.1507}
+      cityLng={-95.0716}
     />
   );
 }

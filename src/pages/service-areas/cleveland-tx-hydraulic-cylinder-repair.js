@@ -61,6 +61,8 @@ export default function ClevelandServicePage() {
           a: "We're in Magnolia, TX — about 45–50 minutes from Cleveland via SH-105. Drop-offs are welcome at the shop, and we offer pickup and delivery for Liberty and San Jacinto County customers who can't transport the cylinder themselves.",
         },
       ]}
+      cityLat={30.3399}
+      cityLng={-95.0888}
     />
   );
 }

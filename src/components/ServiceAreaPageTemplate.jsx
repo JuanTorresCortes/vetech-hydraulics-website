@@ -78,6 +78,10 @@ export default function ServiceAreaPageTemplate({
   // FAQ
   faqHeading,
   faqItems,
+
+  // City geo coordinates for local SEO schema
+  cityLat = 30.2099,
+  cityLng = -95.7516,
 }) {
   return (
     <>
@@ -129,8 +133,8 @@ export default function ServiceAreaPageTemplate({
               },
               geo: {
                 "@type": "GeoCoordinates",
-                latitude: 30.2099,
-                longitude: -95.7516,
+                latitude: cityLat,
+                longitude: cityLng,
               },
               areaServed: {
                 "@type": "City",

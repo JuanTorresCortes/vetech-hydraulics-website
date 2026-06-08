@@ -61,6 +61,8 @@ export default function MontgomeryServicePage() {
           a: "Absolutely. We custom-source seals and can machine wear components for cylinders that don't have a current parts catalog. Older doesn't mean unrepairable.",
         },
       ]}
+      cityLat={30.3877}
+      cityLng={-95.6966}
     />
   );
 }

@@ -61,6 +61,8 @@ export default function HuntsvilleServicePage() {
           a: "Text us a photo of the cylinder — front, side, and the damaged area — along with the bore size and what equipment it came off. We can typically turn around a ballpark estimate the same day so you know what you're dealing with before making the trip.",
         },
       ]}
+      cityLat={30.7235}
+      cityLng={-95.5508}
     />
   );
 }

@@ -61,6 +61,8 @@ export default function HoustonServicePage() {
           a: "Absolutely. Text or email a photo of the cylinder — front, side, and damaged area — along with bore size and what it came off of. We'll get you a ballpark estimate the same day so you can make an informed decision before making the trip.",
         },
       ]}
+      cityLat={29.7604}
+      cityLng={-95.3698}
     />
   );
 }

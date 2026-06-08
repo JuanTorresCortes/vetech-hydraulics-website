@@ -61,6 +61,8 @@ export default function WillisServicePage() {
           a: "Absolutely. Older tractors and ranch equipment often have cylinders where standard kits don't fit. We custom-source seals and can machine or fabricate wear components when OEM parts aren't available anymore.",
         },
       ]}
+      cityLat={30.4238}
+      cityLng={-95.4794}
     />
   );
 }

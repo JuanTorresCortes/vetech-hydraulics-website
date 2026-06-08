@@ -61,6 +61,8 @@ export default function WoodlandsServicePage() {
           a: "Text or email a photo of the cylinder — front, side, and the damaged area — along with bore size and what it came off of. We'll get you a ballpark estimate the same day so you can plan before making the trip.",
         },
       ]}
+      cityLat={30.1658}
+      cityLng={-95.4613}
     />
   );
 }

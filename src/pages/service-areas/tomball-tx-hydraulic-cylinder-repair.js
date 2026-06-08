@@ -61,6 +61,8 @@ export default function TomballServicePage() {
           a: "Text a photo of the cylinder — front, side, and the damaged area — plus the bore size and what equipment it came off of. We can usually send a ballpark estimate the same day so you know what you're looking at before dropping it off.",
         },
       ]}
+      cityLat={30.0974}
+      cityLng={-95.6160}
     />
   );
 }

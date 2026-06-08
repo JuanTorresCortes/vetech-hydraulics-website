@@ -61,6 +61,8 @@ export default function SplendoraServicePage() {
           a: "Text us a photo of the cylinder — front, side, and the damaged area — along with the bore size and what it came off of. We can usually get a ballpark estimate back to you the same day without you having to make the drive first.",
         },
       ]}
+      cityLat={30.2338}
+      cityLng={-95.1655}
     />
   );
 }

@@ -61,6 +61,8 @@ export default function HumbleServicePage() {
           a: "Text or email us a photo of the cylinder — front, side, and the damaged area — along with the bore size and what equipment it came off of. We can usually get you a ballpark estimate the same day so you can decide before making the trip.",
         },
       ]}
+      cityLat={29.9988}
+      cityLng={-95.2627}
     />
   );
 }

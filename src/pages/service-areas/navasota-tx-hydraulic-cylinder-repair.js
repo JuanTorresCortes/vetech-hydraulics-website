@@ -61,6 +61,8 @@ export default function NavasotaServicePage() {
           a: "Text or email a photo of the cylinder — front, side, and the damaged area — along with the bore size and what it came off of. We can usually send a ballpark estimate the same day so you know what you're looking at before making the drive.",
         },
       ]}
+      cityLat={30.3877}
+      cityLng={-96.0869}
     />
   );
 }

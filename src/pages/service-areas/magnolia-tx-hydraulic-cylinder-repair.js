@@ -61,6 +61,8 @@ export default function MagnoliaServicePage() {
           a: "Absolutely. Text us a photo of the cylinder — front, side, and the damaged area — plus the bore size and what it came off of. We'll get you a ballpark estimate the same day so you know what you're dealing with before dropping it off.",
         },
       ]}
+      cityLat={30.2099}
+      cityLng={-95.7516}
     />
   );
 }

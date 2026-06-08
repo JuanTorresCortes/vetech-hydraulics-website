@@ -61,6 +61,8 @@ export default function ConroeServicePage() {
           a: "Yes. If you manage equipment for a contractor or operate a fleet, reach out and we can discuss turnaround expectations and how to structure the relationship so your equipment gets prioritized.",
         },
       ]}
+      cityLat={30.3119}
+      cityLng={-95.4561}
     />
   );
 }

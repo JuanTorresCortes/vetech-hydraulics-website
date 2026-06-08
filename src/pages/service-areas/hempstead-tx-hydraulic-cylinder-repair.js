@@ -61,6 +61,8 @@ export default function HempsteadServicePage() {
           a: "Text or email a photo of the cylinder — front, side, and the damaged area — plus the bore size and what equipment it came off of. We can usually turn a ballpark estimate around the same day without a shop visit first.",
         },
       ]}
+      cityLat={30.0988}
+      cityLng={-96.0783}
     />
   );
 }

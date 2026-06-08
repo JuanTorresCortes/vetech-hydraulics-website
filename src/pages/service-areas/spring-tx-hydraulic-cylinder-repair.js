@@ -61,6 +61,8 @@ export default function SpringServicePage() {
           a: "Yes. If you manage equipment for a GC or run a crew, reach out and we can discuss turnaround expectations and account structure so your cylinders get handled efficiently.",
         },
       ]}
+      cityLat={30.0799}
+      cityLng={-95.4172}
     />
   );
 }
