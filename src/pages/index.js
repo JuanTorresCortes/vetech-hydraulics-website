@@ -444,6 +444,64 @@ export default function Home() {
       {/* ====================== VETERAN OWNERSHIP ======================= */}
       <VeteranOwnershipSection />
 
+      {/* ============================= PROCESS ============================ */}
+      <Section id="process" sx={lowerAltSectionBgSx}>
+        <Container
+          maxWidth="lg"
+          sx={{ position: "relative", zIndex: 1, ...containerSx }}
+        >
+          <SectionTitle subtitle="Simple, transparent, and efficient.">
+            Our Repair Process
+          </SectionTitle>
+
+          <StaggerGrid>
+            <Grid container spacing={{ xs: 2, md: 3 }}>
+              {[
+                {
+                  step: "1",
+                  title: "Check-In & Inspect",
+                  txt: "Receive cylinder, clean, measure, and inspect components to identify the root cause of failure.",
+                },
+                {
+                  step: "2",
+                  title: "Quote & Approve",
+                  txt: "You get a clear estimate for seals, parts, and labor before we move forward.",
+                },
+                {
+                  step: "3",
+                  title: "Repack / Rebuild",
+                  txt: "Replace seals, wear items, and perform any required machining or rod/barrel work.",
+                },
+                {
+                  step: "4",
+                  title: "Test & Deliver",
+                  txt: "Pressure test, verify smooth operation, and return your cylinder ready to reinstall.",
+                },
+              ].map((s) => (
+                <Grid key={s.step} item xs={12} sm={6} md={3}>
+                  <Box sx={lowerPanelSx}>
+                    <Box
+                      sx={{
+                        ...redBadgeSx,
+                        mb: 2,
+                        fontWeight: 700,
+                        fontSize: 18,
+                      }}
+                    >
+                      {s.step}
+                    </Box>
+                    <Typography sx={lowerTitleSx}>{s.title}</Typography>
+                    <Typography sx={{ ...lowerBodySx, mt: 0.9 }}>
+                      {s.txt}
+                    </Typography>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+          </StaggerGrid>
+        </Container>
+      </Section>
+
       {/* ============================ SERVICES ============================ */}
       <Section
         id="services"
@@ -1756,64 +1814,6 @@ export default function Home() {
               </Grid>
             ))}
           </Grid>
-        </Container>
-      </Section>
-
-      {/* ============================= PROCESS ============================ */}
-      <Section id="process" sx={lowerAltSectionBgSx}>
-        <Container
-          maxWidth="lg"
-          sx={{ position: "relative", zIndex: 1, ...containerSx }}
-        >
-          <SectionTitle subtitle="Simple, transparent, and efficient.">
-            Our Repair Process
-          </SectionTitle>
-
-          <StaggerGrid>
-            <Grid container spacing={{ xs: 2, md: 3 }}>
-              {[
-                {
-                  step: "1",
-                  title: "Check-In & Inspect",
-                  txt: "Receive cylinder, clean, measure, and inspect components to identify the root cause of failure.",
-                },
-                {
-                  step: "2",
-                  title: "Quote & Approve",
-                  txt: "You get a clear estimate for seals, parts, and labor before we move forward.",
-                },
-                {
-                  step: "3",
-                  title: "Repack / Rebuild",
-                  txt: "Replace seals, wear items, and perform any required machining or rod/barrel work.",
-                },
-                {
-                  step: "4",
-                  title: "Test & Deliver",
-                  txt: "Pressure test, verify smooth operation, and return your cylinder ready to reinstall.",
-                },
-              ].map((s) => (
-                <Grid key={s.step} item xs={12} sm={6} md={3}>
-                  <Box sx={lowerPanelSx}>
-                    <Box
-                      sx={{
-                        ...redBadgeSx,
-                        mb: 2,
-                        fontWeight: 700,
-                        fontSize: 18,
-                      }}
-                    >
-                      {s.step}
-                    </Box>
-                    <Typography sx={lowerTitleSx}>{s.title}</Typography>
-                    <Typography sx={{ ...lowerBodySx, mt: 0.9 }}>
-                      {s.txt}
-                    </Typography>
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
-          </StaggerGrid>
         </Container>
       </Section>
 
