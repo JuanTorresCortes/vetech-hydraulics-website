@@ -6,6 +6,7 @@
 
 import { Resend } from "resend";
 import { BUSINESS } from "../../config/business";
+import { validateContactForm } from "../../utils/formValidation";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -37,18 +38,7 @@ function pruneRateLimitMap() {
 }
 
 /* ------------------------------ Validation ------------------------------- */
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const MAX_NAME_LENGTH = 100;
-const MAX_MESSAGE_LENGTH = 5000;
-
-function validate({ name, email, message }) {
-  if (!name || !email || !message) return "Please include name, email, and message.";
-  if (name.length > MAX_NAME_LENGTH) return "Name is too long.";
-  if (!EMAIL_REGEX.test(email)) return "Please enter a valid email address.";
-  if (message.length > MAX_MESSAGE_LENGTH)
-    return `Message must be under ${MAX_MESSAGE_LENGTH} characters.`;
-  return null;
-}
+const validate = validateContactForm;
 
 /* ------------------------------ HTML escaping ----------------------------- */
 // Minimal HTML escaping protects email templates from rendering customer input as markup.

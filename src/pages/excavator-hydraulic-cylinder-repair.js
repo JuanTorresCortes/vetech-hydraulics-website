@@ -1,6 +1,7 @@
 // Excavator hydraulic cylinder repair page — targets high-intent equipment-specific searches.
 // Keeps the same industrial design language as the rest of the site.
 import SeoHead from "../components/SeoHead";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { Box, Container, Typography, Grid, Button, Stack } from "@mui/material";
@@ -108,6 +109,28 @@ export default function ExcavatorHydraulicCylinderRepair() {
         ogImage="/og/repair.webp"
         keywords="excavator hydraulic cylinder repair Montgomery TX, excavator cylinder repair Conroe TX, excavator boom cylinder repair, excavator arm cylinder repair North Houston, excavator bucket cylinder repair"
       />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              name: "Excavator Hydraulic Cylinder Repair",
+              description: "Boom, arm, and bucket cylinder rebuilds for excavators and heavy construction equipment. Pressure-tested repairs with fast turnaround.",
+              provider: {
+                "@type": "LocalBusiness",
+                name: "Vetech Hydraulics",
+                telephone: BUSINESS.phoneSchemaFormat,
+                url: BUSINESS.siteUrl,
+              },
+              areaServed: { "@type": "State", name: "Texas" },
+              serviceType: "Hydraulic Cylinder Repair",
+              url: `${BUSINESS.siteUrl}/excavator-hydraulic-cylinder-repair`,
+            }),
+          }}
+        />
+      </Head>
 
       <Hero>
         <Image

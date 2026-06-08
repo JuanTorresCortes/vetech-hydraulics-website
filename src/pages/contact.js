@@ -4,6 +4,7 @@
 import SeoHead from "../components/SeoHead";
 import Head from "next/head";
 import { businessSchema } from "../utils/seoData";
+import { EMAIL_REGEX, MAX_NAME_LENGTH, MAX_MESSAGE_LENGTH } from "../utils/formValidation";
 import Image from "next/image";
 import {
   Alert,
@@ -130,10 +131,6 @@ const iconBadgeSx = {
 };
 
 /* --------------------------------- Page ---------------------------------- */
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const MAX_MESSAGE_LENGTH = 5000;
-const MAX_NAME_LENGTH = 100;
 
 export default function ContactPage() {
   const [sending, setSending] = useState(false);

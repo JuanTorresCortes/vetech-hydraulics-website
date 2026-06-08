@@ -22,6 +22,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import SpeedIcon from "@mui/icons-material/Speed";
 import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
 import SeoHead from "../components/SeoHead";
+import Head from "next/head";
 import {
   bodyCopySx,
   containerSx,
@@ -249,6 +250,28 @@ export default function FleetSupportPage() {
         ogImage="/og/fleet.webp"
         keywords="fleet hydraulic cylinder repair Montgomery TX, commercial hydraulic repair Conroe TX, hydraulic repair trash trucks North Houston, fleet hydraulic service Montgomery County"
       />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              name: "Fleet Hydraulic Cylinder Repair",
+              description: "Commercial fleet hydraulic cylinder repair for trash trucks, construction fleets, municipal equipment, and industrial machinery. Veteran-owned with uptime-focused turnarounds.",
+              provider: {
+                "@type": "LocalBusiness",
+                name: "Vetech Hydraulics",
+                telephone: BUSINESS.phoneSchemaFormat,
+                url: BUSINESS.siteUrl,
+              },
+              areaServed: { "@type": "State", name: "Texas" },
+              serviceType: "Hydraulic Cylinder Repair",
+              url: `${BUSINESS.siteUrl}/fleet-support`,
+            }),
+          }}
+        />
+      </Head>
 
       <Box component="div">
         {/* Hero positions the shop for fleet uptime needs before visitors reach the workflow details. */}

@@ -1,6 +1,7 @@
 // Trash truck / waste fleet hydraulic cylinder repair page.
 // Targets fleet managers and municipal operators searching for waste-equipment cylinder service.
 import SeoHead from "../components/SeoHead";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { Box, Container, Typography, Grid, Button, Stack } from "@mui/material";
@@ -108,6 +109,28 @@ export default function TrashTruckHydraulicCylinderRepair() {
         ogImage="/og/repair.webp"
         keywords="trash truck hydraulic cylinder repair Montgomery TX, waste fleet hydraulic repair Conroe TX, telescopic cylinder repair North Houston, packer cylinder repair, garbage truck hydraulic repair"
       />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              name: "Trash Truck Hydraulic Cylinder Repair",
+              description: "Telescopic, packer, and tailgate cylinder repair for waste fleets and municipal garbage trucks. Fast turnaround to keep routes on schedule.",
+              provider: {
+                "@type": "LocalBusiness",
+                name: "Vetech Hydraulics",
+                telephone: BUSINESS.phoneSchemaFormat,
+                url: BUSINESS.siteUrl,
+              },
+              areaServed: { "@type": "State", name: "Texas" },
+              serviceType: "Hydraulic Cylinder Repair",
+              url: `${BUSINESS.siteUrl}/trash-truck-hydraulic-cylinder-repair`,
+            }),
+          }}
+        />
+      </Head>
 
       <Hero>
         <Image
