@@ -17,4 +17,9 @@ export const BUSINESS = {
   addressLocality: "Magnolia",
   addressRegion: "TX",
   addressCountry: "US",
+
+  // Social media
+  facebookUrl: "https://www.facebook.com/people/Vetech-Hydraulics/61582290688490/",
+  instagramUrl: "https://www.instagram.com/vetechhydraulics",
+  linkedinUrl:  "https://www.linkedin.com/company/vetech-hydraulics",
 };

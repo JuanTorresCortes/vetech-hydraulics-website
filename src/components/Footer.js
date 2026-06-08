@@ -17,6 +17,7 @@ import { containerSx, primaryCtaSx, secondaryCtaSx } from "../utils/visualStyles
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import { BUSINESS } from "../config/business";
+import SocialLinks from "./SocialLinks";
 
 // ── Link data ─────────────────────────────────────────────
 const services = [
@@ -308,6 +309,23 @@ export default function Footer() {
                     </Box>
                   ))}
                 </Stack>
+
+                {/* Social media icons */}
+                <Box sx={{ mt: 2.5 }}>
+                  <Typography
+                    sx={{
+                      fontFamily: "'Oswald', sans-serif",
+                      fontSize: 10,
+                      letterSpacing: "0.16em",
+                      textTransform: "uppercase",
+                      color: "rgba(200,200,200,0.38)",
+                      mb: 1.25,
+                    }}
+                  >
+                    Follow Us
+                  </Typography>
+                  <SocialLinks />
+                </Box>
               </motion.div>
             </Grid>
 

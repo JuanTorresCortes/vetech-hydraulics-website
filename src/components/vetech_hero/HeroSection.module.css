@@ -316,6 +316,46 @@
   margin-top: -8px;
 }
 
+/* ── Social icons row ──────────────────────────────────────── */
+.socialRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.socialLabel {
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(200, 200, 200, 0.38);
+  white-space: nowrap;
+}
+
+.socialIcon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 4px;
+  color: rgba(200, 200, 200, 0.5);
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.socialIcon:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.socialIcon--fb:hover  { color: #1877F2; border-color: rgba(24,119,242,0.35); }
+.socialIcon--ig:hover  { color: #E1306C; border-color: rgba(225,48,108,0.35); }
+.socialIcon--li:hover  { color: #0A66C2; border-color: rgba(10,102,194,0.35); }
+
 /* ── Right column / Info card ──────────────────────────────── */
 .rightCol {
   display: flex;

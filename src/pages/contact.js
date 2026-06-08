@@ -5,6 +5,7 @@ import SeoHead from "../components/SeoHead";
 import Head from "next/head";
 import { businessSchema } from "../utils/seoData";
 import { EMAIL_REGEX, MAX_NAME_LENGTH, MAX_MESSAGE_LENGTH } from "../utils/formValidation";
+import SocialLinks from "../components/SocialLinks";
 import Image from "next/image";
 import {
   Alert,
@@ -342,6 +343,23 @@ export default function ContactPage() {
               Email Us
             </Button>
           </Stack>
+
+          {/* Social links */}
+          <Box sx={{ mt: 3, display: "flex", alignItems: "center", gap: 2 }}>
+            <Box
+              sx={{
+                fontFamily: "'Oswald', sans-serif",
+                fontSize: 11,
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+                color: "rgba(200,200,200,0.45)",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Follow Us
+            </Box>
+            <SocialLinks />
+          </Box>
         </Container>
       </Hero>
 
