@@ -20,6 +20,6 @@ export const BUSINESS = {
 
   // Social media
   facebookUrl: "https://www.facebook.com/people/Vetech-Hydraulics/61582290688490/",
-  instagramUrl: "https://www.instagram.com/vetechhydraulics",
+  instagramUrl: "https://www.instagram.com/vetech_hydraulics",
   linkedinUrl:  "https://www.linkedin.com/company/vetech-hydraulics",
 };
