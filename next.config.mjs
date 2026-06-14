@@ -9,6 +9,17 @@ const nextConfig = {
     formats: ["image/avif", "image/webp"],
   },
 
+  async redirects() {
+    return [
+      {
+        // Redirect /equipment to /services — /equipment returns 404 but may be linked externally
+        source: "/equipment",
+        destination: "/services",
+        permanent: true,
+      },
+    ];
+  },
+
   async headers() {
     return [
       {

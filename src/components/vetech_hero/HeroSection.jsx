@@ -20,18 +20,18 @@ import fleetMunicipal from "./fleet-municipal.webp";
 import manufacturing from "./manufacturing.webp";
 
 const TRUST_BADGES = [
-  { img: veteranOwned,       alt: "Veteran Owned" },
-  { img: precisionDriven,    alt: "Precision Driven" },
-  { img: builtForUptime,     alt: "Built for Uptime" },
-  { img: testedBeforeReturn, alt: "Tested Before Return" },
+  { img: veteranOwned,       alt: "Veteran-owned hydraulic cylinder repair shop — Vetech Hydraulics" },
+  { img: precisionDriven,    alt: "Precision-driven hydraulic cylinder repair and rebuild service" },
+  { img: builtForUptime,     alt: "Hydraulic repair built for equipment uptime and reliability" },
+  { img: testedBeforeReturn, alt: "Every cylinder pressure tested before return to service" },
 ];
 
 const INDUSTRIES = [
-  { img: construction,   alt: "Construction" },
-  { img: agriculture,    alt: "Agriculture" },
-  { img: oilGas,         alt: "Oil & Gas" },
-  { img: fleetMunicipal, alt: "Fleet & Municipal" },
-  { img: manufacturing,  alt: "Manufacturing" },
+  { img: construction,   alt: "Hydraulic cylinder repair for construction equipment — excavators, loaders, skid steers" },
+  { img: agriculture,    alt: "Hydraulic cylinder repair for agriculture equipment — tractors and farm machinery" },
+  { img: oilGas,         alt: "Hydraulic cylinder repair for oil and gas field equipment" },
+  { img: fleetMunicipal, alt: "Hydraulic cylinder repair for fleet and municipal vehicles — trash trucks and utility fleets" },
+  { img: manufacturing,  alt: "Hydraulic cylinder repair for manufacturing and industrial equipment" },
 ];
 
 export default function HeroSection() {
